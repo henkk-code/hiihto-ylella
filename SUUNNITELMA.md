@@ -1,6 +1,6 @@
 # Hiihto Ylellä – projektisuunnitelma (v0.3)
 
-*Päivitetty 2026-11-20. Tila: **odottaa hyväksyntää**. Koodia ei ole vielä kirjoitettu.*
+*Päivitetty 2026-11-20. Tila: **hyväksytty; vaihe 1 (MVP) julkaistu 20.11.2026** → https://henkk-code.github.io/hiihto-ylella/*
 
 Muutokset v0.2 → v0.3:
 - **Kellonajat ja kanava mukaan jo MVP:ssä.** Lähteenä Telkku.comin (Iltalehti) julkinen TV-opasrajapinta. Testattu, toimii, ei avainta.
