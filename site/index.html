@@ -117,6 +117,15 @@ a.ch:hover { border-color: var(--accent); }
 .chev { color: var(--muted); transition: transform .15s; width: 10px; display: inline-block; font-size: 1.2rem; line-height: 1; }
 details[open] .chev { transform: rotate(90deg); }
 .ev.past { opacity: .55; }
+.ev.not-yle { color: var(--muted); }
+.ev.not-yle .place, .ev.not-yle .dates { font-weight: 500; }
+.ev.not-yle .type { background: transparent; color: var(--muted); border: 1px dashed var(--muted); padding: 1px 6px; }
+.ev.not-yle .tag::before { background: var(--muted); opacity: .6; }
+.noyle { font-size: .7rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; }
+.legend { color: var(--muted); font-size: .85rem; margin: -4px 0 10px; display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; }
+.legend .sw { display: inline-block; width: 26px; height: 14px; border-radius: 4px; vertical-align: -2px; margin-right: 6px; }
+.legend .sw.yle { background: var(--mc); }
+.legend .sw.other { border: 1px dashed var(--muted); }
 .ev.ongoing .dates { color: var(--live); }
 .races { padding: 0 0 12px 104px; font-size: .9rem; }
 .races h4 { margin: 8px 0 2px; font-size: .85rem; color: var(--muted); }
@@ -157,6 +166,7 @@ footer p { margin: 6px 0; }
 
   <section>
     <h2 id="season-title">Kausi</h2>
+    <p class="legend"><span><span class="sw yle"></span>Ylellä</span><span><span class="sw other"></span>Ei Ylellä – muut maailmancupin kisat (Viaplay)</span></p>
     <div class="card"><ul class="events" id="events"></ul></div>
     <button class="more" id="toggle-past" hidden></button>
   </section>
@@ -296,7 +306,8 @@ footer p { margin: 6px 0; }
     // --- Vastaus: tämä viikko / viikonloppu ---
     const hero = $("hero");
     const heading = isWeekend ? "Tänä viikonloppuna" : "Tällä viikolla ja viikonloppuna";
-    const evs = DATA.events.filter((e) => sports.has(e.sport));
+    const allEvs = DATA.events.filter((e) => sports.has(e.sport) && (e.broadcaster !== "other" || active.has("hiihto")));
+    const evs = allEvs.filter((e) => e.broadcaster !== "other");
     const windowEvents = evs.filter((e) => e.end >= todayKey && e.start <= sundayKey);
     if (inWindow.length) {
       const names = [...new Set(inWindow.map((b) => b.event_id).filter(Boolean))]
@@ -327,19 +338,21 @@ footer p { margin: 6px 0; }
     const horizonKey = addDays(todayKey, DATA.horizon_days || 13);
     const bcCount = {};
     for (const b of DATA.broadcasts) if (b.event_id && active.has(b.topic)) bcCount[b.event_id] = (bcCount[b.event_id] || 0) + 1;
-    const past = evs.filter((e) => e.end < todayKey);
-    const rest = evs.filter((e) => e.end >= todayKey);
+    const past = allEvs.filter((e) => e.end < todayKey);
+    const rest = allEvs.filter((e) => e.end >= todayKey);
     const list = showPast ? [...past, ...rest] : rest;
     const showNK = active.has("yhdistetty"), showCC = active.has("hiihto");
 
     $("events").innerHTML = list.map((e) => {
-      const status = e.end < todayKey ? "past" : (e.start <= todayKey ? "ongoing" : "");
+      const yle = e.broadcaster !== "other";
+      const status = (e.end < todayKey ? "past" : (e.start <= todayKey ? "ongoing" : "")) + (yle ? "" : " not-yle");
       const races = (e.races || []).filter((r) => (r.discipline === "NK" ? showNK : showCC));
       const n = bcCount[e.id] || 0;
       const sub = [
         `<span class="tag" style="--c: var(--${esc(e.sport)})">${esc(SPORT_LABEL[e.sport] || e.sport)}</span>`,
-        status === "ongoing" ? `<span class="now">Käynnissä</span>` : "",
-        n ? `<span>${n} lähetystä TV-oppaassa</span>` : (e.start > horizonKey ? `<span>lähetysajat n. 2 vk ennen</span>` : ""),
+        yle ? "" : `<span class="noyle">Ei Ylellä</span>`,
+        yle && status === "ongoing" ? `<span class="now">Käynnissä</span>` : "",
+        !yle ? "" : n ? `<span>${n} lähetystä TV-oppaassa</span>` : (e.start > horizonKey ? `<span>lähetysajat n. 2 vk ennen</span>` : ""),
       ].filter(Boolean).join("");
       const head = `<div class="dates">${range(e.start, e.end)}</div>
         <div><div class="place">${esc(e.place)}</div><div class="sub">${sub}</div></div>
@@ -351,7 +364,7 @@ footer p { margin: 6px 0; }
         `<li><span class="g">${esc(r.gender)}</span> ${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name_fi)}</a>` : esc(r.name_fi)}${DISC_LABEL[r.discipline] ? ` <span class="disc">${DISC_LABEL[r.discipline]}</span>` : ""}</li>`
       ).join("")}</ul>`).join("");
       return `<li class="ev ${status}"><details><summary>${head.replace("CHEV", `<span class="chev" aria-hidden="true">›</span>`)}</summary>
-        <div class="races">${e.note ? `<p class="note">${esc(e.note)}</p>` : ""}${body}<p class="note">Kisaohjelma: FIS. Kellonajat näkyvät yllä, kun Yle julkaisee lähetykset.</p></div></details></li>`;
+        <div class="races">${e.note ? `<p class="note">${esc(e.note)}</p>` : ""}${body}<p class="note">Kisaohjelma: FIS.${yle ? " Kellonajat näkyvät yllä, kun Yle julkaisee lähetykset." : ""}</p></div></details></li>`;
     }).join("") || `<li class="ev"><div class="row"><div></div><div>Ei tapahtumia valituilla lajeilla.</div><div></div></div></li>`;
 
     const tp = $("toggle-past");

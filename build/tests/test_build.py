@@ -98,6 +98,28 @@ class TestTelkku(unittest.TestCase):
         self.assertIn("Tour de Ski", build.clean_title("Maastohiihto: Tour de Ski, N 10 km (p)", None))
 
 
+class TestNonYle(unittest.TestCase):
+    def race(self, uid, d, place, cat="World Cup"):
+        return {"uid": uid, "date": d, "discipline": "CC", "category": cat, "place": place,
+                "gender": "N", "name": "10km", "name_fi": "10 km", "url": ""}
+
+    def test_grouping(self):
+        races = [
+            self.race("1", "2026-11-28", "Ruka"),                       # Ylen tapahtuma → ei mukaan
+            self.race("2", "2026-12-11", "Davos"), self.race("3", "2026-12-13", "Davos"),
+            self.race("4", "2027-01-01", "Les Rousses", "Stage World Cup"),
+            self.race("5", "2027-01-08", "Val di Fiemme", "Stage World Cup"),
+            self.race("6", "2027-01-01", "FIS Tour de Ski"),           # kokonaispisteet → ohitetaan
+        ]
+        _, used = build.attach_races(EVENTS, races)
+        out = build.non_yle_events(races, used)
+        self.assertEqual([(e["place"], e["start"], e["end"], len(e["races"])) for e in out], [
+            ("Davos", "2026-12-11", "2026-12-13", 2),
+            ("Tour de Ski", "2027-01-01", "2027-01-08", 2),
+        ])
+        self.assertTrue(all(e["broadcaster"] == "other" for e in out))
+
+
 class TestMatching(unittest.TestCase):
     def test_ruka_sc_vs_mc(self):
         self.assertEqual(build.match_event(EVENTS, "hiihto", date(2026, 11, 22), "Hiihdon Suomen cup: Sprintit"), "2026-ruka-sc")

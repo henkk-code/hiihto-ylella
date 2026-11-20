@@ -117,8 +117,14 @@ def has_ski_leg(name: str) -> bool:
     return bool(re.search(r"\d\s*km", name, re.IGNORECASE))
 
 
-def attach_races(events: list[dict], races: list[dict]) -> dict[str, list[dict]]:
+RACE_KEYS = ("date", "discipline", "gender", "name_fi", "url")
+WC_CATEGORIES = {"World Cup", "Stage World Cup"}
+
+
+def attach_races(events: list[dict], races: list[dict]) -> tuple[dict[str, list[dict]], set[str]]:
+    """Liittää FIS-kisat Ylen tapahtumiin. Palauttaa (kisat tapahtumittain, liitettyjen kisojen uid:t)."""
     by_event: dict[str, list[dict]] = {}
+    used: set[str] = set()
     for e in events:
         if e["sport"] != "hiihto":
             continue
@@ -129,8 +135,44 @@ def attach_races(events: list[dict], races: list[dict]) -> dict[str, list[dict]]
                    and mentions(r["place"], aliases)]
         if matched:
             matched.sort(key=lambda r: (r["date"], r["discipline"], r["gender"], r["name"]))
-            by_event[e["id"]] = [{k: r[k] for k in ("date", "discipline", "gender", "name_fi", "url")} for r in matched]
-    return by_event
+            by_event[e["id"]] = [{k: r[k] for k in RACE_KEYS} for r in matched]
+            used.update(r["uid"] for r in matched)
+    return by_event, used
+
+
+def non_yle_events(races: list[dict], used: set[str]) -> list[dict]:
+    """Maastohiihdon maailmancupin kisat, joita ei ole Ylen listalla, ryhmiteltynä tapahtumiksi.
+    Tour de Skin osakilpailut (FIS: "Stage World Cup") kootaan yhdeksi tapahtumaksi."""
+    pool = [r for r in races
+            if r["discipline"] == "CC" and r["category"] in WC_CATEGORIES
+            and r["uid"] not in used and not r["place"].lower().startswith("fis tour de ski")]
+    groups: list[dict] = []
+    for r in sorted(pool, key=lambda r: (r["date"], r["place"])):
+        tds = r["category"] == "Stage World Cup"
+        key = "Tour de Ski" if tds else r["place"]
+        d = date.fromisoformat(r["date"])
+        g = next((g for g in groups if g["key"] == key
+                  and (d - date.fromisoformat(g["end"])).days <= (10 if tds else 3)), None)
+        if g is None:
+            g = {"key": key, "tds": tds, "start": r["date"], "end": r["date"], "places": [], "races": []}
+            groups.append(g)
+        g["end"] = max(g["end"], r["date"])
+        if r["place"] not in g["places"]:
+            g["places"].append(r["place"])
+        g["races"].append(r)
+    out = []
+    for g in groups:
+        g["races"].sort(key=lambda r: (r["date"], r["gender"], r["name"]))
+        place = g["key"].split("/")[0]
+        out.append({
+            "id": f'fis-{re.sub(r"[^a-z0-9]+", "-", place.lower()).strip("-")}-{g["start"]}',
+            "sport": "hiihto", "type": "MC", "place": place, "start": g["start"], "end": g["end"],
+            "broadcaster": "other",
+            "note": ("Osakilpailut: " + ", ".join(g["places"]) + ". " if g["tds"] else "")
+                    + "Ei Ylen ohjelmistossa – maailmancupin kisat näytetään Viaplayssa.",
+            "races": [{k: r[k] for k in RACE_KEYS} for r in g["races"]],
+        })
+    return out
 
 
 def main() -> int:
@@ -174,11 +216,14 @@ def main() -> int:
     try:
         if args.offline:
             raise RuntimeError("offline-tila")
-        races_by_event = attach_races(events, fis.fetch_races(sources["fis"]))
+        all_races = fis.fetch_races(sources["fis"])
+        races_by_event, used = attach_races(events, all_races)
+        other_events = non_yle_events(all_races, used)
         status["fis"] = {"ok": True, "updated": now.isoformat(timespec="minutes")}
     except Exception as exc:  # noqa: BLE001
         print(f"VAROITUS: FIS epäonnistui, käytetään edellistä dataa: {exc}", file=sys.stderr)
         races_by_event = {e["id"]: e.get("races", []) for e in prev.get("events", []) if e.get("races")}
+        other_events = [e for e in prev.get("events", []) if e.get("broadcaster") == "other"]
         status["fis"] = {"ok": False, "error": str(exc)[:200],
                          "updated": prev_status.get("fis", {}).get("updated")}
 
@@ -186,10 +231,12 @@ def main() -> int:
     out_events = []
     for e in sorted(events, key=lambda e: (e["start"], e["sport"])):
         item = {k: e[k] for k in ("id", "sport", "type", "place", "start", "end")}
+        item["broadcaster"] = "yle"
         if e.get("note"):
             item["note"] = e["note"]
         item["races"] = races_by_event.get(e["id"], [])
         out_events.append(item)
+    out_events = sorted(out_events + other_events, key=lambda e: (e["start"], e["broadcaster"] != "yle", e["sport"]))
 
     order = topics_cfg.get("display_order", [])
     data = {
@@ -206,7 +253,7 @@ def main() -> int:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     n_races = sum(len(v) for v in races_by_event.values())
-    print(f"OK: {len(out_events)} tapahtumaa, {n_races} kisaa, {len(broadcasts)} lähetystä → {out_path}")
+    print(f"OK: {len(out_events) - len(other_events)} Ylen tapahtumaa + {len(other_events)} muuta, {n_races} kisaa, {len(broadcasts)} lähetystä → {out_path}")
     print(f"    Telkku: {'ok' if status['telkku']['ok'] else 'VANHA DATA'}, FIS: {'ok' if status['fis']['ok'] else 'VANHA DATA'}")
     return 0
 
