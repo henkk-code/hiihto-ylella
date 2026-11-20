@@ -5,185 +5,257 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hiihto Ylellä</title>
 <meta name="description" content="Milloin Yle näyttää hiihtoa ja ampumahiihtoa: suorat lähetykset kellonaikoineen, maailmancup, Suomen cup, SM ja MM.">
-<meta name="theme-color" content="#FAFAF9" id="theme-color">
+<meta name="theme-color" content="#FFFFFF" id="theme-color">
 <script>try{var t=localStorage.getItem("hiihto-ylella:theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}</script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='2' fill='%23141312'/%3E%3Cpath d='M10 46 L54 28' stroke='%23FAFAF9' stroke-width='5'/%3E%3Cpath d='M10 56 L54 38' stroke='%23FAFAF9' stroke-width='5'/%3E%3Crect x='38' y='8' width='12' height='12' fill='%23D9480F'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23D9480F'/%3E%3Cpath d='M12 44 L52 26' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M12 54 L52 36' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root {
-  --bg: #FAFAF9;
-  --surface: #FFFFFF;
-  --surface-2: #F3F2F0;
-  --line: #E7E5E4;
-  --line-strong: #D6D3D1;
-  --text: #1C1917;
-  --muted: #6B6560;
-  --faint: #8A847E;
+  --bg: #F2F2EE;
+  --box: #FFFFFF;
+  --box-2: #F7F7F4;
+  --hover: #F3F3EF;
+  --border: #D8D8D1;
+  --border-muted: #E7E7E1;
+  --text: #1F2328;
+  --muted: #59636E;
+  --faint: #818B98;
+  --counter: rgba(31, 35, 40, .08);
   --accent: #D9480F;
+  --accent-dark: #A8360A;
+  --accent-text: #C2410C;
   --on-accent: #FFFFFF;
+  --green: #1A7F37;  --green-bg: #DAFBE1;
+  --red: #CF222E;    --red-bg: #FFF1F0;
+  --ski: #0969DA;    --ski-bg: #DDF4FF;
+  --bia: #9A6700;    --bia-bg: #FFF5C2;
+  --nk: #127A7F;     --nk-bg: #D5F4F2;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #141312; --surface: #1C1B19; --surface-2: #23221F;
-    --line: #2C2A27; --line-strong: #3D3A36;
-    --text: #ECEAE6; --muted: #A19D96; --faint: #7D7973;
+    --bg: #151513; --box: #1C1C1A; --box-2: #222220; --hover: #252523;
+    --border: #36362F; --border-muted: #2B2B27;
+    --text: #E6E6E1; --muted: #A3A39B; --faint: #77776F; --counter: rgba(230, 230, 225, .1);
+    --accent-dark: #8F2E08; --accent-text: #F0763F;
+    --green: #3FB950; --green-bg: rgba(46, 160, 67, .16);
+    --red: #F85149;   --red-bg: rgba(248, 81, 73, .1);
+    --ski: #58A6FF;   --ski-bg: rgba(56, 139, 253, .16);
+    --bia: #D9A53A;   --bia-bg: rgba(187, 128, 9, .2);
+    --nk: #3CCFC4;    --nk-bg: rgba(57, 197, 187, .15);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #141312; --surface: #1C1B19; --surface-2: #23221F;
-  --line: #2C2A27; --line-strong: #3D3A36;
-  --text: #ECEAE6; --muted: #A19D96; --faint: #7D7973;
+  --bg: #151513; --box: #1C1C1A; --box-2: #222220; --hover: #252523;
+  --border: #36362F; --border-muted: #2B2B27;
+  --text: #E6E6E1; --muted: #A3A39B; --faint: #77776F; --counter: rgba(230, 230, 225, .1);
+  --accent-dark: #8F2E08; --accent-text: #F0763F;
+  --green: #3FB950; --green-bg: rgba(46, 160, 67, .16);
+  --red: #F85149;   --red-bg: rgba(248, 81, 73, .1);
+  --ski: #58A6FF;   --ski-bg: rgba(56, 139, 253, .16);
+  --bia: #D9A53A;   --bia-bg: rgba(187, 128, 9, .2);
+  --nk: #3CCFC4;    --nk-bg: rgba(57, 197, 187, .15);
   color-scheme: dark;
 }
+.s-hiihto { --c: var(--ski); --cbg: var(--ski-bg); }
+.s-ampumahiihto { --c: var(--bia); --cbg: var(--bia-bg); }
+.s-yhdistetty { --c: var(--nk); --cbg: var(--nk-bg); }
+
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--text); font: 15px/24px var(--sans); }
-a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
-a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/22px var(--sans); font-variant-numeric: tabular-nums; }
+a { color: var(--ski); text-decoration: none; }
+a:hover { text-decoration: underline; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 h1, h2, h3, p { margin: 0; }
-.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-.wrap { max-width: 840px; margin: 0 auto; padding: 0 24px; }
-@media (max-width: 599px) { .wrap { padding: 0 16px; } }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+@media (max-width: 599px) { .wrap { padding: 0 12px; } }
+.ico { width: 14px; height: 14px; flex: none; vertical-align: -2px; }
 
 /* --- Yläpalkki --- */
-.top { border-bottom: 1px solid var(--line); }
-.top .wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; padding-top: 14px; padding-bottom: 14px; }
-.brand { display: flex; align-items: center; gap: 10px; }
-.brand h1 { font-size: 16px; font-weight: 600; }
-.brand .mark { width: 10px; height: 10px; background: var(--accent); }
-.controls { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.top { background: var(--box); border-bottom: 1px solid var(--border); }
+.top .wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; min-height: 60px; padding-top: 10px; padding-bottom: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+.brand:hover { text-decoration: none; }
+.logo { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 6px; background: var(--accent); }
+.logo svg { width: 18px; height: 18px; }
+.controls { margin-left: auto; display: flex; align-items: center; gap: 10px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {
-  display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 10px;
-  font: inherit; font-size: 13px; color: var(--muted); background: transparent;
-  border: 1px solid var(--line); border-radius: 2px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px;
+  font: inherit; font-size: 14px; font-weight: 500; color: var(--muted); background: var(--box);
+  border: 1px solid var(--border); border-radius: 999px; cursor: pointer;
 }
-.chip .dot { width: 7px; height: 7px; border: 1px solid var(--faint); }
-.chip:hover { border-color: var(--line-strong); color: var(--text); }
-.chip[aria-pressed="true"] { color: var(--text); background: var(--surface); border-color: var(--line-strong); }
-.chip[aria-pressed="true"] .dot { background: var(--accent); border-color: var(--accent); }
+.chip .em { filter: grayscale(1); opacity: .55; }
+.chip:hover { background: var(--hover); }
+.chip[aria-pressed="true"] { color: var(--text); background: var(--cbg); border-color: color-mix(in srgb, var(--c) 45%, transparent); font-weight: 600; }
+.chip[aria-pressed="true"] .em { filter: none; opacity: 1; }
 .icon-btn {
-  display: inline-grid; place-items: center; width: 30px; height: 30px; padding: 0; flex: none;
-  color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 2px; cursor: pointer;
+  display: inline-grid; place-items: center; width: 32px; height: 32px; padding: 0; flex: none;
+  color: var(--muted); background: var(--box); border: 1px solid var(--border); border-radius: 6px; cursor: pointer;
 }
-.icon-btn:hover { color: var(--text); border-color: var(--line-strong); }
+.icon-btn:hover { color: var(--text); background: var(--hover); }
 .icon-btn svg { width: 16px; height: 16px; }
-@media (max-width: 599px) {
-  .controls { margin-left: 0; width: 100%; justify-content: space-between; }
-  .top .wrap { gap: 10px; }
+@media (max-width: 679px) {
+  .controls { margin-left: 0; width: 100%; justify-content: space-between; align-items: flex-start; }
 }
 
-/* --- Vastaus --- */
-.banner { margin-top: 24px; padding: 10px 12px; font-size: 13px; line-height: 20px; background: var(--surface-2); border-left: 2px solid var(--accent); }
-.answer { padding: 40px 0 8px; }
-.eyebrow { font-size: 13px; color: var(--muted); }
-.eyebrow .mono { font-size: 12px; }
-.big { margin-top: 6px; font-size: 30px; line-height: 38px; font-weight: 600; letter-spacing: -.01em; }
-.big .no { color: var(--muted); font-weight: 500; }
-.next { margin-top: 10px; color: var(--muted); }
-.next strong { color: var(--text); font-weight: 500; }
-.watch {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; height: 36px; padding: 0 14px;
-  background: var(--accent); color: var(--on-accent); border-radius: 2px; text-decoration: none; font-weight: 500;
-}
-.watch:hover { color: var(--on-accent); filter: brightness(1.08); }
-@media (max-width: 599px) { .answer { padding-top: 28px; } .big { font-size: 23px; line-height: 30px; } }
-
-/* --- Osiot --- */
-section.block { margin-top: 48px; }
-.sec-h { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 4px; }
-.sec-h h2 { font-size: 18px; line-height: 28px; font-weight: 600; }
-.sec-h .meta { color: var(--muted); font-size: 13px; }
-
-.day { margin-top: 24px; }
-.day h3 {
-  display: flex; align-items: baseline; gap: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line);
-  font-size: 13px; line-height: 20px; font-weight: 600;
-}
-.day h3 .mono { font-weight: 500; }
-.day h3 .rel { color: var(--muted); font-weight: 400; }
+/* --- Laatikot (GitHub Box) --- */
+.box { background: var(--box); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.box-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; padding: 10px 16px; background: var(--box-2); border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+.box-head .grow { flex: 1; }
+.grp { display: flex; align-items: baseline; gap: 8px; padding: 8px 16px; background: var(--box-2); border-top: 1px solid var(--border-muted); border-bottom: 1px solid var(--border-muted); font-size: 14px; }
+.grp:first-child { border-top: 0; }
+.grp strong { font-weight: 700; }
+.grp .cnt { margin-left: auto; color: var(--muted); font-size: 13px; }
 .rows { list-style: none; margin: 0; padding: 0; }
-.bc { display: grid; grid-template-columns: 112px 1fr auto; gap: 0 16px; padding: 10px 8px; margin: 0 -8px; border-radius: 2px; }
-.bc .time { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 14px; white-space: nowrap; }
-.bc .time .end { color: var(--faint); }
-.bc .title { font-weight: 500; overflow-wrap: anywhere; }
-.bc .meta, .ev .meta { display: block; color: var(--muted); font-size: 13px; line-height: 20px; }
-.bc .ch { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap; }
-.bc .ch a { text-decoration: none; }
-.bc .ch a:hover { text-decoration: underline; }
-.badge {
-  display: inline-block; margin-right: 8px; padding: 0 5px; border-radius: 2px; vertical-align: 2px;
-  font: 500 11px/17px var(--mono); letter-spacing: .04em; background: var(--accent); color: var(--on-accent);
+.rows > li + li { border-top: 1px solid var(--border-muted); }
+
+/* --- Pillerit --- */
+.pill { display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 9px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; vertical-align: 1px; }
+.pill-sport { background: var(--cbg); color: var(--c); }
+.pill-type { background: var(--counter); color: var(--muted); }
+.pill-green { background: var(--green-bg); color: var(--green); }
+.pill-gray { background: var(--counter); color: var(--muted); }
+.pill-live { background: var(--red); color: #fff; letter-spacing: .03em; }
+.pill-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: pulse 1.4s infinite; }
+@keyframes pulse { 50% { opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .pill-live::before { animation: none; } }
+.counter { display: inline-block; min-width: 20px; padding: 0 6px; border-radius: 999px; background: var(--counter); font-size: 12px; font-weight: 600; line-height: 18px; text-align: center; }
+
+/* --- Napit --- */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; border-radius: 6px;
+  background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: 14px;
+  border: 1px solid var(--accent-dark); border-bottom-width: 3px;
 }
+.btn-primary:hover { text-decoration: none; filter: brightness(1.06); }
+.btn-primary:active { border-bottom-width: 1px; margin-top: 2px; }
+.btn-sm {
+  display: inline-flex; align-items: center; gap: 5px; height: 28px; padding: 0 10px; border-radius: 6px;
+  font: inherit; font-size: 13px; font-weight: 600; color: var(--text); background: var(--box-2);
+  border: 1px solid var(--border); white-space: nowrap; cursor: pointer;
+}
+.btn-sm:hover { background: var(--hover); text-decoration: none; border-color: var(--faint); }
+.btn-sm .ico { width: 12px; height: 12px; color: var(--muted); }
+span.btn-sm { cursor: default; color: var(--muted); }
+
+/* --- Vastauslaatikko --- */
+main.wrap { padding-top: 24px; }
+.banner { margin-bottom: 16px; padding: 10px 14px; border: 1px solid color-mix(in srgb, var(--bia) 40%, transparent); background: var(--bia-bg); border-radius: 6px; font-size: 14px; }
+.hero-top { display: grid; grid-template-columns: 1fr 280px; }
+.hero-main { padding: 20px 20px 18px; }
+.hero-main h2 { margin-top: 10px; font-size: 24px; line-height: 31px; font-weight: 700; letter-spacing: -.015em; }
+.hero-sub { margin-top: 8px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: 14px; }
+.state { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 11px; border-radius: 999px; font-size: 13px; font-weight: 700; }
+.state.yes { background: var(--green-bg); color: var(--green); }
+.state.no { background: var(--counter); color: var(--muted); }
+.state .ico { width: 14px; height: 14px; }
+.hero-next { padding: 20px; border-left: 1px solid var(--border-muted); background: var(--box-2); }
+.hero-next .k { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.hero-next .when { margin-top: 6px; font-size: 26px; line-height: 32px; font-weight: 700; letter-spacing: -.015em; }
+.hero-next .count { margin-top: 2px; color: var(--accent-text); font-weight: 600; font-size: 14px; }
+.hero-next .what { margin-top: 8px; font-size: 14px; color: var(--muted); }
+.hero-next .what strong { color: var(--text); font-weight: 600; }
+.hero-next .btn-primary { margin-top: 14px; }
+.hero-list { border-top: 1px solid var(--border); }
+.empty { padding: 14px 16px; color: var(--muted); font-size: 14px; }
+@media (max-width: 679px) {
+  .hero-top { grid-template-columns: 1fr; }
+  .hero-next { border-left: 0; border-top: 1px solid var(--border-muted); }
+  .hero-main h2 { font-size: 20px; line-height: 27px; }
+  .hero-next .when { font-size: 22px; line-height: 28px; }
+}
+
+/* --- Lähetysrivi --- */
+.bc { display: grid; grid-template-columns: 92px 1fr auto; gap: 0 14px; align-items: start; padding: 12px 16px; }
+.bc .t { border-left: 3px solid var(--c); padding-left: 10px; line-height: 20px; }
+.bc .t0 { display: block; font-weight: 600; font-size: 16px; }
+.bc .t1 { display: block; color: var(--faint); font-size: 13px; }
+.bc .title { font-weight: 600; overflow-wrap: anywhere; }
+.bc .title .pill-live { margin-right: 6px; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 20px; }
+.meta > span { display: inline-flex; align-items: center; gap: 4px; }
+.bc.is-live { background: var(--red-bg); }
+.bc.is-live .t0 { color: var(--red); }
 .nav-row:focus { outline: none; }
-.nav-row:focus-visible { background: var(--surface-2); box-shadow: inset 2px 0 0 var(--accent); }
+.nav-row:focus-visible { background: var(--hover); box-shadow: inset 3px 0 0 var(--accent); }
 @media (max-width: 599px) {
-  .bc { grid-template-columns: 64px 1fr auto; gap: 0 12px; }
-  .bc .time .end { display: block; }
+  .bc { grid-template-columns: 66px 1fr auto; gap: 0 10px; padding: 12px; }
+  .bc .t { padding-left: 8px; }
+  .grp, .box-head { padding-left: 12px; padding-right: 12px; }
 }
+
+/* --- Välilehdet (GitHub UnderlineNav) --- */
+.tabs { display: flex; gap: 4px; margin-top: 32px; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+@media (max-width: 599px) { .tab { padding: 10px 8px; font-size: 14px; gap: 6px; } .tab .ico { display: none; } }
+.tab {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; margin-bottom: -1px;
+  font: inherit; font-size: 15px; color: var(--muted); background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap;
+}
+.tab:hover { color: var(--text); border-bottom-color: var(--border); }
+.tab[aria-selected="true"] { color: var(--text); font-weight: 600; border-bottom-color: var(--accent); }
+.panel { margin-top: 16px; }
 
 /* --- Kausi --- */
-.events { list-style: none; margin: 8px 0 0; padding: 0; border-top: 1px solid var(--line); }
-.ev { border-bottom: 1px solid var(--line); }
 .ev-row {
-  display: grid; grid-template-columns: 112px 1fr 16px; gap: 0 16px; align-items: baseline; width: calc(100% + 16px);
-  margin: 0 -8px; padding: 10px 8px; font: inherit; color: inherit; text-align: left; background: none; border: 0; border-radius: 2px;
+  display: grid; grid-template-columns: 104px 1fr auto; gap: 0 14px; align-items: start; width: 100%;
+  padding: 12px 16px; font: inherit; color: inherit; text-align: left; background: none; border: 0;
 }
 button.ev-row { cursor: pointer; }
-button.ev-row:hover { background: var(--surface-2); }
-.ev .dates { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 14px; white-space: nowrap; }
-.ev .place { font-weight: 500; }
-.ev .chev { color: var(--faint); font-size: 12px; text-align: right; }
-.ev .now-tag { color: var(--accent); font-weight: 500; }
-.ev.not-yle .place, .ev.not-yle .dates { color: var(--muted); font-weight: 400; }
-.ev.past .place, .ev.past .dates, .ev.past .meta { color: var(--faint); }
-.detail { padding: 0 0 14px 128px; font-size: 13px; line-height: 22px; }
-.detail .d { display: grid; grid-template-columns: 72px 20px 1fr; gap: 0 12px; }
-.detail .when, .detail .g { font-family: var(--mono); color: var(--muted); }
+button.ev-row:hover { background: var(--hover); }
+.ev .d strong { display: block; font-weight: 600; }
+.ev .d .wd { display: block; color: var(--faint); font-size: 13px; }
+.ev .title { font-weight: 600; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.ev .r { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; white-space: nowrap; padding-top: 1px; }
+.ev .chev { width: 16px; height: 16px; color: var(--faint); transition: transform .15s; }
+.ev .ev-row[aria-expanded="true"] .chev { transform: rotate(90deg); }
+.ev.not-yle .d strong, .ev.not-yle .title { color: var(--muted); font-weight: 500; }
+.ev.not-yle .pill-sport { background: var(--counter); color: var(--muted); }
+.ev.past { opacity: .6; }
+.detail { padding: 0 16px 14px 134px; font-size: 14px; line-height: 24px; }
+.detail .dr { display: grid; grid-template-columns: 76px 22px 1fr; gap: 0 10px; }
+.detail .when { color: var(--muted); font-weight: 600; }
+.detail .g { color: var(--muted); font-weight: 600; }
 .detail .disc { color: var(--muted); }
-.detail .note { color: var(--muted); margin: 2px 0 6px; }
-.detail .note.src { margin-top: 6px; }
-.empty { padding: 12px 0; color: var(--muted); }
-.text-btn {
-  margin-top: 12px; padding: 4px 0; font: inherit; font-size: 13px; color: var(--muted);
-  background: none; border: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px;
-}
-.text-btn:hover { color: var(--accent); }
+.detail .note { color: var(--muted); font-size: 13px; margin: 2px 0 6px; }
+.detail .note.src { margin-top: 8px; }
 @media (max-width: 599px) {
-  .ev-row { grid-template-columns: 84px 1fr 12px; gap: 0 12px; }
-  .detail { padding-left: 0; }
+  .ev-row { grid-template-columns: 78px 1fr auto; gap: 0 10px; padding: 12px; }
+  .ev .r .soon { display: none; }
+  .detail { padding: 0 12px 14px 12px; }
 }
 
 /* --- Alalaita --- */
-footer { margin-top: 64px; padding: 20px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; line-height: 20px; }
+footer { margin-top: 40px; padding: 20px 0 40px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; line-height: 20px; }
 footer p + p { margin-top: 6px; }
-footer .err { color: var(--accent); font-weight: 500; }
+footer .ok { color: var(--green); font-weight: 600; }
+footer .err { color: var(--red); font-weight: 600; }
+.text-btn { margin-top: 10px; padding: 0; font: inherit; font-size: 13px; color: var(--ski); background: none; border: 0; cursor: pointer; }
+.text-btn:hover { text-decoration: underline; }
 @media (hover: none) { .keys-btn { display: none; } }
 
 dialog {
-  width: min(360px, calc(100% - 32px)); padding: 20px; color: var(--text); background: var(--surface);
-  border: 1px solid var(--line-strong); border-radius: 2px;
+  width: min(380px, calc(100% - 32px)); padding: 0; color: var(--text); background: var(--box);
+  border: 1px solid var(--border); border-radius: 6px;
 }
-dialog::backdrop { background: rgba(0, 0, 0, .35); }
-dialog h2 { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
-dialog dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0; font-size: 13px; }
+dialog::backdrop { background: rgba(0, 0, 0, .4); }
+dialog h2 { padding: 12px 16px; font-size: 14px; font-weight: 700; background: var(--box-2); border-bottom: 1px solid var(--border); }
+dialog dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0; padding: 16px; font-size: 14px; }
 dialog dd { margin: 0; color: var(--muted); }
-kbd { font: 500 12px/18px var(--mono); padding: 0 5px; border: 1px solid var(--line-strong); border-radius: 2px; background: var(--bg); }
-dialog form { margin-top: 16px; text-align: right; }
-dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; color: var(--text); background: transparent; border: 1px solid var(--line-strong); border-radius: 2px; cursor: pointer; }
+kbd { display: inline-block; min-width: 22px; padding: 0 6px; font: 600 12px/20px var(--sans); text-align: center; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 6px; background: var(--box-2); }
+dialog form { padding: 0 16px 16px; text-align: right; }
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <div class="brand"><span class="mark" aria-hidden="true"></span><h1>Hiihto Ylellä</h1></div>
+    <a class="brand" href="./"><span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M4 15 L20 8"/><path d="M4 20 L20 13"/><circle cx="15" cy="4.5" r="1.6" fill="#fff" stroke="none"/></svg></span><h1 style="font-size:inherit">Hiihto Ylellä</h1></a>
     <div class="controls">
       <div class="chips" id="filters" role="group" aria-label="Lajit"></div>
       <button class="icon-btn" type="button" id="theme-btn"></button>
@@ -194,20 +266,28 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
 <main class="wrap">
   <div id="banner"></div>
 
-  <section class="answer" aria-live="polite" id="answer">
-    <p class="eyebrow">Ladataan…</p>
-  </section>
-  <div id="now-days"></div>
-
-  <section class="block" id="up-sec" aria-labelledby="up-h" hidden>
-    <div class="sec-h"><h2 id="up-h">Tulevat lähetykset</h2><span class="meta" id="up-meta"></span></div>
-    <div id="upcoming"></div>
+  <section class="box" id="hero" aria-live="polite">
+    <div class="hero-top"><div class="hero-main"><p class="hero-sub">Ladataan…</p></div></div>
   </section>
 
-  <section class="block" id="season-sec" aria-labelledby="season-h">
-    <div class="sec-h"><h2 id="season-h">Kausi</h2><span class="meta">Harmaat: muut maailmancupin kisat, eivät Ylellä (Viaplay)</span></div>
-    <ul class="events" id="events"></ul>
-    <button class="text-btn" type="button" id="toggle-past" hidden></button>
+  <nav class="tabs" role="tablist" aria-label="Näkymät">
+    <button class="tab" role="tab" id="tab-bc" aria-controls="panel-bc" data-tab="lahetykset" aria-selected="true">
+      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M5.5 14.5h5"/></svg>
+      Tulevat lähetykset <span class="counter" id="cnt-bc">0</span></button>
+    <button class="tab" role="tab" id="tab-season" aria-controls="panel-season" data-tab="kausi" aria-selected="false">
+      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="1.5"/><path d="M1.5 6.5h13M5 1v3M11 1v3"/></svg>
+      Kauden kisat <span class="counter" id="cnt-season">0</span></button>
+  </nav>
+
+  <section class="panel" id="panel-bc" role="tabpanel" aria-labelledby="tab-bc"></section>
+  <section class="panel" id="panel-season" role="tabpanel" aria-labelledby="tab-season" hidden>
+    <div class="box">
+      <div class="box-head">
+        <span class="grow" id="season-head">Kausi</span>
+        <button class="btn-sm" type="button" id="toggle-past" hidden></button>
+      </div>
+      <ul class="rows" id="events"></ul>
+    </div>
   </section>
 
   <footer id="footer"><noscript><p>Sivu tarvitsee JavaScriptin.</p></noscript></footer>
@@ -217,13 +297,14 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
   <h2 id="keys-h">Pikanäppäimet</h2>
   <dl>
     <dt><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></dt><dd>Laji päälle / pois</dd>
+    <dt><kbd>v</kbd></dt><dd>Vaihda välilehteä</dd>
     <dt><kbd>j</kbd> <kbd>k</kbd></dt><dd>Seuraava / edellinen rivi</dd>
     <dt><kbd>Enter</kbd></dt><dd>Avaa kisat tai Areena</dd>
+    <dt><kbd>m</kbd></dt><dd>Menneet kisat</dd>
     <dt><kbd>t</kbd></dt><dd>Vaalea / tumma teema</dd>
-    <dt><kbd>m</kbd></dt><dd>Menneet tapahtumat</dd>
     <dt><kbd>?</kbd></dt><dd>Tämä ohje</dd>
   </dl>
-  <form method="dialog"><button>Sulje</button></form>
+  <form method="dialog"><button class="btn-sm">Sulje</button></form>
 </dialog>
 
 <script>
@@ -234,10 +315,22 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
   const THEME_KEY = "hiihto-ylella:theme";
   const TYPE_LABEL = { MC: "Maailmancup", SC: "Suomen cup", SM: "SM-kisat", MM: "MM-kisat" };
   const SPORT_LABEL = { hiihto: "Hiihto", ampumahiihto: "Ampumahiihto" };
+  const EMOJI = { hiihto: "🎿", ampumahiihto: "🎯", yhdistetty: "⛷️" };
   const DISC_LABEL = { CC: "", NK: "yhdistetty" };
 
+  const ICON = {
+    pin: `<svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 14.5s5-4.3 5-8.2A5 5 0 0 0 3 6.3c0 3.9 5 8.2 5 8.2z"/><circle cx="8" cy="6.3" r="1.7"/></svg>`,
+    tv: `<svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M5.5 14.5h5"/></svg>`,
+    clock: `<svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>`,
+    play: `<svg class="ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.5 2.8v10.4a.5.5 0 0 0 .77.42l8-5.2a.5.5 0 0 0 0-.84l-8-5.2a.5.5 0 0 0-.77.42z"/></svg>`,
+    check: `<svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>`,
+    chev: `<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5L10.5 8 6 12.5"/></svg>`,
+    moon: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg>`,
+    sun: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1 1M12 12l1 1M3 13l1-1M12 4l1-1"/></svg>`,
+  };
+
   const fmtDayKey = new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" });
-  const fmtTime = new Intl.DateTimeFormat("fi-FI", { timeZone: TZ, hour: "2-digit", minute: "2-digit" });
+  const fmtTime = new Intl.DateTimeFormat("fi-FI", { timeZone: TZ, hour: "numeric", minute: "2-digit" });
   const fmtWeekday = new Intl.DateTimeFormat("fi-FI", { timeZone: "UTC", weekday: "short" });
   const fmtWeekdayLong = new Intl.DateTimeFormat("fi-FI", { timeZone: "UTC", weekday: "long" });
 
@@ -248,9 +341,10 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
   const dayKey = (d) => fmtDayKey.format(d);                     // YYYY-MM-DD Suomen aikaa
   const keyToUTC = (k) => new Date(k + "T12:00:00Z");
   const addDays = (k, n) => { const d = keyToUTC(k); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+  const daysBetween = (a, b) => Math.round((keyToUTC(b) - keyToUTC(a)) / 864e5);
   const dm = (k) => { const [, m, d] = k.split("-"); return `${+d}.${+m}.`; };
-  const weekday = (k) => cap(fmtWeekday.format(keyToUTC(k)).replace(".", ""));
-  const dayLabel = (k) => `${weekday(k)} ${dm(k)}`;
+  const wd = (k) => fmtWeekday.format(keyToUTC(k)).replace(".", "");
+  const dayLabel = (k) => `${cap(wd(k))} ${dm(k)}`;
   const time = (iso) => fmtTime.format(new Date(iso));
   const range = (a, b) => {
     if (a === b) return dm(a);
@@ -258,6 +352,18 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
     return (ya === yb && ma === mb) ? `${da}.–${db}.${mb}.` : `${da}.${ma}.–${db}.${mb}.`;
   };
   const chName = (c) => c.replace("Yle ", "");
+  const relDay = (todayKey, k) => {
+    const d = daysBetween(todayKey, k);
+    return d === 0 ? "tänään" : d === 1 ? "huomenna" : d === 2 ? "ylihuomenna" : d > 0 ? `${d} pv päästä` : "";
+  };
+  function countdown(iso, now) {
+    const min = Math.round((new Date(iso) - now) / 60000);
+    if (min <= 0) return "käynnissä nyt";
+    if (min < 60) return `alkaa ${min} min päästä`;
+    if (min < 24 * 60) { const h = Math.floor(min / 60), m = min % 60; return `alkaa ${h} h${m ? ` ${m} min` : ""} päästä`; }
+    const d = daysBetween(dayKey(now), dayKey(new Date(iso)));
+    return d === 1 ? "huomenna" : `${d} päivän päästä`;
+  }
 
   function splitTitle(t) {
     const i = t.indexOf(":");
@@ -270,15 +376,13 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
   const mq = window.matchMedia("(prefers-color-scheme: dark)");
   const systemTheme = () => (mq.matches ? "dark" : "light");
   const effectiveTheme = () => root.dataset.theme || systemTheme();
-  const ICON_MOON = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg>`;
-  const ICON_SUN = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1 1M12 12l1 1M3 13l1-1M12 4l1-1"/></svg>`;
   function updateThemeUI() {
     const dark = effectiveTheme() === "dark";
     const btn = $("theme-btn");
-    btn.innerHTML = dark ? ICON_SUN : ICON_MOON;
+    btn.innerHTML = dark ? ICON.sun : ICON.moon;
     btn.setAttribute("aria-label", dark ? "Vaihda vaaleaan teemaan" : "Vaihda tummaan teemaan");
     btn.title = (dark ? "Vaalea teema" : "Tumma teema") + " (t)";
-    $("theme-color").setAttribute("content", dark ? "#141312" : "#FAFAF9");
+    $("theme-color").setAttribute("content", dark ? "#1C1C1A" : "#FFFFFF");
   }
   function toggleTheme() {
     const next = effectiveTheme() === "dark" ? "light" : "dark";
@@ -289,6 +393,22 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
   $("theme-btn").addEventListener("click", toggleTheme);
   mq.addEventListener("change", updateThemeUI);
   updateThemeUI();
+
+  // --- Välilehdet (URL-hash) ---
+  const TABS = { lahetykset: ["tab-bc", "panel-bc"], kausi: ["tab-season", "panel-season"] };
+  let tab = location.hash === "#kausi" ? "kausi" : "lahetykset";
+  function showTab(name, push) {
+    tab = name;
+    for (const [n, [t, p]] of Object.entries(TABS)) {
+      $(t).setAttribute("aria-selected", n === name);
+      $(t).tabIndex = n === name ? 0 : -1;
+      $(p).hidden = n !== name;
+    }
+    if (push) history.replaceState(null, "", name === "lahetykset" ? location.pathname + location.search : "#kausi");
+  }
+  document.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.tab, true)));
+  window.addEventListener("hashchange", () => showTab(location.hash === "#kausi" ? "kausi" : "lahetykset", false));
+  showTab(tab, false);
 
   // --- Tila ---
   let DATA = null;
@@ -312,7 +432,7 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
 
   function buildFilters() {
     $("filters").innerHTML = DATA.topics.map((t, i) =>
-      `<button class="chip" type="button" data-id="${esc(t.id)}" data-k="f:${esc(t.id)}" aria-pressed="false" title="${esc(t.label)} (${i + 1})"><span class="dot" aria-hidden="true"></span>${esc(t.label)}</button>`
+      `<button class="chip s-${esc(t.id)}" type="button" data-id="${esc(t.id)}" data-k="f:${esc(t.id)}" aria-pressed="false" title="${esc(t.label)} (${i + 1})"><span class="em" aria-hidden="true">${EMOJI[t.id] || "•"}</span>${esc(t.label)}</button>`
     ).join("");
     $("filters").addEventListener("click", (e) => {
       const b = e.target.closest("button[data-id]");
@@ -327,25 +447,29 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
   const topicById = () => Object.fromEntries(DATA.topics.map((t) => [t.id, t]));
   const activeSports = () => new Set(DATA.topics.filter((t) => active.has(t.id)).map((t) => t.event_sport));
   const eventById = () => Object.fromEntries(DATA.events.map((e) => [e.id, e]));
+  const sportPill = (id, label) => `<span class="pill pill-sport s-${esc(id)}">${EMOJI[id] || ""} ${esc(label)}</span>`;
 
-  // --- Lähetyslistat ---
+  // --- Lähetykset ---
   function bcRow(b, now, topics, events) {
     const { pre, main } = splitTitle(b.title);
     const isNow = new Date(b.start) <= now && now < new Date(b.end);
     const ev = b.event_id ? events[b.event_id] : null;
     const t = topics[b.topic];
-    const meta = [t ? t.label : b.topic, ev ? ev.place : pre, ev ? TYPE_LABEL[ev.type] || ev.type : ""].filter(Boolean).map(esc).join(" · ");
+    const place = ev ? ev.place : pre;
     const ch = b.live_url
-      ? `<a href="${esc(b.live_url)}" target="_blank" rel="noopener" title="Katso Areenassa" data-k="l:${esc(b.id)}">${esc(chName(b.channel))}</a>`
-      : esc(chName(b.channel));
-    return `<li class="bc nav-row" tabindex="-1" data-k="b:${esc(b.id)}">
-      <div class="time">${time(b.start)}<span class="end">–${time(b.end)}</span></div>
-      <div><div class="title">${isNow ? `<span class="badge">NYT</span>` : ""}${esc(main)}</div><div class="meta">${meta}</div></div>
-      <div class="ch">${ch}</div>
+      ? `<a class="btn-sm" href="${esc(b.live_url)}" target="_blank" rel="noopener" title="Katso Areenassa" data-k="l:${esc(b.id)}">${ICON.play}${esc(chName(b.channel))}</a>`
+      : `<span class="btn-sm">${ICON.tv}${esc(chName(b.channel))}</span>`;
+    return `<li class="bc s-${esc(b.topic)} nav-row${isNow ? " is-live" : ""}" tabindex="-1" data-k="b:${esc(b.id)}">
+      <div class="t"><span class="t0">${time(b.start)}</span><span class="t1">–${time(b.end)}</span></div>
+      <div>
+        <div class="title">${isNow ? `<span class="pill pill-live">LIVE</span>` : ""}${esc(main)}</div>
+        <div class="meta">${sportPill(b.topic, t ? t.label : b.topic)}${place ? `<span>${ICON.pin}${esc(place)}</span>` : ""}${ev ? `<span>${esc(TYPE_LABEL[ev.type] || ev.type)}</span>` : ""}</div>
+      </div>
+      <div>${ch}</div>
     </li>`;
   }
 
-  function dayList(list, now, todayKey) {
+  function dayGroups(list, now, todayKey) {
     const topics = topicById(), events = eventById();
     const groups = new Map();
     for (const b of list) {
@@ -355,9 +479,9 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
     }
     let html = "";
     for (const [k, items] of groups) {
-      const rel = k === todayKey ? "tänään" : k === addDays(todayKey, 1) ? "huomenna" : "";
-      html += `<div class="day"><h3>${esc(cap(fmtWeekdayLong.format(keyToUTC(k))))} <span class="mono">${dm(k)}</span>${rel ? `<span class="rel">${rel}</span>` : ""}</h3>
-        <ul class="rows">${items.map((b) => bcRow(b, now, topics, events)).join("")}</ul></div>`;
+      const rel = relDay(todayKey, k);
+      html += `<div class="grp"><strong>${esc(cap(fmtWeekdayLong.format(keyToUTC(k))))} ${dm(k)}</strong>${rel ? `<span class="pill pill-gray">${rel}</span>` : ""}<span class="cnt">${items.length} ${items.length === 1 ? "lähetys" : "lähetystä"}</span></div>
+        <ul class="rows">${items.map((b) => bcRow(b, now, topics, events)).join("")}</ul>`;
     }
     return html;
   }
@@ -373,25 +497,31 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
       const expandable = races.length > 0 || !!e.note;
       const open = expandable && openEvents.has(e.id);
       const id = esc(e.id);
-      const tv = !yle ? "ei Ylellä"
-        : n ? `${n} lähetystä`
-        : (!past && e.start > horizonKey ? "lähetysajat n. 2 vk ennen" : "");
-      const meta = [SPORT_LABEL[e.sport] || e.sport, TYPE_LABEL[e.type] || e.type, tv].filter(Boolean).map(esc).join(" · ");
+      const tv = !yle ? `<span>${ICON.tv}Ei Ylellä · Viaplay</span>`
+        : n ? `<span>${ICON.tv}${n} ${n === 1 ? "lähetys" : "lähetystä"} Ylellä</span>`
+        : (!past && e.start > horizonKey ? `<span>${ICON.clock}Lähetysajat n. 2 vk ennen</span>` : `<span>${ICON.tv}Ylellä</span>`);
+      const status = yle && ongoing ? `<span class="pill pill-green">Käynnissä</span>` : "";
+      const d = daysBetween(todayKey, e.start);
+      const soon = !past && !ongoing && d <= 30 ? `<span class="soon">${relDay(todayKey, e.start)}</span>` : "";
       const cls = ["ev", past ? "past" : "", yle ? "" : "not-yle"].filter(Boolean).join(" ");
-      const inner = `<span class="dates">${range(e.start, e.end)}</span>
-        <span><span class="place">${esc(e.place)}</span>${yle && ongoing ? ` <span class="now-tag">· käynnissä</span>` : ""}<span class="meta">${meta}</span></span>
-        <span class="chev" aria-hidden="true">${expandable ? (open ? "▾" : "▸") : ""}</span>`;
+      const wds = e.start === e.end ? wd(e.start) : `${wd(e.start)}–${wd(e.end)}`;
+      const inner = `<div class="d"><strong>${range(e.start, e.end)}</strong><span class="wd">${esc(wds)}</span></div>
+        <div>
+          <div class="title">${esc(e.place)} <span class="pill pill-type">${esc(TYPE_LABEL[e.type] || e.type)}</span>${status}</div>
+          <div class="meta">${sportPill(e.sport, SPORT_LABEL[e.sport] || e.sport)}${tv}</div>
+        </div>
+        <div class="r">${soon}${expandable ? ICON.chev : `<span style="width:16px"></span>`}</div>`;
       if (!expandable) return `<li class="${cls}"><div class="ev-row nav-row" tabindex="-1" data-k="e:${id}">${inner}</div></li>`;
       const raceRows = races.map((r, i) => {
         const first = i === 0 || races[i - 1].date !== r.date;
         const name = r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" data-k="r:${id}:${i}">${esc(r.name_fi)}</a>` : esc(r.name_fi);
-        return `<div class="d"><span class="when">${first ? esc(dayLabel(r.date)) : ""}</span><span class="g">${esc(r.gender)}</span><span>${name}${DISC_LABEL[r.discipline] ? ` <span class="disc">· ${DISC_LABEL[r.discipline]}</span>` : ""}</span></div>`;
+        return `<div class="dr"><span class="when">${first ? esc(dayLabel(r.date)) : ""}</span><span class="g">${esc(r.gender)}</span><span>${name}${DISC_LABEL[r.discipline] ? ` <span class="disc">· ${DISC_LABEL[r.discipline]}</span>` : ""}</span></div>`;
       }).join("");
       return `<li class="${cls}">
         <button type="button" class="ev-row nav-row" data-toggle="${id}" data-k="e:${id}" aria-expanded="${open}" aria-controls="d-${id}">${inner}</button>
         <div class="detail" id="d-${id}"${open ? "" : " hidden"}>
           ${e.note ? `<p class="note">${esc(e.note)}</p>` : ""}${raceRows}
-          <p class="note src">Kisaohjelma: FIS.${yle ? " Kellonajat näkyvät yllä, kun Yle julkaisee lähetykset." : ""}</p>
+          <p class="note src">Kisaohjelma: FIS. M = miehet, N = naiset.${yle ? " Kellonajat näkyvät lähetyksissä, kun Yle julkaisee ne." : ""}</p>
         </div>
       </li>`;
     }).join("");
@@ -418,34 +548,55 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
     const evs = allEvs.filter((e) => e.broadcaster !== "other");
     const windowEvents = evs.filter((e) => e.end >= todayKey && e.start <= sundayKey);
 
-    // --- Vastaus ---
-    const when = isWeekend ? "Tänä viikonloppuna" : "Tällä viikolla";
+    // --- Vastauslaatikko ---
+    const when = isWeekend ? "tänä viikonloppuna" : "tällä viikolla";
     const span = todayKey === sundayKey ? dayLabel(todayKey) : `${dayLabel(todayKey)}–${dayLabel(sundayKey)}`;
+    const shownEvents = inWindow.length
+      ? [...new Set(inWindow.map((b) => b.event_id).filter(Boolean))].map((id) => DATA.events.find((e) => e.id === id)).filter(Boolean)
+      : windowEvents;
+    const evPills = shownEvents.map((e) => `<span class="pill pill-sport s-${esc(e.sport)}">${EMOJI[e.sport] || ""} ${esc(e.place)} · ${esc(TYPE_LABEL[e.type] || e.type)}</span>`).join("");
+    const n = inWindow.length;
+    const headline = n
+      ? `<span class="state yes">${ICON.check}Kyllä</span><h2>${n} ${n === 1 ? "suora lähetys" : "suoraa lähetystä"} Ylellä ${when}</h2>`
+      : `<span class="state no">Ei lähetyksiä</span><h2>Yle ei näytä hiihtoa ${when}</h2>`;
+    const pending = !n && windowEvents.length
+      ? `<p class="hero-sub">Kisat ovat ohjelmassa, mutta TV-oppaassa ei ole suoria lähetyksiä. Tarkista <a href="https://areena.yle.fi/tv/opas" target="_blank" rel="noopener">Areenan opas</a>.</p>` : "";
+
     const first = visible[0];
     const live = first && new Date(first.start) <= now ? first : null;
-    const big = inWindow.length
-      ? `Kyllä – ${inWindow.length} ${inWindow.length === 1 ? "suora lähetys" : "suoraa lähetystä"} Ylellä`
-      : `<span class="no">Ei suoria lähetyksiä Ylellä</span>`;
-    let next = "", action = "";
+    let nextHtml;
     if (live) {
-      next = `Nyt menossa: <strong>${esc(splitTitle(live.title).main)}</strong> · ${esc(live.channel)} · päättyy <span class="mono">${time(live.end)}</span>`;
-      if (live.live_url) action = `<a class="watch" href="${esc(live.live_url)}" target="_blank" rel="noopener">Katso nyt · ${esc(chName(live.channel))} ↗</a>`;
+      nextHtml = `<div class="k">Nyt suorana</div>
+        <div class="when">${esc(chName(live.channel))}</div>
+        <div class="count">päättyy klo ${time(live.end)}</div>
+        <div class="what"><strong>${esc(splitTitle(live.title).main)}</strong></div>
+        ${live.live_url ? `<a class="btn-primary" href="${esc(live.live_url)}" target="_blank" rel="noopener" data-k="watch">${ICON.play}Katso Areenassa</a>` : ""}`;
     } else if (first) {
-      next = `Seuraava: <strong class="mono">${esc(dayLabel(dayKey(new Date(first.start))))} klo ${time(first.start)}</strong> · ${esc(first.channel)} · ${esc(splitTitle(first.title).main)}`;
+      const k = dayKey(new Date(first.start));
+      const dayTxt = k === todayKey ? "Tänään" : k === addDays(todayKey, 1) ? "Huomenna" : dayLabel(k);
+      nextHtml = `<div class="k">Seuraava lähetys</div>
+        <div class="when">${esc(dayTxt)} ${time(first.start)}</div>
+        <div class="count">${countdown(first.start, now)}</div>
+        <div class="what"><strong>${esc(splitTitle(first.title).main)}</strong> · ${esc(first.channel)}</div>`;
     } else {
       const nextE = evs.find((e) => e.start > todayKey);
-      next = nextE ? `Seuraava tapahtuma: <strong>${esc(nextE.place)}</strong>, ${esc(TYPE_LABEL[nextE.type] || nextE.type)} <span class="mono">${range(nextE.start, nextE.end)}</span>` : "Ei tiedossa olevia tulevia lähetyksiä.";
+      nextHtml = nextE
+        ? `<div class="k">Seuraava kisa</div><div class="when">${esc(nextE.place)}</div><div class="count">${relDay(todayKey, nextE.start)}</div><div class="what">${range(nextE.start, nextE.end)} · ${esc(TYPE_LABEL[nextE.type] || nextE.type)}</div>`
+        : `<div class="k">Seuraava lähetys</div><div class="what">Ei tiedossa olevia lähetyksiä.</div>`;
     }
-    const pending = !inWindow.length && windowEvents.length
-      ? `<p class="next">Ohjelmassa ${esc(windowEvents.map((e) => e.place).join(", "))}, mutta TV-oppaassa ei ole suoria lähetyksiä. Tarkista <a href="https://areena.yle.fi/tv/opas" target="_blank" rel="noopener">Areenan opas</a>.</p>` : "";
-    $("answer").innerHTML = `<p class="eyebrow">${when} · <span class="mono">${esc(span)}</span></p>
-      <h2 class="big">${big}</h2>${pending}<p class="next">${next}</p>${action}`;
-    $("now-days").innerHTML = inWindow.length ? dayList(inWindow, now, todayKey) : "";
+    $("hero").innerHTML = `<div class="hero-top">
+        <div class="hero-main">${headline}
+          <p class="hero-sub">${esc(span)}${evPills ? " " + evPills : ""}</p>${pending}
+        </div>
+        <div class="hero-next">${nextHtml}</div>
+      </div>
+      ${n ? `<div class="hero-list">${dayGroups(inWindow, now, todayKey)}</div>` : ""}`;
 
-    // --- Tulevat ---
-    $("up-sec").hidden = later.length === 0;
-    $("up-meta").textContent = later.length ? `${later.length} lähetystä` : "";
-    $("upcoming").innerHTML = later.length ? dayList(later, now, todayKey) : "";
+    // --- Tulevat lähetykset ---
+    $("cnt-bc").textContent = later.length;
+    $("panel-bc").innerHTML = `<div class="box">${later.length
+      ? dayGroups(later, now, todayKey)
+      : `<p class="empty">Ei muita tiedossa olevia lähetyksiä. Yle julkaisee lähetysajat noin kaksi viikkoa etukäteen – katso tulevat kisat <a href="#kausi">Kauden kisat</a> -välilehdeltä.</p>`}</div>`;
 
     // --- Kausi ---
     const horizonKey = addDays(todayKey, DATA.horizon_days || 13);
@@ -454,11 +605,12 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
     const past = allEvs.filter((e) => e.end < todayKey);
     const rest = allEvs.filter((e) => e.end >= todayKey);
     const list = showPast ? [...past, ...rest] : rest;
-    $("season-h").textContent = `Kausi ${DATA.season}`;
-    $("events").innerHTML = eventItems(list, todayKey, horizonKey, bcCount) || `<li class="empty">Ei tapahtumia valituilla lajeilla.</li>`;
+    $("cnt-season").textContent = rest.length;
+    $("season-head").innerHTML = `Kausi ${esc(DATA.season)} · harmaat kisat eivät näy Ylellä`;
+    $("events").innerHTML = eventItems(list, todayKey, horizonKey, bcCount) || `<li class="empty">Ei kisoja valituilla lajeilla.</li>`;
     const tp = $("toggle-past");
     tp.hidden = past.length === 0;
-    tp.textContent = showPast ? "Piilota menneet tapahtumat" : `Näytä menneet tapahtumat (${past.length})`;
+    tp.textContent = showPast ? "Piilota menneet" : `Näytä menneet (${past.length})`;
 
     renderStatus();
 
@@ -472,21 +624,21 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
     const s = DATA.status || {};
     const gen = new Date(DATA.generated);
     const genTxt = `${dayLabel(dayKey(gen))} klo ${time(DATA.generated)}`;
-    const st = (src) => !src ? "–" : src.ok ? "ok" : `<span class="err">ei päivittynyt</span>`;
+    const st = (src) => !src ? "–" : src.ok ? `<span class="ok">ok</span>` : `<span class="err">ei päivittynyt</span>`;
 
     const warn = [];
     if (s.telkku && !s.telkku.ok) warn.push(`Lähetysajat eivät päivittyneet viimeisimmässä haussa${s.telkku.updated ? ` (viimeksi ${esc(dayLabel(dayKey(new Date(s.telkku.updated))))})` : ""}.`);
     if (s.fis && !s.fis.ok) warn.push("FIS-kisaohjelma ei päivittynyt viimeisimmässä haussa.");
     if (Date.now() - gen.getTime() > 36 * 3600 * 1000) warn.push(`Tiedot on päivitetty viimeksi ${esc(genTxt)}.`);
-    $("banner").innerHTML = warn.length ? `<div class="banner" role="status">${warn.join(" ")}</div>` : "";
+    $("banner").innerHTML = warn.length ? `<div class="banner" role="status">⚠️ ${warn.join(" ")}</div>` : "";
 
     $("footer").innerHTML = `
-      <p>Päivitetty <span class="mono">${esc(genTxt)}</span> · TV-opas ${st(s.telkku)} · FIS ${st(s.fis)}</p>
-      <p>Lähetysajat noin kaksi viikkoa eteenpäin, vain suorat lähetykset Ylen TV-kanavilla. Pelkästään Areenassa näytettävät lähetykset eivät näy TV-oppaassa, joten tarkista myös <a href="https://areena.yle.fi/tv/opas" target="_blank" rel="noopener">Areenan opas</a>.</p>
-      <p>Lähteet: <a href="${esc(DATA.source.url)}" target="_blank" rel="noopener">${esc(DATA.source.name)}</a> (tapahtumat) ·
+      <p>Päivitetty ${esc(genTxt)} · TV-opas ${st(s.telkku)} · FIS ${st(s.fis)}</p>
+      <p>Vain suorat lähetykset Ylen TV-kanavilla, noin kaksi viikkoa eteenpäin. Pelkästään Areenassa näytettävät lähetykset eivät näy TV-oppaassa, joten tarkista myös <a href="https://areena.yle.fi/tv/opas" target="_blank" rel="noopener">Areenan opas</a>.</p>
+      <p>Lähteet: <a href="${esc(DATA.source.url)}" target="_blank" rel="noopener">${esc(DATA.source.name)}</a> (kisat) ·
       <a href="https://www.fis-ski.com/DB/cross-country/calendar-results.html" target="_blank" rel="noopener">FIS</a> (kisaohjelma) ·
       <a href="https://www.telkku.com/" target="_blank" rel="noopener">Telkku.com</a> (lähetysajat). Epävirallinen harrastesivu, ei Ylen palvelu.</p>
-      <button class="text-btn keys-btn" type="button" id="keys-btn" data-k="keys">Pikanäppäimet (?)</button>`;
+      <button class="text-btn keys-btn" type="button" id="keys-btn" data-k="keys">⌨️ Pikanäppäimet (?)</button>`;
     $("keys-btn").addEventListener("click", openKeys);
   }
 
@@ -511,6 +663,14 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
     const b = e.target.closest("button[data-toggle]");
     if (b) toggleEvent(b.dataset.toggle);
   });
+  $("panel-bc").addEventListener("click", (e) => {
+    if (e.target.closest('a[href="#kausi"]')) { e.preventDefault(); showTab("kausi", true); }
+  });
+  document.querySelector(".tabs").addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    const next = tab === "kausi" ? "lahetykset" : "kausi";
+    showTab(next, true); $(TABS[next][0]).focus(); e.preventDefault();
+  });
 
   document.addEventListener("keydown", (e) => {
     if (e.ctrlKey || e.metaKey || e.altKey || e.isComposing) return;
@@ -520,6 +680,7 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
     const k = e.key;
     if (k === "t") { toggleTheme(); e.preventDefault(); return; }
     if (k === "?") { openKeys(); e.preventDefault(); return; }
+    if (k === "v") { showTab(tab === "kausi" ? "lahetykset" : "kausi", true); e.preventDefault(); return; }
     if (!DATA) return;
     if (/^[1-9]$/.test(k)) {
       const topic = DATA.topics[+k - 1];
@@ -529,7 +690,7 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
     switch (k) {
       case "j": moveRow(1); break;
       case "k": moveRow(-1); break;
-      case "m": togglePast(); break;
+      case "m": if (tab !== "kausi") showTab("kausi", true); togglePast(); break;
       case "Enter": {
         if (!t.matches || !t.matches("li.nav-row")) return;
         const a = t.querySelector("a");
@@ -549,10 +710,10 @@ dialog button { font: inherit; font-size: 13px; height: 30px; padding: 0 12px; c
       active = loadActive(d.topics);
       buildFilters();
       render();
-      setInterval(render, 60 * 1000);   // "NYT"-merkinnät ja menneiden piilotus ajan tasalle
+      setInterval(render, 60 * 1000);   // LIVE-merkinnät, lähtölaskenta ja menneiden piilotus ajan tasalle
     })
     .catch((err) => {
-      $("answer").innerHTML = `<h2 class="big">Tietoja ei saatu ladattua</h2><p class="next">Yritä hetken päästä uudelleen. (${esc(err.message)})</p>`;
+      $("hero").innerHTML = `<div class="hero-main"><span class="state no">Virhe</span><h2>Tietoja ei saatu ladattua</h2><p class="hero-sub">Yritä hetken päästä uudelleen. (${esc(err.message)})</p></div>`;
     });
 })();
 </script>
