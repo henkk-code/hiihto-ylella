@@ -86,6 +86,16 @@ class TestTelkku(unittest.TestCase):
             ("16:10", "ampumahiihto", "2026-kontiolahti-amh"),
         ])
         self.assertTrue(all(b["channel"] == "Yle TV2" for b in bcs))
+        self.assertEqual(bcs[0]["title"], "Maastohiihto: Sprinttikarsinnat (p) Ruka")
+        self.assertFalse(any("Tour de Ski" in b["title"] for b in bcs))
+
+    def test_clean_title(self):
+        ruka = next(e for e in EVENTS if e["id"] == "2026-ruka-mc")
+        self.assertEqual(build.clean_title("Maastohiihto: Tour de Ski, N 10 km (p) Ruka", ruka),
+                         "Maastohiihto: N 10 km (p) Ruka")
+        tds = dict(ruka, tour_de_ski=True)
+        self.assertIn("Tour de Ski", build.clean_title("Maastohiihto: Tour de Ski, N 10 km (p)", tds))
+        self.assertIn("Tour de Ski", build.clean_title("Maastohiihto: Tour de Ski, N 10 km (p)", None))
 
 
 class TestMatching(unittest.TestCase):

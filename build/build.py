@@ -68,6 +68,18 @@ def match_event(events: list[dict], sport: str, day: date, text: str) -> str | N
     return None
 
 
+TDS_RE = re.compile(r"\bTour de Ski\b[,:]?\s*", re.IGNORECASE)
+
+
+def clean_title(title: str, event: dict | None) -> str:
+    """TV-oppaan otsikoissa lukee välillä "Tour de Ski" myös tavallisissa maailmancupin kisoissa
+    (esim. Ruka). Merkintä poistetaan, ellei tapahtumaa ole merkitty events.jsonissa Tour de Skiksi."""
+    if event is not None and not event.get("tour_de_ski"):
+        title = TDS_RE.sub("", title)
+        title = re.sub(r":\s*$", "", title).strip()
+    return title
+
+
 def build_broadcasts(programs: list[dict], cfg: dict, classifier: Classifier,
                      topics_by_id: dict, events: list[dict], tz: ZoneInfo) -> list[dict]:
     channels = cfg["channels"]
@@ -83,15 +95,17 @@ def build_broadcasts(programs: list[dict], cfg: dict, classifier: Classifier,
         end = datetime.fromisoformat(p["endTime"].replace("Z", "+00:00")).astimezone(tz)
         desc = (p.get("description") or "").strip()
         ch = channels.get(p["channelId"], {})
+        event_id = match_event(events, topics_by_id[topic]["event_sport"], start.date(), f"{title} {desc}")
+        event = next((e for e in events if e["id"] == event_id), None)
         out.append({
             "id": f'telkku-{p["channelId"]}-{p.get("id") or p["startTime"]}',
             "topic": topic,
-            "event_id": match_event(events, topics_by_id[topic]["event_sport"], start.date(), f"{title} {desc}"),
+            "event_id": event_id,
             "channel": ch.get("name", p["channelId"]),
             "live_url": ch.get("live_url"),
             "start": start.isoformat(timespec="minutes"),
             "end": end.isoformat(timespec="minutes"),
-            "title": title,
+            "title": clean_title(title, event),
             "description": desc[:400],
         })
     out.sort(key=lambda b: (b["start"], b["channel"]))

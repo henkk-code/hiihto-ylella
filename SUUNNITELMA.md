@@ -44,7 +44,7 @@ Laajennettavissa muihin lajeihin ja muille (ilmais)kanaville. Telkun data kattaa
  data/events.json  (käsin)       ─┐
  FIS iCal  (kisapäivät)           ├─> build.py ──> site/data.json ──> site/index.html  ──> GitHub Pages
  Telkku API (lähetysajat, 14 vrk) ─┘   yhdistä, suodata,               (staattinen)
-                                       tallenna viim. onnistunut  └──> site/hiihto.ics (vaihe 2)
+                                       tallenna viim. onnistunut
         ▲
  GitHub Actions: 1×/vrk (+ aina kun events.json muuttuu)
 ```
@@ -77,11 +77,15 @@ Broadcast { event_id?, sport, channel: "Yle TV2", start, end, title, description
 - "Tiedot päivitetty …", lähdelinkit (Yle, FIS, Telkku), linkki Areenaan
 - Mobiili ensin, tumma/vaalea teema, suomeksi, ei evästeitä
 
-**Vaihe 2 – Kisat, Falun ja kalenteri** (joulukuun alku)
-- FIS-kisat tapahtumien alle (myös kauempana olevat ja Areena-only-kisat ilman kellonaikaa)
-- **Falun MM 2027:** maastohiihdon 18 kisaa + yhdistetyn 7 kisaa (mäkihyppy pois)
-- Tilattava kalenteri (.ics): Ylen suorat hiihtolähetykset kellonaikoineen suoraan puhelimen kalenteriin
-- Ampumahiihdon kisatason lähde (IBU) selvitetään
+**Vaihe 2 – ~~Kisat, Falun ja kalenteri~~ PERUTTU 20.11.2026** (käyttäjän päätös)
+- FIS-kisat tapahtumien alle ja Falunin MM-ohjelma (maastohiihto + yhdistetyn hiihto-osuudet): ✅ tehty jo MVP:ssä
+- ~~Tilattava kalenteri (.ics)~~: ei tarvita
+- ~~Ampumahiihdon kisatason lähde (IBU)~~: ei tehdä
+
+Huom: Tour de Ski (vuodenvaihde) on osa maailmancupia, mutta Ylen kausilistan mukaan sitä ei näytetä Ylellä
+(vain Viaplay), joten se ei ole sivulla. Jos Yle myöhemmin näyttää sen, lisätään tapahtuma `events.json`iin
+kentällä `"tour_de_ski": true`. Muuten TV-oppaan otsikoista poistetaan virheellinen "Tour de Ski" -merkintä
+(esim. Rukan maailmancup).
 
 **Vaihe 3 – Laajennus** (tarpeen mukaan)
 - Muut lajit Ylen listalta (alppihiihto ym.) ja muut ilmaiskanavat (MTV3 ym.) Telkun kautta
@@ -96,7 +100,7 @@ hiihto/
 │   ├── sources.json          # FIS-syötteet, Telkun kanavaryhmä ja kanava-id:t
 │   └── topics.json           # lajit ja tunnistussäännöt
 ├── build/
-│   ├── build.py              # hae → yhdistä → site/data.json (+ .ics)
+│   ├── build.py              # hae → yhdistä → site/data.json
 │   ├── sources/fis.py, sources/telkku.py
 │   ├── ical.py               # pieni iCal-jäsennin/kirjoittaja (stdlib)
 │   └── tests/ (+ fixtures/)  # tallennetut esimerkkivastaukset (FIS, Telkku 28.11.)
