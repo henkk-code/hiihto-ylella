@@ -1,6 +1,8 @@
 # Hiihto Ylellä – projektisuunnitelma (v0.3)
 
-*Päivitetty 2026-11-20. Tila: **hyväksytty; vaihe 1 (MVP) julkaistu 20.11.2026** → https://henkk-code.github.io/hiihto-ylella/*
+*Päivitetty 2026-11-20. Tila: **vaihe 1 julkaistu, kehitys parkissa** → https://henkk-code.github.io/hiihto-ylella/*
+
+**Nykytila (20.11.2026):** Ylen suorat lähetykset kellonaikoineen (Telkku), kauden Yle-tapahtumat (Ylen lista) ja FIS-kisaohjelma. Maastohiihdon maailmancupin kisat, joita Yle ei näytä (Davos, Tour de Ski, Engadin, Oslo, Drammen), näkyvät kauden listalla harmaina ("Ei Ylellä"). Vaihe 2 on peruttu. Mahdollinen jatko on vaihe 3 (muut lajit/kanavat).
 
 Muutokset v0.2 → v0.3:
 - **Kellonajat ja kanava mukaan jo MVP:ssä.** Lähteenä Telkku.comin (Iltalehti) julkinen TV-opasrajapinta. Testattu, toimii, ei avainta.
