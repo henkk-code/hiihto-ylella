@@ -1,0 +1,34 @@
+{
+  "season": "2026–27",
+  "source": {
+    "name": "Yle Urheilu: talviurheilukausi 2026–27",
+    "url": "https://yle.fi/a/74-20251336",
+    "date": "2026-10-14"
+  },
+  "events": [
+    { "id": "2026-vuokatti-sc", "sport": "hiihto", "type": "SC", "place": "Vuokatti", "start": "2026-10-31", "end": "2026-11-01", "aliases": ["vuokatti"] },
+    { "id": "2026-ruka-sc", "sport": "hiihto", "type": "SC", "place": "Ruka", "start": "2026-11-21", "end": "2026-11-22", "aliases": ["ruka", "kuusamo"] },
+    { "id": "2026-ruka-mc", "sport": "hiihto", "type": "MC", "place": "Ruka", "start": "2026-11-27", "end": "2026-11-29", "aliases": ["ruka", "kuusamo"] },
+    { "id": "2026-trondheim-mc", "sport": "hiihto", "type": "MC", "place": "Trondheim", "start": "2026-12-04", "end": "2026-12-06", "aliases": ["trondheim", "granåsen"] },
+    { "id": "2027-vantaa-sc", "sport": "hiihto", "type": "SC", "place": "Vantaa", "start": "2027-01-16", "end": "2027-01-17", "aliases": ["vantaa", "hakunila"] },
+    { "id": "2027-toblach-mc", "sport": "hiihto", "type": "MC", "place": "Toblach", "start": "2027-01-29", "end": "2027-01-31", "aliases": ["toblach", "dobbiaco"] },
+    { "id": "2027-iisalmi-sm", "sport": "hiihto", "type": "SM", "place": "Iisalmi", "start": "2027-02-05", "end": "2027-02-07", "aliases": ["iisalmi"] },
+    { "id": "2027-lahti-mc", "sport": "hiihto", "type": "MC", "place": "Lahti", "start": "2027-02-12", "end": "2027-02-14", "aliases": ["lahti", "salpausselkä", "salpausselän"] },
+    { "id": "2027-falun-mm", "sport": "hiihto", "type": "MM", "place": "Falun", "start": "2027-02-24", "end": "2027-03-07", "aliases": ["falun"], "note": "Ylen lista: 25.2.–7.3.; FIS-kisaohjelma alkaa 24.2." },
+    { "id": "2027-ulricehamn-mc", "sport": "hiihto", "type": "MC", "place": "Ulricehamn", "start": "2027-03-19", "end": "2027-03-21", "aliases": ["ulricehamn"] },
+    { "id": "2027-taivalkoski-sc", "sport": "hiihto", "type": "SC", "place": "Taivalkoski", "start": "2027-04-03", "end": "2027-04-04", "aliases": ["taivalkoski"] },
+    { "id": "2027-rovaniemi-sm", "sport": "hiihto", "type": "SM", "place": "Rovaniemi", "start": "2027-04-09", "end": "2027-04-11", "aliases": ["rovaniemi", "ounasvaara"] },
+
+    { "id": "2026-kontiolahti-amh", "sport": "ampumahiihto", "type": "MC", "place": "Kontiolahti", "start": "2026-11-26", "end": "2026-11-29", "aliases": ["kontiolahti"] },
+    { "id": "2026-hochfilzen-amh", "sport": "ampumahiihto", "type": "MC", "place": "Hochfilzen", "start": "2026-12-04", "end": "2026-12-06", "aliases": ["hochfilzen"] },
+    { "id": "2026-annecy-amh", "sport": "ampumahiihto", "type": "MC", "place": "Annecy – Le Grand-Bornand", "start": "2026-12-10", "end": "2026-12-13", "aliases": ["annecy", "grand-bornand", "grand bornand"] },
+    { "id": "2027-pokljuka-amh", "sport": "ampumahiihto", "type": "MC", "place": "Pokljuka", "start": "2027-01-02", "end": "2027-01-03", "aliases": ["pokljuka"] },
+    { "id": "2027-ruhpolding-amh", "sport": "ampumahiihto", "type": "MC", "place": "Ruhpolding", "start": "2027-01-06", "end": "2027-01-10", "aliases": ["ruhpolding"] },
+    { "id": "2027-antholz-amh", "sport": "ampumahiihto", "type": "MC", "place": "Antholz-Anterselva", "start": "2027-01-14", "end": "2027-01-17", "aliases": ["antholz", "anterselva"] },
+    { "id": "2027-novemesto-amh", "sport": "ampumahiihto", "type": "MC", "place": "Nové Město na Moravě", "start": "2027-01-21", "end": "2027-01-24", "aliases": ["nové město", "nove mesto", "nové mesto"] },
+    { "id": "2027-otepaa-amh", "sport": "ampumahiihto", "type": "MM", "place": "Otepää", "start": "2027-02-10", "end": "2027-02-21", "aliases": ["otepää", "otepaa"] },
+    { "id": "2027-oberhof-amh", "sport": "ampumahiihto", "type": "MC", "place": "Oberhof", "start": "2027-03-04", "end": "2027-03-07", "aliases": ["oberhof"] },
+    { "id": "2027-ostersund-amh", "sport": "ampumahiihto", "type": "MC", "place": "Östersund", "start": "2027-03-11", "end": "2027-03-14", "aliases": ["östersund", "ostersund"] },
+    { "id": "2027-oslo-amh", "sport": "ampumahiihto", "type": "MC", "place": "Oslo", "start": "2027-03-18", "end": "2027-03-21", "aliases": ["oslo", "holmenkollen"] }
+  ]
+}

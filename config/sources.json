@@ -1,0 +1,27 @@
+{
+  "site_url": "https://henkk-code.github.io/hiihto-ylella/",
+  "timezone": "Europe/Helsinki",
+  "telkku": {
+    "base": "https://il-telkku-api.prod.il.fi/v1",
+    "group": "d63736b5-7f72-45d4-8f9e-6505f1bac855",
+    "channels": {
+      "391": { "name": "Yle TV1", "live_url": "https://areena.yle.fi/tv/suorat/yle-tv1" },
+      "392": { "name": "Yle TV2", "live_url": "https://areena.yle.fi/tv/suorat/yle-tv2" },
+      "570": { "name": "Yle Teema Fem", "live_url": "https://areena.yle.fi/tv/suorat/yle-teema-fem" }
+    },
+    "days_back": 1,
+    "days_ahead": 14
+  },
+  "fis": {
+    "base": "https://www.fis-ski.com/DB/services/public/icalendar-feed-fis-events.html",
+    "season": "2027",
+    "feeds": [
+      { "sector": "CC", "category": "WC" },
+      { "sector": "CC", "category": "WSC" },
+      { "sector": "NK", "category": "WC" },
+      { "sector": "NK", "category": "WSC" },
+      { "sector": "CC", "category": "NC", "nation": "FIN" },
+      { "sector": "CC", "category": "FIS", "nation": "FIN" }
+    ]
+  }
+}

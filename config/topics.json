@@ -1,0 +1,63 @@
+{
+  "_comment": "Lähetysten lajitunnistus otsikon perusteella. Aiheet tarkistetaan järjestyksessä; ensimmäinen osuma voittaa. Säännöt ovat Pythonin regexejä (kirjainkoko ei merkitse). event_sport kertoo, minkä events.json-lajin tapahtumiin aihe liitetään.",
+  "global_exclude": [
+    "kooste",
+    "studio",
+    "highlights",
+    "uusinta",
+    "jälkilähetys",
+    "makasiini"
+  ],
+  "topics": [
+    {
+      "id": "ampumahiihto",
+      "label": "Ampumahiihto",
+      "event_sport": "ampumahiihto",
+      "include": [
+        "ampumahiih"
+      ],
+      "exclude": []
+    },
+    {
+      "id": "yhdistetty",
+      "label": "Yhdistetty",
+      "event_sport": "hiihto",
+      "include": [
+        "yhdistety",
+        "yhdistetty"
+      ],
+      "exclude": [
+        "\\bHS\\s?\\d+",
+        "mäki",
+        "\\bNH\\b",
+        "\\bLH\\b"
+      ]
+    },
+    {
+      "id": "hiihto",
+      "label": "Hiihto",
+      "event_sport": "hiihto",
+      "include": [
+        "maastohiih",
+        "\\bhiihdon\\b",
+        "\\bhiihto\\b",
+        "suomen cup",
+        "tour de ski"
+      ],
+      "exclude": [
+        "alppihiih",
+        "ampumahiih",
+        "lumilaut",
+        "freestyle",
+        "kumpare",
+        "mäkihyp",
+        "yhdistet"
+      ]
+    }
+  ],
+  "display_order": [
+    "hiihto",
+    "ampumahiihto",
+    "yhdistetty"
+  ]
+}
