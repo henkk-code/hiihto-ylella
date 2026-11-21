@@ -48,7 +48,7 @@ Laajennettavissa muihin lajeihin ja muille (ilmais)kanaville. Telkun data kattaa
  Telkku API (lähetysajat, 14 vrk) ─┘   yhdistä, suodata,               (staattinen)
                                        tallenna viim. onnistunut
         ▲
- GitHub Actions: 1×/vrk (+ aina kun events.json muuttuu)
+ GitHub Actions: 2×/vrk (5.20, 15.20) + 22.20 MC/MM-kisapäivinä (+ aina kun repo muuttuu)
 ```
 
 - **Ei palvelinta.** Python-build (vain standardikirjasto) ajetaan GitHub Actionsissa, ja tulos julkaistaan GitHub Pagesiin.
@@ -98,7 +98,7 @@ Tavoite: kun kisat alkavat (hiihto Ruka 27.11., ampumahiihto Kontiolahti 26.11.)
 
 - **Paikka:** kolmas välilehti **Maailmancup** laskurin kanssa (laskuri = näkyvien pistelistojen määrä valituilla lajeilla). Välilehti näkyy vasta, kun kauden ensimmäinen kisa on ajettu. Vastauslaatikkoon ei lisätä mitään, joten sivun ensisijainen kysymys pysyy ylimpänä.
 - **Sisältö:** yksi GitHub-laatikko per laji ja sarja (Hiihto M/N, Ampumahiihto M/N, Yhdistetty M/N). Otsikkorivillä "Kokonaiskilpailu · 4/32 kisaa". Kärkiviisikko pisteineen, johtajalla keltainen "Johtaa"-pilleri ja ero kakkoseen ("+45 p"). Jos paras suomalainen ei ole kärkiviisikossa, hänet näytetään erotinviivan alla omalla rivillään (esim. "12. NISKANEN Iivo 180 p"). Lajisuodatin koskee myös tätä välilehteä.
-- **Päivitys:** sama 1×/vrk Actions-ajo kuin muillakin lähteillä. Jos haku epäonnistuu, näytetään edellinen tallennettu tilanne ja sen päivämäärä.
+- **Päivitys:** samat Actions-ajot kuin muillakin lähteillä (5.20 ja 15.20) sekä MC- ja MM-kisapäivinä iltapäivitys 22.20 (`build/raceday.py` tarkistaa kisapäivän julkaistusta datasta ja ohittaa muut päivät). Jos haku epäonnistuu, näytetään edellinen tallennettu tilanne ja sen päivämäärä.
 - **Lähteet** (ks. [DATALAHTEET.md §5](DATALAHTEET.md)):
   - Hiihto ja yhdistetty: FIS:n viralliset cup-standings-sivut (HTML). Testattu: kauden 2025–26 lopputilanne jäsentyy (KLAEBO 2 301 p …).
   - Ampumahiihto: IBU:n rajapinta on suljettu (401). Ehdotus: englanninkielisen Wikipedian kausisivu "2026–27 Biathlon World Cup", jolla on Standings-taulukot, ja linkki biathlonworld.comiin. Vaihtoehto: ampumahiihto jätetään pois ja tilalle pelkkä linkki.

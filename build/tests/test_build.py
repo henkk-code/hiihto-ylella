@@ -14,6 +14,7 @@ sys.path.insert(0, str(BUILD / "sources"))
 
 import build  # noqa: E402
 import fis  # noqa: E402
+import raceday  # noqa: E402
 import standings  # noqa: E402
 import telkku  # noqa: E402
 from classify import Classifier  # noqa: E402
@@ -167,6 +168,21 @@ class TestStandings(unittest.TestCase):
 
     def test_wiki_title(self):
         self.assertEqual(standings.wiki_title("2027"), "2026–27 Biathlon World Cup")
+
+
+class TestRaceDay(unittest.TestCase):
+    DATA = {"events": [
+        {"type": "MC", "start": "2026-11-27", "end": "2026-11-29",
+         "races": [{"date": "2026-11-27"}, {"date": "2026-11-29"}]},
+        {"type": "MC", "start": "2026-11-26", "end": "2026-11-26", "races": []},   # ampumahiihto
+        {"type": "SC", "start": "2026-11-21", "end": "2026-11-22", "races": [{"date": "2026-11-21"}]},
+    ]}
+
+    def test_days(self):
+        self.assertTrue(raceday.is_race_day(self.DATA, "2026-11-26"))
+        self.assertTrue(raceday.is_race_day(self.DATA, "2026-11-27"))
+        self.assertFalse(raceday.is_race_day(self.DATA, "2026-11-28"))   # lepopäivä tapahtuman sisällä
+        self.assertFalse(raceday.is_race_day(self.DATA, "2026-11-21"))   # Suomen cup ei käynnistä
 
 
 if __name__ == "__main__":
