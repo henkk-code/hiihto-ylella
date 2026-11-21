@@ -6,6 +6,10 @@ Lähteet:
 - Hiihtoliiton tapahtumasivun tulos-PDF:t: Suomen cup, joka ei ole FIS:n kalenterissa.
   PDF:t tekee EQ Timing / EQ Events, ja ne luetaan `pdftotext -layout` -komennolla (poppler-utils).
 
+Sprintin finalisteille (sijat 1–6) haetaan lisäksi finaalin aika ja ero (vaihe 6b):
+- FIS: tulossivun "Results"-PDF, finaalin sarake
+- Suomen cup: EQ Eventsin live-tulospalvelu (`live.time4results.com`), finaalin maalilista
+
 Sprinteistä näytetään vain lopputulokset (karsinnoille ei omaa listaa). Tulos haetaan uudelleen
 vielä kaksi vuorokautta kisan jälkeen (korjaukset); sen jälkeen se jäädytetään edellisestä datasta.
 """
@@ -131,6 +135,99 @@ def fetch_fis(url: str) -> dict | None:
     return parse_fis(fetch(url).decode("utf-8", errors="replace"))
 
 
+# --- Sprintin finaaliajat ---------------------------------------------------------
+
+def fis_results_pdf_url(page: str) -> str | None:
+    """FIS-tulossivun latauslistasta "Results"-PDF:n osoite."""
+    for m in re.finditer(r'data-link="([^"]+\.pdf)".*?justify-left">([^<]*)</div>', page, re.S):
+        if m.group(2).strip() == "Results":
+            return html.unescape(m.group(1))
+    return None
+
+
+def parse_fis_final_pdf(text: str) -> dict[int, dict]:
+    """FIS:n sprintin tulos-PDF (pdftotext -layout) → {sija: {"time": …} | {"diff": …}} finalisteille.
+    Finaalin arvo on rivin viimeinen sarake ("2:28.82(1)", "+0.13(2)"); jos finalistilta puuttuu
+    finaaliaika (esim. DNF), viimeinen arvo on välierästä ja jää pois sarakkeen sijainnin perusteella."""
+    lines = text.splitlines()
+    start = next((i for i, l in enumerate(lines) if l.strip() == "Final"), None)
+    if start is None:
+        return {}
+    found = []
+    for line in lines[start + 1:]:
+        if not line.strip():
+            continue
+        if re.fullmatch(r"\s*[A-Za-z/ ]+\s*", line):        # seuraava väliotsikko (Semifinals)
+            break
+        m = re.match(r"^\s*(\d+)\s+\d+\s", line)
+        if m:
+            found.append((int(m.group(1)), re.search(r"(\+?\d[\d:.]*)\((?:\d+|PF\d+)\)\s*$", line), len(line.rstrip())))
+    ends = [end for _, m, end in found if m]
+    if not ends:
+        return {}
+    col = max(ends)
+    out = {}
+    for rank, m, end in found:
+        if m and end >= col - 3:
+            v = m.group(1)
+            out[rank] = {"diff": v} if v.startswith("+") else {"time": v}
+    return out
+
+
+def add_final_times(rows: list[dict], times: dict, key_of) -> int:
+    """Lisää finalisteille aika/ero. key_of(i, row) → avain times-sanakirjaan. Palauttaa lisättyjen määrän."""
+    n = 0
+    for i, row in enumerate(rows):
+        if row.get("phase") != "Finaali" or "time" in row or "diff" in row:
+            continue
+        t = times.get(key_of(i, row))
+        if t:
+            row.update(t)
+            n += 1
+    return n
+
+
+def parse_live_final(page: str) -> dict[str, dict]:
+    """time4results-palvelun finaalin maalilista → {kilpailunumero: {"time"} | {"diff"}}."""
+    out = {}
+    for m in re.finditer(r"<tr>\s*<td[^>]*>(\d+)</td>\s*<td[^>]*>(\d+)</td>\s*<td[^>]*>.*?</td>\s*"
+                         r"<td[^>]*>(" + TIME_RE + r")</td>\s*<td[^>]*>([+\d:.]+)</td>\s*</tr>", page, re.S | re.I):
+        rank, bib, tm, diff = int(m.group(1)), m.group(2), m.group(3), m.group(4)
+        out[bib] = {"time": tm} if rank == 1 else {"diff": diff if diff.startswith("+") else "+" + diff}
+    return out
+
+
+def fetch_live_finals(event: dict, delay: float = FIS_DELAY) -> dict[str, dict[str, dict]]:
+    """Suomen cupin sprinttien finaaliajat live-tulospalvelusta → {sukupuoli: {numero: aika/ero}}.
+    Palvelun etusivun otsikosta tarkistetaan tapahtuman päivä ja vuosi (sama osoite voi jäädä vanhaksi)."""
+    base = event["live_results"]
+    root = fetch(base).decode("iso-8859-1")
+    title = " ".join(_text(t) for t in re.findall(r"<title>(.*?)</title>", root, re.S | re.I)
+                     + re.findall(r"<h2>(.*?)</h2>", root, re.S | re.I))
+    start = date.fromisoformat(event["start"])
+    if str(start.year) not in title or not re.search(rf"\b{start.day}\.", title):
+        raise ValueError(f"live-tulospalvelu ei ole tämän tapahtuman ({title.strip()[:60]})")
+    out: dict[str, dict[str, dict]] = {}
+    for m in re.finditer(r'href="([^"]+)"[^>]*>([^<]*Sprintti\s+erät[^<]*)<', root, re.I):
+        gender = "M" if re.search(r"miehet", m.group(2), re.I) else "N" if re.search(r"naiset", m.group(2), re.I) else None
+        if not gender:
+            continue
+        idx_url = urllib.parse.urljoin(base, m.group(1))
+        time.sleep(delay)
+        idx = fetch(idx_url).decode("iso-8859-1")
+        fm = re.search(r"Finaali\s*</td>\s*<td[^>]*>\s*<a href=\"([^\"]+)\">\s*Maali", idx, re.I)
+        if not fm:
+            continue                                       # finaali ei vielä maalissa
+        fin_url = urllib.parse.urljoin(idx_url, fm.group(1))
+        time.sleep(delay)
+        times = parse_live_final(fetch(fin_url).decode("iso-8859-1"))
+        if not times:                                      # lista ladataan joskus erikseen: 6_9_1_.html
+            times = parse_live_final(fetch(fin_url.replace(".html", "_.html")).decode("iso-8859-1"))
+        if times:
+            out[gender] = times
+    return out
+
+
 # --- Suomen cup: Hiihtoliiton sivu ja EQ Timing -PDF:t -------------------------
 
 PDF_SKIP = re.compile(r"karsin|pistetilan|l[aä]ht[oö]lista|startlist|kaavio|info|ohje|kartta|reitti|testaus|erityisalue|data", re.I)
@@ -196,6 +293,7 @@ def parse_eq_pdf(text: str) -> dict:
     gender, name, day = _pdf_title(text)
     lines = [l for l in text.splitlines() if l.strip()]
     rows: list[dict] = []
+    bibs: list[str | None] = []
     ranked = 0
     team = None
     relay = bool(re.search(r"Joukkue\s*/\s*Nimi", text))
@@ -211,6 +309,7 @@ def parse_eq_pdf(text: str) -> dict:
                     if mt.group(5).startswith("+"):
                         team["diff"] = mt.group(5)
                     rows.append(team)
+                    bibs.append(mt.group(2))
             elif mm and team is not None:
                 team.setdefault("members", []).append(surname(mm.group(1).strip()))
             continue
@@ -239,10 +338,11 @@ def parse_eq_pdf(text: str) -> dict:
             if label and label != "Karsinta":
                 row["phase"] = label
         rows.append(row)
+        bibs.append(m.group(2))
     if not rows or rows[0]["rank"] != 1 or any(not r["name"] for r in rows):
         raise ValueError("PDF:stä ei tunnistettu tulosrivejä")
     kind = "relay" if relay else ("sprint" if any("phase" in r for r in rows) else "distance")
-    return {"gender": gender, "name": name, "date": day, "kind": kind, "rows": rows, "ranked": ranked}
+    return {"gender": gender, "name": name, "date": day, "kind": kind, "rows": rows, "ranked": ranked, "bibs": bibs}
 
 
 def _slug(s: str) -> str:
@@ -294,7 +394,20 @@ def fetch_sc_event(event: dict, now: datetime, delay: float = FIS_DELAY) -> tupl
         races[key] = {"date": parsed["date"], "discipline": "CC", "gender": gender, "name_fi": name,
                       "url": url, "res": key}
         results[key] = {"kind": parsed["kind"], "rows": parsed["rows"], "ranked": parsed["ranked"],
-                        "url": url, "source": "Hiihtoliitto (PDF)", "updated": now.isoformat(timespec="minutes")}
+                        "url": url, "source": "Hiihtoliitto (PDF)", "updated": now.isoformat(timespec="minutes"),
+                        "_bibs": parsed["bibs"]}
+    sprints = [k for k, v in results.items() if v["kind"] == "sprint"]
+    if sprints and event.get("live_results"):
+        try:
+            finals = fetch_live_finals(event, delay)
+        except Exception as exc:  # noqa: BLE001 – finaaliajat ovat lisätietoa, lista näytetään ilmankin
+            print(f"HUOM: finaaliajat puuttuvat ({event['id']}): {exc}")
+            finals = {}
+        for k in sprints:
+            times, bibs = finals.get(races[k]["gender"], {}), results[k]["_bibs"]
+            add_final_times(results[k]["rows"], times, lambda i, row: bibs[i])
+    for v in results.values():
+        v.pop("_bibs", None)
     out = sorted(races.values(), key=lambda r: (r["date"], r["gender"], r["name_fi"]))
     return out, results, errors
 
@@ -322,7 +435,8 @@ def fetch_fis_results(races: list[dict], prev: dict, now: datetime,
     for r in todo[:MAX_FIS_FETCHES]:
         key = race_key(r)
         try:
-            parsed = fetch_fis(r["url"])
+            page = fetch(r["url"]).decode("utf-8", errors="replace")
+            parsed = parse_fis(page)
         except Exception as exc:  # noqa: BLE001
             errors[key] = str(exc)[:160]
             continue
@@ -332,12 +446,27 @@ def fetch_fis_results(races: list[dict], prev: dict, now: datetime,
             continue                                       # ei vielä tuloksia
         kind = ("relay" if re.search(r"Relay|Team", parsed["kind"]) and any("members" in x for x in parsed["rows"])
                 else "sprint" if any("phase" in x for x in parsed["rows"]) else "distance")
+        if kind == "sprint" and any(x.get("phase") == "Finaali" and "time" not in x for x in parsed["rows"]):
+            try:                                           # finaaliajat tulos-PDF:stä
+                pdf = fis_results_pdf_url(page)
+                if pdf:
+                    times = parse_fis_final_pdf(pdf_to_text(fetch(pdf)))
+                    add_final_times(parsed["rows"], times, lambda i, row: row["rank"])
+            except Exception as exc:  # noqa: BLE001 – lisätietoa, lista näytetään ilmankin
+                print(f"HUOM: finaaliajat puuttuvat ({key}): {exc}")
+            finally:
+                time.sleep(delay)
         out[key] = {"kind": kind, "rows": parsed["rows"], "ranked": parsed["ranked"], "url": r["url"],
                     "source": "FIS", "updated": now.isoformat(timespec="minutes")}
     return out, errors
 
 
-def sc_due(event: dict, prev_races: list[dict], today: date) -> bool:
+def missing_finals(res: dict) -> bool:
+    return res.get("kind") == "sprint" and any(
+        r.get("phase") == "Finaali" and "time" not in r and "diff" not in r for r in res.get("rows", []))
+
+
+def sc_due(event: dict, prev_races: list[dict], today: date, prev_results: dict | None = None) -> bool:
     if event.get("type") != "SC" or not event.get("results_page"):
         return False
     start, end = date.fromisoformat(event["start"]), date.fromisoformat(event["end"])
@@ -345,4 +474,9 @@ def sc_due(event: dict, prev_races: list[dict], today: date) -> bool:
         return False
     if (today - end).days <= REFRESH_DAYS:
         return True
-    return not prev_races and (today - end).days <= SC_BACKFILL_DAYS
+    if (today - end).days > SC_BACKFILL_DAYS:
+        return False
+    if not prev_races:
+        return True
+    return bool(event.get("live_results")) and any(                  # finaaliajat puuttuvat vielä
+        missing_finals((prev_results or {}).get(r.get("res"), {})) for r in prev_races)

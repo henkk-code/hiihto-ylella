@@ -1,8 +1,11 @@
-# Hiihto Ylellä – projektisuunnitelma (v0.6)
+# Hiihto Ylellä – projektisuunnitelma (v0.7)
 
 *Päivitetty 2026-11-21. Tila: **vaiheet 1, 4 (pistetilanne) ja 5 (hiihtäjäprofiilit) toteutettu** → https://henkk-code.github.io/hiihto-ylella/*
 
 **Nykytila (20.11.2026):** Ylen suorat lähetykset kellonaikoineen (Telkku), kauden Yle-tapahtumat (Ylen lista) ja FIS-kisaohjelma. Maastohiihdon maailmancupin kisat, joita Yle ei näytä (Davos, Tour de Ski, Engadin, Oslo, Drammen), näkyvät kauden listalla harmaina ("Ei Ylellä"). Vaihe 2 on peruttu. Mahdollinen jatko on vaihe 3 (muut lajit/kanavat).
+
+Muutokset v0.6 → v0.7:
+- **Vaihe 6b – Erot voittajaan** hyväksytty 21.11.2026 ja toteutettu, ks. §4: sprintin finalisteille (sijat 1–6) finaalin aika ja ero voittajaan.
 
 Muutokset v0.5 → v0.6:
 - **Vaihe 6 – Kisojen top 30 -tulokset** hyväksytty suosituksin 21.11.2026 ja toteutettu, ks. §4.
@@ -196,6 +199,33 @@ Toteutuksessa tarkentui:
 - Hiihtoliiton sivuilla on rikkinäisiä PDF-linkkejä (404 tai HTML-sivu). Ne ohitetaan hiljaa. Sivuja käytetään uudelleen vuodesta toiseen, joten PDF hyväksytään vain, jos sen päivä osuu tapahtuman päiville.
 - Puuttuvia SC-tuloksia etsitään vielä 30 päivää tapahtuman jälkeen.
 - Vain kuluvan kauden tulokset (käyttäjän päätös 21.11.2026): raja on Ylen kausilistan ensimmäisen tapahtuman alku, kaudella 2026–27 siis 31.10.2026. Sitä vanhempia tuloksia ei haeta eikä näytetä, eivätkä ne jää myöskään edellisestä datasta.
+
+**Vaihe 6b – Erot voittajaan** (✅ hyväksytty 21.11.2026, toteutettu)
+
+Toive: matkoilla kärkikymmenikölle ja sprinteissä finalisteille (1–6) ero voittajaan sekunteina.
+
+- **Matkat:** ero näkyy jo kaikille top 30 -riveille, sekä FIS:n että Suomen cupin tuloksissa (esim. "+22.1", "+1:03.8"). Muutosta ei tarvita.
+- **Sprintit:** tulossivuilla ei ole finaalin aikoja, vain sijat ja vaiheet. Ajat saadaan näin (testattu 21.11.2026):
+
+| Kisat | Lähde | Sisältö |
+|---|---|---|
+| MC, MM, Tour de Ski, SM | FIS-tulossivun "Results"-PDF (latauslinkki samalla sivulla) | Finaalin sarake: voittajan aika ja muiden erot (Toblach 28.12.2025: Klæbo 2:28.82, Heggen +0.13 …) |
+| Suomen cup | EQ Eventsin live-tulospalvelu `live.time4results.com/hiihto/2027/{paikka}/`, finaalin maalisivu | Ruka 21.11.: Vuorinen 2:34.88, Liekari +2.11 … +4.61. Sama rakenne myös Vuokatissa. |
+
+- Live-tulospalvelu hylättiin vaiheessa 6 tuloslistan lähteenä, mutta finaalin maalilista on siellä yksiselitteinen taulukko (sija, numero, nimi, seura, aika, ero). Sitä käytetään vain finaaliaikojen täydentämiseen, ja hiihtäjä yhdistetään PDF-tulokseen kilpailunumerolla.
+- `events.json`: SC-tapahtumiin uusi kenttä `live_results` (osoite ei noudata Hiihtoliiton sivun kaavaa).
+- Jos aikoja ei saada, lista näytetään kuten nyt, ilman finaaliaikoja.
+- Näkymä: finalisteilla sama aika/ero-sarake kuin matkoilla (voittajalla aika, muilla "+2.11"). Vaihe ("Finaali") säilyy.
+- Työmäärä noin 2–3 h.
+
+**Avoin kysymys:** yli minuutin erot näytetään nyt muodossa "+1:03.8" (kuten FIS ja Hiihtoliitto). ✔ Suositus: pidetään. Vaihtoehto: aina sekunteina ("+63.8").
+
+Päätös 21.11.2026: hyväksytty, nykyinen muoto pidetään.
+
+Toteutuksessa tarkentui:
+- Live-palvelun etusivun otsikosta tarkistetaan tapahtuman alkupäivä ja vuosi, koska osoitteessa on kausi (`/2027/`) ja edellisen kauden sivu voi jäädä voimaan.
+- Jo jäädytetyt SC-tulokset haetaan kerran uudelleen, jos finaaliajat puuttuvat (enintään 30 päivää tapahtuman jälkeen). Näin Vuokatin sprintit saivat ajat jälkikäteen.
+- Mobiilissa sprintin vaihe näkyy pienenä väliotsikkona, jotta nimet mahtuvat.
 
 ## 5. Hakemistorakenne
 

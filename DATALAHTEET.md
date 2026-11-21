@@ -115,10 +115,13 @@ Ehdotus: en.wikipedia "2026–27 Biathlon World Cup" (MediaWiki API `action=pars
   - sprintti: `sija nro lisenssi … karsinta-aika vaihe [huom.]`, nimi edellisellä ja seura seuraavalla rivillä
   - viesti: `sija nro joukkue aika ero` ja osuusrivit `1- 1 nimi …`
   - otsikossa sukupuoli ja kisa ("Miehet Sprintti (P)") sekä päivä
+- **Sprintin finaaliajat (vaihe 6b):**
+  - FIS: tulossivun latauslistan "Results"-PDF (`data-link=…/competition-attachment/….pdf`). Siinä on finaalin sarake: voittajan aika ja muiden erot, esim. `2:28.82(1)`, `+0.13(2)`.
+  - Suomen cup: EQ Eventsin live-tulospalvelu `live.time4results.com/hiihto/{kausi}/{paikka}/` (ISO-8859-1). Polku etusivu → "Sprintti erät" → "Finaali / Maali" → HTML-taulukko (sija, numero, nimi/seura, aika, ero). Rivit yhdistetään Hiihtoliiton PDF:ään kilpailunumerolla.
 - PDF:t valitaan linkin tiedostonimen tai tekstin perusteella (`tulokset`, `_res`, `lopputulos`; ei `karsinta`, `pistetilanne`, kaavio, ohjeet). Linkkejä on rikki, ja sama sivu on käytössä joka vuosi, joten PDF:n päivä tarkistetaan.
 
 ## 6. Hylätyt / varalla
 - **Areenan TV-opasrajapinta** (`areena.api.yle.fi/v1/ui/schedules/…`): ilman Ylen web-sovelluksen tunnisteita HTTP 403. Tunnisteiden käyttö julkisella sivulla ei ole asiallista. Hylätty.
 - **Ylen Teksti-TV API** (developer.yle.fi): virallinen, vaatii ilmaisen avaimen Yle Tunnuksella. Data on tekstisivuja. Varalähde, jos Telkku lakkaa toimimasta.
-- **Tapahtumien live-tulospalvelut** (esim. `live.time4results.com/hiihto/2027/ruka`): tapahtumakohtaisia käsin tehtyjä sivuja ilman sprintin lopputulosta yhtenä listana. Hylätty, tilalla Hiihtoliiton PDF:t.
+- **Tapahtumien live-tulospalvelut** (esim. `live.time4results.com/hiihto/2027/ruka`) koko tuloslistan lähteenä: sivuilla ei ole sprintin lopputulosta yhtenä listana. Hylätty, tilalla Hiihtoliiton PDF:t. Käytössä vain sprintin finaaliaikoihin (vaihe 6b).
 - **DVB-T EPG omasta antennista**: virallinen ja kattava, mutta vaatii laitteiston. Ei tarvetta nyt.

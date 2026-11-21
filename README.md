@@ -21,7 +21,7 @@ Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DA
 ## Ylläpito
 
 - **Tapahtuma lisätään tai muutetaan:** muokkaa `data/events.json` ja pushaa. Actions julkaisee sivun automaattisesti.
-- **Suomen cupin tulokset:** SC-tapahtumalle kenttä `results_page` = Hiihtoliiton tapahtumasivu (esim. `https://hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/`). Build poimii sivulta tulos-PDF:t.
+- **Suomen cupin tulokset:** SC-tapahtumalle kenttä `results_page` = Hiihtoliiton tapahtumasivu (esim. `https://hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/`). Build poimii sivulta tulos-PDF:t. Lisäksi `live_results` = EQ Eventsin live-tulospalvelu (esim. `https://live.time4results.com/hiihto/2027/ruka/`), josta haetaan sprintin finaaliajat.
 - **Lajitunnistus** (mitkä lähetykset näytetään): `config/topics.json`
 - **Kanavat ja FIS-syötteet:** `config/sources.json`. Uudella kaudella vaihda `fis.season` (esim. `2028`) ja päivitä `events.json`. Sama kausi ohjaa pistetilannetta (FIS-sivut ja Wikipedian sivu "2027–28 Biathlon World Cup").
 - **Päivitys:** GitHub Actions ajaa buildin kaksi kertaa päivässä (5.20 ja 15.20), kisapäivinä (MC, MM, SC, SM) myös klo 22.20, aina pushin jälkeen ja tarvittaessa käsin (Actions → "Päivitä ja julkaise" → Run workflow).

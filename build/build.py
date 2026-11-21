@@ -299,7 +299,7 @@ def main() -> int:
             continue
         sc_races = {r["res"]: r for r in prev_sc.get(e["id"], [])}
         sc_res = {k: prev_results[k] for k in sc_races if k in prev_results}
-        if not args.offline and race_results.sc_due(e, list(sc_races.values()), now.date()):
+        if not args.offline and race_results.sc_due(e, list(sc_races.values()), now.date(), prev_results):
             try:
                 got_races, got_res, errs = race_results.fetch_sc_event(e, now)
                 sc_races.update({r["res"]: r for r in got_races})     # uudet korvaavat, vanhat säilyvät

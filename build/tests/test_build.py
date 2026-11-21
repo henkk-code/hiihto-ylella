@@ -337,6 +337,47 @@ class TestResults(unittest.TestCase):
         self.assertEqual(len(r["rows"]), 30)
         self.assertEqual(r["ranked"], 78)
 
+    def test_fis_final_times(self):
+        times = results.parse_fis_final_pdf(self.fix("fis_results_49535_sprint_pdf.txt"))
+        self.assertEqual(times, {1: {"time": "2:28.82"}, 2: {"diff": "+0.13"}, 3: {"diff": "+0.80"},
+                                 4: {"diff": "+1.28"}, 5: {"diff": "+2.52"}, 6: {"diff": "+10.43"}})
+        page = (FIX / "fis_results_49535_sprint.html").read_text(encoding="utf-8")
+        rows = results.parse_fis(page)["rows"]
+        self.assertEqual(results.add_final_times(rows, times, lambda i, row: row["rank"]), 6)
+        self.assertEqual(rows[0]["time"], "2:28.82")
+        self.assertEqual(rows[5]["diff"], "+10.43")
+        self.assertNotIn("diff", rows[6])                  # välieräläiset ilman aikaa
+        self.assertEqual(results.parse_fis_final_pdf("ei finaalia"), {})
+
+    def test_fis_final_dnf_uses_column(self):
+        text = """Final
+      1     1 KLAEBO Johannes                  NOR   2:27.15   (1)   2:30.43(1)        2:28.40(1)        2:28.82(1)
+      6     7 RIEBLI Janik                     SUI   2:30.04   (7)   2:28.80(PF1)      +0.56(4)
+Semifinals
+"""
+        self.assertEqual(results.parse_fis_final_pdf(text), {1: {"time": "2:28.82"}})
+
+    def test_live_final(self):
+        times = results.parse_live_final(self.fix("live_ruka_2026_m_final.html"))
+        self.assertEqual(times["6"], {"time": "2:34.88"})          # Lauri Vuorinen, numero 6
+        self.assertEqual(times["9"], {"diff": "+4.61"})
+        self.assertEqual(len(times), 6)
+        r = results.parse_eq_pdf(self.fix("sc_ruka_2026_m_sprint.txt"))
+        results.add_final_times(r["rows"], times, lambda i, row: r["bibs"][i])
+        self.assertEqual(r["rows"][0], {"rank": 1, "name": "Lauri Vuorinen", "club": "Ounasvaaran Hiihtoseura",
+                                        "phase": "Finaali", "time": "2:34.88"})
+        self.assertEqual(r["rows"][1]["diff"], "+2.11")
+        self.assertNotIn("diff", r["rows"][6])
+
+    def test_live_wrong_event(self):
+        orig = results.fetch
+        results.fetch = lambda *a, **k: "<title>Maastohiihdon Suomen Cup 22.-23.11.2025 Ruka</title>".encode("iso-8859-1")
+        try:
+            with self.assertRaises(ValueError):
+                results.fetch_live_finals({"start": "2026-11-21", "live_results": "https://x/"}, delay=0)
+        finally:
+            results.fetch = orig
+
     def test_pdf_distance(self):
         r = results.parse_eq_pdf(self.fix("sc_tampere_2026_m_15km.txt"))
         self.assertEqual((r["gender"], r["name"], r["date"], r["kind"]), ("M", "15 km (p)", "2026-01-31", "distance"))
@@ -386,6 +427,12 @@ class TestResults(unittest.TestCase):
         self.assertTrue(results.sc_due(ev, [], date(2026, 12, 10)))                  # puuttuvia etsitään vielä
         self.assertFalse(results.sc_due(ev, [], date(2027, 1, 10)))
         self.assertFalse(results.sc_due(dict(ev, results_page=None), [], date(2026, 11, 21)))
+        prev = {"a": {"kind": "sprint", "rows": [{"rank": 1, "phase": "Finaali"}]}}
+        live = dict(ev, live_results="https://x/")
+        self.assertTrue(results.sc_due(live, [{"res": "a"}], date(2026, 11, 30), prev))   # finaaliajat puuttuvat
+        self.assertFalse(results.sc_due(ev, [{"res": "a"}], date(2026, 11, 30), prev))    # ei live-palvelua
+        prev["a"]["rows"][0]["time"] = "2:34.88"
+        self.assertFalse(results.sc_due(live, [{"res": "a"}], date(2026, 11, 30), prev))
 
     def test_fetch_keeps_old_on_error(self):
         url = "https://www.fis-ski.com/DB/general/results.html?sectorcode=CC&raceid=52085"

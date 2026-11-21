@@ -6,17 +6,17 @@
     "date": "2026-10-14"
   },
   "events": [
-    { "id": "2026-vuokatti-sc", "sport": "hiihto", "type": "SC", "place": "Vuokatti", "start": "2026-10-31", "end": "2026-11-01", "aliases": ["vuokatti"], "results_page": "https://hiihtoliitto.fi/tapahtumat/suomen-cup/vuokatti/" },
-    { "id": "2026-ruka-sc", "sport": "hiihto", "type": "SC", "place": "Ruka", "start": "2026-11-21", "end": "2026-11-22", "aliases": ["ruka", "kuusamo"], "results_page": "https://hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/" },
+    { "id": "2026-vuokatti-sc", "sport": "hiihto", "type": "SC", "place": "Vuokatti", "start": "2026-10-31", "end": "2026-11-01", "aliases": ["vuokatti"], "results_page": "https://hiihtoliitto.fi/tapahtumat/suomen-cup/vuokatti/", "live_results": "https://live.time4results.com/hiihto/2027/vuokatti/" },
+    { "id": "2026-ruka-sc", "sport": "hiihto", "type": "SC", "place": "Ruka", "start": "2026-11-21", "end": "2026-11-22", "aliases": ["ruka", "kuusamo"], "results_page": "https://hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/", "live_results": "https://live.time4results.com/hiihto/2027/ruka/" },
     { "id": "2026-ruka-mc", "sport": "hiihto", "type": "MC", "place": "Ruka", "start": "2026-11-27", "end": "2026-11-29", "aliases": ["ruka", "kuusamo"] },
     { "id": "2026-trondheim-mc", "sport": "hiihto", "type": "MC", "place": "Trondheim", "start": "2026-12-04", "end": "2026-12-06", "aliases": ["trondheim", "granåsen"] },
-    { "id": "2027-vantaa-sc", "sport": "hiihto", "type": "SC", "place": "Vantaa", "start": "2027-01-16", "end": "2027-01-17", "aliases": ["vantaa", "hakunila"], "results_page": "https://hiihtoliitto.fi/tapahtumat/suomen-cup/vantaa/" },
+    { "id": "2027-vantaa-sc", "sport": "hiihto", "type": "SC", "place": "Vantaa", "start": "2027-01-16", "end": "2027-01-17", "aliases": ["vantaa", "hakunila"], "results_page": "https://hiihtoliitto.fi/tapahtumat/suomen-cup/vantaa/", "live_results": "https://live.time4results.com/hiihto/2027/vantaa/" },
     { "id": "2027-toblach-mc", "sport": "hiihto", "type": "MC", "place": "Toblach", "start": "2027-01-29", "end": "2027-01-31", "aliases": ["toblach", "dobbiaco"] },
     { "id": "2027-iisalmi-sm", "sport": "hiihto", "type": "SM", "place": "Iisalmi", "start": "2027-02-05", "end": "2027-02-07", "aliases": ["iisalmi"] },
     { "id": "2027-lahti-mc", "sport": "hiihto", "type": "MC", "place": "Lahti", "start": "2027-02-12", "end": "2027-02-14", "aliases": ["lahti", "salpausselkä", "salpausselän"] },
     { "id": "2027-falun-mm", "sport": "hiihto", "type": "MM", "place": "Falun", "start": "2027-02-24", "end": "2027-03-07", "aliases": ["falun"], "note": "Ylen lista: 25.2.–7.3.; FIS-kisaohjelma alkaa 24.2." },
     { "id": "2027-ulricehamn-mc", "sport": "hiihto", "type": "MC", "place": "Ulricehamn", "start": "2027-03-19", "end": "2027-03-21", "aliases": ["ulricehamn"] },
-    { "id": "2027-taivalkoski-sc", "sport": "hiihto", "type": "SC", "place": "Taivalkoski", "start": "2027-04-03", "end": "2027-04-04", "aliases": ["taivalkoski"], "results_page": "https://hiihtoliitto.fi/tapahtumat/suomen-cup/taivalkoski/" },
+    { "id": "2027-taivalkoski-sc", "sport": "hiihto", "type": "SC", "place": "Taivalkoski", "start": "2027-04-03", "end": "2027-04-04", "aliases": ["taivalkoski"], "results_page": "https://hiihtoliitto.fi/tapahtumat/suomen-cup/taivalkoski/", "live_results": "https://live.time4results.com/hiihto/2027/taivalkoski/" },
     { "id": "2027-rovaniemi-sm", "sport": "hiihto", "type": "SM", "place": "Rovaniemi", "start": "2027-04-09", "end": "2027-04-11", "aliases": ["rovaniemi", "ounasvaara"] },
 
     { "id": "2026-kontiolahti-amh", "sport": "ampumahiihto", "type": "MC", "place": "Kontiolahti", "start": "2026-11-26", "end": "2026-11-29", "aliases": ["kontiolahti"] },

@@ -239,6 +239,7 @@ button.ev-row:hover { background: var(--hover); }
 .res li { display: grid; grid-template-columns: 30px 1fr auto auto; gap: 0 12px; align-items: baseline; padding: 3px 0 3px 8px; font-size: 13px; line-height: 20px; }
 .res li + li { border-top: 1px solid var(--border-muted); }
 .res li.phase { border-top-color: var(--border); }
+.res.phased li { grid-template-columns: 30px 1fr auto auto 92px; }
 .res .rk { color: var(--muted); font-weight: 600; text-align: right; }
 .res .nm { min-width: 0; overflow-wrap: anywhere; }
 .res .nm .md { margin-right: 4px; }
@@ -257,6 +258,10 @@ button.ev-row:hover { background: var(--hover); }
   .detail .dr { grid-template-columns: 66px 16px 1fr auto; gap: 0 8px; }
   .res { margin-left: 0; }
   .res li { grid-template-columns: 24px 1fr auto; gap: 0 8px; }
+  .res.phased li { grid-template-columns: 24px 1fr auto; }
+  .res .df { min-width: 48px; }
+  .res .ph { grid-column: 1 / -1; grid-row: 1; padding-left: 32px; font-size: 11px; line-height: 16px; font-weight: 600; text-align: left; text-transform: uppercase; letter-spacing: .04em; }
+  .res .ph:empty { display: none; }
   .res .tm { display: none; }
   .res li.first .tm { display: block; }
   .res li.first .df { display: none; }
@@ -646,20 +651,20 @@ dialog form { padding: 0 16px 16px; text-align: right; }
 
   function resultHtml(res, rid) {
     const relay = res.kind === "relay";
+    const phased = res.rows.some((x) => x.phase);         // sprintti: aika ja ero (finalistit) + vaihe
     const rows = res.rows.map((x, i) => {
       const home = x.nat === "FIN";
       const medal = x.rank <= 3 ? `<span class="md">${MEDAL[x.rank - 1]}</span>` : "";
       const sub = x.nat ? `<span class="sub nat">${esc(x.nat)}</span>` : x.club ? `<span class="sub">${esc(x.club)}</span>` : "";
       const mem = relay && x.members ? `<span class="mem">${x.members.map(esc).join(" – ")}</span>` : "";
       const newPhase = x.phase && (i === 0 || res.rows[i - 1].phase !== x.phase);
-      const right = x.phase && !x.time
-        ? `<span class="ph">${newPhase ? esc(x.phase) : ""}</span><span></span>`
-        : `<span class="tm">${esc(x.time || "")}</span><span class="df">${esc(x.diff || "")}</span>`;
+      const right = `<span class="tm">${esc(x.time || "")}</span><span class="df">${esc(x.diff || "")}</span>`
+        + (phased ? `<span class="ph">${newPhase ? esc(x.phase) : ""}</span>` : "");
       return `<li class="${[i === 0 ? "first" : "", home ? "home" : "", newPhase && i > 0 ? "phase" : ""].filter(Boolean).join(" ")}"><span class="rk">${x.rank}.</span>
         <span class="nm">${medal}<span class="who">${esc(x.name)}</span>${sub}${mem}</span>${right}</li>`;
     }).join("");
     const more = res.ranked > res.rows.length ? `Koko tulosluettelo (${res.ranked} sijoitettua)` : "Koko tulosluettelo";
-    return `<div class="res" id="t-${rid}"><ol>${rows}</ol>
+    return `<div class="res${phased ? " phased" : ""}" id="t-${rid}"><ol>${rows}</ol>
       <div class="res-foot"><a href="${esc(res.url)}" target="_blank" rel="noopener">${more}: ${esc(res.source)} ↗</a></div></div>`;
   }
 
