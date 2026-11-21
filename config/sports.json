@@ -28,6 +28,8 @@
     { "match": "^NFL\\b", "label": "NFL" },
     { "match": "^NHL\\b", "label": "NHL" }
   ],
+  "_display_order": "Lajipillerien järjestys sivulla (tunnistusjärjestys on eri).",
+  "display_order": ["jaakiekko", "jalkapallo", "talvi", "moottori", "koripallo", "amerikkalainen", "muut"],
   "sports": [
     { "id": "amerikkalainen", "label": "Amerikkalainen jalkapallo", "emoji": "🏈",
       "include": ["\\bNFL\\b", "amerikkalai"] },

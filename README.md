@@ -4,6 +4,10 @@ Julkinen sivu, josta näkee yhdellä silmäyksellä, **näyttääkö Yle hiihtoa
 
 🔗 https://henkk-code.github.io/hiihto-ylella/
 
+Rinnalla toinen sivu **Urheilu ilmaiseksi**: kaikki suorat urheilulähetykset maksuttomilla TV-kanavilla (Yle, MTV3, Nelonen, Sub, Jim, Kutonen, Star Channel, Viaplay TV …) noin kaksi viikkoa eteenpäin.
+
+🔗 https://henkk-code.github.io/hiihto-ylella/urheilu/
+
 ## Mistä tiedot tulevat
 
 | Kerros | Sisältö | Lähde |
@@ -14,6 +18,7 @@ Julkinen sivu, josta näkee yhdellä silmäyksellä, **näyttääkö Yle hiihtoa
 | Pistetilanne | Maailmancupin kokonaiskilpailun kärki + paras suomalainen | FIS (hiihto, yhdistetty), en.wikipedia (ampumahiihto) |
 | Hiihtäjät | Maastohiihdon kärkikymmenikön ja parhaan suomalaisen profiili: kauden MC-tulokset, uran MC-voitot, olympia- ja MM-mitalit, esittely | FIS-urheilijasivut, Wikidata, fi.wikipedia |
 | Tulokset | Jokaisen ajetun kisan top 30 (Kauden kisat → tapahtuma → "Top 30") | FIS-tulossivut; Suomen cup Hiihtoliiton tulos-PDF:istä |
+| Urheilusivu | Kaikki suorat urheilulähetykset ilmaiskanavilla, lajeittain | Telkku.comin TV-opas (sama haku kuin hiihtosivulla) |
 
 Jos FIS tai Telkku ei vastaa, build käyttää edellisen julkaisun tietoja. Sivu ei siis koskaan tyhjene.
 Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DATALAHTEET.md).
@@ -22,7 +27,8 @@ Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DA
 
 - **Tapahtuma lisätään tai muutetaan:** muokkaa `data/events.json` ja pushaa. Actions julkaisee sivun automaattisesti.
 - **Suomen cupin tulokset:** SC-tapahtumalle kenttä `results_page` = Hiihtoliiton tapahtumasivu (esim. `https://hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/`). Build poimii sivulta tulos-PDF:t. Lisäksi `live_results` = EQ Eventsin live-tulospalvelu (esim. `https://live.time4results.com/hiihto/2027/ruka/`), josta haetaan sprintin finaaliajat.
-- **Lajitunnistus** (mitkä lähetykset näytetään): `config/topics.json`
+- **Lajitunnistus** (mitkä lähetykset näytetään): `config/topics.json` (hiihtosivu) ja `config/sports.json` (urheilusivu: lajit, sarjat, poissulut, geneeriset otsikot)
+- **Urheilusivun kanavat ja katselulinkit:** `config/sources.json` → `telkku.free_channels`
 - **Kanavat ja FIS-syötteet:** `config/sources.json`. Uudella kaudella vaihda `fis.season` (esim. `2028`) ja päivitä `events.json`. Sama kausi ohjaa pistetilannetta (FIS-sivut ja Wikipedian sivu "2027–28 Biathlon World Cup").
 - **Päivitys:** GitHub Actions ajaa buildin kaksi kertaa päivässä (5.20 ja 15.20), kisapäivinä (MC, MM, SC, SM) myös klo 22.20, aina pushin jälkeen ja tarvittaessa käsin (Actions → "Päivitä ja julkaise" → Run workflow).
 
@@ -31,7 +37,7 @@ Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DA
 ```bash
 python3 build/build.py                        # hakee datan → site/data.json
 python3 -m unittest discover -s build/tests   # testit
-cd site && python3 -m http.server 8000        # http://localhost:8000
+cd site && python3 -m http.server 8000        # http://localhost:8000 ja /urheilu/
 ```
 
 Vain Pythonin standardikirjasto (3.11+). Suomen cupin tulos-PDF:ien lukemiseen tarvitaan `pdftotext` (paketti `poppler-utils`); ilman sitä muu sivu rakentuu normaalisti.

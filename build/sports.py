@@ -134,10 +134,12 @@ def build_broadcasts(programs: list[dict], channels: dict, rules: SportRules, tz
 
 
 def page_data(cfg: dict, broadcasts: list[dict], status_telkku: dict, now: datetime, horizon_days: int) -> dict:
+    order = cfg.get("display_order", [])
     return {
         "generated": now.isoformat(timespec="minutes"),
         "status": {"telkku": status_telkku},
         "horizon_days": horizon_days,
-        "sports": [{"id": s["id"], "label": s["label"], "emoji": s["emoji"]} for s in cfg["sports"]],
+        "sports": [{"id": s["id"], "label": s["label"], "emoji": s["emoji"]}
+                   for s in sorted(cfg["sports"], key=lambda s: order.index(s["id"]) if s["id"] in order else 99)],
         "broadcasts": broadcasts,
     }

@@ -68,6 +68,8 @@ h1, h2, h3, p { margin: 0; }
 .top .wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; min-height: 60px; padding-top: 10px; padding-bottom: 10px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 .brand:hover { text-decoration: none; }
+.xlink { font-size: 13px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.xlink:hover { color: var(--text); }
 .logo { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 6px; background: var(--accent); }
 .logo svg { width: 18px; height: 18px; }
 .controls { margin-left: auto; display: flex; align-items: center; gap: 10px; }
