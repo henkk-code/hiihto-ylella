@@ -1,6 +1,6 @@
-# Datalähteet (v0.3)
+# Datalähteet (v0.4)
 
-*Päivitetty 2026-11-20.*
+*Päivitetty 2026-11-21.*
 
 ## 1. Ylen kausilista – PÄÄLÄHDE (tapahtumataso)
 
@@ -88,7 +88,22 @@ GET https://il-telkku-api.prod.il.fi/v1/channel-groups/{ryhmä}/offering?startTi
   - 17.25 Mäkihypyn maailmancup: HS 142, Ruka *(pois)*
 - ➖ Epävirallinen. Ei Areena-only-lähetyksiä.
 
-## 5. Hylätyt / varalla
+## 5. Maailmancupin pistetilanne (ehdotus, testattu 2026-11-21)
+
+**Hiihto ja yhdistetty – FIS cup standings (HTML):**
+```
+https://www.fis-ski.com/DB/{cross-country|nordic-combined}/cup-standings.html?sectorcode={CC|NK}&seasoncode=2027&cupcode=WC&disciplinecode=ALL&gendercode={M|W}&nationcode=
+```
+- Kausi 2026 jäsentyy: "After Men's 20km Mass Start Free Lake Placid (USA) 22-03-2026 (42/42)", jonka jälkeen rivit nimi, maa, pisteet (kokonais, matka, sprintti).
+- ⚠️ **Ansa:** ennen kauden ensimmäistä MC-kisaa (2027) sivu näyttää hiljaa toisen cupin (Australia New Zealand Cup). Jäsentimen on tarkistettava, että valittuna on `WC`, ja muuten jätettävä data tyhjäksi.
+- Ei CORS-otsakkeita, joten haetaan buildissa. Neljä sivulatausta vuorokaudessa.
+
+**Ampumahiihto:** `api.biathlonresults.com` palauttaa 401 (vain `Seasons` on auki), joten sitä ei käytetä.
+Ehdotus: en.wikipedia "2026–27 Biathlon World Cup" (MediaWiki API `action=parse`). Sivu on olemassa ja siinä on Standings → Overall (M/N). Vapaaehtoisten ylläpitämä ja yleensä ajan tasalla kisapäivän iltana.
+
+**Profiilit (arvio, ei toteuteta):** Wikidata `P2773` = FIS competitorid (4 001 hiihtäjää), Wikipedia REST `page/summary` (ingressi ja kuva, CC BY-SA), FIS athlete-biography-sivu (HTML). Ks. SUUNNITELMA.md.
+
+## 6. Hylätyt / varalla
 - **Areenan TV-opasrajapinta** (`areena.api.yle.fi/v1/ui/schedules/…`): ilman Ylen web-sovelluksen tunnisteita HTTP 403. Tunnisteiden käyttö julkisella sivulla ei ole asiallista. Hylätty.
 - **Ylen Teksti-TV API** (developer.yle.fi): virallinen, vaatii ilmaisen avaimen Yle Tunnuksella. Data on tekstisivuja. Varalähde, jos Telkku lakkaa toimimasta.
 - **DVB-T EPG omasta antennista**: virallinen ja kattava, mutta vaatii laitteiston. Ei tarvetta nyt.

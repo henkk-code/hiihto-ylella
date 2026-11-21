@@ -1,6 +1,6 @@
-# Hiihto Ylellä – projektisuunnitelma (v0.3)
+# Hiihto Ylellä – projektisuunnitelma (v0.4)
 
-*Päivitetty 2026-11-20. Tila: **vaihe 1 julkaistu, kehitys parkissa** → https://henkk-code.github.io/hiihto-ylella/*
+*Päivitetty 2026-11-21. Tila: **vaihe 1 julkaistu; vaihe 4 (pistetilanne) odottaa hyväksyntää** → https://henkk-code.github.io/hiihto-ylella/*
 
 **Nykytila (20.11.2026):** Ylen suorat lähetykset kellonaikoineen (Telkku), kauden Yle-tapahtumat (Ylen lista) ja FIS-kisaohjelma. Maastohiihdon maailmancupin kisat, joita Yle ei näytä (Davos, Tour de Ski, Engadin, Oslo, Drammen), näkyvät kauden listalla harmaina ("Ei Ylellä"). Vaihe 2 on peruttu. Mahdollinen jatko on vaihe 3 (muut lajit/kanavat).
 
@@ -91,6 +91,46 @@ kentällä `"tour_de_ski": true`. Muuten TV-oppaan otsikoista poistetaan virheel
 
 **Vaihe 3 – Laajennus** (tarpeen mukaan)
 - Muut lajit Ylen listalta (alppihiihto ym.) ja muut ilmaiskanavat (MTV3 ym.) Telkun kautta
+
+**Vaihe 4 – Maailmancupin pistetilanne** (EHDOTUS 21.11.2026, odottaa hyväksyntää)
+
+Tavoite: kun kisat alkavat (hiihto Ruka 27.11., ampumahiihto Kontiolahti 26.11.), sivulta näkee yhdellä silmäyksellä, kuka johtaa maailmancupia.
+
+- **Paikka:** kolmas välilehti **Maailmancup** laskurin kanssa (laskuri = ajettujen MC-kisojen määrä). Välilehti näkyy vasta, kun kauden ensimmäinen kisa on ajettu. Vastauslaatikkoon ei lisätä mitään, joten sivun ensisijainen kysymys pysyy ylimpänä.
+- **Sisältö:** yksi GitHub-laatikko per laji ja sarja (Hiihto M/N, Ampumahiihto M/N, Yhdistetty M/N). Otsikkorivillä "Kokonaiskilpailu · 4/32 kisaa". Kärkiviisikko pisteineen, johtajalla keltainen "Johtaa"-pilleri ja ero kakkoseen ("+45 p"). Jos paras suomalainen ei ole kärkiviisikossa, hänet näytetään erotinviivan alla omalla rivillään (esim. "12. NISKANEN Iivo 180 p"). Lajisuodatin koskee myös tätä välilehteä.
+- **Päivitys:** sama 1×/vrk Actions-ajo kuin muillakin lähteillä. Jos haku epäonnistuu, näytetään edellinen tallennettu tilanne ja sen päivämäärä.
+- **Lähteet** (ks. [DATALAHTEET.md §5](DATALAHTEET.md)):
+  - Hiihto ja yhdistetty: FIS:n viralliset cup-standings-sivut (HTML). Testattu: kauden 2025–26 lopputilanne jäsentyy (KLAEBO 2 301 p …).
+  - Ampumahiihto: IBU:n rajapinta on suljettu (401). Ehdotus: englanninkielisen Wikipedian kausisivu "2026–27 Biathlon World Cup", jolla on Standings-taulukot, ja linkki biathlonworld.comiin. Vaihtoehto: ampumahiihto jätetään pois ja tilalle pelkkä linkki.
+- **Työmäärä:** FIS-jäsennin, testit tallennetulla sivulla ja välilehti noin 0,5 pv. Ampumahiihto Wikipediasta +2–3 h.
+
+Avoimet kysymykset (suositus ensin):
+1. Ampumahiihdon lähde: **Wikipedia (suositus)**, koska IBU on suljettu ja Wikipedia päivittyy yleensä samana päivänä / pelkkä linkki IBU:n sivulle.
+2. Yhdistetty mukaan? **Kyllä (suositus).** Cup on yksi kokonaisuus (mäki + hiihto). Sivulla näytetään vain hiihto-osuuden lähetykset, mutta pistetilanne on silti kiinnostava.
+3. Näytetäänkö myös matka- ja sprintticup? **Ei aluksi (suositus).** Vain kokonaiskilpailu, muut lisätään tarvittaessa.
+
+### Arvio: kärkiurheilijoiden profiilit (FIS + Wikipedia) – EI TOTEUTETA VIELÄ
+
+**Mitä datasta saa (testattu 21.11.2026, Iivo Niskanen):**
+
+| Lähde | Antaa | Huom. |
+|---|---|---|
+| **Wikidata** (avoin API, SPARQL) | syntymäaika, -paikka, seura, kuva (Commons), **FIS-tunniste P2773** | Avainlöydös: P2773 = FIS:n `competitorid` (Iivolla 150212 → oikea FIS-sivu). Tunniste löytyy 4 001 hiihtäjältä. Nimien sovitusta "NISKANEN Iivo" ↔ "Iivo Niskanen" ei siis tarvita. |
+| **Wikipedia fi** (REST `page/summary`) | 1–3 lauseen ingressi ja pikkukuva | Lisenssi CC BY-SA, joten lähde ja linkki on mainittava. Kuvien lisenssit vaihtelevat (Commons). |
+| **FIS-urheilijasivu** (HTML) | FIS-koodi, seura, välineet (sukset, monot, sauvat), harrastukset, FIS-pisteet, tuloslista suodattimin | Jäsennettävä HTML-sivu, joka voi muuttua. Tuloshistoria vaatii useita sivulatauksia per urheilija. |
+| **IBU** | – | Rajapinta suljettu. Ampumahiihtäjistä saa vain Wikidata- ja Wikipedia-tiedot, ei tulostilastoja. |
+
+**Vaiva kolmessa tasossa:**
+
+| Taso | Sisältö | Työ | Ylläpito |
+|---|---|---|---|
+| **A. Kevyt** | Pistetilanteen rivi aukeaa: kuva, ikä, seura, Wikipedia-ingressi, linkit FIS:iin ja Wikipediaan, sijoitus cupissa | ~0,5–1 pv (vaiheen 4 päälle) | Pieni. Urheilijalista syntyy automaattisesti pistetilanteen kärjestä, ja Wikidata hakee loput. |
+| **B. Tilastot** | + uran MC-voitot ja -palkintosijat, kauden kisat sijoituksineen (FIS-tuloslista) | +1–2 pv | Keskisuuri. FIS-sivujen jäsennin hajoaa sivumuutoksissa. Vain hiihto ja yhdistetty. |
+| **C. Omat profiilisivut** | Erillinen sivu per urheilija, kuvaajat, vertailut | 3–5 pv | Suuri. Ei sovi kertasilmäyssivun luonteeseen (CLAUDE.md). |
+
+**Suositus:** taso A pistetilanteen jatkeeksi. Data kulkee pistetilanne → FIS-id → Wikidata (SPARQL P2773) → Wikipedia, ja kaikki haetaan buildissa 1×/vrk.
+B kannattaa vain, jos A:ta oikeasti käytetään. C ei sovi sivun tarkoitukseen.
+Riskit: Wikidatasta voi puuttua tunniste (uudet nuoret hiihtäjät, jolloin näytetään pelkkä nimi ja FIS-linkki), kuvien lisenssimerkinnät ja ampumahiihdon tilastoaukko.
 
 ## 5. Hakemistorakenne
 

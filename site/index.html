@@ -316,6 +316,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   const TYPE_LABEL = { MC: "Maailmancup", SC: "Suomen cup", SM: "SM-kisat", MM: "MM-kisat" };
   const SPORT_LABEL = { hiihto: "Hiihto", ampumahiihto: "Ampumahiihto" };
   const EMOJI = { hiihto: "🎿", ampumahiihto: "🎯", yhdistetty: "⛷️" };
+  const PARTITIVE = { hiihto: "hiihtoa", ampumahiihto: "ampumahiihtoa", yhdistetty: "yhdistettyä" };
   const DISC_LABEL = { CC: "", NK: "yhdistetty" };
 
   const ICON = {
@@ -447,6 +448,13 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   const topicById = () => Object.fromEntries(DATA.topics.map((t) => [t.id, t]));
   const activeSports = () => new Set(DATA.topics.filter((t) => active.has(t.id)).map((t) => t.event_sport));
   const eventById = () => Object.fromEntries(DATA.events.map((e) => [e.id, e]));
+  // "hiihtoa" kun kaikki lajit valittuna, muuten valitut lajit: "ampumahiihtoa eikä yhdistettyä"
+  function sportsPhrase() {
+    const ids = DATA.topics.map((t) => t.id).filter((id) => active.has(id));
+    if (ids.length === DATA.topics.length) return "hiihtoa";
+    const words = ids.map((id) => PARTITIVE[id] || id);
+    return words.length > 1 ? `${words.slice(0, -1).join(", ")} eikä ${words[words.length - 1]}` : words[0];
+  }
   const sportPill = (id, label) => `<span class="pill pill-sport s-${esc(id)}">${EMOJI[id] || ""} ${esc(label)}</span>`;
 
   // --- Lähetykset ---
@@ -558,7 +566,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     const n = inWindow.length;
     const headline = n
       ? `<span class="state yes">${ICON.check}Kyllä</span><h2>${n} ${n === 1 ? "suora lähetys" : "suoraa lähetystä"} Ylellä ${when}</h2>`
-      : `<span class="state no">Ei lähetyksiä</span><h2>Yle ei näytä hiihtoa ${when}</h2>`;
+      : `<span class="state no">Ei lähetyksiä</span><h2>Yle ei näytä ${sportsPhrase()} ${when}</h2>`;
     const pending = !n && windowEvents.length
       ? `<p class="hero-sub">Kisat ovat ohjelmassa, mutta TV-oppaassa ei ole suoria lähetyksiä. Tarkista <a href="https://areena.yle.fi/tv/opas" target="_blank" rel="noopener">Areenan opas</a>.</p>` : "";
 
