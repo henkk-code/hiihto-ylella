@@ -1,6 +1,6 @@
 # Hiihto Ylellä – projektisuunnitelma (v0.4)
 
-*Päivitetty 2026-11-21. Tila: **vaihe 1 julkaistu; vaihe 4 (pistetilanne) odottaa hyväksyntää** → https://henkk-code.github.io/hiihto-ylella/*
+*Päivitetty 2026-11-21. Tila: **vaiheet 1 ja 4 (pistetilanne) julkaistu** → https://henkk-code.github.io/hiihto-ylella/*
 
 **Nykytila (20.11.2026):** Ylen suorat lähetykset kellonaikoineen (Telkku), kauden Yle-tapahtumat (Ylen lista) ja FIS-kisaohjelma. Maastohiihdon maailmancupin kisat, joita Yle ei näytä (Davos, Tour de Ski, Engadin, Oslo, Drammen), näkyvät kauden listalla harmaina ("Ei Ylellä"). Vaihe 2 on peruttu. Mahdollinen jatko on vaihe 3 (muut lajit/kanavat).
 
@@ -92,11 +92,11 @@ kentällä `"tour_de_ski": true`. Muuten TV-oppaan otsikoista poistetaan virheel
 **Vaihe 3 – Laajennus** (tarpeen mukaan)
 - Muut lajit Ylen listalta (alppihiihto ym.) ja muut ilmaiskanavat (MTV3 ym.) Telkun kautta
 
-**Vaihe 4 – Maailmancupin pistetilanne** (EHDOTUS 21.11.2026, odottaa hyväksyntää)
+**Vaihe 4 – Maailmancupin pistetilanne** (✅ hyväksytty ja toteutettu 21.11.2026)
 
 Tavoite: kun kisat alkavat (hiihto Ruka 27.11., ampumahiihto Kontiolahti 26.11.), sivulta näkee yhdellä silmäyksellä, kuka johtaa maailmancupia.
 
-- **Paikka:** kolmas välilehti **Maailmancup** laskurin kanssa (laskuri = ajettujen MC-kisojen määrä). Välilehti näkyy vasta, kun kauden ensimmäinen kisa on ajettu. Vastauslaatikkoon ei lisätä mitään, joten sivun ensisijainen kysymys pysyy ylimpänä.
+- **Paikka:** kolmas välilehti **Maailmancup** laskurin kanssa (laskuri = näkyvien pistelistojen määrä valituilla lajeilla). Välilehti näkyy vasta, kun kauden ensimmäinen kisa on ajettu. Vastauslaatikkoon ei lisätä mitään, joten sivun ensisijainen kysymys pysyy ylimpänä.
 - **Sisältö:** yksi GitHub-laatikko per laji ja sarja (Hiihto M/N, Ampumahiihto M/N, Yhdistetty M/N). Otsikkorivillä "Kokonaiskilpailu · 4/32 kisaa". Kärkiviisikko pisteineen, johtajalla keltainen "Johtaa"-pilleri ja ero kakkoseen ("+45 p"). Jos paras suomalainen ei ole kärkiviisikossa, hänet näytetään erotinviivan alla omalla rivillään (esim. "12. NISKANEN Iivo 180 p"). Lajisuodatin koskee myös tätä välilehteä.
 - **Päivitys:** sama 1×/vrk Actions-ajo kuin muillakin lähteillä. Jos haku epäonnistuu, näytetään edellinen tallennettu tilanne ja sen päivämäärä.
 - **Lähteet** (ks. [DATALAHTEET.md §5](DATALAHTEET.md)):
@@ -104,10 +104,10 @@ Tavoite: kun kisat alkavat (hiihto Ruka 27.11., ampumahiihto Kontiolahti 26.11.)
   - Ampumahiihto: IBU:n rajapinta on suljettu (401). Ehdotus: englanninkielisen Wikipedian kausisivu "2026–27 Biathlon World Cup", jolla on Standings-taulukot, ja linkki biathlonworld.comiin. Vaihtoehto: ampumahiihto jätetään pois ja tilalle pelkkä linkki.
 - **Työmäärä:** FIS-jäsennin, testit tallennetulla sivulla ja välilehti noin 0,5 pv. Ampumahiihto Wikipediasta +2–3 h.
 
-Avoimet kysymykset (suositus ensin):
-1. Ampumahiihdon lähde: **Wikipedia (suositus)**, koska IBU on suljettu ja Wikipedia päivittyy yleensä samana päivänä / pelkkä linkki IBU:n sivulle.
-2. Yhdistetty mukaan? **Kyllä (suositus).** Cup on yksi kokonaisuus (mäki + hiihto). Sivulla näytetään vain hiihto-osuuden lähetykset, mutta pistetilanne on silti kiinnostava.
-3. Näytetäänkö myös matka- ja sprintticup? **Ei aluksi (suositus).** Vain kokonaiskilpailu, muut lisätään tarvittaessa.
+Päätökset 21.11.2026 (suositukset hyväksytty):
+1. Ampumahiihdon lähde on Wikipedia. Siellä on vain kärkikymmenikkö, joten paras suomalainen näkyy vain, jos hän on kymmenen joukossa.
+2. Yhdistetty on mukana (koko cupin pisteet, mäki + hiihto).
+3. Vain kokonaiskilpailu. Matka- ja sprintticup lisätään tarvittaessa.
 
 ### Arvio: kärkiurheilijoiden profiilit (FIS + Wikipedia) – EI TOTEUTETA VIELÄ
 

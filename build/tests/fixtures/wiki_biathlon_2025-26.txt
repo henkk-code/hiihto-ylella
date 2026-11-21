@@ -1,0 +1,58 @@
+==Men==
+=== Standings ===
+==== [[2025–26 Biathlon World Cup – Overall Men|Overall]] ====
+{| cellspacing="1" cellpadding="3" style="border:1px solid #AAAAAA;font-size:86%" 
+|-style="background-color: #E4E4E4;"
+!style="border-bottom:1px solid #AAAAAA; width: 10px;"|Rank
+!style="border-bottom:1px solid #AAAAAA; width: 210px;"|''final standings after 21 events''<ref>{{Cite web|title=Men's Total Score Points|url=https://www.biathlonworld.com/standings?SeasonId=2526&gender=men&athleteCup=1&DisciplineId=TS|publisher=www.biathlonworld.com}}</ref><ref name="Men's Overall"/>
+!style="border-bottom:1px solid #AAAAAA; width: 40px;"|Points 
+|- style="background:#f7f6a8;"
+| align=center| 1 || {{flagicon|FRA}} '''[[Éric Perrot]]''' [[Image:Bib Yellow.png|link=|alt=|18px]] || align=center|'''1263'''
+|- style="background:#dce5e5;"
+| align=center| 2 || {{flagicon|NOR}} [[Sturla Holm Lægreid]] || align=center|984
+|- style="background:#ffdab9;"
+| align=center| 3 || {{flagicon|NOR}} [[Johan-Olav Botn]] || align=center|968
+|-
+| align=center| 4 || {{flagicon|SWE}} [[Sebastian Samuelsson]] || align=center|918
+|-
+| align=center| 5 || {{flagicon|FRA}} [[Émilien Jacquelin]] || align=center|876
+|-
+| align=center| 6 || {{flagicon|ITA}} [[Tommaso Giacomel]] || align=center|797
+|-
+| align=center| 7 || {{flagicon|NOR}} [[Vetle Sjåstad Christiansen]] || align=center|736
+|-
+| align=center| 8 || {{flagicon|SWE}} [[Martin Ponsiluoma]] || align=center|727
+|-
+| align=center| 9 || {{flagicon|GER}} [[Philipp Nawrath]] || align=center|716
+|-
+| align=center| 10 || {{flagicon|NOR}} [[Johannes Dale-Skjevdal]] || align=center|697
+|}
+==Women==
+=== Standings ===
+==== [[2025–26 Biathlon World Cup – Overall Women|Overall]] ====
+{| cellspacing="1" cellpadding="3" style="border:1px solid #AAAAAA;font-size:86%" 
+|-style="background-color: #E4E4E4;"
+!style="border-bottom:1px solid #AAAAAA; width: 10px;"|Rank
+!style="border-bottom:1px solid #AAAAAA; width: 210px;"|''final standings after 21 events''<ref>{{Cite web|title=Women's Total Score Points|url=https://www.biathlonworld.com/standings?women=true&men=false&DisciplineId=TS&SeasonId=2526&athleteCup=1&gender=women|publisher=www.biathlonworld.com}}</ref><ref name="Women's Overall"/>
+!style="border-bottom:1px solid #AAAAAA; width: 40px;"|Points 
+|- style="background:#f7f6a8;"
+| align=center| 1 || {{flagicon|FRA}} '''[[Lou Jeanmonnot]]''' [[Image:Bib Yellow.png|link=|alt=|18px]] || align=center|'''1135'''
+|- style="background:#dce5e5;"
+| align=center| 2 || {{flagicon|SWE}} [[Hanna Öberg]] || align=center|958
+|- style="background:#ffdab9;"
+| align=center| 3 || {{flagicon|ITA}} [[Lisa Vittozzi]] || align=center|935
+|-
+| align=center| 4 || {{flagicon|SWE}} [[Elvira Öberg]] || align=center|922
+|-
+| align=center| 5 || {{flagicon|FIN}} [[Suvi Minkkinen]] || align=center|881
+|-
+| align=center| 6 || {{flagicon|FRA}} [[Julia Simon (biathlete)|Julia Simon]] || align=center|827
+|-
+| align=center| 7 || {{flagicon|SWE}} [[Anna Magnusson]] || align=center|803
+|-
+| align=center| 8 || {{flagicon|FRA}} [[Océane Michelon]] || align=center|651
+|-
+| align=center| 9 || {{flagicon|NOR}} [[Maren Kirkeeide]] || align=center|639
+|-
+| align=center| 10 || {{flagicon|FRA}} [[Camille Bened]] || align=center|600
+|}

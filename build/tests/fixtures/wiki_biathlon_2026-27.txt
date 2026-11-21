@@ -1,0 +1,58 @@
+==Men==
+=== Standings ===
+==== Overall ====
+{| cellspacing="1" cellpadding="3" style="border:1px solid #AAAAAA;font-size:86%" 
+|-style="background-color: #E4E4E4;"
+!style="border-bottom:1px solid #AAAAAA; width: 10px;"|Rank
+!style="border-bottom:1px solid #AAAAAA; width: 210px;"|''standings after 0 of 21 events''
+!style="border-bottom:1px solid #AAAAAA; width: 40px;"|Points 
+|- 
+| align=center| 1 || {{flagicon|}} [[Image:Bib Yellow.png|link=|alt=|18px]] || align=center|
+|- 
+| align=center| 2 || {{flagicon|}} || align=center|
+|- 
+| align=center| 3 || {{flagicon|}} || align=center|
+|-
+| align=center| 4 || {{flagicon|}} || align=center|
+|-
+| align=center| 5 || {{flagicon|}} || align=center|
+|-
+| align=center| 6 || {{flagicon|}} || align=center|
+|-
+| align=center| 7 || {{flagicon|}} || align=center|
+|-
+| align=center| 8 || {{flagicon|}} || align=center|
+|-
+| align=center| 9 || {{flagicon|}} || align=center|
+|-
+| align=center| 10 || {{flagicon|}} || align=center|
+|}
+==Women==
+=== Standings ===
+==== Overall ====
+{| cellspacing="1" cellpadding="3" style="border:1px solid #AAAAAA;font-size:86%" 
+|-style="background-color: #E4E4E4;"
+!style="border-bottom:1px solid #AAAAAA; width: 10px;"|Rank
+!style="border-bottom:1px solid #AAAAAA; width: 210px;"|''standings after 0 of 21 events''
+!style="border-bottom:1px solid #AAAAAA; width: 40px;"|Points 
+|- 
+| align=center| 1 || {{flagicon|}} [[Image:Bib Yellow.png|link=|alt=|18px]] || align=center|
+|- 
+| align=center| 2 || {{flagicon|}} || align=center|
+|- 
+| align=center| 3 || {{flagicon|}} || align=center|
+|-
+| align=center| 4 || {{flagicon|}} || align=center|
+|-
+| align=center| 5 || {{flagicon|}} || align=center|
+|-
+| align=center| 6 || {{flagicon|}} || align=center|
+|-
+| align=center| 7 || {{flagicon|}} || align=center|
+|-
+| align=center| 8 || {{flagicon|}} || align=center|
+|-
+| align=center| 9 || {{flagicon|}} || align=center|
+|-
+| align=center| 10 || {{flagicon|}} || align=center|
+|}

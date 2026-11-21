@@ -4,6 +4,7 @@
 1. data/events.json  – Ylen kausilista (käsin ylläpidetty)
 2. FIS iCal          – kisapäivät
 3. Telkku            – lähetysten kellonajat ja kanavat (~2 vk eteenpäin)
++ maailmancupin pistetilanne (FIS, Wikipedia)
 
 Jos FIS tai Telkku ei vastaa, käytetään edellisen julkaistun data.jsonin tietoja
 (hallittu heikkeneminen), joten sivu ei koskaan tyhjene.
@@ -23,6 +24,7 @@ sys.path.insert(0, str(HERE / "sources"))
 
 from classify import Classifier  # noqa: E402
 import fis  # noqa: E402
+import standings  # noqa: E402
 import telkku  # noqa: E402
 from net import fetch  # noqa: E402
 
@@ -227,6 +229,28 @@ def main() -> int:
         status["fis"] = {"ok": False, "error": str(exc)[:200],
                          "updated": prev_status.get("fis", {}).get("updated")}
 
+    # --- Maailmancupin pistetilanne ---------------------------------------------
+    st_cfg = dict(sources["standings"], season=sources["fis"]["season"])
+    prev_lists = {s["id"]: s for s in prev.get("standings", []) if s.get("season") == st_cfg["season"]}
+    try:
+        if args.offline:
+            raise RuntimeError("offline-tila")
+        lists, st_errors = standings.fetch_standings(st_cfg)
+    except Exception as exc:  # noqa: BLE001
+        lists, st_errors = [], {"kaikki": str(exc)[:200]}
+    got = {s["id"] for s in lists}
+    for sid, old in prev_lists.items():                      # epäonnistuneet listat edellisestä datasta
+        if sid not in got:
+            lists.append(old)
+    order = {t: i for i, t in enumerate(topics_cfg.get("display_order", []))}
+    lists.sort(key=lambda s: (order.get(s["topic"], 99), s["gender"]))
+    if st_errors:
+        print(f"VAROITUS: pistetilanne osin vanhaa dataa: {st_errors}", file=sys.stderr)
+        status["standings"] = {"ok": False, "error": "; ".join(f"{k}: {v}" for k, v in st_errors.items())[:300],
+                               "updated": prev_status.get("standings", {}).get("updated")}
+    else:
+        status["standings"] = {"ok": True, "updated": now.isoformat(timespec="minutes")}
+
     # --- Kokoa ---------------------------------------------------------------
     out_events = []
     for e in sorted(events, key=lambda e: (e["start"], e["sport"])):
@@ -249,12 +273,15 @@ def main() -> int:
                    for t in sorted(topics_cfg["topics"], key=lambda t: order.index(t["id"]) if t["id"] in order else 99)],
         "events": out_events,
         "broadcasts": broadcasts,
+        "standings": lists,
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     n_races = sum(len(v) for v in races_by_event.values())
     print(f"OK: {len(out_events) - len(other_events)} Ylen tapahtumaa + {len(other_events)} muuta, {n_races} kisaa, {len(broadcasts)} lähetystä → {out_path}")
-    print(f"    Telkku: {'ok' if status['telkku']['ok'] else 'VANHA DATA'}, FIS: {'ok' if status['fis']['ok'] else 'VANHA DATA'}")
+    print(f"    Telkku: {'ok' if status['telkku']['ok'] else 'VANHA DATA'}, FIS: {'ok' if status['fis']['ok'] else 'VANHA DATA'}, "
+          f"pisteet: {'ok' if status['standings']['ok'] else 'OSIN VANHA'} "
+          f"({', '.join(f'{s["id"]} {s["done"]}/{s["total"]}' for s in lists)})")
     return 0
 
 

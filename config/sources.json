@@ -12,6 +12,10 @@
     "days_back": 1,
     "days_ahead": 14
   },
+  "standings": {
+    "fis_base": "https://www.fis-ski.com/DB/{path}/cup-standings.html",
+    "wikipedia_api": "https://en.wikipedia.org/w/api.php"
+  },
   "fis": {
     "base": "https://www.fis-ski.com/DB/services/public/icalendar-feed-fis-events.html",
     "season": "2027",

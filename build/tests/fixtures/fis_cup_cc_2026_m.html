@@ -1,0 +1,800 @@
+<html><body>
+<select id="seasoncode" tabindex="3" data-module="select" title="select a season" onchange="fct_change_calendar_seasoncode(this);" name="seasoncode">
+	<option value="2027">2027</option>
+	<option value="2026" selected="selected">2026</option>
+	<option value="2025">2025</option>
+	<option value="2024">2024</option>
+	<option value="2023">2023</option>
+	<option value="2022">2022</option>
+	<option value="2021">2021</option>
+	<option value="2020">2020</option>
+	<option value="2019">2019</option>
+	<option value="2018">2018</option>
+	<option value="2017">2017</option>
+	<option value="2016">2016</option>
+	<option value="2015">2015</option>
+	<option value="2014">2014</option>
+	<option value="2013">2013</option>
+	<option value="2012">2012</option>
+	<option value="2011">2011</option>
+	<option value="2010">2010</option>
+	<option value="2009">2009</option>
+	<option value="2008">2008</option>
+	<option value="2007">2007</option>
+	<option value="2006">2006</option>
+	<option value="2005">2005</option>
+	<option value="2004">2004</option>
+	<option value="2003">2003</option>
+	<option value="2002">2002</option>
+	<option value="2001">2001</option>
+	<option value="2000">2000</option>
+	<option value="1999">1999</option>
+	<option value="1998">1998</option>
+	<option value="1997">1997</option>
+	<option value="1996">1996</option>
+	<option value="1995">1995</option>
+	<option value="1994">1994</option>
+	<option value="1993">1993</option>
+	<option value="1992">1992</option>
+	<option value="1991">1991</option>
+	<option value="1990">1990</option>
+	<option value="1989">1989</option>
+	<option value="1988">1988</option>
+	<option value="1987">1987</option>
+	<option value="1986">1986</option>
+	<option value="1985">1985</option>
+	<option value="1984">1984</option>
+	<option value="1983">1983</option>
+	<option value="1982">1982</option>
+</select>
+<select id="cupcode" tabindex="2" title="select a cup" data-module="select" onchange="fct_change_cup(this);" name="cupcode">
+	<option value="WC" selected="selected">World Cup</option>
+	<option value="BON">Le Gruy&egrave;re AOP Bonus</option>
+	<option value="ANC">Australia New Zealand Cup</option>
+	<option value="NC-QUOTOWG">Nation Ranking for OWG</option>
+	<option value="NC-WC">World Cup Nations Cup</option>
+	<option value="WCPR">World Cup Prize Money</option>
+	<option value="NC-ROLWC">Roller Ski Winner Nation World Cup</option>
+	<option value="ROLWC">Roller Skiing World Cup</option>
+	<option value="ROLJWC">Roller Skiing Junior World Cup</option>
+	<option value="WCU23">U23 World Cup Standing</option>
+	<option value="SEE">South East Europe Cup</option>
+	<option value="EEC">Eastern European Cup</option>
+	<option value="FEC">Far East Cup</option>
+	<option value="FESA">FESA Cup</option>
+	<option value="FESAU20">FESA U20 Cup</option>
+	<option value="SCAN">Scandinavian Cup</option>
+	<option value="SC">Slavic Cup</option>
+	<option value="UST">US Super Tour</option>
+	<option value="ROLAC">Roller Ski Asian Cup</option>
+	<option value="NC-ROLAC">Roller Ski Winner Nation Asian Cup</option>
+</select>
+<div id="cupstandingsdata" style="position: relative;">
+<div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="justify-left">
+                <span class="note note_text">After Men's 20km Mass Start Free Lake Placid (USA) 22-03-2026 (42/42)</span>
+            </div>
+
+        </div>
+<div class="table table_pb table_min_height" data-module="cells-join">
+    <div class="table__head">
+        <div class="sticky" data-module="sticky">
+            <div class="thead thead_striped hidden-sm-down">
+                <div class="container g-xs-24">
+                    <div class="g-md-4 g-lg-4 justify-left">Name</div>
+                    <div class="g-md-2 g-lg-2 justify-left"></div>
+                    <div class="g-md-2 g-lg-2 justify-left">Nation </div>
+                    <div class=" g-md-16 g-lg-16">
+                        <div class="g-md g-lg">
+                            <div class="g-md-8 g-lg-8 justify-right">&nbsp;</div>
+                            <div class="g-md-8 g-lg-8 justify-right pointer sort-by-down sort-by-active" onclick="fct_load_cupstandings('ALL')">ALL</div>
+                            <div class="g-md-8 g-lg-8 justify-right">&nbsp;</div>
+                        </div>
+                        <div class="g-md g-lg">
+                            <div class="g-md-8 g-lg-8 justify-right">&nbsp;</div>
+                            <div class="g-md-8 g-lg-8 justify-right pointer sort-by-down" onclick="fct_load_cupstandings('DI')">DI</div>
+                            <div class="g-md-8 g-lg-8 justify-right">&nbsp;</div>
+                        </div>
+                        <div class="g-md g-lg">
+                            <div class="g-md-8 g-lg-8 justify-right">&nbsp;</div>
+                            <div class="g-md-8 g-lg-8 justify-right pointer sort-by-down" onclick="fct_load_cupstandings('SP')">SP</div>
+                            <div class="g-md-8 g-lg-8 justify-right">&nbsp;</div>
+                        </div>
+                                        
+                    </div>
+                </div>
+            </div>
+            <div class="thead thead_striped hidden-md-up">
+                <div class="container g-xs-24">
+                    <div class="g-xs-10 g-sm-9 justify-left">Name</div>
+                    <div class="g-xs-5 g-sm-3 justify-left">Nation</div>
+                    <div class="g-xs-9 g-sm-12">
+                        <div class="g-xs-9 g-sm-14 justify-left">Disc.</div>
+                        <div class="g-xs-5 g-sm-4 justify-right">Rank</div>
+                                                    <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 justify-right">Points</div>
+                                            </div>
+                </div>
+            </div>
+            <div class="thead thead_slave hidden-sm-down">
+                <div class="container g-xs-24">
+                    <div class="g-md-4 justify-left"></div>
+                    <div class="g-md-2 g-lg-2"></div>
+                    <div class="g-md-2 justify-lg-left justify-md-left justify-sm-center"></div>
+                    <div class=" g-md-16 g-lg-16">
+                            <div class="g-lg g-md align-md-center">
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-md-5 g-lg-8 justify-right">Rank</div>
+                                                                    <div class="g-md-9 g-lg-8 justify-right">Points</div>
+                                                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-lg g-md align-md-center">
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-md-5 g-lg-8 justify-right">Rank</div>
+                                                                    <div class="g-md-9 g-lg-8 justify-right">Points</div>
+                                                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-lg g-md align-md-center">
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-md-5 g-lg-8 justify-right">Rank</div>
+                                                                    <div class="g-md-9 g-lg-8 justify-right">Points</div>
+                                                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table__body">
+        <div class="tbody">
+            <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=184205&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    KLAEBO Johannes Hoesflot
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-NOR"></span>
+</span>
+    <span class="country__name-short">NOR</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">1</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">2'301</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">1</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">1'166</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">1</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">835</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=197939&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    AMUNDSEN Harald Oestberg
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-NOR"></span>
+</span>
+    <span class="country__name-short">NOR</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">2</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">1'848</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">2</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">1'141</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">12</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">437</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=144918&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    PELLEGRINO Federico
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-ITA"></span>
+</span>
+    <span class="country__name-short">ITA</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">3</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">1'443</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">8</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">622</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">3</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">566</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=183928&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    STENSHAGEN Mattis
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-NOR"></span>
+</span>
+    <span class="country__name-short">NOR</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">4</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">1'316</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">5</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">926</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">49</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">105</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=264371&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    HEGGEN Lars
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-NOR"></span>
+</span>
+    <span class="country__name-short">NOR</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">5</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">1'218</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">26</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">336</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">2</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">657</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=217029&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    REE Andreas Fjorden
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-NOR"></span>
+</span>
+    <span class="country__name-short">NOR</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">6</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">1'121</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">3</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">980</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">119</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">3</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=207090&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    SCHUMACHER Gus
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-USA"></span>
+</span>
+    <span class="country__name-short">USA</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">7</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">1'113</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">12</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">524</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">16</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">373</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=231213&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    BARP Elia
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-ITA"></span>
+</span>
+    <span class="country__name-short">ITA</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">8</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">1'072</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">6</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">745</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">44</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">129</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=147076&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    NYENGET Martin Loewstroem
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-NOR"></span>
+</span>
+    <span class="country__name-short">NOR</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">9</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">972</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">4</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">972</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right"></div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">---</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=147554&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    IVERSEN Emil
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-NOR"></span>
+</span>
+    <span class="country__name-short">NOR</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">10</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">927</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">7</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">687</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right"></div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">---</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=176533&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    VUORINEN Lauri
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-FIN"></span>
+</span>
+    <span class="country__name-short">FIN</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">22</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">577</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">54</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">138</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">11</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">439</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=208085&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    RUUSKANEN Arsi
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-FIN"></span>
+</span>
+    <span class="country__name-short">FIN</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">23</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">542</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">10</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">542</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right"></div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">---</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        <a class="table-row  reset-padding" href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=176068&type=cups&cupcode=WC" target="_self">
+      
+                <div class="container g-row">
+                    <div class="g-xs-10 g-sm-9 g-md-4 g-lg-4 justify-left bold align-xs-top">
+    MAKI Joni
+                    
+                    </div>
+                        <div class="g-lg-2 g-md-2 justify-left hidden-sm-down">
+                                                    </div>
+                    <div class="g-xs-5 g-sm-3 g-md-2 g-lg-2 justify-left">
+                        <div class="country country_flag">
+                            <span class="country__flag">
+    <span class="flag flag-FIN"></span>
+</span>
+    <span class="country__name-short">FIN</span>
+                        </div>
+                    </div>                
+                    <div class="g-xs-9 g-sm-12 g-md-16 g-lg-16 flex-sm-wrap flex-xs-wrap">
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Overall</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">ALL</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right bold">42</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right bold">391</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Distance</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">DI</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">75</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">73</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                            <div class="g-xs-24 g-sm-24 g-md">
+                                <div class="g-sm-14 hidden-md-up justify-left hidden-xs">Sprint</div>
+                                <div class="g-xs-9 hidden-sm-up justify-left">SP</div>
+                                <div class="g-md-4 g-lg-3 hidden-sm hidden-xs">&nbsp;</div>
+                                <div class="g-xs-5 g-sm-4 g-md-5 g-lg-8 justify-right">29</div>
+                                <div class="g-xs-1 g-md-1 hidden-sm hidden-lg">&nbsp;</div>
+                                <div class="pl-xs-1 pl-sm-1 g-xs-10 g-sm-7 g-md-9 g-lg-8 justify-right">264</div>
+                                <div class="g-md-6 g-lg-4 hidden-sm hidden-xs">&nbsp;</div>
+                            </div>
+                    </div>
+                </div>
+            </a>
+            </a>
+
+                        
+</body></html>

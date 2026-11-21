@@ -11,6 +11,7 @@ Julkinen sivu, josta näkee yhdellä silmäyksellä, **näyttääkö Yle hiihtoa
 | Tapahtumat | Mitkä tapahtumat Yle näyttää | [Ylen kausilista](https://yle.fi/a/74-20251336), käsin tiedostossa `data/events.json` |
 | Kisat | Kisaohjelma päivittäin | FIS:n virallinen iCal-syöte |
 | Lähetykset | Kellonaika, kanava, vain suorat | Telkku.comin TV-opas (~2 vk eteenpäin) |
+| Pistetilanne | Maailmancupin kokonaiskilpailun kärki + paras suomalainen | FIS (hiihto, yhdistetty), en.wikipedia (ampumahiihto) |
 
 Jos FIS tai Telkku ei vastaa, build käyttää edellisen julkaisun tietoja. Sivu ei siis koskaan tyhjene.
 Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DATALAHTEET.md).
@@ -19,7 +20,7 @@ Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DA
 
 - **Tapahtuma lisätään tai muutetaan:** muokkaa `data/events.json` ja pushaa. Actions julkaisee sivun automaattisesti.
 - **Lajitunnistus** (mitkä lähetykset näytetään): `config/topics.json`
-- **Kanavat ja FIS-syötteet:** `config/sources.json`. Uudella kaudella vaihda `fis.season` (esim. `2028`) ja päivitä `events.json`.
+- **Kanavat ja FIS-syötteet:** `config/sources.json`. Uudella kaudella vaihda `fis.season` (esim. `2028`) ja päivitä `events.json`. Sama kausi ohjaa pistetilannetta (FIS-sivut ja Wikipedian sivu "2027–28 Biathlon World Cup").
 - **Päivitys:** GitHub Actions ajaa buildin kaksi kertaa päivässä, aina pushin jälkeen ja tarvittaessa käsin (Actions → "Päivitä ja julkaise" → Run workflow).
 
 ## Paikallisesti

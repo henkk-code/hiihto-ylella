@@ -32,6 +32,7 @@
   --ski: #0969DA;    --ski-bg: #DDF4FF;
   --bia: #9A6700;    --bia-bg: #FFF5C2;
   --nk: #127A7F;     --nk-bg: #D5F4F2;
+  --lead: #7D4E00;   --lead-bg: #FFF8C5;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color-scheme: light;
 }
@@ -46,6 +47,7 @@
     --ski: #58A6FF;   --ski-bg: rgba(56, 139, 253, .16);
     --bia: #D9A53A;   --bia-bg: rgba(187, 128, 9, .2);
     --nk: #3CCFC4;    --nk-bg: rgba(57, 197, 187, .15);
+    --lead: #E3B341;  --lead-bg: rgba(210, 153, 34, .18);
     color-scheme: dark;
   }
 }
@@ -59,6 +61,7 @@
   --ski: #58A6FF;   --ski-bg: rgba(56, 139, 253, .16);
   --bia: #D9A53A;   --bia-bg: rgba(187, 128, 9, .2);
   --nk: #3CCFC4;    --nk-bg: rgba(57, 197, 187, .15);
+  --lead: #E3B341;  --lead-bg: rgba(210, 153, 34, .18);
   color-scheme: dark;
 }
 .s-hiihto { --c: var(--ski); --cbg: var(--ski-bg); }
@@ -199,6 +202,7 @@ main.wrap { padding-top: 24px; }
   font: inherit; font-size: 15px; color: var(--muted); background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap;
 }
 .tab:hover { color: var(--text); border-bottom-color: var(--border); }
+.tab[hidden] { display: none; }
 .tab[aria-selected="true"] { color: var(--text); font-weight: 600; border-bottom-color: var(--accent); }
 .panel { margin-top: 16px; }
 
@@ -230,6 +234,26 @@ button.ev-row:hover { background: var(--hover); }
   .ev .r .soon { display: none; }
   .detail { padding: 0 12px 14px 12px; }
 }
+
+/* --- Maailmancup --- */
+.mc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 679px) { .mc-grid { grid-template-columns: 1fr; } }
+.box-head strong { color: var(--text); font-weight: 700; font-size: 14px; }
+.box-head a { color: var(--muted); }
+.sr { display: grid; grid-template-columns: 28px 1fr auto; gap: 0 10px; align-items: baseline; padding: 9px 16px; }
+.sr .rk { font-weight: 600; color: var(--muted); text-align: right; }
+.sr .nm { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.sr .nm a { color: var(--text); }
+.sr .nat { margin-left: 6px; color: var(--muted); font-size: 13px; font-weight: 400; }
+.sr .nat.home { color: var(--text); font-weight: 600; }
+.sr .pt { font-weight: 600; text-align: right; white-space: nowrap; }
+.sr .gap { display: block; color: var(--faint); font-size: 12px; font-weight: 400; line-height: 16px; }
+.sr.lead { box-shadow: inset 3px 0 0 var(--c); }
+.sr.lead .rk { color: var(--text); }
+.pill-lead { margin-left: 6px; background: var(--lead-bg); color: var(--lead); }
+.sep { padding: 4px 16px; background: var(--box-2); border-top: 1px solid var(--border-muted); border-bottom: 1px solid var(--border-muted); color: var(--muted); font-size: 12px; }
+.mc-note { margin-top: 12px; color: var(--muted); font-size: 13px; }
+@media (max-width: 599px) { .sr, .sep { padding-left: 12px; padding-right: 12px; } }
 
 /* --- Alalaita --- */
 footer { margin-top: 40px; padding: 20px 0 40px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; line-height: 20px; }
@@ -277,6 +301,9 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     <button class="tab" role="tab" id="tab-season" aria-controls="panel-season" data-tab="kausi" aria-selected="false">
       <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="1.5"/><path d="M1.5 6.5h13M5 1v3M11 1v3"/></svg>
       Kauden kisat <span class="counter" id="cnt-season">0</span></button>
+    <button class="tab" role="tab" id="tab-mc" aria-controls="panel-mc" data-tab="maailmancup" aria-selected="false" hidden>
+      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 2h7v4a3.5 3.5 0 0 1-7 0V2zM8 9.5V12M5.5 14.5h5M4.5 3.5h-2a2 2 0 0 0 2 3M11.5 3.5h2a2 2 0 0 1-2 3"/></svg>
+      Maailmancup <span class="counter" id="cnt-mc">0</span></button>
   </nav>
 
   <section class="panel" id="panel-bc" role="tabpanel" aria-labelledby="tab-bc"></section>
@@ -289,6 +316,8 @@ dialog form { padding: 0 16px 16px; text-align: right; }
       <ul class="rows" id="events"></ul>
     </div>
   </section>
+
+  <section class="panel" id="panel-mc" role="tabpanel" aria-labelledby="tab-mc" hidden></section>
 
   <footer id="footer"><noscript><p>Sivu tarvitsee JavaScriptin.</p></noscript></footer>
 </main>
@@ -396,19 +425,29 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   updateThemeUI();
 
   // --- Välilehdet (URL-hash) ---
-  const TABS = { lahetykset: ["tab-bc", "panel-bc"], kausi: ["tab-season", "panel-season"] };
-  let tab = location.hash === "#kausi" ? "kausi" : "lahetykset";
+  const TABS = { lahetykset: ["tab-bc", "panel-bc"], kausi: ["tab-season", "panel-season"], maailmancup: ["tab-mc", "panel-mc"] };
+  const tabFromHash = () => { const h = location.hash.slice(1); return TABS[h] ? h : "lahetykset"; };
+  const tabVisible = (n) => !$(TABS[n][0]).hidden;
+  let tab = tabFromHash();
   function showTab(name, push) {
+    if (!tabVisible(name)) name = "lahetykset";
     tab = name;
     for (const [n, [t, p]] of Object.entries(TABS)) {
       $(t).setAttribute("aria-selected", n === name);
       $(t).tabIndex = n === name ? 0 : -1;
       $(p).hidden = n !== name;
     }
-    if (push) history.replaceState(null, "", name === "lahetykset" ? location.pathname + location.search : "#kausi");
+    if (push) history.replaceState(null, "", name === "lahetykset" ? location.pathname + location.search : "#" + name);
+    const nav = document.querySelector(".tabs"), el = $(TABS[name][0]);   // kapealla näytöllä valittu välilehti näkyviin
+    const r = el.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.right > n.right || r.left < n.left) nav.scrollLeft += r.left - n.left - 8;
+  }
+  function cycleTab(d) {
+    const names = Object.keys(TABS).filter(tabVisible);
+    return names[(names.indexOf(tab) + d + names.length) % names.length];
   }
   document.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.tab, true)));
-  window.addEventListener("hashchange", () => showTab(location.hash === "#kausi" ? "kausi" : "lahetykset", false));
+  window.addEventListener("hashchange", () => showTab(tabFromHash(), false));
   showTab(tab, false);
 
   // --- Tila ---
@@ -535,6 +574,47 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     }).join("");
   }
 
+  // --- Maailmancup ---
+  const GENDER_LABEL = { M: "Miehet", N: "Naiset" };
+  const SHOW_TOP = 5;
+  const fmtPts = (n) => n.toLocaleString("fi-FI");
+  function standingsBox(s) {
+    const t = topicById()[s.topic];
+    const top = s.rows.slice(0, SHOW_TOP);
+    const home = top.some((r) => r.nation === "FIN") ? null : s.rows.find((r) => r.nation === "FIN");
+    const lead = s.rows[0], second = s.rows[1];
+    const row = (r) => {
+      const isLead = r === lead;
+      const gap = isLead ? (second ? `+${fmtPts(r.points - second.points)}` : "") : `−${fmtPts(lead.points - r.points)}`;
+      const name = r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>` : esc(r.name);
+      return `<li class="sr nav-row${isLead ? " lead" : ""}" tabindex="-1" data-k="s:${esc(s.id)}:${r.rank}:${esc(r.name)}">
+        <span class="rk">${r.rank}.</span>
+        <span class="nm">${name}<span class="nat${r.nation === "FIN" ? " home" : ""}">${esc(r.nation)}</span>${isLead ? `<span class="pill pill-lead">Johtaa</span>` : ""}</span>
+        <span class="pt">${fmtPts(r.points)} p${gap ? `<span class="gap">${gap}</span>` : ""}</span>
+      </li>`;
+    };
+    return `<div class="box s-${esc(s.topic)}">
+      <div class="box-head">${sportPill(s.topic, t ? t.label : s.topic)}<strong>${GENDER_LABEL[s.gender] || s.gender}</strong>
+        <span class="grow"></span><span>${s.done}${s.total ? `/${s.total}` : ""} kisaa</span>
+        <a href="${esc(s.url)}" target="_blank" rel="noopener" title="Koko pistetilanne: ${esc(s.source)}">${esc(s.source)} ↗</a></div>
+      <ul class="rows">${top.map(row).join("")}</ul>
+      ${home ? `<div class="sep">Paras suomalainen</div><ul class="rows">${row(home)}</ul>` : ""}
+    </div>`;
+  }
+  function renderStandings() {
+    const all = (DATA.standings || []).filter((s) => s.done > 0 && s.rows.length);
+    $("tab-mc").hidden = all.length === 0;
+    if (!all.length) { if (tab === "maailmancup") showTab("lahetykset", false); return; }
+    if (tabFromHash() === "maailmancup" && tab !== "maailmancup") showTab("maailmancup", false);
+    const shown = all.filter((s) => active.has(s.topic));
+    $("cnt-mc").textContent = shown.length;
+    const bia = shown.some((s) => s.source === "Wikipedia");
+    $("panel-mc").innerHTML = shown.length
+      ? `<div class="mc-grid">${shown.map(standingsBox).join("")}</div>
+         <p class="mc-note">Kokonaispisteet. Lähteet: FIS (hiihto, yhdistetty)${bia ? " ja Wikipedia (ampumahiihto; vain kärkikymmenikkö, joten paras suomalainen näkyy vain sen sisällä)" : ""}.</p>`
+      : `<div class="box"><p class="empty">Valituissa lajeissa ei ole vielä ajettu maailmancupin kisoja.</p></div>`;
+  }
+
   function render() {
     const focusKey = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.k : null;
     $("filters").querySelectorAll("button[data-id]").forEach((b) => b.setAttribute("aria-pressed", active.has(b.dataset.id)));
@@ -620,6 +700,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     tp.hidden = past.length === 0;
     tp.textContent = showPast ? "Piilota menneet" : `Näytä menneet (${past.length})`;
 
+    renderStandings();
     renderStatus();
 
     if (focusKey) {
@@ -641,11 +722,12 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     $("banner").innerHTML = warn.length ? `<div class="banner" role="status">⚠️ ${warn.join(" ")}</div>` : "";
 
     $("footer").innerHTML = `
-      <p>Päivitetty ${esc(genTxt)} · TV-opas ${st(s.telkku)} · FIS ${st(s.fis)}</p>
+      <p>Päivitetty ${esc(genTxt)} · TV-opas ${st(s.telkku)} · FIS ${st(s.fis)} · pistetilanne ${st(s.standings)}</p>
       <p>Vain suorat lähetykset Ylen TV-kanavilla, noin kaksi viikkoa eteenpäin. Pelkästään Areenassa näytettävät lähetykset eivät näy TV-oppaassa, joten tarkista myös <a href="https://areena.yle.fi/tv/opas" target="_blank" rel="noopener">Areenan opas</a>.</p>
       <p>Lähteet: <a href="${esc(DATA.source.url)}" target="_blank" rel="noopener">${esc(DATA.source.name)}</a> (kisat) ·
       <a href="https://www.fis-ski.com/DB/cross-country/calendar-results.html" target="_blank" rel="noopener">FIS</a> (kisaohjelma) ·
-      <a href="https://www.telkku.com/" target="_blank" rel="noopener">Telkku.com</a> (lähetysajat). Epävirallinen harrastesivu, ei Ylen palvelu.</p>
+      <a href="https://www.telkku.com/" target="_blank" rel="noopener">Telkku.com</a> (lähetysajat) ·
+      FIS ja Wikipedia (pistetilanne). Epävirallinen harrastesivu, ei Ylen palvelu.</p>
       <button class="text-btn keys-btn" type="button" id="keys-btn" data-k="keys">⌨️ Pikanäppäimet (?)</button>`;
     $("keys-btn").addEventListener("click", openKeys);
   }
@@ -676,7 +758,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   });
   document.querySelector(".tabs").addEventListener("keydown", (e) => {
     if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-    const next = tab === "kausi" ? "lahetykset" : "kausi";
+    const next = cycleTab(e.key === "ArrowRight" ? 1 : -1);
     showTab(next, true); $(TABS[next][0]).focus(); e.preventDefault();
   });
 
@@ -688,7 +770,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     const k = e.key;
     if (k === "t") { toggleTheme(); e.preventDefault(); return; }
     if (k === "?") { openKeys(); e.preventDefault(); return; }
-    if (k === "v") { showTab(tab === "kausi" ? "lahetykset" : "kausi", true); e.preventDefault(); return; }
+    if (k === "v") { showTab(cycleTab(1), true); e.preventDefault(); return; }
     if (!DATA) return;
     if (/^[1-9]$/.test(k)) {
       const topic = DATA.topics[+k - 1];

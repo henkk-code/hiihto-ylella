@@ -14,6 +14,7 @@ sys.path.insert(0, str(BUILD / "sources"))
 
 import build  # noqa: E402
 import fis  # noqa: E402
+import standings  # noqa: E402
 import telkku  # noqa: E402
 from classify import Classifier  # noqa: E402
 
@@ -127,6 +128,45 @@ class TestMatching(unittest.TestCase):
 
     def test_no_match_outside_events(self):
         self.assertIsNone(build.match_event(EVENTS, "hiihto", date(2026, 12, 20), "Maastohiihto: jotain"))
+
+
+class TestStandings(unittest.TestCase):
+    def test_fis_overall(self):
+        r = standings.parse_fis((FIX / "fis_cup_cc_2026_m.html").read_text(encoding="utf-8"), "2026")
+        self.assertEqual((r["done"], r["total"]), (42, 42))
+        self.assertEqual(r["rows"][0], {
+            "rank": 1, "name": "Johannes Hoesflot Klaebo", "nation": "NOR", "points": 2301,
+            "url": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=CC&competitorid=184205&type=cups&cupcode=WC"})
+        trimmed = standings.trim(r["rows"])
+        self.assertEqual(len(trimmed), 11)                       # kärki-10 + paras suomalainen
+        self.assertEqual((trimmed[-1]["rank"], trimmed[-1]["name"], trimmed[-1]["nation"]), (22, "Lauri Vuorinen", "FIN"))
+
+    def test_fis_wrong_cup_or_season(self):
+        # ennen kauden 1. MC-kisaa FIS näyttää toisen cupin → ei dataa
+        page = (FIX / "fis_cup_nk_2027_offseason.html").read_text(encoding="utf-8")
+        self.assertIsNone(standings.parse_fis(page, "2027"))
+        cc = (FIX / "fis_cup_cc_2026_m.html").read_text(encoding="utf-8")
+        self.assertIsNone(standings.parse_fis(cc, "2027"))       # kausi ei täsmää
+
+    def test_display_name(self):
+        self.assertEqual(standings.display_name("NISKANEN Iivo"), "Iivo Niskanen")
+        self.assertEqual(standings.display_name("DE CAMPO Seve"), "Seve De Campo")
+        self.assertEqual(standings.display_name("WALKER-BROOSE Bentley"), "Bentley Walker-Broose")
+
+    def test_wiki_biathlon(self):
+        p = standings.parse_wiki((FIX / "wiki_biathlon_2025-26.txt").read_text(encoding="utf-8"))
+        self.assertEqual(set(p), {"M", "N"})
+        self.assertEqual((p["M"]["done"], p["M"]["total"], len(p["M"]["rows"])), (21, 21, 10))
+        self.assertEqual({k: p["M"]["rows"][0][k] for k in ("rank", "name", "nation", "points")},
+                         {"rank": 1, "name": "Éric Perrot", "nation": "FRA", "points": 1263})
+        self.assertEqual(p["N"]["rows"][0]["name"], "Lou Jeanmonnot")
+
+    def test_wiki_empty_season(self):
+        p = standings.parse_wiki((FIX / "wiki_biathlon_2026-27.txt").read_text(encoding="utf-8"))
+        self.assertEqual((p["M"]["done"], p["M"]["rows"]), (0, []))
+
+    def test_wiki_title(self):
+        self.assertEqual(standings.wiki_title("2027"), "2026–27 Biathlon World Cup")
 
 
 if __name__ == "__main__":
