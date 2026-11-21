@@ -100,6 +100,7 @@ kentällä `"tour_de_ski": true`. Muuten TV-oppaan otsikoista poistetaan virheel
 
 **Vaihe 3 – Laajennus** (tarpeen mukaan)
 - Muut lajit Ylen listalta (alppihiihto ym.) ja muut ilmaiskanavat (MTV3 ym.) Telkun kautta
+- Kaikki urheilu ilmaiskanavilla + Disney+ omalle sivulle, ks. [SUUNNITELMA-URHEILU.md](SUUNNITELMA-URHEILU.md) (v0.2, hyväksytty 21.11.2026, ei vielä toteutettu)
 
 **Vaihe 4 – Maailmancupin pistetilanne** (✅ hyväksytty ja toteutettu 21.11.2026)
 
