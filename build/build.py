@@ -199,14 +199,17 @@ def build_sports_page(out_path: Path, sources: dict, programs: list[dict] | None
         broadcasts = [b for b in prev.get("broadcasts", []) if b.get("end", "") >= cutoff]
         status = {"ok": False, "error": ski_status.get("error"),
                   "updated": prev.get("status", {}).get("telkku", {}).get("updated")}
-    data = sports.page_data(cfg, broadcasts, status, now, tk["days_ahead"])
+    dp = load_json(ROOT / "data" / "disneyplus.json")
+    disney = {k: dp[k] for k in ("url", "content", "source") if k in dp}
+    disney["games"] = sports.disney_games(dp, broadcasts, tz, now)
+    data = sports.page_data(cfg, broadcasts, status, now, tk["days_ahead"], disney)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     by_sport: dict[str, int] = {}
     for b in broadcasts:
         by_sport[b["sport"]] = by_sport.get(b["sport"], 0) + 1
     print(f"OK: urheilusivu {len(broadcasts)} lähetystä ({', '.join(f'{k} {v}' for k, v in by_sport.items())})"
-          f"{'' if status['ok'] else ' – VANHA DATA'} → {out_path}")
+          f", Disney+ käsin {len(disney['games'])}{'' if status['ok'] else ' – VANHA DATA'} → {out_path}")
 
 
 def main() -> int:

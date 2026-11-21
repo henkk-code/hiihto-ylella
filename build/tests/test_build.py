@@ -332,7 +332,33 @@ class TestSports(unittest.TestCase):
         self.assertTrue(self.find("2026-11-27T11:25", "Yle TV2").get("ski"))           # hiihto
         self.assertNotIn("ski", self.find("2026-11-27T19:05", "Yle TV2"))              # mäkihyppy
         self.assertNotIn("ski", self.find("2026-11-28T14:25", "Viaplay TV"))           # mäkihyppy, ei Yle
-        self.assertNotIn("live_url", self.find("2026-11-21T22:35", "Star Channel"))     # ei varmistettua linkkiä
+        self.assertNotIn("live_url", self.find("2026-11-21T20:00", "Kutonen"))          # ei varmistettua linkkiä
+
+    def test_star_channel_also_on_disney(self):
+        b = self.find("2026-11-21T22:35", "Star Channel")
+        self.assertEqual((b["also_on"], b["watch"], b["live_url"]), ("Disney+", "Disney+", "https://www.disneyplus.com/fi-fi"))
+        self.assertNotIn("also_on", self.find("2026-11-22T19:30", "MTV Sub"))   # NHL muualla: ei merkintää
+
+    def test_disney_manual_games(self):
+        from datetime import datetime
+        tz = ZoneInfo("Europe/Helsinki")
+        dp = {"url": "https://www.disneyplus.com/fi-fi", "games": [
+            {"start": "2026-11-20T02:00", "title": "Menneet - Ottelut", "competition": "NHL"},     # mennyt
+            {"start": "2026-11-21T22:45", "title": "Calgary Flames - Chicago Blackhawks", "competition": "NHL"},  # Star Channelilla
+            {"start": "2026-11-23T01:30", "title": "Detroit Red Wings - New York Rangers", "competition": "NHL"},
+            {"start": "huomenna", "title": "Rikki"},                                                # virheellinen
+        ]}
+        games = sports.disney_games(dp, self.bcs, tz, datetime(2026, 11, 21, 20, 0, tzinfo=tz))
+        self.assertEqual([(g["start"], g["title"], g["channel"]) for g in games],
+                         [("2026-11-23T01:30+02:00", "Detroit Red Wings – New York Rangers", "Disney+")])
+        self.assertEqual(games[0]["end"], "2026-11-23T04:30+02:00")
+
+    def test_disney_file_valid(self):
+        dp = json.loads((ROOT / "data" / "disneyplus.json").read_text(encoding="utf-8"))
+        ids = {s["id"] for s in SPORTS["sports"]}
+        self.assertTrue(dp["url"].startswith("https://"))
+        self.assertTrue(all(c["sport"] in ids for c in dp["content"]))
+        self.assertTrue(all(g.get("sport", "jaakiekko") in ids for g in dp["games"]))
 
     def test_parse_rules(self):
         rules = sports.SportRules(SPORTS)

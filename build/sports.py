@@ -111,6 +111,9 @@ def build_broadcasts(programs: list[dict], channels: dict, rules: SportRules, tz
         }
         if ski_classifier and ch_id in ski_channels and ski_classifier.classify(title):
             row["ski"] = True
+        also = ch.get("also_on")                         # Star Channelin NHL näkyy myös Disney+:ssa
+        if also and info["competition"] == also.get("competition", info["competition"]):
+            row.update(also_on=also["label"], watch=also["label"], live_url=also["url"])
         rows.append(row)
 
     # Geneerinen jatko-ohjelma ("Liiga") saman kanavan saman lajin lähetyksen perässä → yksi lähetys.
@@ -133,7 +136,38 @@ def build_broadcasts(programs: list[dict], channels: dict, rules: SportRules, tz
     return out
 
 
-def page_data(cfg: dict, broadcasts: list[dict], status_telkku: dict, now: datetime, horizon_days: int) -> dict:
+def disney_games(dp: dict, broadcasts: list[dict], tz: ZoneInfo, now: datetime) -> list[dict]:
+    """Käsin ylläpidetyt Disney+-ottelut (data/disneyplus.json). Menneet ja Star Channelin kanssa
+    päällekkäiset (sama sarja, alku ±30 min) jätetään pois. Virheellinen rivi ohitetaan varoituksella."""
+    star = [datetime.fromisoformat(b["start"]) for b in broadcasts if b.get("also_on") == "Disney+"]
+    out = []
+    for i, g in enumerate(dp.get("games", [])):
+        try:
+            start = datetime.fromisoformat(g["start"]).replace(tzinfo=tz)
+            end = start + timedelta(minutes=int(g.get("duration_min", 180)))
+            title = g["title"].strip()
+        except (KeyError, TypeError, ValueError) as exc:
+            print(f"VAROITUS: data/disneyplus.json rivi {i + 1} ohitettu: {exc}")
+            continue
+        if end < now or any(abs(start - s) <= timedelta(minutes=30) for s in star):
+            continue
+        out.append({
+            "id": f"disneyplus-{start:%Y%m%d%H%M}-{i}",
+            "sport": g.get("sport", "jaakiekko"),
+            "competition": g.get("competition", ""),
+            "title": dash(title),
+            "channel": "Disney+",
+            "watch": "Disney+",
+            "live_url": dp.get("url"),
+            "start": start.isoformat(timespec="minutes"),
+            "end": end.isoformat(timespec="minutes"),
+        })
+    out.sort(key=lambda r: r["start"])
+    return out
+
+
+def page_data(cfg: dict, broadcasts: list[dict], status_telkku: dict, now: datetime, horizon_days: int,
+              disney: dict | None = None) -> dict:
     order = cfg.get("display_order", [])
     return {
         "generated": now.isoformat(timespec="minutes"),
@@ -142,4 +176,5 @@ def page_data(cfg: dict, broadcasts: list[dict], status_telkku: dict, now: datet
         "sports": [{"id": s["id"], "label": s["label"], "emoji": s["emoji"]}
                    for s in sorted(cfg["sports"], key=lambda s: order.index(s["id"]) if s["id"] in order else 99)],
         "broadcasts": broadcasts,
+        "disneyplus": disney or {},
     }

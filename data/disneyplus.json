@@ -1,0 +1,10 @@
+{
+  "_comment": "Disney+ (urheilusivu, SUUNNITELMA-URHEILU.md §4b). Ylläpidetään käsin, kun Disney+ julkaisee ottelulistan (ePressi). games-rivi: start = Suomen aika 'YYYY-MM-DDTHH:MM', title = 'Koti – Vieras', competition, sport (config/sports.json:n id), duration_min (valinnainen, oletus 180). Menneet ottelut putoavat pois automaattisesti, ja Star Channelin kanssa päällekkäiset ottelut näytetään vain kerran.",
+  "url": "https://www.disneyplus.com/fi-fi",
+  "content": [
+    { "sport": "jaakiekko", "text": "NHL: 160 runkosarjaottelua ja 20 pudotuspeliottelua kaudella 2026–27, selostus suomeksi" },
+    { "sport": "jalkapallo", "text": "LALIGA ja naisten Mestarien liiga" }
+  ],
+  "source": { "name": "Disney+ / ePressi", "url": "https://www.epressi.com/tiedotteet.html?customer=7467" },
+  "games": []
+}

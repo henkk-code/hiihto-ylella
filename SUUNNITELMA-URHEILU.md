@@ -1,6 +1,15 @@
-# Urheilu ilmaiseksi – laajennussuunnitelma (v0.2)
+# Urheilu ilmaiseksi – laajennussuunnitelma (v0.3)
 
-*Päivitetty 2026-11-21. Tila: **suunnitelma ja suositukset hyväksytty 21.11.2026**, toteutusjärjestys §10:ssä. Tarkentaa [SUUNNITELMA.md](SUUNNITELMA.md):n vaihetta 3 (Laajennus).*
+*Päivitetty 2026-11-21. Tila: **U1 ja U2 toteutettu 21.11.2026** → https://henkk-code.github.io/hiihto-ylella/urheilu/ · U3 (Disney+-listat käsin) tehdään, kun Disney+ julkaisee listan. Tarkentaa [SUUNNITELMA.md](SUUNNITELMA.md):n vaihetta 3 (Laajennus).*
+
+Muutokset v0.2 → v0.3 (toteutuksessa tarkentui):
+- Viaplay TV:n maksuttomuus varmistettu: vapaa kanava 6.11.2025 alkaen, antenni- ja kaapeliverkon paikka 21.
+- Katselunapit: Areena kanavakohtaisesti, MTV ja Ruutu kanavalistaan (palveluissa ei ole vakaita kanavaosoitteita), Viaplay TV:n oma sivu, Star Channelin NHL → Disney+. Warnerin kanavilta (Kutonen, TV5, TLC, Frii) nappi puuttuu.
+- Vastauslaatikko: pe–su koko viikonloppu, arkisin tämä päivä ja rivi viikonlopun määrästä (viikossa noin 50 lähetystä).
+- Lajipillerit omalla rivillään yläpalkissa (7 kpl), mobiilissa pelkät emojit. Kaikki-tilassa ensimmäinen klikkaus valitsee vain sen lajin, `0` palauttaa kaikki. Muut-lajin emoji 🏅.
+- Kanavasuodatinta ei tehty: Disney+-välilehti hoitaa saman. Vain Disney+:ssa näkyvät ottelut ovat vain Disney+-välilehdellä, joten pääsivun "ilmaiskanavilla" pitää paikkansa.
+- Studio-ohjelmat pudotetaan vain, jos ne ovat alle 60 min (pitkä "Ennakkostudio: … LIVE" on ottelu). MTV3:n "Liiga"-jatko-ohjelma yhdistetään edeltävään Hockey Night -otteluun.
+- Teemavalinta on yhteinen molemmilla sivuilla.
 
 Muutokset v0.1 → v0.2:
 - §9:n kaikki viisi suositusta hyväksytty.

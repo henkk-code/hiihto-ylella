@@ -29,6 +29,7 @@ Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DA
 - **Suomen cupin tulokset:** SC-tapahtumalle kenttä `results_page` = Hiihtoliiton tapahtumasivu (esim. `https://hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/`). Build poimii sivulta tulos-PDF:t. Lisäksi `live_results` = EQ Eventsin live-tulospalvelu (esim. `https://live.time4results.com/hiihto/2027/ruka/`), josta haetaan sprintin finaaliajat.
 - **Lajitunnistus** (mitkä lähetykset näytetään): `config/topics.json` (hiihtosivu) ja `config/sports.json` (urheilusivu: lajit, sarjat, poissulut, geneeriset otsikot)
 - **Urheilusivun kanavat ja katselulinkit:** `config/sources.json` → `telkku.free_channels`
+- **Disney+-ottelut:** kun Disney+ julkaisee ottelulistan (ePressi), lisää rivit tiedostoon `data/disneyplus.json` (`start` Suomen aikaa, `title`, `competition`, `sport`) ja pushaa. Menneet ottelut putoavat pois itsestään, ja Star Channelin ottelut tulevat TV-oppaasta automaattisesti.
 - **Kanavat ja FIS-syötteet:** `config/sources.json`. Uudella kaudella vaihda `fis.season` (esim. `2028`) ja päivitä `events.json`. Sama kausi ohjaa pistetilannetta (FIS-sivut ja Wikipedian sivu "2027–28 Biathlon World Cup").
 - **Päivitys:** GitHub Actions ajaa buildin kaksi kertaa päivässä (5.20 ja 15.20), kisapäivinä (MC, MM, SC, SM) myös klo 22.20, aina pushin jälkeen ja tarvittaessa käsin (Actions → "Päivitä ja julkaise" → Run workflow).
 

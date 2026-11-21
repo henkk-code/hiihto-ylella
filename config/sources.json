@@ -22,7 +22,7 @@
       "619": { "name": "Liv", "watch": "Ruutu", "live_url": "https://www.ruutu.fi/kanavat" },
       "620": { "name": "Hero", "watch": "Ruutu", "live_url": "https://www.ruutu.fi/kanavat" },
       "13786": { "name": "Viaplay TV", "watch": "Viaplay TV", "live_url": "https://viaplaytv.fi/" },
-      "557": { "name": "Star Channel" },
+      "557": { "name": "Star Channel", "also_on": { "label": "Disney+", "url": "https://www.disneyplus.com/fi-fi", "competition": "NHL" } },
       "393": { "name": "Kutonen" },
       "556": { "name": "TV5" },
       "555": { "name": "Frii" },

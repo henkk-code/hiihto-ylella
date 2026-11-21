@@ -49,6 +49,12 @@
 }
 .hero-sub .pill-sport { gap: 5px; }
 .meta .comp { color: var(--text); }
+.panel .box + .box { margin-top: 16px; }
+.box-head + .grp { border-top: 0; }
+.dp-item { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; padding: 10px 16px; font-size: 14px; }
+.dp-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 16px; border-top: 1px solid var(--border-muted); color: var(--muted); font-size: 13px; }
+.box-note { padding: 10px 16px; border-top: 1px solid var(--border-muted); color: var(--muted); font-size: 13px; }
+@media (max-width: 599px) { .dp-item, .dp-foot, .box-note { padding-left: 12px; padding-right: 12px; } }
 </style>
 </head>
 <body>
@@ -74,9 +80,13 @@
     <button class="tab" role="tab" id="tab-bc" aria-controls="panel-bc" data-tab="lahetykset" aria-selected="true">
       <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M5.5 14.5h5"/></svg>
       Tulevat lähetykset <span class="counter" id="cnt-bc">0</span></button>
+    <button class="tab" role="tab" id="tab-dp" aria-controls="panel-dp" data-tab="disney" aria-selected="false">
+      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2"/><path d="M6.5 5.5v5l4-2.5z" fill="currentColor" stroke="none"/></svg>
+      Disney+ <span class="counter" id="cnt-dp">0</span></button>
   </nav>
 
   <section class="panel" id="panel-bc" role="tabpanel" aria-labelledby="tab-bc"></section>
+  <section class="panel" id="panel-dp" role="tabpanel" aria-labelledby="tab-dp" hidden></section>
 
   <footer id="footer"><noscript><p>Sivu tarvitsee JavaScriptin.</p></noscript></footer>
 </main>
@@ -166,7 +176,7 @@
   updateThemeUI();
 
   // --- Välilehdet (URL-hash) ---
-  const TABS = { lahetykset: ["tab-bc", "panel-bc"] };
+  const TABS = { lahetykset: ["tab-bc", "panel-bc"], disney: ["tab-dp", "panel-dp"] };
   const tabFromHash = () => { const h = location.hash.slice(1); return TABS[h] ? h : "lahetykset"; };
   let tab = tabFromHash();
   function showTab(name, push) {
@@ -231,11 +241,12 @@
       : `<span class="btn-sm" title="TV-kanava">${ICON.tv}${esc(chName(b.channel))}</span>`;
     const comp = b.competition && b.competition !== b.title ? `<span class="comp">${ICON.trophy}${esc(b.competition)}</span>` : "";
     const ski = b.ski ? `<span><a href="../" data-k="s:${esc(b.id)}">Hiihto Ylellä →</a></span>` : "";
+    const also = b.also_on ? `<span class="pill pill-gray">myös ${esc(b.also_on)}</span>` : "";
     return `<li class="bc s-${esc(s.id)} nav-row${isNow ? " is-live" : ""}" tabindex="-1" data-k="b:${esc(b.id)}">
       <div class="t"><span class="t0">${time(b.start)}</span><span class="t1">–${time(b.end)}</span></div>
       <div>
         <div class="title">${isNow ? `<span class="pill pill-live">LIVE</span>` : ""}${esc(b.title)}</div>
-        <div class="meta">${sportPill(s)}${comp}${ski}</div>
+        <div class="meta">${sportPill(s)}${comp}${also}${ski}</div>
       </div>
       <div>${ch}</div>
     </li>`;
@@ -331,11 +342,36 @@
       ? dayGroups(later, now, todayKey)
       : `<p class="empty">Ei muita tiedossa olevia lähetyksiä${esc(scope)}. TV-opas ulottuu noin kaksi viikkoa eteenpäin.</p>`}</div>`;
 
+    renderDisney(now, todayKey);
     renderStatus();
     if (focusKey) {
       const el = document.querySelector(`[data-k="${CSS.escape(focusKey)}"]`);
       if (el && el !== document.activeElement) el.focus({ preventScroll: true });
     }
+  }
+
+  // --- Disney+ (ainoa poikkeus ilmaiskanaviin) ---
+  function renderDisney(now, todayKey) {
+    const dp = DATA.disneyplus || {};
+    const upcoming = (b) => active.has(b.sport) && new Date(b.end) > now;
+    const star = DATA.broadcasts.filter((b) => b.also_on === "Disney+" && upcoming(b));
+    const manual = (dp.games || []).filter(upcoming);
+    const list = [...star, ...manual].sort((a, b) => a.start.localeCompare(b.start));
+    const sports = sportById();
+    $("cnt-dp").textContent = list.length;
+    const items = (dp.content || []).map((c) => `<li class="dp-item">${sports[c.sport] ? sportPill(sports[c.sport]) : ""}<span>${esc(c.text)}</span></li>`).join("");
+    const src = dp.source ? ` · Lähde: <a href="${esc(dp.source.url)}" target="_blank" rel="noopener">${esc(dp.source.name)}</a>` : "";
+    $("panel-dp").innerHTML = `
+      <div class="box">
+        <div class="box-head"><strong>Disney+</strong><span class="grow">Maksullinen suoratoistopalvelu – sivun ainoa poikkeus ilmaiskanaviin</span></div>
+        <ul class="rows">${items}</ul>
+        <div class="dp-foot">${dp.url ? `<a class="btn-primary" href="${esc(dp.url)}" target="_blank" rel="noopener" data-k="dp-open">${ICON.play}Avaa Disney+</a>` : ""}<span>Koko ohjelma on Disney+-sovelluksessa${src}</span></div>
+      </div>
+      <div class="box">
+        <div class="box-head"><span class="grow">Tulevat ottelut · Star Channelin ottelut näkyvät myös ilmaiseksi</span></div>
+        ${list.length ? dayGroups(list, now, todayKey) : `<p class="empty">Ei tiedossa olevia Disney+-otteluita${allActive() ? "" : " valituissa lajeissa"}.</p>`}
+        ${manual.length ? "" : `<p class="box-note">Disney+ ei ole julkaissut listaa otteluista, jotka näkyvät vain Disney+:ssa. Listalla ovat siksi vain Star Channelin ottelut TV-oppaasta.</p>`}
+      </div>`;
   }
 
   function renderStatus() {
@@ -349,7 +385,7 @@
     $("footer").innerHTML = `
       <p>Päivitetty ${esc(genTxt)} · TV-opas ${!s ? "–" : s.ok ? `<span class="ok">ok</span>` : `<span class="err">ei päivittynyt</span>`}</p>
       <p>Vain suorat lähetykset maksuttomilla TV-kanavilla (Yle, MTV3, Nelonen, Sub, Jim, Kutonen, Star Channel, Viaplay TV …), noin kaksi viikkoa eteenpäin. Koosteet, studiot ja uusinnat eivät ole mukana. Pelkät suoratoistot (esim. osa Areenan, Ruudun ja MTV:n urheilusta) eivät näy TV-oppaassa.</p>
-      <p>Lähde: <a href="https://www.telkku.com/" target="_blank" rel="noopener">Telkku.com</a> (lähetysajat). Hiihto ja ampumahiihto tarkemmin: <a href="../">Hiihto Ylellä</a>. Epävirallinen harrastesivu.</p>
+      <p>Lähteet: <a href="https://www.telkku.com/" target="_blank" rel="noopener">Telkku.com</a> (lähetysajat) · Disney+:n tiedotteet (Disney+-ottelut). Hiihto ja ampumahiihto tarkemmin: <a href="../">Hiihto Ylellä</a>. Epävirallinen harrastesivu.</p>
       <button class="text-btn keys-btn" type="button" id="keys-btn" data-k="keys">⌨️ Pikanäppäimet (?)</button>`;
     $("keys-btn").addEventListener("click", openKeys);
   }
