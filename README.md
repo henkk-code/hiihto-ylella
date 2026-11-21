@@ -12,6 +12,7 @@ Julkinen sivu, josta näkee yhdellä silmäyksellä, **näyttääkö Yle hiihtoa
 | Kisat | Kisaohjelma päivittäin | FIS:n virallinen iCal-syöte |
 | Lähetykset | Kellonaika, kanava, vain suorat | Telkku.comin TV-opas (~2 vk eteenpäin) |
 | Pistetilanne | Maailmancupin kokonaiskilpailun kärki + paras suomalainen | FIS (hiihto, yhdistetty), en.wikipedia (ampumahiihto) |
+| Hiihtäjät | Maastohiihdon kärkikymmenikön ja parhaan suomalaisen profiili: kauden MC-tulokset, uran MC-voitot, olympia- ja MM-mitalit, esittely | FIS-urheilijasivut, Wikidata, fi.wikipedia |
 
 Jos FIS tai Telkku ei vastaa, build käyttää edellisen julkaisun tietoja. Sivu ei siis koskaan tyhjene.
 Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DATALAHTEET.md).

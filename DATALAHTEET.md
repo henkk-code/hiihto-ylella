@@ -101,7 +101,12 @@ https://www.fis-ski.com/DB/{cross-country|nordic-combined}/cup-standings.html?se
 **Ampumahiihto:** `api.biathlonresults.com` palauttaa 401 (vain `Seasons` on auki), joten sitä ei käytetä.
 Ehdotus: en.wikipedia "2026–27 Biathlon World Cup" (MediaWiki API `action=parse`). Sivu on olemassa ja siinä on Standings → Overall (M/N). Vapaaehtoisten ylläpitämä ja yleensä ajan tasalla kisapäivän iltana.
 
-**Profiilit (arvio, ei toteuteta):** Wikidata `P2773` = FIS competitorid (4 001 hiihtäjää), Wikipedia REST `page/summary` (ingressi ja kuva, CC BY-SA), FIS athlete-biography-sivu (HTML). Ks. SUUNNITELMA.md.
+**Hiihtäjäprofiilit (vaihe 5, käytössä, testattu 2026-11-21):**
+- FIS `athlete-biography.html?sectorcode=CC&competitorid={id}&seasoncode=2027&categorycode=WC&type=result`: kauden MC-tulokset (`<a class="table-row">`-rivit: päivä, paikka, kisa, sijoitus, FIS-pisteet) sekä bio (syntymäaika, seura, välineet).
+- FIS `…&type=podiums`: taulukko "World Cup Podiums – Individual", jossa kausi ja sijat 1/2/3 (Tour de Skin osakilpailut mukana). Muut välilehdet (Statistics, Cups) piirtyvät JavaScriptillä, joten niitä ei käytetä. `categorycode` ei vaikuta taulukkoon.
+- FIS `…&type=result&categorycode={OWG|WSC}&seasoncode=` (tyhjä = kaikki kaudet): arvokisatulokset → mitalit. Tuloslistassa ovat myös viestit ja parisprintit, toisin kuin podiums-taulukossa.
+- Wikidata SPARQL `?item wdt:P2773 "{id}"`: P19 syntymäpaikka ja fi-sitelinkki (P18 kuva on saatavilla, ei käytössä). Yksi kysely kaikille (`VALUES`). P2773 löytyy 4 001 hiihtäjältä.
+- Wikipedia REST `/api/rest_v1/page/summary/{title}`: ingressi (CC BY-SA, lähde mainittava).
 
 ## 6. Hylätyt / varalla
 - **Areenan TV-opasrajapinta** (`areena.api.yle.fi/v1/ui/schedules/…`): ilman Ylen web-sovelluksen tunnisteita HTTP 403. Tunnisteiden käyttö julkisella sivulla ei ole asiallista. Hylätty.

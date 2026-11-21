@@ -1,8 +1,11 @@
-# Hiihto Ylellä – projektisuunnitelma (v0.4)
+# Hiihto Ylellä – projektisuunnitelma (v0.5)
 
-*Päivitetty 2026-11-21. Tila: **vaiheet 1 ja 4 (pistetilanne) julkaistu** → https://henkk-code.github.io/hiihto-ylella/*
+*Päivitetty 2026-11-21. Tila: **vaiheet 1, 4 (pistetilanne) ja 5 (hiihtäjäprofiilit) toteutettu** → https://henkk-code.github.io/hiihto-ylella/*
 
 **Nykytila (20.11.2026):** Ylen suorat lähetykset kellonaikoineen (Telkku), kauden Yle-tapahtumat (Ylen lista) ja FIS-kisaohjelma. Maastohiihdon maailmancupin kisat, joita Yle ei näytä (Davos, Tour de Ski, Engadin, Oslo, Drammen), näkyvät kauden listalla harmaina ("Ei Ylellä"). Vaihe 2 on peruttu. Mahdollinen jatko on vaihe 3 (muut lajit/kanavat).
+
+Muutokset v0.4 → v0.5:
+- **Vaihe 5 – Hiihtäjäprofiilit (taso B, vain maastohiihto)**, ks. §4: kärkikymmenikkö + paras suomalainen, ei kuvia, olympia- ja MM-mitalit emojeina. Tason A/B/C-arvio korvattu tällä.
 
 Muutokset v0.2 → v0.3:
 - **Kellonajat ja kanava mukaan jo MVP:ssä.** Lähteenä Telkku.comin (Iltalehti) julkinen TV-opasrajapinta. Testattu, toimii, ei avainta.
@@ -109,28 +112,46 @@ Päätökset 21.11.2026 (suositukset hyväksytty):
 2. Yhdistetty on mukana (koko cupin pisteet, mäki + hiihto).
 3. Vain kokonaiskilpailu. Matka- ja sprintticup lisätään tarvittaessa.
 
-### Arvio: kärkiurheilijoiden profiilit (FIS + Wikipedia) – EI TOTEUTETA VIELÄ
+**Vaihe 5 – Hiihtäjäprofiilit, taso B** (✅ hyväksytty muutoksin ja toteutettu 21.11.2026)
 
-**Mitä datasta saa (testattu 21.11.2026, Iivo Niskanen):**
+Tavoite: Maailmancup-välilehdellä hiihtäjän rivi aukeaa, ja siitä näkee yhdellä silmäyksellä, kuka hän on ja miten hänen kautensa ja uransa ovat menneet. **Vain maastohiihto.** Yhdistetyssä ja ampumahiihdossa nimi on edelleen linkki lähteeseen.
 
-| Lähde | Antaa | Huom. |
-|---|---|---|
-| **Wikidata** (avoin API, SPARQL) | syntymäaika, -paikka, seura, kuva (Commons), **FIS-tunniste P2773** | Avainlöydös: P2773 = FIS:n `competitorid` (Iivolla 150212 → oikea FIS-sivu). Tunniste löytyy 4 001 hiihtäjältä. Nimien sovitusta "NISKANEN Iivo" ↔ "Iivo Niskanen" ei siis tarvita. |
-| **Wikipedia fi** (REST `page/summary`) | 1–3 lauseen ingressi ja pikkukuva | Lisenssi CC BY-SA, joten lähde ja linkki on mainittava. Kuvien lisenssit vaihtelevat (Commons). |
-| **FIS-urheilijasivu** (HTML) | FIS-koodi, seura, välineet (sukset, monot, sauvat), harrastukset, FIS-pisteet, tuloslista suodattimin | Jäsennettävä HTML-sivu, joka voi muuttua. Tuloshistoria vaatii useita sivulatauksia per urheilija. |
-| **IBU** | – | Rajapinta suljettu. Ampumahiihtäjistä saa vain Wikidata- ja Wikipedia-tiedot, ei tulostilastoja. |
+**Kenelle:** hiihdon pistetilanteen kärkikymmenikkö ja paras suomalainen kummassakin sarjassa, eli enintään 22 hiihtäjää. Laatikossa näkyy oletuksena kärkiviisikko, ja alalaidan nappi "Näytä sijat 6–10" avaa loput (kaikissa lajeissa). Lista seuraa pistetilannetta automaattisesti: kun kärkikymmenikköön nousee uusi hiihtäjä, hänen profiilinsa haetaan seuraavassa ajossa, ja pudonneen profiili poistuu.
 
-**Vaiva kolmessa tasossa:**
+**Rivillä** (aina näkyvissä, jos mitaleja on): olympia- ja MM-mitalit emojeina, esim. "Olympia 🥇3 🥈1 🥉1 · MM 🥇1 🥈1 🥉2". Lajia ei eritellä. Viestit ja parisprintit lasketaan mukaan.
 
-| Taso | Sisältö | Työ | Ylläpito |
+**Avautuvassa profiilissa** (saman laatikon sisällä, ei kuvia):
+- ikä, seura (FIS) ja syntymäpaikka (Wikidata)
+- 1–2 virkkeen ingressi suomenkielisestä Wikipediasta ja maininta "Wikipedia, CC BY-SA". Jos fi-artikkelia ei ole, ingressiä ei näytetä.
+- uran MC-voitot ja -palkintosijat (henkilökohtaiset, Tour de Skin osakilpailut mukana)
+- kauden MC-kisat sijoituksineen: kuusi uusinta ja linkki "Kaikki N kisaa ↗" FIS:iin. Palkintosijoille 🥇🥈🥉.
+- linkit: FIS-profiili ↗ ja Wikipedia ↗
+- Nimen tai rivin klikkaus tai Enter avaa ja sulkee profiilin. Vain yksi profiili on auki kerrallaan.
+
+**Datan kulku** (kaikki buildissa, `build/sources/athletes.py`):
+
+| # | Lähde | Haku | Antaa |
 |---|---|---|---|
-| **A. Kevyt** | Pistetilanteen rivi aukeaa: kuva, ikä, seura, Wikipedia-ingressi, linkit FIS:iin ja Wikipediaan, sijoitus cupissa | ~0,5–1 pv (vaiheen 4 päälle) | Pieni. Urheilijalista syntyy automaattisesti pistetilanteen kärjestä, ja Wikidata hakee loput. |
-| **B. Tilastot** | + uran MC-voitot ja -palkintosijat, kauden kisat sijoituksineen (FIS-tuloslista) | +1–2 pv | Keskisuuri. FIS-sivujen jäsennin hajoaa sivumuutoksissa. Vain hiihto ja yhdistetty. |
-| **C. Omat profiilisivut** | Erillinen sivu per urheilija, kuvaajat, vertailut | 3–5 pv | Suuri. Ei sovi kertasilmäyssivun luonteeseen (CLAUDE.md). |
+| 1 | Pistetilanne (jo olemassa) | – | FIS `competitorid` rivin linkistä |
+| 2 | FIS `athlete-biography.html?…&type=result&categorycode=WC&seasoncode=2027` | 1 / hiihtäjä | kauden MC-tulokset, seura, syntymäaika |
+| 3 | FIS `…&type=podiums` | 1 / hiihtäjä | MC-palkintosijat kausittain → uran summat |
+| 4 | FIS `…&type=result&categorycode=OWG` ja `WSC` (kaikki kaudet) | 2 / hiihtäjä | olympia- ja MM-mitalit (sijat 1–3) |
+| 5 | Wikidata SPARQL, `P2773` = FIS-id | 1 kysely kaikille | syntymäpaikka, fi-Wikipedia-artikkeli |
+| 6 | fi.wikipedia REST `page/summary` | 1 / hiihtäjä (jos artikkeli on) | ingressi |
 
-**Suositus:** taso A pistetilanteen jatkeeksi. Data kulkee pistetilanne → FIS-id → Wikidata (SPARQL P2773) → Wikipedia, ja kaikki haetaan buildissa 1×/vrk.
-B kannattaa vain, jos A:ta oikeasti käytetään. C ei sovi sivun tarkoitukseen.
-Riskit: Wikidatasta voi puuttua tunniste (uudet nuoret hiihtäjät, jolloin näytetään pelkkä nimi ja FIS-linkki), kuvien lisenssimerkinnät ja ampumahiihdon tilastoaukko.
+Testattu 21.11.2026: Iivo Niskasella olympialaisista 3 kultaa, 1 hopea ja 1 pronssi (parisprintti 2014 mukana), MM-kisoista 1–1–2, MC-uralla 10 voittoa ja 26 palkintosijaa. Klæbolla 103 MC-voittoa. Kauden 2025–26 kärkikymmeniköillä (21 hiihtäjää) tuli 84 FIS-hakua ilman virheitä, ja fi-artikkeli löytyi 20 hiihtäjältä.
+
+**Päivitystahti:** tulokset ja ura haetaan uudelleen, kun hiihtäjän MC-pisteet muuttuvat tai tieto on yli viikon vanha. Mitalit haetaan kerran viikossa ja MM-kisojen aikana (± 1 pv) joka ajossa. FIS-hakujen välissä on 1 sekunnin tauko. Jos haku epäonnistuu, käytetään edellistä profiilia, ja alalaidan tilarivillä näkyy "profiilit: ei päivittynyt".
+
+**Hallittu heikkeneminen:**
+- Wikidatasta puuttuu FIS-tunniste: FIS-tiedot ja mitalit näytetään, ingressi ja syntymäpaikka jäävät pois.
+- FIS-sivun rakenne muuttuu: jäsennin nostaa virheen, testit tallennetuilla sivuilla huomaavat sen, ja sivulla näytetään edellinen profiili.
+
+Päätökset 21.11.2026:
+1. Kuvia ei näytetä (ehkä myöhemmin).
+2. Profiili tehdään kärkikymmenikölle ja parhaalle suomalaiselle.
+3. Ingressi vain suomenkielisestä Wikipediasta, ei englanninkielistä varalähdettä.
+4. Lisäys: olympia- ja MM-mitalit emojeina riville.
 
 ## 5. Hakemistorakenne
 

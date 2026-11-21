@@ -1,0 +1,36 @@
+{
+  "head" : {
+    "vars" : [ "fis", "fiwiki", "birthplaceLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "fiwiki" : {
+        "type" : "uri",
+        "value" : "https://fi.wikipedia.org/wiki/Iivo_Niskanen"
+      },
+      "fis" : {
+        "type" : "literal",
+        "value" : "150212"
+      },
+      "birthplaceLabel" : {
+        "xml:lang" : "fi",
+        "type" : "literal",
+        "value" : "Oulu"
+      }
+    }, {
+      "fiwiki" : {
+        "type" : "uri",
+        "value" : "https://fi.wikipedia.org/wiki/Johannes_H%C3%B8sflot_Kl%C3%A6bo"
+      },
+      "fis" : {
+        "type" : "literal",
+        "value" : "184205"
+      },
+      "birthplaceLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oslo"
+      }
+    } ]
+  }
+}

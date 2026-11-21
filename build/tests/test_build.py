@@ -12,6 +12,7 @@ ROOT = BUILD.parent
 sys.path.insert(0, str(BUILD))
 sys.path.insert(0, str(BUILD / "sources"))
 
+import athletes  # noqa: E402
 import build  # noqa: E402
 import fis  # noqa: E402
 import raceday  # noqa: E402
@@ -168,6 +169,109 @@ class TestStandings(unittest.TestCase):
 
     def test_wiki_title(self):
         self.assertEqual(standings.wiki_title("2027"), "2026–27 Biathlon World Cup")
+
+
+class TestAthletes(unittest.TestCase):
+    def page(self, name):
+        return (FIX / name).read_text(encoding="utf-8")
+
+    def test_bio(self):
+        self.assertEqual(athletes.parse_bio(self.page("fis_athlete_150212_wc_2026.html")),
+                         {"club": "Puijon Hiihtoseura", "birthdate": "1992-01-12"})
+
+    def test_season_results(self):
+        res = athletes.parse_results(self.page("fis_athlete_150212_wc_2026.html"))
+        self.assertEqual(len(res), 10)
+        self.assertEqual(res[0], {"raceid": "49517", "date": "2026-03-08", "place": "Lahti",
+                                  "category": "World Cup", "race": "Interval Start", "rank": 5})
+        self.assertEqual(res[2]["category"], "Stage World Cup")            # Tour de Ski mukana
+        self.assertEqual(res[2]["rank"], 10)                               # "10 (27)" → 10
+        self.assertIn("DNS", [r["rank"] for r in res])
+        self.assertEqual(res, sorted(res, key=lambda r: r["date"], reverse=True))
+
+    def test_empty_season(self):
+        self.assertEqual(athletes.parse_results(self.page("fis_athlete_150212_wc_2027_empty.html")), [])
+
+    def test_broken_page(self):
+        with self.assertRaises(RuntimeError):
+            athletes.parse_results("<html>huoltokatko</html>")
+        with self.assertRaises(RuntimeError):
+            athletes.parse_podiums("<html></html>")
+
+    def test_career(self):
+        self.assertEqual(athletes.parse_podiums(self.page("fis_athlete_150212_podiums.html")), {"wins": 10, "podiums": 26})
+
+    def test_medals(self):
+        ol = athletes.count_medals(athletes.parse_results(self.page("fis_athlete_150212_owg.html")))
+        mm = athletes.count_medals(athletes.parse_results(self.page("fis_athlete_150212_wsc.html")))
+        self.assertEqual(ol, {"g": 3, "s": 1, "b": 1})                    # parisprintti 2014 mukana
+        self.assertEqual(mm, {"g": 1, "s": 1, "b": 2})
+
+    def test_race_label(self):
+        r = {"raceid": "1", "race": "Sprint Final"}
+        self.assertEqual(athletes.race_label(r, {}), "sprintti")
+        self.assertEqual(athletes.race_label(r, {"1": "1,2 km sprintin finaalit (p)"}), "1,2 km sprintti (p)")
+        self.assertEqual(athletes.race_label({"raceid": "2", "race": "Heat Mass Start"}, {}), "yhteislähtö (erät)")
+
+    def test_wikidata(self):
+        wd = athletes.parse_wikidata(json.loads(self.page("wikidata_p2773.json")))
+        self.assertEqual(wd["150212"], {"wiki_url": "https://fi.wikipedia.org/wiki/Iivo_Niskanen", "birthplace": "Oulu"})
+        self.assertIn("184205", wd)
+
+    def test_summary(self):
+        text = athletes.parse_summary(json.loads(self.page("wiki_summary_iivo.json")))
+        self.assertTrue(text.startswith("Iivo Henrik Niskanen"))
+        self.assertIsNone(athletes.parse_summary({"type": "disambiguation", "extract": "x"}))
+        long = "Ensimmäinen virke on tässä ja se on aika pitkä. " * 4 + "Viimeinen."
+        short = athletes.shorten(long, 120)
+        self.assertTrue(short.endswith("pitkä.") and len(short) <= 120)
+
+    def test_targets_only_cross_country(self):
+        mk = lambda topic, cid, pts: {"id": f"{topic}-M", "topic": topic,
+                                      "rows": [{"points": pts, "url": f"https://x/?competitorid={cid}&type=cups"}]}
+        t = athletes.targets([mk("hiihto", "1", 100), mk("yhdistetty", "2", 50), mk("ampumahiihto", "3", 10)])
+        self.assertEqual([x["id"] for x in t], ["1"])
+
+    def test_champs_window(self):
+        ev = [{"type": "MM", "start": "2027-02-17", "end": "2027-03-01"}, {"type": "MC", "start": "2026-11-27", "end": "2026-11-29"}]
+        self.assertTrue(athletes.champs_active(ev, date(2027, 3, 2)))
+        self.assertFalse(athletes.champs_active(ev, date(2026, 11, 28)))
+
+    def test_refresh_reuses_previous(self):
+        """Pisteet ennallaan ja tieto tuore → ei hakuja; pudonnut hiihtäjä jää pois."""
+        from datetime import datetime
+        now = datetime(2026, 12, 1, 6, 0)
+        stamp = now.isoformat(timespec="minutes")
+        prev = {"1": {"id": "1", "points": 100, "season_code": "2027", "updated": stamp, "medals_updated": stamp,
+                      "wiki_checked": stamp, "career": {"wins": 1, "podiums": 2}},
+                "9": {"id": "9", "points": 5}}
+        lists = [{"id": "hiihto-M", "topic": "hiihto", "rows": [{"points": 100, "url": "?competitorid=1"}]}]
+        orig = athletes.fetch
+        athletes.fetch = lambda url: (_ for _ in ()).throw(AssertionError(f"ei pitänyt hakea: {url}"))
+        try:
+            prof, err = athletes.fetch_profiles(lists, prev, "2027", {}, now, champs=False, delay=0)
+        finally:
+            athletes.fetch = orig
+        self.assertEqual(err, {})
+        self.assertEqual(list(prof), ["1"])
+        self.assertEqual(prof["1"]["career"], {"wins": 1, "podiums": 2})
+
+    def test_failed_fetch_keeps_previous(self):
+        from datetime import datetime
+        now = datetime(2026, 12, 1, 6, 0)
+        prev = {"1": {"id": "1", "points": 50, "season_code": "2027", "updated": "2026-11-30T06:00",
+                      "career": {"wins": 1, "podiums": 2}}}
+        lists = [{"id": "hiihto-M", "topic": "hiihto", "rows": [{"points": 100, "url": "?competitorid=1"},
+                                                                {"points": 90, "url": "?competitorid=2"}]}]
+        orig = athletes.fetch
+        athletes.fetch = lambda url: (_ for _ in ()).throw(RuntimeError("verkkovirhe"))
+        try:
+            prof, err = athletes.fetch_profiles(lists, prev, "2027", {}, now, champs=False, delay=0)
+        finally:
+            athletes.fetch = orig
+        self.assertEqual(prof["1"]["career"], {"wins": 1, "podiums": 2})   # vanha säilyy
+        self.assertNotIn("2", prof)                                        # uusi ilman dataa → ei profiilia
+        self.assertIn("1", err)
 
 
 class TestRaceDay(unittest.TestCase):

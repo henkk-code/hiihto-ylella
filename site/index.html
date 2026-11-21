@@ -236,7 +236,7 @@ button.ev-row:hover { background: var(--hover); }
 }
 
 /* --- Maailmancup --- */
-.mc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
 @media (max-width: 679px) { .mc-grid { grid-template-columns: 1fr; } }
 .box-head strong { color: var(--text); font-weight: 700; font-size: 14px; }
 .box-head a { color: var(--muted); }
@@ -253,7 +253,38 @@ button.ev-row:hover { background: var(--hover); }
 .pill-lead { margin-left: 6px; background: var(--lead-bg); color: var(--lead); }
 .sep { padding: 4px 16px; background: var(--box-2); border-top: 1px solid var(--border-muted); border-bottom: 1px solid var(--border-muted); color: var(--muted); font-size: 12px; }
 .mc-note { margin-top: 12px; color: var(--muted); font-size: 13px; }
-@media (max-width: 599px) { .sr, .sep { padding-left: 12px; padding-right: 12px; } }
+.box-more { display: block; width: 100%; padding: 8px 16px; font: inherit; font-size: 13px; color: var(--muted); text-align: center; background: var(--box-2); border: 0; border-top: 1px solid var(--border-muted); cursor: pointer; }
+.box-more:hover { color: var(--text); }
+/* Hiihtäjäprofiili */
+.sr .medals { display: block; margin-top: 1px; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 18px; }
+.sr .md { white-space: nowrap; }
+.sr .md + .md { margin-left: 10px; }
+.sr .md-l { margin-right: 4px; font-weight: 600; }
+.sr.has-prof { cursor: pointer; }
+.sr.has-prof:hover { background: var(--hover); }
+.nm-btn { padding: 0; font: inherit; font-weight: 600; color: var(--text); text-align: left; background: none; border: 0; cursor: pointer; }
+.nm-btn:hover { text-decoration: underline; }
+.nm-btn .chev { width: 12px; height: 12px; margin-left: 3px; vertical-align: -1px; color: var(--faint); transition: transform .15s; }
+.nm-btn[aria-expanded="true"] .chev { transform: rotate(90deg); }
+.rows > li.prof { border-top: 0; }
+.prof { padding: 0 16px 14px 54px; font-size: 14px; line-height: 22px; }
+.prof-meta { color: var(--muted); font-size: 13px; }
+.prof-text { margin-top: 6px; }
+.prof-src { color: var(--faint); font-size: 12px; white-space: nowrap; }
+.prof-src a { color: var(--faint); }
+.prof-stats { display: flex; flex-wrap: wrap; gap: 2px 16px; margin-top: 8px; color: var(--muted); font-size: 13px; }
+.prof-stats strong { color: var(--text); font-size: 14px; font-weight: 600; }
+.prof-h { margin-top: 12px; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+.pr { list-style: none; margin: 4px 0 0; padding: 0; }
+.pr li { display: grid; grid-template-columns: 40px 1fr auto; gap: 0 10px; font-size: 13px; line-height: 22px; }
+.pr .d { color: var(--muted); }
+.pr .what { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pr .what a { color: var(--text); }
+.pr .rkk { font-weight: 600; text-align: right; white-space: nowrap; }
+.pr .rkk.out { color: var(--faint); font-weight: 400; }
+.prof-empty { margin-top: 4px; color: var(--muted); font-size: 13px; }
+.prof-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 13px; }
+@media (max-width: 599px) { .sr, .sep { padding-left: 12px; padding-right: 12px; } .prof { padding-left: 12px; padding-right: 12px; } }
 
 /* --- Alalaita --- */
 footer { margin-top: 40px; padding: 20px 0 40px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; line-height: 20px; }
@@ -328,7 +359,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     <dt><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></dt><dd>Laji päälle / pois</dd>
     <dt><kbd>v</kbd></dt><dd>Vaihda välilehteä</dd>
     <dt><kbd>j</kbd> <kbd>k</kbd></dt><dd>Seuraava / edellinen rivi</dd>
-    <dt><kbd>Enter</kbd></dt><dd>Avaa kisat tai Areena</dd>
+    <dt><kbd>Enter</kbd></dt><dd>Avaa kisat, Areena tai hiihtäjän tiedot</dd>
     <dt><kbd>m</kbd></dt><dd>Menneet kisat</dd>
     <dt><kbd>t</kbd></dt><dd>Vaalea / tumma teema</dd>
     <dt><kbd>?</kbd></dt><dd>Tämä ohje</dd>
@@ -455,6 +486,8 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   let active = new Set();
   let showPast = false;
   const openEvents = new Set();
+  let openProfile = null;                 // avoinna olevan hiihtäjäprofiilin FIS-id
+  const showTen = new Set();              // pistelistat, joissa näytetään sijat 6–10
 
   function loadActive(topics) {
     try {
@@ -576,29 +609,82 @@ dialog form { padding: 0 16px 16px; text-align: right; }
 
   // --- Maailmancup ---
   const GENDER_LABEL = { M: "Miehet", N: "Naiset" };
-  const SHOW_TOP = 5;
+  const SHOW_TOP = 5, MAX_TOP = 10, SEASON_ROWS = 6;
   const fmtPts = (n) => n.toLocaleString("fi-FI");
+  const cidOf = (url) => { const m = /competitorid=(\d+)/.exec(url || ""); return m ? m[1] : null; };
+  const seasonLabel = (code) => `${+code - 1}–${String(code).slice(2)}`;
+  const MEDAL = ["🥇", "🥈", "🥉"];
+  const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+  function medalLine(m) {
+    if (!m) return "";
+    const part = (label, long, x) => {
+      if (!x || !(x.g + x.s + x.b)) return "";
+      const title = `${long}: ${[plural(x.g, "kulta", "kultaa"), plural(x.s, "hopea", "hopeaa"), plural(x.b, "pronssi", "pronssia")].join(", ")}`;
+      const items = [x.g, x.s, x.b].map((n, i) => n ? `${MEDAL[i]}${n}` : "").filter(Boolean).join(" ");
+      return `<span class="md" title="${esc(title)}"><span class="md-l">${label}</span>${items}</span>`;
+    };
+    const html = part("Olympia", "Olympiamitalit", m.ol) + part("MM", "MM-mitalit", m.mm);
+    return html ? `<span class="medals">${html}</span>` : "";
+  }
+  function ageOf(birth) {
+    const [y, m, d] = birth.split("-").map(Number);
+    const [ty, tm, td] = dayKey(new Date()).split("-").map(Number);
+    return ty - y - (tm < m || (tm === m && td < d) ? 1 : 0);
+  }
+  function profileHtml(p, cid) {
+    const meta = [p.birthdate ? `${ageOf(p.birthdate)} v` : "", p.club ? esc(p.club) : "",
+      p.birthplace ? `synt. ${esc(p.birthplace)}` : ""].filter(Boolean).join(" · ");
+    const text = p.extract
+      ? `<p class="prof-text">${esc(p.extract)} <span class="prof-src">— <a href="${esc(p.wiki_url)}" target="_blank" rel="noopener">Wikipedia</a>, CC BY-SA</span></p>` : "";
+    const c = p.career || {};
+    const stats = p.career ? `<div class="prof-stats"><span><strong>${c.wins}</strong> ${c.wins === 1 ? "MC-voitto" : "MC-voittoa"}</span>
+      <span><strong>${c.podiums}</strong> ${c.podiums === 1 ? "palkintosija" : "palkintosijaa"}</span><span>uralla, henkilökohtaiset</span></div>` : "";
+    const season = p.season || [];
+    const label = p.season_code ? seasonLabel(p.season_code) : DATA.season;
+    const rk = (r) => typeof r.rank === "number"
+      ? `<span class="rkk">${r.rank <= 3 ? MEDAL[r.rank - 1] + " " : ""}${r.rank}.</span>`
+      : `<span class="rkk out">${esc(r.rank)}</span>`;
+    const rows = season.slice(0, SEASON_ROWS).map((r) => `<li><span class="d">${dm(r.date)}</span>
+      <span class="what"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.place)}</a> · ${esc(r.race)}</span>${rk(r)}</li>`).join("");
+    const results = season.length
+      ? `<div class="prof-h">Kausi ${esc(label)} · ${plural(season.length, "MC-kisa", "MC-kisaa")}</div><ol class="pr">${rows}</ol>`
+      : `<div class="prof-h">Kausi ${esc(label)}</div><p class="prof-empty">Ei vielä maailmancupin kisoja tällä kaudella.</p>`;
+    const more = season.length > SEASON_ROWS ? `<a href="${esc(p.fis_url)}" target="_blank" rel="noopener">Kaikki ${season.length} kisaa ↗</a>` : "";
+    return `<li class="prof" id="p-${esc(cid)}">
+      ${meta ? `<div class="prof-meta">${meta}</div>` : ""}${text}${stats}${results}
+      <div class="prof-links"><a href="${esc(p.fis_url)}" target="_blank" rel="noopener">FIS-profiili ↗</a>${more}${p.wiki_url ? `<a href="${esc(p.wiki_url)}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ""}</div>
+    </li>`;
+  }
   function standingsBox(s) {
     const t = topicById()[s.topic];
-    const top = s.rows.slice(0, SHOW_TOP);
+    const ten = s.rows.slice(0, MAX_TOP);
+    const top = showTen.has(s.id) ? ten : ten.slice(0, SHOW_TOP);
     const home = top.some((r) => r.nation === "FIN") ? null : s.rows.find((r) => r.nation === "FIN");
     const lead = s.rows[0], second = s.rows[1];
     const row = (r) => {
       const isLead = r === lead;
       const gap = isLead ? (second ? `+${fmtPts(r.points - second.points)}` : "") : `−${fmtPts(lead.points - r.points)}`;
-      const name = r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>` : esc(r.name);
-      return `<li class="sr nav-row${isLead ? " lead" : ""}" tabindex="-1" data-k="s:${esc(s.id)}:${r.rank}:${esc(r.name)}">
+      const cid = s.topic === "hiihto" ? cidOf(r.url) : null;
+      const p = cid ? (DATA.athletes || {})[cid] : null;
+      const open = !!p && openProfile === cid;
+      const name = p
+        ? `<button type="button" class="nm-btn" data-prof="${esc(cid)}" data-k="pb:${esc(cid)}" aria-expanded="${open}" aria-controls="p-${esc(cid)}">${esc(r.name)}${ICON.chev}</button>`
+        : r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>` : esc(r.name);
+      return `<li class="sr nav-row${isLead ? " lead" : ""}${p ? " has-prof" : ""}" tabindex="-1" data-k="s:${esc(s.id)}:${r.rank}:${esc(r.name)}"${p ? ` data-row-prof="${esc(cid)}"` : ""}>
         <span class="rk">${r.rank}.</span>
-        <span class="nm">${name}<span class="nat${r.nation === "FIN" ? " home" : ""}">${esc(r.nation)}</span>${isLead ? `<span class="pill pill-lead">Johtaa</span>` : ""}</span>
+        <span class="nm">${name}<span class="nat${r.nation === "FIN" ? " home" : ""}">${esc(r.nation)}</span>${isLead ? `<span class="pill pill-lead">Johtaa</span>` : ""}${p ? medalLine(p.medals) : ""}</span>
         <span class="pt">${fmtPts(r.points)} p${gap ? `<span class="gap">${gap}</span>` : ""}</span>
-      </li>`;
+      </li>${open ? profileHtml(p, cid) : ""}`;
     };
+    const moreBtn = ten.length > SHOW_TOP
+      ? `<button type="button" class="box-more" data-more="${esc(s.id)}" data-k="more:${esc(s.id)}">${showTen.has(s.id) ? "Näytä vain kärkiviisikko" : `Näytä sijat ${SHOW_TOP + 1}–${ten.length}`}</button>` : "";
     return `<div class="box s-${esc(s.topic)}">
       <div class="box-head">${sportPill(s.topic, t ? t.label : s.topic)}<strong>${GENDER_LABEL[s.gender] || s.gender}</strong>
         <span class="grow"></span><span>${s.done}${s.total ? `/${s.total}` : ""} kisaa</span>
         <a href="${esc(s.url)}" target="_blank" rel="noopener" title="Koko pistetilanne: ${esc(s.source)}">${esc(s.source)} ↗</a></div>
       <ul class="rows">${top.map(row).join("")}</ul>
       ${home ? `<div class="sep">Paras suomalainen</div><ul class="rows">${row(home)}</ul>` : ""}
+      ${moreBtn}
     </div>`;
   }
   function renderStandings() {
@@ -611,7 +697,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     const bia = shown.some((s) => s.source === "Wikipedia");
     $("panel-mc").innerHTML = shown.length
       ? `<div class="mc-grid">${shown.map(standingsBox).join("")}</div>
-         <p class="mc-note">Kokonaispisteet. Lähteet: FIS (hiihto, yhdistetty)${bia ? " ja Wikipedia (ampumahiihto; vain kärkikymmenikkö, joten paras suomalainen näkyy vain sen sisällä)" : ""}.</p>`
+         <p class="mc-note">Kokonaispisteet. Lähteet: FIS (hiihto, yhdistetty)${bia ? " ja Wikipedia (ampumahiihto; vain kärkikymmenikkö, joten paras suomalainen näkyy vain sen sisällä)" : ""}.${shown.some((s) => s.topic === "hiihto") && Object.keys(DATA.athletes || {}).length ? " Hiihtäjän nimestä aukeavat tiedot: tulokset ja mitalit FIS, esittely Wikipedia." : ""}</p>`
       : `<div class="box"><p class="empty">Valituissa lajeissa ei ole vielä ajettu maailmancupin kisoja.</p></div>`;
   }
 
@@ -722,12 +808,12 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     $("banner").innerHTML = warn.length ? `<div class="banner" role="status">⚠️ ${warn.join(" ")}</div>` : "";
 
     $("footer").innerHTML = `
-      <p>Päivitetty ${esc(genTxt)} · TV-opas ${st(s.telkku)} · FIS ${st(s.fis)} · pistetilanne ${st(s.standings)}</p>
+      <p>Päivitetty ${esc(genTxt)} · TV-opas ${st(s.telkku)} · FIS ${st(s.fis)} · pistetilanne ${st(s.standings)}${s.athletes ? ` · profiilit ${st(s.athletes)}` : ""}</p>
       <p>Vain suorat lähetykset Ylen TV-kanavilla, noin kaksi viikkoa eteenpäin. Pelkästään Areenassa näytettävät lähetykset eivät näy TV-oppaassa, joten tarkista myös <a href="https://areena.yle.fi/tv/opas" target="_blank" rel="noopener">Areenan opas</a>.</p>
       <p>Lähteet: <a href="${esc(DATA.source.url)}" target="_blank" rel="noopener">${esc(DATA.source.name)}</a> (kisat) ·
       <a href="https://www.fis-ski.com/DB/cross-country/calendar-results.html" target="_blank" rel="noopener">FIS</a> (kisaohjelma) ·
       <a href="https://www.telkku.com/" target="_blank" rel="noopener">Telkku.com</a> (lähetysajat) ·
-      FIS ja Wikipedia (pistetilanne). Epävirallinen harrastesivu, ei Ylen palvelu.</p>
+      FIS ja Wikipedia (pistetilanne) · FIS, Wikidata ja Wikipedia (hiihtäjät). Epävirallinen harrastesivu, ei Ylen palvelu.</p>
       <button class="text-btn keys-btn" type="button" id="keys-btn" data-k="keys">⌨️ Pikanäppäimet (?)</button>`;
     $("keys-btn").addEventListener("click", openKeys);
   }
@@ -736,6 +822,8 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   function openKeys() { const d = $("keys"); if (!d.open) d.showModal(); }
   function togglePast() { showPast = !showPast; render(); }
   function toggleEvent(id) { if (openEvents.has(id)) openEvents.delete(id); else openEvents.add(id); render(); }
+  function toggleProfile(cid) { openProfile = openProfile === cid ? null : cid; render(); }
+  function toggleTen(id) { if (showTen.has(id)) showTen.delete(id); else showTen.add(id); render(); }
 
   function moveRow(d) {
     const rows = [...document.querySelectorAll(".nav-row")].filter((el) => el.getClientRects().length > 0);
@@ -752,6 +840,17 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     if (e.target.closest("a")) return;
     const b = e.target.closest("button[data-toggle]");
     if (b) toggleEvent(b.dataset.toggle);
+  });
+  $("panel-mc").addEventListener("click", (e) => {
+    if (e.target.closest("a")) return;
+    const more = e.target.closest("button[data-more]");
+    if (more) { toggleTen(more.dataset.more); return; }
+    const row = e.target.closest("[data-row-prof]");
+    if (row) {
+      toggleProfile(row.dataset.rowProf);
+      const b = document.querySelector(`button[data-prof="${CSS.escape(row.dataset.rowProf)}"]`);
+      if (b) b.focus({ preventScroll: true });
+    }
   });
   $("panel-bc").addEventListener("click", (e) => {
     if (e.target.closest('a[href="#kausi"]')) { e.preventDefault(); showTab("kausi", true); }
@@ -783,6 +882,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
       case "m": if (tab !== "kausi") showTab("kausi", true); togglePast(); break;
       case "Enter": {
         if (!t.matches || !t.matches("li.nav-row")) return;
+        if (t.dataset.rowProf) { toggleProfile(t.dataset.rowProf); break; }
         const a = t.querySelector("a");
         if (!a) return;
         a.click();

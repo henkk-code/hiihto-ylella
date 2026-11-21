@@ -5,6 +5,7 @@
 2. FIS iCal          – kisapäivät
 3. Telkku            – lähetysten kellonajat ja kanavat (~2 vk eteenpäin)
 + maailmancupin pistetilanne (FIS, Wikipedia)
++ maastohiihtäjien profiilit (FIS, Wikidata, Wikipedia)
 
 Jos FIS tai Telkku ei vastaa, käytetään edellisen julkaistun data.jsonin tietoja
 (hallittu heikkeneminen), joten sivu ei koskaan tyhjene.
@@ -23,6 +24,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE / "sources"))
 
 from classify import Classifier  # noqa: E402
+import athletes  # noqa: E402
 import fis  # noqa: E402
 import standings  # noqa: E402
 import telkku  # noqa: E402
@@ -251,6 +253,28 @@ def main() -> int:
     else:
         status["standings"] = {"ok": True, "updated": now.isoformat(timespec="minutes")}
 
+    # --- Hiihtäjäprofiilit (vain maastohiihto) ----------------------------------
+    race_names = {}
+    for r in [r for rs in races_by_event.values() for r in rs] + [r for e in other_events for r in e.get("races", [])]:
+        m = re.search(r"raceid=(\d+)", r.get("url") or "")
+        if m and r["discipline"] == "CC":
+            race_names[m.group(1)] = r["name_fi"]
+    prev_ath = prev.get("athletes", {})
+    try:
+        if args.offline:
+            raise RuntimeError("offline-tila")
+        ath, ath_errors = athletes.fetch_profiles(lists, prev_ath, st_cfg["season"], race_names, now,
+                                                  athletes.champs_active(events, now.date()))
+    except Exception as exc:  # noqa: BLE001
+        wanted = {t["id"] for t in athletes.targets(lists)}
+        ath, ath_errors = {k: v for k, v in prev_ath.items() if k in wanted}, {"kaikki": str(exc)[:200]}
+    if ath_errors:
+        print(f"VAROITUS: profiilit osin vanhaa dataa: {ath_errors}", file=sys.stderr)
+        status["athletes"] = {"ok": False, "error": "; ".join(f"{k}: {v}" for k, v in ath_errors.items())[:300],
+                              "updated": prev_status.get("athletes", {}).get("updated")}
+    else:
+        status["athletes"] = {"ok": True, "updated": now.isoformat(timespec="minutes")}
+
     # --- Kokoa ---------------------------------------------------------------
     out_events = []
     for e in sorted(events, key=lambda e: (e["start"], e["sport"])):
@@ -274,6 +298,7 @@ def main() -> int:
         "events": out_events,
         "broadcasts": broadcasts,
         "standings": lists,
+        "athletes": ath,
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -281,7 +306,8 @@ def main() -> int:
     print(f"OK: {len(out_events) - len(other_events)} Ylen tapahtumaa + {len(other_events)} muuta, {n_races} kisaa, {len(broadcasts)} lähetystä → {out_path}")
     print(f"    Telkku: {'ok' if status['telkku']['ok'] else 'VANHA DATA'}, FIS: {'ok' if status['fis']['ok'] else 'VANHA DATA'}, "
           f"pisteet: {'ok' if status['standings']['ok'] else 'OSIN VANHA'} "
-          f"({', '.join(f'{s["id"]} {s["done"]}/{s["total"]}' for s in lists)})")
+          f"({', '.join(f'{s["id"]} {s["done"]}/{s["total"]}' for s in lists)}), "
+          f"profiilit: {len(ath)} {'ok' if status['athletes']['ok'] else 'OSIN VANHA'}")
     return 0
 
 

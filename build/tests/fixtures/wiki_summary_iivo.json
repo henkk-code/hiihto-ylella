@@ -1,0 +1,19 @@
+{
+ "title": "Iivo Niskanen",
+ "extract": "Iivo Henrik Niskanen on suomalainen maastohiihtäjä, joka edustaa Puijon Hiihtoseuraa. Vahvana perinteisen hiihtäjänä tunnettu Niskanen on sekä maailmanmestari että kolminkertainen olympiavoittaja.",
+ "content_urls": {
+  "desktop": {
+   "page": "https://fi.wikipedia.org/wiki/Iivo_Niskanen",
+   "revisions": "https://fi.wikipedia.org/wiki/Iivo_Niskanen?action=history",
+   "edit": "https://fi.wikipedia.org/wiki/Iivo_Niskanen?action=edit",
+   "talk": "https://fi.wikipedia.org/wiki/Keskustelu:Iivo_Niskanen"
+  },
+  "mobile": {
+   "page": "https://fi.wikipedia.org/wiki/Iivo_Niskanen",
+   "revisions": "https://fi.wikipedia.org/wiki/Special:History/Iivo_Niskanen",
+   "edit": "https://fi.wikipedia.org/wiki/Iivo_Niskanen?action=edit",
+   "talk": "https://fi.wikipedia.org/wiki/Keskustelu:Iivo_Niskanen"
+  }
+ },
+ "type": "standard"
+}
