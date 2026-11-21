@@ -1,0 +1,2723 @@
+{
+"_comment": "Telkku Peruskanavat 20.11.–5.12.2026, haettu 21.11.2026, vain format=SPORT",
+"response": [
+{
+"channelId": "392",
+"programs": {
+"all": [
+{
+"id": "607629113392",
+"programName": "Taitoluistelun Grand Prix: Parien ja naisten lyhytohjelma",
+"description": "Finlandia Trophy, parien ja naisten lyhytohjelmat kansainvälisessä GP-kisassa Helsingissä. Selostus Sara Honkavaara ja MIka Saarelainen.",
+"startTime": "2026-11-20T13:00:00.000Z",
+"endTime": "2026-11-20T15:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607629115392",
+"programName": "Taitoluistelun Finlandia Trophy Helsinki GP, miesten lyhytohjelma ja jäätanssin rytmitanssi",
+"description": "Finlandia Trophy, miesten lyhytohjelma ja jäätanssin rytmitanssi kansainvälisessä GP-kisassa Helsingissä. Selostus Sara Honkavaara ja MIka Saarelainen.",
+"startTime": "2026-11-20T16:00:00.000Z",
+"endTime": "2026-11-20T18:45:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "602753156392",
+"programName": "Hiihdon Suomen cup: Sprintit (p)",
+"description": "Maastohiihdon Suomen cup-kausden toinen kisaviikonloppu käydään Rukalla. Sprinttihiihdon selostaa Kimmo Porttila, asiantuntijana Perttu Hyvärinen.",
+"startTime": "2026-11-21T09:15:00.000Z",
+"endTime": "2026-11-21T11:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607629123392",
+"programName": "Taitoluistelun Grand Prix: Parien ja naisten vapaaohjelma",
+"description": "Finlandia Trophy, parien ja naisten vapaaohjelmat kansainvälisessä GP-kisassa Helsingissä. Selostus Sara Honkavaara ja MIka Saarelainen.",
+"startTime": "2026-11-21T11:30:00.000Z",
+"endTime": "2026-11-21T13:50:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "602753164392",
+"programName": "Mäkihypyn maailmancup: Naisten iso mäki, Lillehammer",
+"description": "Mäkihypyn maailmancupin tämän kauden avausviikonloppu Lillehammerissa, Norjassa. Naisten ison mäen kisan selostaa Simo Leinonen, asiantuntijana Janne Ahonen.",
+"startTime": "2026-11-21T13:50:00.000Z",
+"endTime": "2026-11-21T15:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607629131392",
+"programName": "Taitoluistelun Finlandia Trophy Helsinki GP, miesten vapaaohjelma ja jäätanssin vapaatanssi",
+"description": "Finlandia Trophy, miesten vapaaohjelma ja jäätanssin vapaatanssi kansainvälisessä GP-kisassa Helsingissä. Selostus Sara Honkavaara ja MIka Saarelainen.",
+"startTime": "2026-11-21T15:45:00.000Z",
+"endTime": "2026-11-21T19:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603235629392",
+"programName": "Hiihdon Suomen cup: Naisten 20 km yhteislähtö (V)",
+"description": "Maastohiihdon Suomen cup-kausden toinen kisaviikonloppu käydään Rukalla. Selostus Kimmo Porttila, asiantuntija Perttu Hyvärinen.",
+"startTime": "2026-11-22T08:15:00.000Z",
+"endTime": "2026-11-22T09:50:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603235630392",
+"programName": "Hiihdon Suomen cup: Miesten 20 km yhteislähtö (V)",
+"description": "Maastohiihdon Suomen cup-kausden toinen kisaviikonloppu käydään Rukalla. Selostus Kimmo Porttila, asiantuntija Perttu Hyvärinen.",
+"startTime": "2026-11-22T09:50:00.000Z",
+"endTime": "2026-11-22T11:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603235632392",
+"programName": "Mäkihypyn maailmancup: Naisten iso mäki, Lillehammer",
+"description": "Mäkihypyn maailmancupin tämän kauden avausviikonloppu Lillehammerissa, Norjassa. Naisten ison mäen kisan selostaa Simo Leinonen, asiantuntijana Janne Ahonen.",
+"startTime": "2026-11-22T11:00:00.000Z",
+"endTime": "2026-11-22T12:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "604708229392",
+"programName": "Ampumahiihdon maailmancup: Miesten normaalimatka, Kontiolahti",
+"description": "Ampumahiihdon maailmancupin kausi avataan Kontiolahdella miesten normaalimatkalla. Selostus Johannes Oikarinen, asiantuntija Kaisa Mäkäräinen.",
+"startTime": "2026-11-26T15:05:00.000Z",
+"endTime": "2026-11-26T17:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152411392",
+"programName": "Urheilustudio: 27.11.2026 11:15.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-27T09:15:00.000Z",
+"endTime": "2026-11-27T09:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152412392",
+"programName": "Hiihdon maailmancup: N 10 km (p) Ruka",
+"description": "Rukan pohjoismaiden hiihtolajien maailmancuppien viikonloppu avataan naisten 10 kilometerin hiihdon perinteisellä väliaikalähdöllä. Selostus Kimmo Porttila.",
+"startTime": "2026-11-27T09:25:00.000Z",
+"endTime": "2026-11-27T10:46:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152413392",
+"programName": "Urheilustudio: 27.11.2026 12:46.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-27T10:46:00.000Z",
+"endTime": "2026-11-27T10:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152414392",
+"programName": "Yhdistetyn maailmancup: M HS 142 Ruka",
+"description": "Yhdistetyn hiihdon maailmancupin kausi avataan Rukalla ns. indivual compact-kisalla jossa aikaerot hiihdossa määräytyvät mäkiosuuden sijoitusten perusteella. Miesten ison mäen osuuden selostaa Simo Leinonen.",
+"startTime": "2026-11-27T10:55:00.000Z",
+"endTime": "2026-11-27T11:50:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152415392",
+"programName": "Urheilustudio: 27.11.2026 13:50.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-27T11:50:00.000Z",
+"endTime": "2026-11-27T11:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152416392",
+"programName": "Hiihdon maailmancup: M 10 km (p) Ruka",
+"description": "Miesten hiihdon maailmancupin kauden ensimmäinen osakilpailu, 10 kilometrin perinteinen väliaikalähtö Rukalla. Selostus Kimmo Porttila.",
+"startTime": "2026-11-27T11:55:00.000Z",
+"endTime": "2026-11-27T13:16:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152417392",
+"programName": "Urheilustudio: 27.11.2026 15:16.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-27T13:16:00.000Z",
+"endTime": "2026-11-27T13:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152420392",
+"programName": "Urheilustudio: 27.11.2026 16:15.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-27T14:15:00.000Z",
+"endTime": "2026-11-27T14:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152421392",
+"programName": "Yhdistetyn maailmancup: M 7,5 km Ruka",
+"description": "Yhdistetyn hiihdon maailmancupin kausi avataan Rukalla ns. indivual compact-kisalla jossa aikaerot hiihdossa määräytyvät mäkiosuuden sijoitusten perusteella. Miesten 7,5 kilometri hiihto-osuuden selostaa Simo Leinonen.",
+"startTime": "2026-11-27T14:25:00.000Z",
+"endTime": "2026-11-27T14:56:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152422392",
+"programName": "Urheilustudio: 27.11.2026 16:56.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-27T14:56:00.000Z",
+"endTime": "2026-11-27T15:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152423392",
+"programName": "Ampumahiihdon maailmancup: Naisten normaalimatka, Kontiolahti",
+"description": "Ampumahiihdon baisten maailmancupin kausi avataan Kontiolahdella normaalimatkalla. Selostus Johannes Oikarinen, asiantuntija Kaisa Mäkäräinen.",
+"startTime": "2026-11-27T15:05:00.000Z",
+"endTime": "2026-11-27T16:51:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152424392",
+"programName": "Urheilustudio: 27.11.2026 18:51.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-27T16:51:00.000Z",
+"endTime": "2026-11-27T17:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605152425392",
+"programName": "Mäkihypyn maailmancup: M HS 142 karsinta, Ruka",
+"description": "Mäkimiesten kisaurakka Rukan maailmancupissa avataan ison mäen karsintakilpailulla. Selostus Simo Leinonen.",
+"startTime": "2026-11-27T17:05:00.000Z",
+"endTime": "2026-11-27T18:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605402659392",
+"programName": "Koripallon EM-karsinta: Ennakkostudio Slovenia - Suomi",
+"description": "Ennakkostudiossa tunnelmat ennen koripallon miesten MM-jatkokarsintaottelua Slovenia - Suomi.",
+"startTime": "2026-11-27T18:40:00.000Z",
+"endTime": "2026-11-27T18:50:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606296965392",
+"programName": "Koripallon EM-karsinta: Koripallon MM-karsinta",
+"description": "Susijengi metsästää lisää tärkeitä pisteitä MM-karsinnassa tavoitteenaan pääsy ensi kesän Qatarissa pelattavaan MM-lopputurnaukseen. Vieraspelin Sloveniaa vastaan selostaa Antti-Jussi Sipilä, asiantuntijana Petteri Koponen.",
+"startTime": "2026-11-27T18:50:00.000Z",
+"endTime": "2026-11-27T21:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605402673392",
+"programName": "Koripallon EM-karsinta: Jälkistudio Slovenia - Suomi",
+"description": "Jälkistudiossa kommentit, analyysit ja haastattelut miesten MM-jatkokarsintaottelun Slovenia - Suomi jälkeen.",
+"startTime": "2026-11-27T21:00:00.000Z",
+"endTime": "2026-11-27T21:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671034392",
+"programName": "Urheilustudio: 28.11.2026 09:30.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-28T07:30:00.000Z",
+"endTime": "2026-11-28T07:40:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671049392",
+"programName": "Hiihdon maailmancup: Sprinttikarsinnat (p) Ruka",
+"description": "Rukan maailmancupin toinen hiihtopäivä avataan perinteisen sprintin karsinnoilla. Selostus Kimmo Porttila.",
+"startTime": "2026-11-28T07:40:00.000Z",
+"endTime": "2026-11-28T08:46:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671062392",
+"programName": "Urheilustudio: 28.11.2026 10:46.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-28T08:46:00.000Z",
+"endTime": "2026-11-28T09:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671074392",
+"programName": "Yhdistetyn maailmancup: M HS 142 Ruka",
+"description": "Yhdistetyn maailmancup jatkuu Rukalla. Miesten ison mäen osuuden selostaa Simo Leinonen.",
+"startTime": "2026-11-28T09:10:00.000Z",
+"endTime": "2026-11-28T10:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671106392",
+"programName": "Urheilustudio: 28.11.2026 12:05.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-28T10:05:00.000Z",
+"endTime": "2026-11-28T10:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671114392",
+"programName": "Hiihdon maailmancup: Sprinttifinaalit (p) Ruka",
+"description": "Karsintojen jälkeen Rukan hiihdon maailmancupissa vuorossa perinteisen sprintin finaalivaiheet. Selostus Kimmo Porttila.",
+"startTime": "2026-11-28T10:10:00.000Z",
+"endTime": "2026-11-28T12:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671125392",
+"programName": "Urheilustudio: 28.11.2026 14:00.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-28T12:00:00.000Z",
+"endTime": "2026-11-28T12:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671137392",
+"programName": "Ampumahiihdon maailmancup: Pariviesti, Kontiolahti",
+"description": "Ampumahiihdon maailmancupin avausviikonloppu jatkuu Kontiolahdella pariviestillä. Selostus Johannes Oikarinen, asiantuntija Kaisa Mäkäräinen.",
+"startTime": "2026-11-28T12:05:00.000Z",
+"endTime": "2026-11-28T12:56:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671144392",
+"programName": "Urheilustudio: 28.11.2026 14:56.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-28T12:56:00.000Z",
+"endTime": "2026-11-28T13:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671156392",
+"programName": "Yhdistetyn maailmancup: M 10 km Ruka",
+"description": "Yhdistetyn Rukan miesten maailmancupin osakilpailun 10 kilometrin hiihto-osuuden selostaa Simo Leinonen.",
+"startTime": "2026-11-28T13:25:00.000Z",
+"endTime": "2026-11-28T14:01:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671167392",
+"programName": "Urheilustudio: 28.11.2026 16:01.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-28T14:01:00.000Z",
+"endTime": "2026-11-28T14:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671175392",
+"programName": "Ampumahiihdon maailmancup: Sekaviesti, Kontiolahti",
+"description": "Ampumahiihdon maailmancupin avausviikonloppu jatkuu Kontiolahdella sekaviestillä. Selostus Johannes Oikarinen, asiantuntija Kaisa Mäkäräinen.",
+"startTime": "2026-11-28T14:10:00.000Z",
+"endTime": "2026-11-28T15:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671188392",
+"programName": "Mäkihypyn maailmancup: HS 142, Ruka",
+"description": "Ison mäen maailmancup-pisteistä kisataan Rukalla. Selostus Simo Leinonen.",
+"startTime": "2026-11-28T15:25:00.000Z",
+"endTime": "2026-11-28T17:16:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671200392",
+"programName": "Urheilustudio: 28.11.2026 19:16.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-28T17:16:00.000Z",
+"endTime": "2026-11-28T17:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605671209392",
+"programName": "Alppihiihdon maailmancup, naisten suurpujottelun 2. kierros.",
+"description": "Naisten alppihiihdon maailmanccupin USA:n Killingtonin naisten suurpujottelun 2. kierros. Selostus Nina Vanhatalo.",
+"startTime": "2026-11-28T17:25:00.000Z",
+"endTime": "2026-11-28T18:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199831392",
+"programName": "Yhdistetyn maailmancup: M yhteislähtö Ruka",
+"description": "Yhdistetyn maailmancupissa Rukalla sunnuntaina vuorossa kilpailu jossa ensiksi hiihdetään yhteislähdöllä ja sen jälkeen vuorossa on mäkiosuus. Selostus Simo Leinonen.",
+"startTime": "2026-11-29T07:55:00.000Z",
+"endTime": "2026-11-29T08:31:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199832392",
+"programName": "Urheilustudio: 29.11.2026 10:31.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-29T08:31:00.000Z",
+"endTime": "2026-11-29T08:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199833392",
+"programName": "Hiihdon maailmancup: M 20 km (v) Ruka",
+"description": "Miesten hiihtokisat tämän vuoden Rukan maailmancupkilpailuissa päätetään vapaan 20 kilometrin yhteislähdöllä. Selostus Kimmo Porttila.",
+"startTime": "2026-11-29T08:55:00.000Z",
+"endTime": "2026-11-29T09:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199834392",
+"programName": "Yhdistetyn maailmancup: M HS 142 Ruka",
+"description": "Yhdistetyn miehet päättävät kisaurakkansa Rukan maailmancupissa yhteislähdön mäkiosuudella. Selostus Simo Leinonen.",
+"startTime": "2026-11-29T09:55:00.000Z",
+"endTime": "2026-11-29T10:50:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199835392",
+"programName": "Hiihdon maailmancup: N 20 km (v) Ruka",
+"description": "Naisten hiihtokisat tämän vuoden Rukan maailmancupkilpailuissa päätetään vapaan 20 kilometrin yhteislähdöllä. Selostus Kimmo Porttila.",
+"startTime": "2026-11-29T10:50:00.000Z",
+"endTime": "2026-11-29T11:56:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199836392",
+"programName": "Ampumahiihdon maailmancup: Miesten pikakilpailu, Kontiolahti",
+"description": "Ampumahiihdon maailmancupin avausviikonlopun viimeisen päivän ensimmäinen laji Kontiolahdella on miesten pikakilpailu. Selostus Johannes Oikarinen, asiantuntija Kaisa Mäkäräinen.",
+"startTime": "2026-11-29T11:56:00.000Z",
+"endTime": "2026-11-29T13:15:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199837392",
+"programName": "Mäkihypyn maailmancup: M HS 142, Ruka",
+"description": "Rukan maailmancupin viikonloppu päätetään perinteiseen tapaan miesten ison mäen kilpailuun. Selostus Simo Leinonen.",
+"startTime": "2026-11-29T13:15:00.000Z",
+"endTime": "2026-11-29T15:06:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199838392",
+"programName": "Urheilustudio: 29.11.2026 17:06.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-29T15:06:00.000Z",
+"endTime": "2026-11-29T15:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199840392",
+"programName": "Ampumahiihdon maailmancup: Naisten pikakilpailu, Kontiolahti",
+"description": "Ampumahiihdon maailmancupin avausviikonlopun viimeinen kilpailu Kontiolahdella on naisten pikakisa. Selostus Johannes Oikarinen, asiantuntija Kaisa Mäkäräinen.",
+"startTime": "2026-11-29T15:10:00.000Z",
+"endTime": "2026-11-29T16:31:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199842392",
+"programName": "Urheilustudio: 29.11.2026 18:31.",
+"description": "Urheilustudio on talvikauden etkot, kilpailut ja jatkot. Urheilua ja elämää  - urheilukuplasta käsin, sinne jumittumatta.",
+"startTime": "2026-11-29T16:31:00.000Z",
+"endTime": "2026-11-29T16:40:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199844392",
+"programName": "Tenniksen Davis Cup: Loppuottelu",
+"description": "Illan loppuottelussa ratkeaa vuoden maailman paras tennismaajoukkue, selostus Sakari Lund.",
+"startTime": "2026-11-29T16:40:00.000Z",
+"endTime": "2026-11-29T18:45:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606199846392",
+"programName": "Alppihiihdon maailmancup, naisten pujottelun 2. kierros",
+"description": "Naisten alppihiihdon maailmanccupin USA:n Killingtonin naisten pujottelun 2. kierros. Selostus Nina Vanhatalo.",
+"startTime": "2026-11-29T18:45:00.000Z",
+"endTime": "2026-11-29T19:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606696411392",
+"programName": "Koripallon EM-karsinta: Ennakkostudio Suomi - Viro",
+"description": "Ennakkostudiossa tunnelmat ennen koripallon miesten MM-jatkokarsintaottelua Suomi - Viro.",
+"startTime": "2026-11-30T16:10:00.000Z",
+"endTime": "2026-11-30T16:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606696414392",
+"programName": "Koripallon EM-karsinta: Koripallon MM-karsinta",
+"description": "Susijengin MM-karsinnat jatkuvat kotipelillä Viroa vastaan Espoossa. Selostus Antti-Jussi Sipilä, asiantuntija Petteri Koponen.",
+"startTime": "2026-11-30T16:20:00.000Z",
+"endTime": "2026-11-30T18:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606696415392",
+"programName": "Koripallon EM-karsinta: Jälkistudio Suomi - Viro",
+"description": "Jälkistudiossa kommentit, analyysit ja haastattelut miesten MM-jatkokarsintaottelun Suomi - Viro jälkeen.",
+"startTime": "2026-11-30T18:30:00.000Z",
+"endTime": "2026-11-30T18:43:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607024464392",
+"programName": "Uinnin MM: Kooste 1. kilpailupäivän alkueräuinneista",
+"description": "Uinnin lyhyen radan MM-mitaleista kamppaillaan tänä vuonna Pekingissä. Kooste aamuyöllä uiduista alkueristä. Selostus Sammy Väisänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-01T10:35:00.000Z",
+"endTime": "2026-12-01T10:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607024468392",
+"programName": "Uinnin MM: 1. kilpailupäivän semifinaali- ja finaaliuinnit",
+"description": "Uinnin lyhyen radan MM-kilpailujen ensimmäinen semifinaali- ja finaalsessio Pekingissä. Selostus Sammy Väiäsänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-01T10:55:00.000Z",
+"endTime": "2026-12-01T13:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607024476392",
+"programName": "Jalkapallon MM-karsinta, Suomi - Italia, alkustudio",
+"description": "Helmareiden MM-karsintaottelun Suomi - Italia ennakkotunnelmat.",
+"startTime": "2026-12-01T16:00:00.000Z",
+"endTime": "2026-12-01T16:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607024477392",
+"programName": "Jalkapallon MM-karsinta Suomi - Italia",
+"description": "Helmareiden MM-jatkokarsinnan 1. osaottelu Italiaa vastaan kotikentällä Helsingissä. Selostus Matti Härkönen, asiantuntija Essi Sainio.",
+"startTime": "2026-12-01T16:20:00.000Z",
+"endTime": "2026-12-01T18:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607024478392",
+"programName": "Jalkapallon MM-karsinta, Suomi - Italia,  jälkistudio",
+"description": "Helmareiden MM-karsintaottelun Suomi - Italia jälkitunnelmat.",
+"startTime": "2026-12-01T18:25:00.000Z",
+"endTime": "2026-12-01T18:40:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607237897392",
+"programName": "Uinnin MM: Kooste 2. kilpailupäivän alkueristä",
+"description": "Uinnin lyhyen radan MM-mitaleista kamppaillaan tänä vuonna Pekingissä. Kooste aamuyöllä uiduista alkueristä. Selostus Sammy Väisänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-02T10:35:00.000Z",
+"endTime": "2026-12-02T10:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607237905392",
+"programName": "Uinnin MM: 2. kilpailupäivän semifinaali- ja finaaliuinnit",
+"description": "Uinnin lyhyen radan MM-kilpailujen toisen kilpailupäivän semifinaali- ja finaaliuinnit Pekingissä. Selostus Sammy Väiäsänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-02T10:55:00.000Z",
+"endTime": "2026-12-02T12:50:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607807216392",
+"programName": "Uinnin MM: Kooste 3. kilpailupäivän alkueräuinneista",
+"description": "Uinnin lyhyen radan MM-mitaleista kamppaillaan tänä vuonna Pekingissä. Kooste aamuyöllä uiduista alkueristä. Selostus Sammy Väisänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-03T10:35:00.000Z",
+"endTime": "2026-12-03T10:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607807217392",
+"programName": "Uinnin MM: 3. kilpailupäivän semifinaal- ja finaaliuinnit",
+"description": "Uinnin lyhyen radan MM-kilpailujen kolmannen kilpailupäivän semifinaali- ja finaaliuinnit Pekingissä. Selostus Sammy Väiäsänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-03T10:55:00.000Z",
+"endTime": "2026-12-03T13:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608272952392",
+"programName": "Hiihdon maailmancup, naisten 10 km (p) väliaikalähdöin",
+"description": "Naisten 10 km perinteisellä hiihtotavalla väliaikalähdöin Norjan Trondheimissä. Selostus Kimmo Porttila, asiantuntija Krista Pärmäkoski.",
+"startTime": "2026-12-04T08:20:00.000Z",
+"endTime": "2026-12-04T09:46:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608272953392",
+"programName": "Uinnin MM: Kooste 4. kilpailupäivän alkueräuinneista",
+"description": "Uinnin lyhyen radan MM-mitaleista kamppaillaan tänä vuonna Pekingissä. Kooste aamuyöllä uiduista alkueristä. Selostus Sammy Väisänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-04T09:46:00.000Z",
+"endTime": "2026-12-04T10:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608272954392",
+"programName": "Ampumahiihdon maailmancup: Naisten pikakilpailu, Hochfilzen",
+"description": "Ampumahiihdon maailmancupin naisten pikakilpailu, selostus Johannes Oikarinen, asiantuntija Ville Kotikumpu, Hochfilzen, Itävalta.",
+"startTime": "2026-12-04T10:20:00.000Z",
+"endTime": "2026-12-04T11:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608272955392",
+"programName": "Hiihdon maailmancup, miesten 10 km (p) väliaikalähdöin",
+"description": "Hiihdon maailmancup jatkuu Norjan Trondheimissä miesten 10 km perinteisen väliaikalähdöllä. Selostus Kimmo Porttila, asiantuntija Krista Pärmäkoski.",
+"startTime": "2026-12-04T11:30:00.000Z",
+"endTime": "2026-12-04T12:31:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608272956392",
+"programName": "Uinnin lyhyen radan MM",
+"description": "Uinnin lyhyen radan MM-kilpailujen neljännen kilpailupäivän ensimmäiset semifinaali- ja finaaliuinnit Pekingissä. Selostus Sammy Väiäsänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-04T12:31:00.000Z",
+"endTime": "2026-12-04T13:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608272957392",
+"programName": "Ampumahiihdon maailmancup: Miesten pikakilpailu, Hochfilzen",
+"description": "Ampumahiihdon maailmancupin miesten pikakilpailu, selostus Johannes Oikarinen, asiantuntija Ville Kotikumpu, Hochfilzen, Itävalta.",
+"startTime": "2026-12-04T13:10:00.000Z",
+"endTime": "2026-12-04T14:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608272958392",
+"programName": "Uinnin MM: Kooste 4. kilpailupäivän finaaliuinneista",
+"description": "Uinnin lyhyen radan MM-kilpailujen neljännen kilpailupäivän viimeiset finaaliuinnit Pekingissä. Selostus Sammy Väiäsänen, asiantuntija Ville Kallinen.",
+"startTime": "2026-12-04T14:35:00.000Z",
+"endTime": "2026-12-04T15:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+}
+]
+}
+},
+{
+"channelId": "559",
+"programs": {
+"all": [
+{
+"id": "602744518559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-20T17:20:00.000Z",
+"endTime": "2026-11-20T17:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "602744527559",
+"programName": "Hockey Night Perjantai: Ilves - Tappara",
+"description": "Ilves - Tappara, Nokia Arena (20.11.2026). Selostajana Jani Alkio, Jesse Joensuu.",
+"startTime": "2026-11-20T17:25:00.000Z",
+"endTime": "2026-11-20T20:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "602744565559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-20T20:25:00.000Z",
+"endTime": "2026-11-20T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603239348559",
+"programName": "Hockey Night Lauantai",
+"description": "Liigakierrosta ja illan ottelua Hockey Night Lauantain studiossa ennakoivat juontaja Teemu Niikko asiantuntijoinaan Juhamatti Aaltonen ja Karri Kivi.",
+"startTime": "2026-11-21T14:30:00.000Z",
+"endTime": "2026-11-21T15:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603239353559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-21T17:20:00.000Z",
+"endTime": "2026-11-21T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603239359559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-21T20:25:00.000Z",
+"endTime": "2026-11-21T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603638717559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-22T17:10:00.000Z",
+"endTime": "2026-11-22T17:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603638724559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-22T20:25:00.000Z",
+"endTime": "2026-11-22T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603921441559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-23T17:25:00.000Z",
+"endTime": "2026-11-23T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603921455559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-23T20:25:00.000Z",
+"endTime": "2026-11-23T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "603921457559",
+"programName": "Hockey Night Maanantai",
+"description": "Hockey Night Maanantai harppaa hieman lähemmäs kaukaloita ja niputtaa Liigan pelit ja kuumimmat puheenaiheet aina runkosarjan loppuun asti.",
+"startTime": "2026-11-23T20:35:00.000Z",
+"endTime": "2026-11-23T21:05:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "604178133559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-24T17:25:00.000Z",
+"endTime": "2026-11-24T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "604178148559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-24T20:25:00.000Z",
+"endTime": "2026-11-24T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "604178149559",
+"programName": "NHL-sirkus",
+"description": "NHL-sirkus kokoaa yhteen menneen viikon kohokohdat ja polttavat puheenaiheet. Ohjelmassa kurkistetaan NHL-tähtien arkeen ja hekumoidaan tuoreimpia huippuhetkiä erityisesti suomalaispelaajien osalta.",
+"startTime": "2026-11-24T20:35:00.000Z",
+"endTime": "2026-11-24T21:05:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "604766943559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-25T17:25:00.000Z",
+"endTime": "2026-11-25T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "604766961559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-25T20:25:00.000Z",
+"endTime": "2026-11-25T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "604767023559",
+"programName": "Mestarien liiga: Kaikki maalit 24.11.",
+"description": "MD 5 - 24.11.2026 Mestarien liiga illan kaikki maalit ja kiinnostavimmat tapahtumat MTV Urheilun asiantuntijoiden seurassa.",
+"startTime": "2026-11-25T21:40:00.000Z",
+"endTime": "2026-11-25T22:10:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "605116483559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-26T17:25:00.000Z",
+"endTime": "2026-11-26T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605116512559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-26T20:25:00.000Z",
+"endTime": "2026-11-26T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605116515559",
+"programName": "Mestarien liiga: Kaikki maalit 24.11., Huippuhetket",
+"description": "MD 5 - 25.11.2026 Mestarien liiga illan kaikki maalit ja kiinnostavimmat tapahtumat MTV Urheilun asiantuntijoiden seurassa.",
+"startTime": "2026-11-26T20:35:00.000Z",
+"endTime": "2026-11-26T21:05:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "605667156559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-27T17:20:00.000Z",
+"endTime": "2026-11-27T17:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605667158559",
+"programName": "Hockey Night Perjantai: HIFK - SaiPa",
+"description": "HIFK - SaiPa, Helsingin jäähalli (04.03.2026). Selostajana Jani Alkio.",
+"startTime": "2026-11-27T17:25:00.000Z",
+"endTime": "2026-11-27T18:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605667161559",
+"programName": "Liiga",
+"description": "Kiekko-Espoo - Jukurit, Espoo Metro Areena (14.12.2026). Selostajana Teppo Laaksonen.",
+"startTime": "2026-11-27T18:25:00.000Z",
+"endTime": "2026-11-27T20:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605667174559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-27T20:25:00.000Z",
+"endTime": "2026-11-27T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606196165559",
+"programName": "Hockey Night Lauantai",
+"description": "Liigakierrosta ja illan ottelua Hockey Night Lauantain studiossa ennakoivat juontaja Suvi Puukangas asiantuntijoinaan Juhamatti Aaltonen ja Antti-Jussi Niemi.",
+"startTime": "2026-11-28T14:30:00.000Z",
+"endTime": "2026-11-28T15:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606196272559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-28T17:20:00.000Z",
+"endTime": "2026-11-28T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606196648559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-28T20:25:00.000Z",
+"endTime": "2026-11-28T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606704491559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-29T17:10:00.000Z",
+"endTime": "2026-11-29T17:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606704498559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-29T20:25:00.000Z",
+"endTime": "2026-11-29T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606952251559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-30T17:25:00.000Z",
+"endTime": "2026-11-30T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606952267559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-11-30T20:25:00.000Z",
+"endTime": "2026-11-30T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "606952269559",
+"programName": "Hockey Night Maanantai",
+"description": "Hockey Night Maanantai harppaa hieman lähemmäs kaukaloita ja niputtaa Liigan pelit ja kuumimmat puheenaiheet aina runkosarjan loppuun asti.",
+"startTime": "2026-11-30T20:35:00.000Z",
+"endTime": "2026-11-30T21:05:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "607279626559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-12-01T17:25:00.000Z",
+"endTime": "2026-12-01T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607279676559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-12-01T20:25:00.000Z",
+"endTime": "2026-12-01T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607279682559",
+"programName": "NHL-sirkus",
+"description": "NHL-sirkus kokoaa yhteen menneen viikon kohokohdat ja polttavat puheenaiheet. Ohjelmassa kurkistetaan NHL-tähtien arkeen ja hekumoidaan tuoreimpia huippuhetkiä erityisesti suomalaispelaajien osalta.",
+"startTime": "2026-12-01T20:35:00.000Z",
+"endTime": "2026-12-01T21:05:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "607861628559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-12-02T17:25:00.000Z",
+"endTime": "2026-12-02T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607861663559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-12-02T20:25:00.000Z",
+"endTime": "2026-12-02T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608253622559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-12-03T17:25:00.000Z",
+"endTime": "2026-12-03T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608253689559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-12-03T20:25:00.000Z",
+"endTime": "2026-12-03T20:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608768013559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-12-04T17:20:00.000Z",
+"endTime": "2026-12-04T17:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608768027559",
+"programName": "Hockey Night Perjantai: Lukko - Kärpät",
+"description": "Lukko - Kärpät, Kivikylän Areena (04.12.2026). Selostajana Sebastian Waheeb, Antti-Jussi Niemi.",
+"startTime": "2026-12-04T17:25:00.000Z",
+"endTime": "2026-12-04T18:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608768036559",
+"programName": "Liiga",
+"description": "Kiekko-Espoo - Jukurit, Espoo Metro Areena (14.12.2026). Selostajana Teppo Laaksonen.",
+"startTime": "2026-12-04T18:25:00.000Z",
+"endTime": "2026-12-04T20:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608768074559",
+"programName": "Tulosruutu",
+"description": "Päivän kiinnostavimmat ja tärkeimmät urheilu-uutiset Tulosruudussa joka päivä.",
+"startTime": "2026-12-04T20:25:00.000Z",
+"endTime": "2026-12-04T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+}
+]
+}
+},
+{
+"channelId": "616",
+"programs": {
+"all": [
+{
+"id": "604715125616",
+"programName": "Korisliiga 360",
+"description": "Korisliiga on täällä taas! Kausi heitetään käyntiin lokakuussa ja se huipentuu kevään 2027 Pantterijahtiin! Elä mukana jokainen hetki, kun kaikki ottelut nähdään Ruudussa suorana ja tallenteena! Urheiluohjelma.",
+"startTime": "2026-11-21T20:40:00.000Z",
+"endTime": "2026-11-21T20:45:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "606316133616",
+"programName": "Korisliiga 360",
+"description": "Korisliiga on täällä taas! Kausi heitetään käyntiin lokakuussa ja se huipentuu kevään 2027 Pantterijahtiin! Elä mukana jokainen hetki, kun kaikki ottelut nähdään Ruudussa suorana ja tallenteena! Urheiluohjelma.",
+"startTime": "2026-11-24T21:00:00.000Z",
+"endTime": "2026-11-24T21:05:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "606724740616",
+"programName": "Korisliiga 360",
+"description": "Korisliiga on täällä taas! Kausi heitetään käyntiin lokakuussa ja se huipentuu kevään 2027 Pantterijahtiin! Elä mukana jokainen hetki, kun kaikki ottelut nähdään Ruudussa suorana ja tallenteena! Urheiluohjelma.",
+"startTime": "2026-11-25T20:10:00.000Z",
+"endTime": "2026-11-25T20:15:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "606992896616",
+"programName": "Korisliiga 360",
+"description": "Korisliiga on täällä taas! Kausi heitetään käyntiin lokakuussa ja se huipentuu kevään 2027 Pantterijahtiin! Elä mukana jokainen hetki, kun kaikki ottelut nähdään Ruudussa suorana ja tallenteena! Urheiluohjelma.",
+"startTime": "2026-11-26T21:00:00.000Z",
+"endTime": "2026-11-26T21:05:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "607872214616",
+"programName": "Korisliiga 360",
+"description": "Kotimainen koris saapuu Ruutuun ryminällä! Korisliiga ja Naisten Korisliiga starttaavat lokakuussa, ja Ruutu on mukana koko kauden aina viimeisiin mestaruusotteluihin asti. Urheiluohjelma.",
+"startTime": "2026-11-28T14:20:00.000Z",
+"endTime": "2026-11-28T14:25:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "607872220616",
+"programName": "Korisliiga 360",
+"description": "Kotimainen koris saapuu Ruutuun ryminällä! Korisliiga ja Naisten Korisliiga starttaavat lokakuussa, ja Ruutu on mukana koko kauden aina viimeisiin mestaruusotteluihin asti. Urheiluohjelma.",
+"startTime": "2026-11-28T20:15:00.000Z",
+"endTime": "2026-11-28T20:20:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "608861457616",
+"programName": "Korisliiga 360",
+"description": "Kotimainen koris saapuu Ruutuun ryminällä! Korisliiga ja Naisten Korisliiga starttaavat lokakuussa, ja Ruutu on mukana koko kauden aina viimeisiin mestaruusotteluihin asti. Urheiluohjelma.",
+"startTime": "2026-11-30T21:00:00.000Z",
+"endTime": "2026-11-30T21:05:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "609248844616",
+"programName": "Korisliiga 360",
+"description": "Kotimainen koris saapuu Ruutuun ryminällä! Korisliiga ja Naisten Korisliiga starttaavat lokakuussa, ja Ruutu on mukana koko kauden aina viimeisiin mestaruusotteluihin asti. Urheiluohjelma.",
+"startTime": "2026-12-01T22:45:00.000Z",
+"endTime": "2026-12-01T22:50:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "609749837616",
+"programName": "Korisliiga 360",
+"description": "Kotimainen koris saapuu Ruutuun ryminällä! Korisliiga ja Naisten Korisliiga starttaavat lokakuussa, ja Ruutu on mukana koko kauden aina viimeisiin mestaruusotteluihin asti. Urheiluohjelma.",
+"startTime": "2026-12-02T20:05:00.000Z",
+"endTime": "2026-12-02T20:10:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "609979503616",
+"programName": "Korisliiga 360",
+"description": "Kotimainen koris saapuu Ruutuun ryminällä! Korisliiga ja Naisten Korisliiga starttaavat lokakuussa, ja Ruutu on mukana koko kauden aina viimeisiin mestaruusotteluihin asti. Urheiluohjelma.",
+"startTime": "2026-12-03T21:00:00.000Z",
+"endTime": "2026-12-03T21:05:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+}
+]
+}
+},
+{
+"channelId": "560",
+"programs": {
+"all": [
+{
+"id": "613346811560",
+"programName": "Mestarien liigan viikkomakasiini",
+"description": "UEFA Champions Leaguen viikkomakasiini. Käsittelyssä suurimmat puheenaiheet, kuumimmat pelaajat, kilpailun historia ja kiinnostavimmat ottelut eri puolilta Eurooppaa. Englanninkielinen ohjelma.",
+"startTime": "2026-11-22T14:00:00.000Z",
+"endTime": "2026-11-22T14:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "613346825560",
+"programName": "NHL: New York Rangers - Carolina",
+"description": "New York Rangers vs. Carolina Hurricanes, Madison Square Garden ( 22.11.2026 ). Selostaja Jani Alkio, asiantuntija Jesse Joensuu.",
+"startTime": "2026-11-22T17:30:00.000Z",
+"endTime": "2026-11-22T20:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "613347008560",
+"programName": "NHL-sirkus",
+"description": "NHL-sirkus kokoaa yhteen menneen viikon kohokohdat ja polttavat puheenaiheet. Ohjelmassa kurkistetaan NHL-tähtien arkeen ja hekumoidaan tuoreimpia huippuhetkiä erityisesti suomalaispelaajien osalta.",
+"startTime": "2026-11-24T17:30:00.000Z",
+"endTime": "2026-11-24T18:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "613347074560",
+"programName": "NHL-sirkus",
+"description": "NHL-sirkus kokoaa yhteen menneen viikon kohokohdat ja polttavat puheenaiheet. Ohjelmassa kurkistetaan NHL-tähtien arkeen ja hekumoidaan tuoreimpia huippuhetkiä erityisesti suomalaispelaajien osalta.",
+"startTime": "2026-11-25T14:00:00.000Z",
+"endTime": "2026-11-25T14:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "613347087560",
+"programName": "Mestarien liiga: Kaikki maalit 24.11.",
+"description": "MD 5 - 24.11.2026 Mestarien liiga illan kaikki maalit ja kiinnostavimmat tapahtumat MTV Urheilun asiantuntijoiden seurassa.",
+"startTime": "2026-11-25T14:30:00.000Z",
+"endTime": "2026-11-25T15:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "613347277560",
+"programName": "Mestarien liiga: Kaikki maalit 25.11.",
+"description": "MD 5 - 25.11.2026 Mestarien liiga illan kaikki maalit ja kiinnostavimmat tapahtumat MTV Urheilun asiantuntijoiden seurassa.",
+"startTime": "2026-11-26T14:30:00.000Z",
+"endTime": "2026-11-26T15:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "613347540560",
+"programName": "Mestarien liigan viikkomakasiini",
+"description": "UEFA Champions Leaguen viikkomakasiini. Käsittelyssä suurimmat puheenaiheet, kuumimmat pelaajat, kilpailun historia ja kiinnostavimmat ottelut eri puolilta Eurooppaa. Englanninkielinen ohjelma.",
+"startTime": "2026-11-29T14:00:00.000Z",
+"endTime": "2026-11-29T14:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "613347628560",
+"programName": "NHL: Chicago - Minnesota",
+"description": "Chicago Blackhawks vs. Minnesota Wild, United Center ( 29.11.2026 ). Selostaja Sebastian Waheeb, asiantuntija Lasse Kukkonen.",
+"startTime": "2026-11-29T19:00:00.000Z",
+"endTime": "2026-11-29T21:50:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "613348557560",
+"programName": "NHL-sirkus",
+"description": "NHL-sirkus kokoaa yhteen menneen viikon kohokohdat ja polttavat puheenaiheet. Ohjelmassa kurkistetaan NHL-tähtien arkeen ja hekumoidaan tuoreimpia huippuhetkiä erityisesti suomalaispelaajien osalta.",
+"startTime": "2026-12-01T17:30:00.000Z",
+"endTime": "2026-12-01T18:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "613348829560",
+"programName": "NHL-sirkus",
+"description": "NHL-sirkus kokoaa yhteen menneen viikon kohokohdat ja polttavat puheenaiheet. Ohjelmassa kurkistetaan NHL-tähtien arkeen ja hekumoidaan tuoreimpia huippuhetkiä erityisesti suomalaispelaajien osalta.",
+"startTime": "2026-12-02T14:00:00.000Z",
+"endTime": "2026-12-02T14:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+}
+]
+}
+},
+{
+"channelId": "621",
+"programs": {
+"all": [
+{
+"id": "605148482621",
+"programName": "NFL LIVE: Detroit Lions - Tampa Bay Buccaneers",
+"description": "NFL rytisee jälleen Ruudussa! Amerikkalaisen jalkapallon kruunun jalokivi viihdyttää jenkkifutiksen ystäviä läpi kauden aina tarunhohtoiseen Super Bowliin asti! Ruudussa nähdään suorana useita otteluita viikossa ja joka sunnuntai vähintään yksi ottelu parhaaseen katseluaikaan suomeksi selostettuna sekä kaikkia otteluita samaan aikaan seuraava NFL RedZone. Tallenteet ovat katsottavissa 72 tunnin ajan. Urheiluohjelma.",
+"startTime": "2026-11-22T18:00:00.000Z",
+"endTime": "2026-11-22T21:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "605664054621",
+"programName": "Ennakkostudio",
+"description": "Mestaruusliiga isketään käyntiin syksyllä 2026 ja Suomen mestari on selvillä kevään 2027 päätteeksi! Nauti kotimaisesta huippulentiksestä koko kausi, kun joka ikinen kamppailu nähdään suorana ja tallenteena!",
+"startTime": "2026-11-23T16:00:00.000Z",
+"endTime": "2026-11-23T16:30:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "605664057621",
+"programName": "Ennakkostudio: Lentopallon Mestaruusliiga, naiset LIVE",
+"description": "Mestaruusliiga isketään käyntiin syksyllä 2026 ja Suomen mestari on selvillä kevään 2027 päätteeksi! Nauti kotimaisesta huippulentiksestä koko kausi, kun joka ikinen kamppailu nähdään suorana ja tallenteena!",
+"startTime": "2026-11-23T16:30:00.000Z",
+"endTime": "2026-11-23T19:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608308756621",
+"programName": "NFL LIVE: Cincinnati Bengals - New Orleans Saints",
+"description": "NFL rytisee jälleen Ruudussa! Amerikkalaisen jalkapallon kruunun jalokivi viihdyttää jenkkifutiksen ystäviä läpi kauden aina tarunhohtoiseen Super Bowliin asti! Ruudussa nähdään suorana useita otteluita viikossa ja joka sunnuntai vähintään yksi ottelu parhaaseen katseluaikaan suomeksi selostettuna sekä kaikkia otteluita samaan aikaan seuraava NFL RedZone. Tallenteet ovat katsottavissa 72 tunnin ajan. Urheiluohjelma.",
+"startTime": "2026-11-29T18:00:00.000Z",
+"endTime": "2026-11-29T21:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+}
+]
+}
+},
+{
+"channelId": "393",
+"programs": {
+"all": [
+{
+"id": "604250997393",
+"programName": "NBA: Milwaukee Bucks-Philadelphia 76ers",
+"description": "Suora lähetys. Selostajana Tomi Tiilikainen, asiantuntijana Petteri Koponen.",
+"startTime": "2026-11-21T18:00:00.000Z",
+"endTime": "2026-11-21T20:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "604791085393",
+"programName": "Jääkiekon Auroraliiga: HPK-Pelicans",
+"description": "Suora lähetys naisten pääsarjan ottelusta. Selostajana Nuutti Vihtilä.",
+"startTime": "2026-11-22T10:55:00.000Z",
+"endTime": "2026-11-22T13:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607061033393",
+"programName": "NBA: Miami Heat-New York Knicks",
+"description": "Suora lähetys. Selostajana Tomi Tiilikainen.",
+"startTime": "2026-11-28T00:00:00.000Z",
+"endTime": "2026-11-28T02:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607377494393",
+"programName": "Snooker : UK Championship, 28.11.2026 21:00.",
+"description": "Suora lähetys. Selostajana Ville Pasanen",
+"startTime": "2026-11-28T19:00:00.000Z",
+"endTime": "2026-11-28T22:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607923730393",
+"programName": "Jääkiekon Auroraliiga: TPS-Ilves",
+"description": "Suora lähetys naisten pääsarjan ottelusta. Selostajana Nuutti Vihtilä.",
+"startTime": "2026-11-29T10:55:00.000Z",
+"endTime": "2026-11-29T13:10:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "607923784393",
+"programName": "Snookeria: UK Championshipin 1. kierros, 29.11.2026 21:00.",
+"description": "Suora lähetys. Selostajana Aki Kauppinen.",
+"startTime": "2026-11-29T19:00:00.000Z",
+"endTime": "2026-11-29T22:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "608621173393",
+"programName": "Snooker: UK Championshipin 1. kierros-kooste",
+"description": "Kooste 28.11. pelatusta ottelusta. Selostajana Aki Kauppinen.",
+"startTime": "2026-11-30T13:55:00.000Z",
+"endTime": "2026-11-30T16:05:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "609988522393",
+"programName": "Snooker : UK Championship, 04.12.2026 21:00.",
+"description": "Suora lähetys. Selostajana Aki Kauppinen, asiantuntijana Robin Hull.",
+"startTime": "2026-12-04T19:00:00.000Z",
+"endTime": "2026-12-04T22:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+}
+]
+}
+},
+{
+"channelId": "557",
+"programs": {
+"all": [
+{
+"id": "606694139557",
+"programName": "NHL 26-27",
+"description": "NHL: Calgary Flames - Chicago Blackhawks. Koe NHL suorana. Maailman parasta jääkiekkoa ja suurimmat tähdet - kaikkien tähtäimessä Stanley Cup. Selostaja Ilmari Pitkänen. Katso lisää Disney+:ssa.",
+"startTime": "2026-11-21T20:35:00.000Z",
+"endTime": "2026-11-21T23:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "611620852557",
+"programName": "NHL 26-27",
+"description": "NHL: New Jersey Devils - Calgary Flames. Maailman parasta jääkiekkoa ja suurimmat tähdet – kaikkien tähtäimessä Stanley Cup. Selostus Nuutti Vihtilä. Katso lisää Disney+:ssa.",
+"startTime": "2026-11-27T18:05:00.000Z",
+"endTime": "2026-11-27T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "611620854557",
+"programName": "NHL 26-27",
+"description": "NHL: Anaheim Ducks - Los Angeles Kings. Maailman parasta jääkiekkoa ja suurimmat tähdet – kaikkien tähtäimessä Stanley Cup. Selostus Ilmari Pitkänen. Katso lisää Disney+:ssa.",
+"startTime": "2026-11-27T21:05:00.000Z",
+"endTime": "2026-11-27T23:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "611620859557",
+"programName": "NHL 26-27",
+"description": "NHL: Nashville Predators - Ottawa Senators. Koe NHL suorana. Maailman parasta jääkiekkoa ja suurimmat tähdet – kaikkien tähtäimessä Stanley Cup. Selostus Nuutti Vihtilä. Katso lisää Disney+:ssa.",
+"startTime": "2026-11-30T18:05:00.000Z",
+"endTime": "2026-11-30T20:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+}
+]
+}
+},
+{
+"channelId": "7996",
+"programs": {
+"all": [
+{
+"id": "6117942217996",
+"programName": "Hole-in-One",
+"description": "K4 J12 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen etuysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala. Lisäksi Arttu Harkki saa Petteri Nykyn opastuksessa lyöntiinsä kaivattua kehitystä.",
+"startTime": "2026-11-20T15:00:00.000Z",
+"endTime": "2026-11-20T16:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6117943227996",
+"programName": "Hole-in-One",
+"description": "K4 J12 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen etuysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala. Lisäksi Arttu Harkki saa Petteri Nykyn opastuksessa lyöntiinsä kaivattua kehitystä.",
+"startTime": "2026-11-21T05:30:00.000Z",
+"endTime": "2026-11-21T06:30:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6117944167996",
+"programName": "Moottorimaailma",
+"description": "Moottorimaailma J47 Tractorpulling Lievestuore 2025",
+"startTime": "2026-11-21T14:00:00.000Z",
+"endTime": "2026-11-21T15:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6117942817996",
+"programName": "Moottorimaailma",
+"description": "Moottorimaailma J66 BLCS Asfalttimestaruussarja 2026, Kauhava",
+"startTime": "2026-11-20T22:00:00.000Z",
+"endTime": "2026-11-20T23:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6117945317996",
+"programName": "Hole-in-One",
+"description": "K4 J12 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen etuysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala. Lisäksi Arttu Harkki saa Petteri Nykyn opastuksessa lyöntiinsä kaivattua kehitystä.",
+"startTime": "2026-11-22T09:00:00.000Z",
+"endTime": "2026-11-22T10:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6117945727996",
+"programName": "Hole-in-One",
+"description": "K4 J12 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen etuysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala. Lisäksi Arttu Harkki saa Petteri Nykyn opastuksessa lyöntiinsä kaivattua kehitystä.",
+"startTime": "2026-11-22T16:00:00.000Z",
+"endTime": "2026-11-22T17:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150214077996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-24T18:00:00.000Z",
+"endTime": "2026-11-24T19:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150214177996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-25T00:00:00.000Z",
+"endTime": "2026-11-25T00:57:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150214237996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-25T05:30:00.000Z",
+"endTime": "2026-11-25T06:30:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150214447996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-25T12:00:00.000Z",
+"endTime": "2026-11-25T13:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150214457996",
+"programName": "Moottorimaailma",
+"description": "Moottorimaailma J66 BLCS Asfalttimestaruussarja 2026, Kauhava",
+"startTime": "2026-11-25T13:00:00.000Z",
+"endTime": "2026-11-25T14:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150214807996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-26T10:00:00.000Z",
+"endTime": "2026-11-26T11:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150215257996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-27T15:00:00.000Z",
+"endTime": "2026-11-27T16:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150215417996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-28T05:30:00.000Z",
+"endTime": "2026-11-28T06:30:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150215657996",
+"programName": "Moottorimaailma",
+"description": "Moottorimaailma J47 Tractorpulling Lievestuore 2025",
+"startTime": "2026-11-28T14:00:00.000Z",
+"endTime": "2026-11-28T15:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150215357996",
+"programName": "Moottorimaailma",
+"description": "Moottorimaailma J66 BLCS Asfalttimestaruussarja 2026, Kauhava",
+"startTime": "2026-11-27T22:00:00.000Z",
+"endTime": "2026-11-27T23:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150216087996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-29T09:00:00.000Z",
+"endTime": "2026-11-29T10:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "6150216227996",
+"programName": "Hole-in-One",
+"description": "K4 J13 Esittelyssä Rovaniemellä sijaitseva Santa Claus Golf ja sen takaysi. Täällä voi pelata keskiyön auringon kanssa kesä- ja heinäkuussa ympäri vuorokauden. Pelimuotona foursome reikäpelinä Mulligan tasoituksella. Pelaamassa kapteeni Pertti Huhtanen, kenttäyhtiön PJ Markku Vitikka ja kentän caddie master Laura Pahkala.",
+"startTime": "2026-11-29T16:00:00.000Z",
+"endTime": "2026-11-29T17:00:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+}
+]
+}
+},
+{
+"channelId": "13786",
+"programs": {
+"all": [
+{
+"id": "60636320413786",
+"programName": "Golf: LPGA CME Group Tour Championship, 1. päivä",
+"description": "19.11.2026. Ensimmäinen pelipäivä.",
+"startTime": "2026-11-19T19:00:00.000Z",
+"endTime": "2026-11-19T22:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636320613786",
+"programName": "Formula 1: Las Vegasin 1. vapaat harjoitukset",
+"description": "19.11.2026. Selostus Niki Juusela, asiantuntija Heikki Kovalainen.",
+"startTime": "2026-11-20T00:25:00.000Z",
+"endTime": "2026-11-20T01:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636320913786",
+"programName": "Formula 1: Las Vegasin 2. vapaat harjoitukset",
+"description": "19.11.2026. Selostus Niki Juusela, asiantuntija Heikki Kovalainen.",
+"startTime": "2026-11-20T03:55:00.000Z",
+"endTime": "2026-11-20T05:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636321213786",
+"programName": "Grand Slam Of Darts: Neljännesvälierät",
+"description": "18.11.2026. Iltasessio. Wolverhampton, Englanti.",
+"startTime": "2026-11-20T12:00:00.000Z",
+"endTime": "2026-11-20T16:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636321513786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-20T16:00:00.000Z",
+"endTime": "2026-11-20T16:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636321713786",
+"programName": "Bundesliiga: Bundesliga Weekly",
+"description": "Bundesliigan viikkomakasiini.",
+"startTime": "2026-11-20T16:55:00.000Z",
+"endTime": "2026-11-20T17:25:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636321813786",
+"programName": "2. Bundesliiga: Bielefeld - Magdeburg",
+"description": "20.11.2026. Jalkapallon Saksan 2. Bundesliigan ottelu.",
+"startTime": "2026-11-20T17:25:00.000Z",
+"endTime": "2026-11-20T19:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636322113786",
+"programName": "Bundesliiga: Bayern München - Köln",
+"description": "20.11.2026. Jalkapallon Saksan Bundesliigan 10. kierroksen ottelu. Selostus Mikko Innanen.",
+"startTime": "2026-11-20T19:20:00.000Z",
+"endTime": "2026-11-20T21:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61087704213786",
+"programName": "Viaplay Talvi: Suomalaisten huippuhetket kaudelta 2025-2026",
+"description": "Suomalaisten hiihtäjien maailmancup-kausi tarjosi huippuhetkiä: kolme palkintokorokesijaa ja kaksi voittoa. Ykkössijat veivät Jasmi Joensuu ja Johanna Matintalo.",
+"startTime": "2026-11-20T21:30:00.000Z",
+"endTime": "2026-11-20T22:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636323013786",
+"programName": "Formula 1: Las Vegasin 3. vapaat harjoitukset",
+"description": "20.11.2026. Selostus Niki Juusela, asiantuntija Heikki Kovalainen.",
+"startTime": "2026-11-21T00:25:00.000Z",
+"endTime": "2026-11-21T01:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636324313786",
+"programName": "F1 Academy: Las Vegasin 1. osakilpailu",
+"description": "20.11.2026.",
+"startTime": "2026-11-21T02:10:00.000Z",
+"endTime": "2026-11-21T03:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636325613786",
+"programName": "F1-Studio: Las Vegasin aika-ajot",
+"description": "Suora lähetys.",
+"startTime": "2026-11-21T03:30:00.000Z",
+"endTime": "2026-11-21T03:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636326613786",
+"programName": "F1: Las Vegasin aika-ajot",
+"description": "20.11.2026. Selostus Niki Juusela, asiantuntija Heikki Kovalainen.",
+"startTime": "2026-11-21T03:55:00.000Z",
+"endTime": "2026-11-21T05:45:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636327413786",
+"programName": "Valioliiga: Welcome to the Weekend",
+"description": "Welcome to the Weekend on ohjelma, joka käynnistää Valioliiga-viikonlopun.",
+"startTime": "2026-11-21T08:00:00.000Z",
+"endTime": "2026-11-21T09:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61087704313786",
+"programName": "Viaplay Talvi: Suomalaisten huippuhetket kaudelta 2025-2026",
+"description": "Suomalaisten hiihtäjien maailmancup-kausi tarjosi huippuhetkiä: kolme palkintokorokesijaa ja kaksi voittoa. Ykkössijat veivät Jasmi Joensuu ja Johanna Matintalo.",
+"startTime": "2026-11-21T09:00:00.000Z",
+"endTime": "2026-11-21T09:25:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60848539813786",
+"programName": "Alppihiihdon maailmancup: Naisten pujottelu, Gurgl",
+"description": "21.11.2026. 1. kierros. Selostus Jouni Pellinen.",
+"startTime": "2026-11-21T09:25:00.000Z",
+"endTime": "2026-11-21T11:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636330913786",
+"programName": "Bundesliiga: Bundesliga Weekly",
+"description": "Bundesliigan viikkomakasiini.",
+"startTime": "2026-11-21T11:00:00.000Z",
+"endTime": "2026-11-21T11:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636331913786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-21T11:30:00.000Z",
+"endTime": "2026-11-21T12:40:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636334013786",
+"programName": "Moto3: Portugalin aika-ajot",
+"description": "21.11.2026.",
+"startTime": "2026-11-21T12:40:00.000Z",
+"endTime": "2026-11-21T13:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636337213786",
+"programName": "Moto2: Portugalin aika-ajot",
+"description": "21.11.2026.",
+"startTime": "2026-11-21T13:35:00.000Z",
+"endTime": "2026-11-21T14:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636337413786",
+"programName": "Valioliiga: PL The Big Interview, Alex Scott",
+"description": "Alex Scott. PL The Big Interview tarjoaa laajempia ja epävirallisempia haastatteluja Valioliigan suurimpien tähtien kanssa.",
+"startTime": "2026-11-21T14:25:00.000Z",
+"endTime": "2026-11-21T14:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636337613786",
+"programName": "EFL Championship: Wolverhampton - Charlton",
+"description": "21.11.2026. Jalkapallon Englannin EFL Championshipin ottelu. Selostus Tero Kainulainen.",
+"startTime": "2026-11-21T14:55:00.000Z",
+"endTime": "2026-11-21T17:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636337913786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-21T17:00:00.000Z",
+"endTime": "2026-11-21T17:55:00.000Z",
+"broadcastType": "none",
+"format": "SPORT"
+},
+{
+"id": "60636338013786",
+"programName": "Valioliiga: Fanzone",
+"description": "Keskusteluohjelma, jossa kannattajat ympäri maailmaa jakavat näkemyksiään joukkueistaan ja suosikkipelaajistaan.",
+"startTime": "2026-11-21T17:55:00.000Z",
+"endTime": "2026-11-21T18:50:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636338213786",
+"programName": "Formula 1: Las Vegasin aika-ajot, kooste",
+"description": "Kooste Las Vegasin aika-ajoista 21.11.2026.",
+"startTime": "2026-11-21T18:50:00.000Z",
+"endTime": "2026-11-21T19:25:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636338313786",
+"programName": "2. Bundesliiga: St. Pauli - Bochum",
+"description": "Selostus: Englanti. Tapahtumapaikka: Millerntor-Stadion.",
+"startTime": "2026-11-21T19:25:00.000Z",
+"endTime": "2026-11-21T21:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636338513786",
+"programName": "Valioliiga: PL Stories, Nemanja Matic",
+"description": "Nemanja Matic. PL Stories esittelee Valioliigan henkilöitä ja kertoo heidän tarinansa.",
+"startTime": "2026-11-21T21:30:00.000Z",
+"endTime": "2026-11-21T22:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636338613786",
+"programName": "F1 Academy: Las Vegasin 2. osakilpailu",
+"description": "21.11.2026.",
+"startTime": "2026-11-22T00:15:00.000Z",
+"endTime": "2026-11-22T01:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636338913786",
+"programName": "Valioliiga: The Saturday Wrap",
+"description": "Kattava kooste kaikista lauantain Valioliiga-otteluista, sisältäen huippuhetket ja studioanalyysit.",
+"startTime": "2026-11-22T08:00:00.000Z",
+"endTime": "2026-11-22T08:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636339013786",
+"programName": "FastZone",
+"description": "Makasiiniohjelma käy viikoittain läpi moottoriurheilun parhaat palat kilparadoilta ja niiden ulkopuolelta.",
+"startTime": "2026-11-22T08:55:00.000Z",
+"endTime": "2026-11-22T09:25:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60848540113786",
+"programName": "Alppihiihdon maailmancup: Miesten pujottelu, Gurgl",
+"description": "22.11.2026. 1. kierros. Selostus Jouni Pellinen.",
+"startTime": "2026-11-22T09:25:00.000Z",
+"endTime": "2026-11-22T11:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636339313786",
+"programName": "Valioliiga Highlights: Manchester City - Fulham",
+"description": "21.11.2026.",
+"startTime": "2026-11-22T11:00:00.000Z",
+"endTime": "2026-11-22T11:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636339513786",
+"programName": "Valioliiga Highlights: Aston Villa - Sunderland",
+"description": "21.11.2026.",
+"startTime": "2026-11-22T11:30:00.000Z",
+"endTime": "2026-11-22T11:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636339613786",
+"programName": "EFL Championship: Burnley - Blackburn",
+"description": "22.11.2026. Jalkapallon Englannin EFL Championshipin ottelu.",
+"startTime": "2026-11-22T11:55:00.000Z",
+"endTime": "2026-11-22T14:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636339913786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-22T14:00:00.000Z",
+"endTime": "2026-11-22T14:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636340013786",
+"programName": "Naisten Bundesliiga: RB Leipzig - Wolfsburg",
+"description": "22.11.2026. Jalkapallon naisten Bundesliigan ottelu.",
+"startTime": "2026-11-22T14:55:00.000Z",
+"endTime": "2026-11-22T17:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60636340213786",
+"programName": "NHL: Colorado Avalanche - Anaheim Ducks",
+"description": "19.11.2026.",
+"startTime": "2026-11-22T17:00:00.000Z",
+"endTime": "2026-11-22T19:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636340313786",
+"programName": "Valioliiga Highlights: Newcastle - Arsenal",
+"description": "21.11.2026.",
+"startTime": "2026-11-22T19:00:00.000Z",
+"endTime": "2026-11-22T19:35:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60636340613786",
+"programName": "Ligue 1: Marseille - Le Mans",
+"description": "22.11.2026. Jalkapallon Ranskan liigan 11. kierroksen ottelu.",
+"startTime": "2026-11-22T19:35:00.000Z",
+"endTime": "2026-11-22T21:45:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897316613786",
+"programName": "Ligue 1: Marseille - Le Mans",
+"description": "22.11.2026. Jalkapallon Ranskan liigan 11. kierroksen ottelu.",
+"startTime": "2026-11-23T12:00:00.000Z",
+"endTime": "2026-11-23T14:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897316813786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-23T14:00:00.000Z",
+"endTime": "2026-11-23T15:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897316913786",
+"programName": "EFL Championship: Burnley - Blackburn",
+"description": "22.11.2026. Jalkapallon Englannin EFL Championshipin ottelu.",
+"startTime": "2026-11-23T15:00:00.000Z",
+"endTime": "2026-11-23T16:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897317113786",
+"programName": "Naisten Bundesliiga: Bayern München - Hoffenheim",
+"description": "23.11.2026. Jalkapallon naisten Bundesliigan ottelu.",
+"startTime": "2026-11-23T16:55:00.000Z",
+"endTime": "2026-11-23T19:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897317313786",
+"programName": "NHL: Florida Panthers - Buffalo Sabres",
+"description": "21.11.2026.",
+"startTime": "2026-11-23T19:00:00.000Z",
+"endTime": "2026-11-23T21:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897317513786",
+"programName": "Bundesliiga: Bundesliga Highlights, 10. kierros",
+"description": "Huippuhetkiä 10. kierrokselta.",
+"startTime": "2026-11-23T21:00:00.000Z",
+"endTime": "2026-11-23T22:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897317613786",
+"programName": "F1: Las Vegasin osakilpailu",
+"description": "21.11.2026. Selostus Niki Juusela, asiantuntija Heikki Kovalainen.",
+"startTime": "2026-11-24T12:00:00.000Z",
+"endTime": "2026-11-24T14:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61087704413786",
+"programName": "Viaplay Talvi: Suomalaisten huippuhetket kaudelta 2025-2026",
+"description": "Suomalaisten hiihtäjien maailmancup-kausi tarjosi huippuhetkiä: kolme palkintokorokesijaa ja kaksi voittoa. Ykkössijat veivät Jasmi Joensuu ja Johanna Matintalo.",
+"startTime": "2026-11-24T14:30:00.000Z",
+"endTime": "2026-11-24T15:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897317913786",
+"programName": "NHL: New York Rangers - Carolina Hurricanes",
+"description": "22.11.2026. Selostus Antti Mäkinen.",
+"startTime": "2026-11-24T15:00:00.000Z",
+"endTime": "2026-11-24T17:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897318013786",
+"programName": "Valioliiga: Liverpool - Manchester United",
+"description": "22.11.2026. Selostus Tero Kainulainen.",
+"startTime": "2026-11-24T17:00:00.000Z",
+"endTime": "2026-11-24T19:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897318113786",
+"programName": "Valioliiga: PL Review, 11. kierros",
+"description": "Valioliigan 11. kierroksen yhteenveto.",
+"startTime": "2026-11-24T19:00:00.000Z",
+"endTime": "2026-11-24T19:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897318313786",
+"programName": "EFL Championship: Wolverhampton - Derby",
+"description": "24.11.2026.",
+"startTime": "2026-11-24T19:55:00.000Z",
+"endTime": "2026-11-24T22:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897318413786",
+"programName": "EFL Championship: Wolverhampton - Derby",
+"description": "24.11.2026.",
+"startTime": "2026-11-25T12:00:00.000Z",
+"endTime": "2026-11-25T14:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897318513786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-25T14:00:00.000Z",
+"endTime": "2026-11-25T15:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897318613786",
+"programName": "Valioliiga: Brentford - Everton",
+"description": "23.11.2026. Selostus Petteri Vennelä.",
+"startTime": "2026-11-25T15:00:00.000Z",
+"endTime": "2026-11-25T17:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897318713786",
+"programName": "Grand Slam Of Darts: Finaali",
+"description": "22.11.2026. Iltasessio. Wolverhampton, Englanti. Selostus Ville Kuusinen, asiantuntija Kim Viljanen.",
+"startTime": "2026-11-25T17:00:00.000Z",
+"endTime": "2026-11-25T19:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897318813786",
+"programName": "UEFA Europa League & Europa Conference League -makasiini",
+"description": "Kierrosennakko ja katsaus menneisiin tapahtumiin.",
+"startTime": "2026-11-25T19:00:00.000Z",
+"endTime": "2026-11-25T19:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897318913786",
+"programName": "EFL Championship: Stoke - Millwall",
+"description": "25.11.2026.",
+"startTime": "2026-11-25T19:55:00.000Z",
+"endTime": "2026-11-25T22:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897319013786",
+"programName": "FastZone",
+"description": "Makasiiniohjelma käy viikoittain läpi moottoriurheilun parhaat palat kilparadoilta ja niiden ulkopuolelta.",
+"startTime": "2026-11-26T12:00:00.000Z",
+"endTime": "2026-11-26T12:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897319113786",
+"programName": "Valioliiga: PL Netbusters, 11. kierros",
+"description": "Kohokohdat ja kaikki maalit Valioliigan 11. kierrokselta.",
+"startTime": "2026-11-26T12:30:00.000Z",
+"endTime": "2026-11-26T13:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897319213786",
+"programName": "Golfin LET Tour: Andalucia Costa Del Sol Open de España",
+"description": "Selostus: Englanti.Tapahtumapaikka: Real Guadalhorce Club de Golf.",
+"startTime": "2026-11-26T13:00:00.000Z",
+"endTime": "2026-11-26T16:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897319413786",
+"programName": "Valioliiga: PL Stories, Frank Lampard",
+"description": "Frank Lampard. PL Stories esittelee Valioliigan henkilöitä ja kertoo heidän tarinansa.",
+"startTime": "2026-11-26T16:00:00.000Z",
+"endTime": "2026-11-26T16:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897319513786",
+"programName": "UEFA Europa League & Europa Conference League -makasiini",
+"description": "Kierrosennakko ja katsaus menneisiin tapahtumiin.",
+"startTime": "2026-11-26T16:30:00.000Z",
+"endTime": "2026-11-26T17:35:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897319613786",
+"programName": "Konferenssiliiga: Hearts - Monaco",
+"description": "26.11.2026. Jalkapallon Konferenssiliigan liigavaiheen ottelu. Selostus Ville Kuusinen.",
+"startTime": "2026-11-26T17:35:00.000Z",
+"endTime": "2026-11-26T19:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897319713786",
+"programName": "EFL League One: Doncaster - Huddersfield",
+"description": "Selostus: Englanti. Tapahtumapaikka: Club Doncaster Sports Village.",
+"startTime": "2026-11-26T19:55:00.000Z",
+"endTime": "2026-11-26T22:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61087704513786",
+"programName": "Viaplay Talvi: Suomalaisten huippuhetket kaudelta 2025-2026",
+"description": "Suomalaisten hiihtäjien maailmancup-kausi tarjosi huippuhetkiä: kolme palkintokorokesijaa ja kaksi voittoa. Ykkössijat veivät Jasmi Joensuu ja Johanna Matintalo.",
+"startTime": "2026-11-27T12:00:00.000Z",
+"endTime": "2026-11-27T12:30:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897320013786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-27T12:30:00.000Z",
+"endTime": "2026-11-27T13:25:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897320213786",
+"programName": "Formula 1: Qatarin 1. vapaat harjoitukset",
+"description": "27.11.2026. Selostus Niki Juusela, asiantuntija Ossi Oikarinen.",
+"startTime": "2026-11-27T13:25:00.000Z",
+"endTime": "2026-11-27T14:35:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897320313786",
+"programName": "Konferenssiliiga: Hearts - Monaco",
+"description": "26.11.2026. Jalkapallon Konferenssiliigan liigavaiheen ottelu. Selostus Ville Kuusinen.",
+"startTime": "2026-11-27T14:35:00.000Z",
+"endTime": "2026-11-27T16:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897320413786",
+"programName": "Formula 1: Qatarin 2. vapaat harjoitukset",
+"description": "27.11.2026. Selostus Niki Juusela, asiantuntija Ossi Oikarinen.",
+"startTime": "2026-11-27T16:55:00.000Z",
+"endTime": "2026-11-27T18:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897320613786",
+"programName": "Bundesliiga: Bundesliga Highlights, 10. kierros",
+"description": "Huippuhetkiä 10. kierrokselta.",
+"startTime": "2026-11-27T18:05:00.000Z",
+"endTime": "2026-11-27T19:20:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897320813786",
+"programName": "Bundesliiga: Werder Bremen - Mönchengladbach",
+"description": "27.11.2026. Jalkapallon Saksan Bundesliigan 11. kierroksen ottelu. Selostus Mikko Innanen.",
+"startTime": "2026-11-27T19:20:00.000Z",
+"endTime": "2026-11-27T21:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897321013786",
+"programName": "GP Confidential",
+"description": "GP Confidential -sarjassa keskitytään F1-autojen menestyksen ja suorituskyvyn kannalta merkittäviin teknisiin yksityiskohtiin.",
+"startTime": "2026-11-27T21:30:00.000Z",
+"endTime": "2026-11-27T22:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897321213786",
+"programName": "Valioliiga: Welcome to the Weekend",
+"description": "Welcome to the Weekend on ohjelma, joka käynnistää Valioliiga-viikonlopun.",
+"startTime": "2026-11-28T08:00:00.000Z",
+"endTime": "2026-11-28T09:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897321313786",
+"programName": "Bundesliiga: Bundesliga Weekly",
+"description": "Bundesliigan viikkomakasiini.",
+"startTime": "2026-11-28T09:00:00.000Z",
+"endTime": "2026-11-28T09:45:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897321513786",
+"programName": "Moto2: MotoGP",
+"description": "28.11.2026.",
+"startTime": "2026-11-28T09:45:00.000Z",
+"endTime": "2026-11-28T10:45:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897321713786",
+"programName": "Valioliiga: Fanzone",
+"description": "Keskusteluohjelma, jossa kannattajat ympäri maailmaa jakavat näkemyksiään joukkueistaan ja suosikkipelaajistaan.",
+"startTime": "2026-11-28T10:45:00.000Z",
+"endTime": "2026-11-28T12:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61087704613786",
+"programName": "Viaplay Talvi: Suomalaisten huippuhetket kaudelta 2025-2026",
+"description": "Suomalaisten hiihtäjien maailmancup-kausi tarjosi huippuhetkiä: kolme palkintokorokesijaa ja kaksi voittoa. Ykkössijat veivät Jasmi Joensuu ja Johanna Matintalo.",
+"startTime": "2026-11-28T12:00:00.000Z",
+"endTime": "2026-11-28T12:25:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897322013786",
+"programName": "Mäkihypyn maailmancup: Naisten HS90, Hinzenbach",
+"description": "28.11.2026. Selostus Ville Kinaret.",
+"startTime": "2026-11-28T12:25:00.000Z",
+"endTime": "2026-11-28T14:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897322313786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-28T14:00:00.000Z",
+"endTime": "2026-11-28T14:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897322513786",
+"programName": "EFL Championship: West Bromwich - Bristol City",
+"description": "28.11.2026. Jalkapallon Englannin EFL Championshipin ottelu. Selostus Petteri Vennelä.",
+"startTime": "2026-11-28T14:55:00.000Z",
+"endTime": "2026-11-28T17:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897322713786",
+"programName": "Valioliigan suomalaiset: Teemu Pukki",
+"description": "Jakso 4/6.",
+"startTime": "2026-11-28T17:00:00.000Z",
+"endTime": "2026-11-28T17:15:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897322913786",
+"programName": "F1-Studio: Qatarin aika-ajot",
+"description": "Suora lähetys.",
+"startTime": "2026-11-28T17:15:00.000Z",
+"endTime": "2026-11-28T17:55:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897323113786",
+"programName": "F1: Qatarin aika-ajot",
+"description": "28.11.2026. Selostus Niki Juusela, asiantuntija Ossi Oikarinen.",
+"startTime": "2026-11-28T17:55:00.000Z",
+"endTime": "2026-11-28T19:45:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897323313786",
+"programName": "Konferenssiliiga: Braga - KuPS",
+"description": "Selostus: Velja Engström. Tapahtumapaikka: Estádio Municipal de Braga.",
+"startTime": "2026-11-28T19:45:00.000Z",
+"endTime": "2026-11-28T21:45:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897323513786",
+"programName": "Lumilautailun maailmancup: Parisuurpujottelu, joukkuekisa, Ruyi",
+"description": "29.11.2026.",
+"startTime": "2026-11-29T04:50:00.000Z",
+"endTime": "2026-11-29T06:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897323613786",
+"programName": "Valioliiga: The Saturday Wrap",
+"description": "Kattava kooste kaikista lauantain Valioliiga-otteluista, sisältäen huippuhetket ja studioanalyysit.",
+"startTime": "2026-11-29T08:00:00.000Z",
+"endTime": "2026-11-29T09:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897323813786",
+"programName": "GP Confidential",
+"description": "GP Confidential -sarjassa keskitytään F1-autojen menestyksen ja suorituskyvyn kannalta merkittäviin teknisiin yksityiskohtiin.",
+"startTime": "2026-11-29T09:00:00.000Z",
+"endTime": "2026-11-29T09:45:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897323913786",
+"programName": "Moto3: Valencian osakilpailu",
+"description": "29.11.2026. Selostus Julius Vauhkonen, asiantuntija Matti Kiiveri.",
+"startTime": "2026-11-29T09:45:00.000Z",
+"endTime": "2026-11-29T11:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897324113786",
+"programName": "Moto2: Valencian osakilpailu",
+"description": "29.11.2026. Selostus Julius Vauhkonen, asiantuntija Ossi Oikarinen.",
+"startTime": "2026-11-29T11:00:00.000Z",
+"endTime": "2026-11-29T12:15:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897324313786",
+"programName": "FastZone",
+"description": "Makasiiniohjelma käy viikoittain läpi moottoriurheilun parhaat palat kilparadoilta ja niiden ulkopuolelta.",
+"startTime": "2026-11-29T12:15:00.000Z",
+"endTime": "2026-11-29T13:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897324413786",
+"programName": "Darts: Players Championship Finals",
+"description": "29.11.2026. Neljännesvälierät, päiväsessio. Selostus Tero Kainulainen, asiantuntija Veijo Viinikka.",
+"startTime": "2026-11-29T13:00:00.000Z",
+"endTime": "2026-11-29T17:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "60897324613786",
+"programName": "NHL: Nashville Predators - Utah Mammoth",
+"description": "27.11.2026. Selostus Velja Engström.",
+"startTime": "2026-11-29T17:00:00.000Z",
+"endTime": "2026-11-29T19:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897324813786",
+"programName": "Valioliiga Highlights: Manchester United - Brentford",
+"description": "28.11.2026.",
+"startTime": "2026-11-29T19:00:00.000Z",
+"endTime": "2026-11-29T19:35:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "60897324913786",
+"programName": "Ligue 1: Lyon - Monaco",
+"description": "29.11.2026. Jalkapallon Ranskan liigan 12. kierroksen ottelu.",
+"startTime": "2026-11-29T19:35:00.000Z",
+"endTime": "2026-11-29T21:45:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61205653613786",
+"programName": "Ligue 1: Lyon - Monaco",
+"description": "29.11.2026. Jalkapallon Ranskan liigan 12. kierroksen ottelu.",
+"startTime": "2026-11-30T12:00:00.000Z",
+"endTime": "2026-11-30T14:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205653813786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-11-30T14:00:00.000Z",
+"endTime": "2026-11-30T15:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205654313786",
+"programName": "NHL: Carolina Hurricanes - Ottawa Senators",
+"description": "28.11.2026.",
+"startTime": "2026-11-30T15:00:00.000Z",
+"endTime": "2026-11-30T17:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205655113786",
+"programName": "NHL: Florida Panthers - Tampa Bay Lightning",
+"description": "28.11.2026.",
+"startTime": "2026-11-30T17:00:00.000Z",
+"endTime": "2026-11-30T19:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205655213786",
+"programName": "Valioliiga: Manchester United - Brentford",
+"description": "28.11.2026. Selostus Mikko Innanen.",
+"startTime": "2026-11-30T19:00:00.000Z",
+"endTime": "2026-11-30T21:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205655413786",
+"programName": "Bundesliiga: Bundesliga Highlights, 11. kierros",
+"description": "Huippuhetkiä 11. kierrokselta.",
+"startTime": "2026-11-30T21:00:00.000Z",
+"endTime": "2026-11-30T22:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205655513786",
+"programName": "F1: Qatarin osakilpailu",
+"description": "29.11.2026. Selostus Niki Juusela, asiantuntija Ossi Oikarinen.",
+"startTime": "2026-12-01T12:00:00.000Z",
+"endTime": "2026-12-01T14:15:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205655613786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-12-01T14:15:00.000Z",
+"endTime": "2026-12-01T15:15:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205655713786",
+"programName": "Valioliiga: Everton - Liverpool",
+"description": "29.11.2026. Selostus Mikko Innanen.",
+"startTime": "2026-12-01T15:15:00.000Z",
+"endTime": "2026-12-01T17:15:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205655813786",
+"programName": "Valioliiga: Arsenal - Manchester City",
+"description": "29.11.2026. Selostus Ville Kuusinen.",
+"startTime": "2026-12-01T17:15:00.000Z",
+"endTime": "2026-12-01T19:10:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205655913786",
+"programName": "NHL: Dallas Stars - Utah Mammoth",
+"description": "28.11.2026.",
+"startTime": "2026-12-01T19:10:00.000Z",
+"endTime": "2026-12-01T21:05:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205656013786",
+"programName": "Valioliiga: PL Review, 12. kierros",
+"description": "Valioliigan 12. kierroksen yhteenveto.",
+"startTime": "2026-12-01T21:05:00.000Z",
+"endTime": "2026-12-01T22:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205656113786",
+"programName": "NHL: New York Rangers - Carolina Hurricanes",
+"description": "30.11.2026.",
+"startTime": "2026-12-02T12:00:00.000Z",
+"endTime": "2026-12-02T14:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205656213786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-12-02T14:00:00.000Z",
+"endTime": "2026-12-02T15:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205656313786",
+"programName": "Darts: Players Championship Finals",
+"description": "29.11.2026. Välierät ja finaali, iltasessio. Selostus Tero Kainulainen, asiantuntija Veijo Viinikka.",
+"startTime": "2026-12-02T15:00:00.000Z",
+"endTime": "2026-12-02T19:20:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61205656413786",
+"programName": "Valioliiga: Manchester City - Leeds",
+"description": "2.12.2026. Selostus Ville Kuusinen.",
+"startTime": "2026-12-02T19:20:00.000Z",
+"endTime": "2026-12-02T21:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61205656513786",
+"programName": "Valioliiga: PL Stories, 1.12.",
+"description": "1.12.2026. PL Stories esittelee Valioliigan henkilöitä ja kertoo heidän tarinansa.",
+"startTime": "2026-12-02T21:30:00.000Z",
+"endTime": "2026-12-02T22:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61222695913786",
+"programName": "Golfin DP World Tour: Nedbank Golf Challenge",
+"description": "3.12.2026. Ensimmäinen pelipäivä.",
+"startTime": "2026-12-03T09:00:00.000Z",
+"endTime": "2026-12-03T14:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61222696813786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-12-03T14:30:00.000Z",
+"endTime": "2026-12-03T15:25:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61222697613786",
+"programName": "Käsipallon naisten EM-kisat: Turkki - Kreikka",
+"description": "03.12.2026.",
+"startTime": "2026-12-03T15:25:00.000Z",
+"endTime": "2026-12-03T17:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61222698513786",
+"programName": "Valioliigan suomalaiset: Teemu Pukki",
+"description": "Jakso 4/6.",
+"startTime": "2026-12-03T17:30:00.000Z",
+"endTime": "2026-12-03T17:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61222698913786",
+"programName": "Käsipallon naisten EM-kisat: Tanska - Espanja",
+"description": "03.12.2026.",
+"startTime": "2026-12-03T17:55:00.000Z",
+"endTime": "2026-12-03T20:00:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61222699513786",
+"programName": "Premier League The Catch Up Show: Valioliiga: The Catch-Up Show",
+"description": "Viikoittainen parhaiden palojen kokoelma kaikesta Valioliiga-sisällöstä ja -ohjelmista.",
+"startTime": "2026-12-03T20:00:00.000Z",
+"endTime": "2026-12-03T21:00:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61222702813786",
+"programName": "Yhdistetyn maailmancup: Naisten HS102, Trondheim",
+"description": "4.12.2026. Selostus Mikko Reitti, asiantuntija Jari Mantila.",
+"startTime": "2026-12-04T09:50:00.000Z",
+"endTime": "2026-12-04T10:25:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61222703613786",
+"programName": "NHL: Boston Bruins - Colorado Avalanche",
+"description": "1.12.2026.",
+"startTime": "2026-12-04T10:25:00.000Z",
+"endTime": "2026-12-04T12:55:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61222704813786",
+"programName": "F1: Abu Dhabin 2. vapaat harjoitukset",
+"description": "4.12.2026. Selostus Niki Juusela, asiantuntija Ossi Oikarinen.",
+"startTime": "2026-12-04T12:55:00.000Z",
+"endTime": "2026-12-04T14:05:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61222705713786",
+"programName": "Viaplay Talvi: Suomalaisten huippuhetket kaudelta 2025-2026",
+"description": "Suomalaisten hiihtäjien maailmancup-kausi tarjosi huippuhetkiä: kolme palkintokorokesijaa ja kaksi voittoa. Ykkössijat veivät Jasmi Joensuu ja Johanna Matintalo.",
+"startTime": "2026-12-04T14:05:00.000Z",
+"endTime": "2026-12-04T14:40:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61222706513786",
+"programName": "Mäkihypyn maailmancup: Naisten HS134, Wisla",
+"description": "4.12.2026. Selostus Mikko Reitti, asiantuntija Jari Mantila.",
+"startTime": "2026-12-04T14:40:00.000Z",
+"endTime": "2026-12-04T16:15:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61222707413786",
+"programName": "NHL On The Fly",
+"description": "Huippuhetket NHL-kierroksen otteluista, haastattelut ja analyysit sekä tärkeimmät uutiset.",
+"startTime": "2026-12-04T16:15:00.000Z",
+"endTime": "2026-12-04T17:25:00.000Z",
+"broadcastType": "rerun",
+"format": "SPORT"
+},
+{
+"id": "61222708213786",
+"programName": "2. Bundesliiga: Cottbus - Osnabrück",
+"description": "4.12.2026. Jalkapallon Saksan 2. Bundesliigan ottelu.",
+"startTime": "2026-12-04T17:25:00.000Z",
+"endTime": "2026-12-04T19:20:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61222708713786",
+"programName": "Bundesliiga: Bayern München - Paderborn",
+"description": "4.12.2026. Jalkapallon Saksan Bundesliigan 12. kierroksen ottelu. Selostus Mikko Innanen.",
+"startTime": "2026-12-04T19:20:00.000Z",
+"endTime": "2026-12-04T21:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+},
+{
+"id": "61222710213786",
+"programName": "Lumilautailun maailmancup: Parisuurpujottelu, Mylin",
+"description": "05.12.2026.",
+"startTime": "2026-12-05T03:50:00.000Z",
+"endTime": "2026-12-05T05:30:00.000Z",
+"broadcastType": "live",
+"format": "SPORT"
+}
+]
+}
+}
+]
+}

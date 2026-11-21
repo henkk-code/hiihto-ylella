@@ -17,6 +17,7 @@ import build  # noqa: E402
 import fis  # noqa: E402
 import raceday  # noqa: E402
 import results  # noqa: E402
+import sports  # noqa: E402
 import standings  # noqa: E402
 import telkku  # noqa: E402
 from classify import Classifier  # noqa: E402
@@ -24,6 +25,7 @@ from classify import Classifier  # noqa: E402
 FIX = HERE / "fixtures"
 TOPICS = json.loads((ROOT / "config" / "topics.json").read_text(encoding="utf-8"))
 SOURCES = json.loads((ROOT / "config" / "sources.json").read_text(encoding="utf-8"))
+SPORTS = json.loads((ROOT / "config" / "sports.json").read_text(encoding="utf-8"))
 EVENTS = json.loads((ROOT / "data" / "events.json").read_text(encoding="utf-8"))["events"]
 
 
@@ -273,6 +275,72 @@ class TestAthletes(unittest.TestCase):
         self.assertEqual(prof["1"]["career"], {"wins": 1, "podiums": 2})   # vanha säilyy
         self.assertNotIn("2", prof)                                        # uusi ilman dataa → ei profiilia
         self.assertIn("1", err)
+
+
+class TestSports(unittest.TestCase):
+    """Urheilusivu: Telkun Peruskanavat 20.11.–5.12.2026 (oikeat otsikot)."""
+    @classmethod
+    def setUpClass(cls):
+        payload = json.loads((FIX / "telkku_peruskanavat_sport_2026-11-21.json").read_text(encoding="utf-8"))
+        free = SOURCES["telkku"]["free_channels"]
+        programs, _ = telkku.parse_offering(payload, set(free))
+        cls.bcs = sports.build_broadcasts(programs, free, sports.SportRules(SPORTS), ZoneInfo("Europe/Helsinki"),
+                                          Classifier(TOPICS), set(SOURCES["telkku"]["channels"]))
+
+    def find(self, start, channel):
+        hits = [b for b in self.bcs if b["start"].startswith(start) and b["channel"] == channel]
+        self.assertEqual(len(hits), 1, f"{start} {channel}: {hits}")
+        return hits[0]
+
+    def test_studios_and_results_dropped(self):
+        titles = " | ".join(b["title"] + " " + b.get("competition", "") for b in self.bcs)
+        for bad in ("Tulosruutu", "Urheilustudio", "F1-Studio", "Ennakkostudio Slovenia", "Jälkistudio",
+                    "alkustudio", "Kooste", "Hockey Night Lauantai", "NHL On The Fly"):
+            self.assertNotIn(bad, titles)
+
+    def test_long_studio_kept_and_cleaned(self):
+        b = self.find("2026-11-23T18:30", "Jim")
+        self.assertEqual((b["title"], b["sport"]), ("Lentopallon Mestaruusliiga, naiset", "muut"))
+
+    def test_nhl_generic_title_from_description(self):
+        b = self.find("2026-11-21T22:35", "Star Channel")
+        self.assertEqual((b["sport"], b["competition"], b["title"]),
+                         ("jaakiekko", "NHL", "Calgary Flames – Chicago Blackhawks"))
+
+    def test_liiga_continuation_merged(self):
+        b = self.find("2026-11-27T19:25", "MTV3")
+        self.assertEqual((b["competition"], b["title"], b["end"][11:16]), ("Liiga", "HIFK – SaiPa", "22:00"))
+        self.assertFalse([x for x in self.bcs if x["channel"] == "MTV3" and x["title"] == "Liiga"])
+
+    def test_competition_and_title(self):
+        self.assertEqual(self.find("2026-11-28T19:55", "Viaplay TV")["competition"], "Formula 1")  # "F1: …"
+        snooker = self.find("2026-11-28T21:00", "Kutonen")
+        self.assertEqual((snooker["competition"], snooker["title"], snooker["sport"]),
+                         ("Snooker", "UK Championship", "muut"))
+        nfl = self.find("2026-11-22T20:00", "Jim")
+        self.assertEqual((nfl["competition"], nfl["sport"], nfl["watch"]), ("NFL", "amerikkalainen", "Ruutu"))
+
+    def test_sports(self):
+        got = {b["sport"] for b in self.bcs}
+        self.assertEqual(got, {s["id"] for s in SPORTS["sports"]})
+        self.assertEqual(self.find("2026-11-21T14:40", "Viaplay TV")["sport"], "moottori")    # Moto3
+        self.assertEqual(self.find("2026-11-26T19:35", "Viaplay TV")["sport"], "jalkapallo")  # Konferenssiliiga
+        self.assertEqual(self.find("2026-11-22T12:55", "Kutonen")["sport"], "jaakiekko")      # Auroraliiga
+        self.assertEqual(self.find("2026-11-27T20:50", "Yle TV2")["sport"], "koripallo")
+
+    def test_ski_link_only_for_yle_ski_topics(self):
+        self.assertTrue(self.find("2026-11-27T11:25", "Yle TV2").get("ski"))           # hiihto
+        self.assertNotIn("ski", self.find("2026-11-27T19:05", "Yle TV2"))              # mäkihyppy
+        self.assertNotIn("ski", self.find("2026-11-28T14:25", "Viaplay TV"))           # mäkihyppy, ei Yle
+        self.assertNotIn("live_url", self.find("2026-11-21T22:35", "Star Channel"))     # ei varmistettua linkkiä
+
+    def test_parse_rules(self):
+        rules = sports.SportRules(SPORTS)
+        self.assertEqual(rules.parse("Liiga", "Kiekko-Espoo - Jukurit, Espoo Metro Areena (14.12.2026).")["title"],
+                         "Liiga")  # Liigan kuvaukset eivät ole luotettavia
+        self.assertIsNone(sports.match_from_description("Koe NHL suorana."))
+        self.assertEqual(sports.dash("Kiekko-Espoo - Jukurit"), "Kiekko-Espoo – Jukurit")
+        self.assertEqual(sports.dash("HPK-Pelicans"), "HPK-Pelicans")
 
 
 class TestRaceDay(unittest.TestCase):

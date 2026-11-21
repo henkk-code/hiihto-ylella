@@ -28,9 +28,10 @@ def parse_offering(payload: dict, channel_ids: set[str]) -> tuple[list[dict], in
     return programs, total
 
 
-def fetch_programs(cfg: dict, today_start: datetime) -> tuple[list[dict], int]:
-    """Hakee päivä kerrallaan days_back…days_ahead. today_start = paikallinen keskiyö (aware)."""
-    channel_ids = set(cfg["channels"].keys())
+def fetch_programs(cfg: dict, today_start: datetime, channel_ids: set[str] | None = None) -> tuple[list[dict], int]:
+    """Hakee päivä kerrallaan days_back…days_ahead. today_start = paikallinen keskiyö (aware).
+    Vastauksessa on koko kanavaryhmä, joten kanavien lisääminen ei lisää hakuja."""
+    channel_ids = channel_ids or set(cfg["channels"].keys())
     by_id: dict[str, dict] = {}
     total = 0
     for offset in range(-cfg["days_back"], cfg["days_ahead"] + 1):

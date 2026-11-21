@@ -9,6 +9,27 @@
       "392": { "name": "Yle TV2", "live_url": "https://areena.yle.fi/tv/suorat/yle-tv2" },
       "570": { "name": "Yle Teema Fem", "live_url": "https://areena.yle.fi/tv/suorat/yle-teema-fem" }
     },
+    "_free_channels": "Urheilusivu (SUUNNITELMA-URHEILU.md): Telkun Peruskanavat-ryhmän maksuttomat kanavat. watch = katselunapin teksti, live_url = palvelun suora tai kanavasivu (vain varmistetut).",
+    "free_channels": {
+      "391": { "name": "Yle TV1", "watch": "Areena", "live_url": "https://areena.yle.fi/tv/suorat/yle-tv1" },
+      "392": { "name": "Yle TV2", "watch": "Areena", "live_url": "https://areena.yle.fi/tv/suorat/yle-tv2" },
+      "570": { "name": "Yle Teema Fem", "watch": "Areena", "live_url": "https://areena.yle.fi/tv/suorat/yle-teema-fem" },
+      "559": { "name": "MTV3", "watch": "MTV", "live_url": "https://www.mtv.fi/kanavat" },
+      "560": { "name": "MTV Sub", "watch": "MTV", "live_url": "https://www.mtv.fi/kanavat" },
+      "561": { "name": "MTV Ava", "watch": "MTV", "live_url": "https://www.mtv.fi/kanavat" },
+      "616": { "name": "Nelonen", "watch": "Ruutu", "live_url": "https://www.ruutu.fi/kanavat" },
+      "621": { "name": "Jim", "watch": "Ruutu", "live_url": "https://www.ruutu.fi/kanavat" },
+      "619": { "name": "Liv", "watch": "Ruutu", "live_url": "https://www.ruutu.fi/kanavat" },
+      "620": { "name": "Hero", "watch": "Ruutu", "live_url": "https://www.ruutu.fi/kanavat" },
+      "13786": { "name": "Viaplay TV", "watch": "Viaplay TV", "live_url": "https://viaplaytv.fi/" },
+      "557": { "name": "Star Channel" },
+      "393": { "name": "Kutonen" },
+      "556": { "name": "TV5" },
+      "555": { "name": "Frii" },
+      "554": { "name": "TLC" },
+      "553": { "name": "National Geographic" },
+      "7996": { "name": "Eveo" }
+    },
     "days_back": 1,
     "days_ahead": 14
   },

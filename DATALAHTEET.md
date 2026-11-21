@@ -1,6 +1,6 @@
-# Datalähteet (v0.4)
+# Datalähteet (v0.5)
 
-*Päivitetty 2026-11-21.*
+*Päivitetty 2026-11-21. v0.5: urheilusivun ilmaiskanavat (§4) ja Disney+ (§7).*
 
 ## 1. Ylen kausilista – PÄÄLÄHDE (tapahtumataso)
 
@@ -88,6 +88,12 @@ GET https://il-telkku-api.prod.il.fi/v1/channel-groups/{ryhmä}/offering?startTi
   - 17.25 Mäkihypyn maailmancup: HS 142, Ruka *(pois)*
 - ➖ Epävirallinen. Ei Areena-only-lähetyksiä.
 
+**Urheilusivu (ilmaiskanavat, testattu 2026-11-21):** sama haku palvelee myös urheilusivua, koska `offering`-vastauksessa on koko Peruskanavat-ryhmä (18 kanavaa). Lisähakuja ei tule.
+- Kanavat ja katselulinkit: `config/sources.json` → `telkku.free_channels`. Viaplay TV Finland (`13786`) on maksuton kanava 6.11.2025 alkaen (antenni- ja kaapeliverkon paikka 21, [NHL.com 7.11.2025](https://www.nhl.com/fi/news/viaplay-avasi-uuden-vapaan-urheilukanavan)). Digitan kanavakartta 1.10.2025 on sitä vanhempi.
+- Suorat lähetykset 20.11.–5.12.2026: 109 (talviurheilu 43, jalkapallo 19, moottoriurheilu 15, muut 15, jääkiekko 11, koripallo 4, NFL 2).
+- Datan erikoisuudet: studio-ohjelmat ja Tulosruutu on merkitty `live` (pudotetaan sääntöjen mukaan). Star Channelin NHL-otsikko on geneerinen `NHL 26-27`, ja ottelu on kuvauksessa ("NHL: Calgary Flames - Chicago Blackhawks."). MTV3:n `Liiga`-ohjelma on Hockey Night -ottelun jatko, ja sen kuvauksessa on väärä ottelu ja päivä, joten se yhdistetään edelliseen lähetykseen. Kuvausten päivämääriä ei käytetä.
+- Katselulinkit: Areena kanavakohtaisesti. MTV:n ja Ruudun sivut ovat JavaScript-sovelluksia ilman vakaita kanavaosoitteita, joten linkki vie kanavalistaan (`mtv.fi/kanavat`, `ruutu.fi/kanavat`). Viaplay TV `viaplaytv.fi`. Warnerin kanaville (Kutonen, TV5, TLC, Frii) ja Star Channelille ei ole varmistettua linkkiä, joten niiltä nappi puuttuu.
+
 ## 5. Maailmancupin pistetilanne (ehdotus, testattu 2026-11-21)
 
 **Hiihto ja yhdistetty – FIS cup standings (HTML):**
@@ -125,3 +131,18 @@ Ehdotus: en.wikipedia "2026–27 Biathlon World Cup" (MediaWiki API `action=pars
 - **Ylen Teksti-TV API** (developer.yle.fi): virallinen, vaatii ilmaisen avaimen Yle Tunnuksella. Data on tekstisivuja. Varalähde, jos Telkku lakkaa toimimasta.
 - **Tapahtumien live-tulospalvelut** (esim. `live.time4results.com/hiihto/2027/ruka`) koko tuloslistan lähteenä: sivuilla ei ole sprintin lopputulosta yhtenä listana. Hylätty, tilalla Hiihtoliiton PDF:t. Käytössä vain sprintin finaaliaikoihin (vaihe 6b).
 - **DVB-T EPG omasta antennista**: virallinen ja kattava, mutta vaatii laitteiston. Ei tarvetta nyt.
+
+## 7. Disney+ (urheilusivu, testattu 2026-11-21)
+
+Disney+ näyttää Suomessa NHL:ää (160 runkosarjaottelua, sopimus 2026–31), LALIGAa ja naisten Mestarien liigaa. Osa NHL-otteluista näkyy myös maksuttomalla Star Channelilla, joka on Telkussa.
+
+| Vaihtoehto | Tulos |
+|---|---|
+| Telkku | Disney+:aa ei ole missään kanavaryhmässä (vain Star Channel ja Disney Channel). |
+| NHL:n rajapinta `api-web.nhle.com` | Lähetystiedot vain USA:sta ja Kanadasta. |
+| USA:n ESPN- ja ABC-ottelut Disney+:n arvauksena | Ei täsmää lokakuun Disney+-listaan. |
+| Disney+:n ePressi-tiedotteet | Ottelulista vain lokakuulle (23.9.2026). Tiedotteissa 1.10.–20.11. ei muita listoja. |
+| disneyplus.com/fi-fi -urheilusivut | 404, ohjelmatiedot vain kirjautuneille. |
+| Disney+:n sisäinen rajapinta | Vaatii kirjautumistunnisteen. Hylätty (kuten Areena). |
+
+Käytössä: Star Channelin ottelut Telkusta automaattisesti ja vain Disney+:ssa näkyvät ottelut käsin tiedostosta `data/disneyplus.json`, kun Disney+ julkaisee listan (SUUNNITELMA-URHEILU.md §4).

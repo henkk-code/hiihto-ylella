@@ -7,6 +7,7 @@
 + maailmancupin pistetilanne (FIS, Wikipedia)
 + maastohiihtäjien profiilit (FIS, Wikidata, Wikipedia)
 + kisojen top 30 -tulokset (FIS; Suomen cup Hiihtoliiton PDF:istä)
++ urheilusivu: kaikki suorat urheilulähetykset ilmaiskanavilta → site/urheilu/data.json
 
 Jos FIS tai Telkku ei vastaa, käytetään edellisen julkaistun data.jsonin tietoja
 (hallittu heikkeneminen), joten sivu ei koskaan tyhjene.
@@ -29,6 +30,7 @@ import athletes  # noqa: E402
 import fis  # noqa: E402
 import results as race_results  # noqa: E402
 import standings  # noqa: E402
+import sports  # noqa: E402
 import telkku  # noqa: E402
 from net import fetch  # noqa: E402
 
@@ -39,7 +41,7 @@ def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def load_previous(out_path: Path, site_url: str) -> dict:
+def load_previous(out_path: Path, site_url: str, rel: str = "data.json") -> dict:
     if out_path.exists():
         try:
             return load_json(out_path)
@@ -47,7 +49,7 @@ def load_previous(out_path: Path, site_url: str) -> dict:
             print(f"VAROITUS: paikallista data.jsonia ei voitu lukea: {exc}", file=sys.stderr)
     if site_url:
         try:
-            return json.loads(fetch(site_url.rstrip("/") + "/data.json", retries=2))
+            return json.loads(fetch(site_url.rstrip("/") + "/" + rel, retries=2))
         except Exception as exc:  # noqa: BLE001
             print(f"HUOM: edellistä julkaistua dataa ei saatu ({exc})", file=sys.stderr)
     return {}
@@ -181,6 +183,32 @@ def non_yle_events(races: list[dict], used: set[str]) -> list[dict]:
     return out
 
 
+def build_sports_page(out_path: Path, sources: dict, programs: list[dict] | None, ski_classifier: Classifier,
+                      ski_channels: set[str], ski_status: dict, tz: ZoneInfo, now: datetime) -> None:
+    """Urheilusivun data (SUUNNITELMA-URHEILU.md). Jos Telkku ei vastannut, käytetään edellistä julkaisua."""
+    cfg = load_json(ROOT / "config" / "sports.json")
+    tk = sources["telkku"]
+    if programs is not None:
+        rules = sports.SportRules(cfg)
+        broadcasts = sports.build_broadcasts(programs, tk.get("free_channels", {}), rules, tz,
+                                             ski_classifier, ski_channels)
+        status = {"ok": True, "updated": now.isoformat(timespec="minutes")}
+    else:
+        prev = load_previous(out_path, sources.get("site_url", ""), "urheilu/data.json")
+        cutoff = (now - timedelta(days=2)).isoformat()
+        broadcasts = [b for b in prev.get("broadcasts", []) if b.get("end", "") >= cutoff]
+        status = {"ok": False, "error": ski_status.get("error"),
+                  "updated": prev.get("status", {}).get("telkku", {}).get("updated")}
+    data = sports.page_data(cfg, broadcasts, status, now, tk["days_ahead"])
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    by_sport: dict[str, int] = {}
+    for b in broadcasts:
+        by_sport[b["sport"]] = by_sport.get(b["sport"], 0) + 1
+    print(f"OK: urheilusivu {len(broadcasts)} lähetystä ({', '.join(f'{k} {v}' for k, v in by_sport.items())})"
+          f"{'' if status['ok'] else ' – VANHA DATA'} → {out_path}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", default=str(ROOT / "site" / "data.json"))
@@ -203,13 +231,18 @@ def main() -> int:
     # --- Kerros 3: Telkku-lähetykset ---------------------------------------
     classifier = Classifier(topics_cfg)
     topics_by_id = {t["id"]: t for t in topics_cfg["topics"]}
+    ski_channels = set(sources["telkku"]["channels"])
+    free_channels = sources["telkku"].get("free_channels", {})
+    programs = None
     try:
         if args.offline:
             raise RuntimeError("offline-tila")
-        programs, total = telkku.fetch_programs(sources["telkku"], today_start)
+        programs, total = telkku.fetch_programs(sources["telkku"], today_start, ski_channels | set(free_channels))
         if total == 0:
+            programs = None
             raise RuntimeError("Telkku palautti 0 ohjelmaa – rajapinta muuttunut?")
-        broadcasts = build_broadcasts(programs, sources["telkku"], classifier, topics_by_id, events, tz)
+        broadcasts = build_broadcasts([p for p in programs if p["channelId"] in ski_channels],
+                                      sources["telkku"], classifier, topics_by_id, events, tz)
         status["telkku"] = {"ok": True, "updated": now.isoformat(timespec="minutes"), "programs_seen": total}
     except Exception as exc:  # noqa: BLE001
         print(f"VAROITUS: Telkku epäonnistui, käytetään edellistä dataa: {exc}", file=sys.stderr)
@@ -217,6 +250,14 @@ def main() -> int:
         broadcasts = [b for b in prev.get("broadcasts", []) if b.get("end", "") >= cutoff]
         status["telkku"] = {"ok": False, "error": str(exc)[:200],
                             "updated": prev_status.get("telkku", {}).get("updated")}
+
+    # --- Urheilusivu (ilmaiskanavat) ---------------------------------------------
+    # Virhe urheilusivun koodissa ei saa kaataa hiihtosivun buildia (edellinen julkaisu jää voimaan).
+    try:
+        build_sports_page(Path(args.out).parent / "urheilu" / "data.json", sources, programs, classifier,
+                          ski_channels, status["telkku"], tz, now)
+    except Exception as exc:  # noqa: BLE001
+        print(f"VAROITUS: urheilusivun data epäonnistui: {exc}", file=sys.stderr)
 
     # --- Kerros 2: FIS-kisat ---------------------------------------------------
     try:

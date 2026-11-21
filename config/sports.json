@@ -1,0 +1,46 @@
+{
+  "_comment": "Urheilusivun lajitunnistus (SUUNNITELMA-URHEILU.md §5). Mukaan otetaan Telkun format=SPORT + broadcastType=live -ohjelmat ilmaiskanavilta. Säännöt ovat Pythonin regexejä (kirjainkoko ei merkitse), ja ne tarkistetaan otsikosta. Lajit tarkistetaan järjestyksessä, ensimmäinen osuma voittaa, ja tunnistamaton urheilu menee lajiin 'muut'.",
+  "exclude": [
+    "kooste",
+    "highlights",
+    "uusinta",
+    "jälkilähetys",
+    "makasiini",
+    "tulosruutu",
+    "kaikki maalit",
+    "huippuhetk",
+    "sirkus",
+    "^Hockey Night \\w+$"
+  ],
+  "_short_exclude": "Studio-ohjelmat pudotetaan vain, jos ne ovat lyhyitä. Pitkä 'Ennakkostudio: … LIVE' on oikeasti ottelulähetys.",
+  "short_exclude": ["studio"],
+  "short_minutes": 60,
+  "_strip": "Poistetaan otsikosta ennen jäsentämistä.",
+  "strip": ["^Ennakkostudio:\\s*", "\\s+LIVE$"],
+  "_generic_titles": "Otsikot, joissa ei ole ottelua. desc_match: ottelu poimitaan kuvauksen ensimmäisestä virkkeestä (NHL:n kuvaukset ovat luotettavia, Liigan eivät). Geneerinen ohjelma, joka alkaa heti saman kanavan saman lajin lähetyksen perään, yhdistetään siihen (esim. 'Hockey Night Perjantai: HIFK - SaiPa' + 'Liiga').",
+  "generic_titles": [
+    { "match": "^NHL \\d{2}-\\d{2}$", "competition": "NHL", "desc_match": true },
+    { "match": "^Liiga$", "competition": "Liiga", "desc_match": false }
+  ],
+  "competition_aliases": [
+    { "match": "^(F1|Formula 1)$", "label": "Formula 1" },
+    { "match": "^Hockey Night\\b", "label": "Liiga" },
+    { "match": "^NFL\\b", "label": "NFL" },
+    { "match": "^NHL\\b", "label": "NHL" }
+  ],
+  "sports": [
+    { "id": "amerikkalainen", "label": "Amerikkalainen jalkapallo", "emoji": "🏈",
+      "include": ["\\bNFL\\b", "amerikkalai"] },
+    { "id": "talvi", "label": "Talviurheilu", "emoji": "⛷️",
+      "include": ["maastohiih", "\\bhiihdon\\b", "\\bhiihto\\b", "ampumahiih", "yhdistety", "mäkihyp", "alppihiih", "taitoluist", "lumilaut", "pikaluist", "freestyle", "kumpare", "curling", "ski cross"] },
+    { "id": "jaakiekko", "label": "Jääkiekko", "emoji": "🏒",
+      "include": ["jääkiek", "\\bNHL\\b", "^Liiga\\b", "Hockey Night", "Auroraliiga", "\\bMestis\\b", "\\bCHL\\b", "leijonat"] },
+    { "id": "jalkapallo", "label": "Jalkapallo", "emoji": "⚽",
+      "include": ["jalkapallo", "bundesliig", "ligue 1", "\\bEFL\\b", "valioliig", "premier league", "konferenssiliig", "eurooppa-liig", "mestarien liig", "veikkausliig", "la ?liga", "serie a", "fa cup", "huuhkaj", "helmar", "\\bUEFA\\b"] },
+    { "id": "moottori", "label": "Moottoriurheilu", "emoji": "🏎️",
+      "include": ["formula", "^F1\\b", "MotoGP", "^Moto[23]\\b", "\\bralli", "\\bWRC\\b", "nascar", "indycar", "superbike", "speedway"] },
+    { "id": "koripallo", "label": "Koripallo", "emoji": "🏀",
+      "include": ["koripallo", "\\bW?NBA\\b", "korisliig", "susijeng"] },
+    { "id": "muut", "label": "Muut", "emoji": "🏅", "include": [] }
+  ]
+}
