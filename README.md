@@ -13,6 +13,7 @@ Julkinen sivu, josta näkee yhdellä silmäyksellä, **näyttääkö Yle hiihtoa
 | Lähetykset | Kellonaika, kanava, vain suorat | Telkku.comin TV-opas (~2 vk eteenpäin) |
 | Pistetilanne | Maailmancupin kokonaiskilpailun kärki + paras suomalainen | FIS (hiihto, yhdistetty), en.wikipedia (ampumahiihto) |
 | Hiihtäjät | Maastohiihdon kärkikymmenikön ja parhaan suomalaisen profiili: kauden MC-tulokset, uran MC-voitot, olympia- ja MM-mitalit, esittely | FIS-urheilijasivut, Wikidata, fi.wikipedia |
+| Tulokset | Jokaisen ajetun kisan top 30 (Kauden kisat → tapahtuma → "Top 30") | FIS-tulossivut; Suomen cup Hiihtoliiton tulos-PDF:istä |
 
 Jos FIS tai Telkku ei vastaa, build käyttää edellisen julkaisun tietoja. Sivu ei siis koskaan tyhjene.
 Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DATALAHTEET.md).
@@ -20,9 +21,10 @@ Taustat ja päätökset: [SUUNNITELMA.md](SUUNNITELMA.md) ja [DATALAHTEET.md](DA
 ## Ylläpito
 
 - **Tapahtuma lisätään tai muutetaan:** muokkaa `data/events.json` ja pushaa. Actions julkaisee sivun automaattisesti.
+- **Suomen cupin tulokset:** SC-tapahtumalle kenttä `results_page` = Hiihtoliiton tapahtumasivu (esim. `https://hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/`). Build poimii sivulta tulos-PDF:t.
 - **Lajitunnistus** (mitkä lähetykset näytetään): `config/topics.json`
 - **Kanavat ja FIS-syötteet:** `config/sources.json`. Uudella kaudella vaihda `fis.season` (esim. `2028`) ja päivitä `events.json`. Sama kausi ohjaa pistetilannetta (FIS-sivut ja Wikipedian sivu "2027–28 Biathlon World Cup").
-- **Päivitys:** GitHub Actions ajaa buildin kaksi kertaa päivässä, aina pushin jälkeen ja tarvittaessa käsin (Actions → "Päivitä ja julkaise" → Run workflow).
+- **Päivitys:** GitHub Actions ajaa buildin kaksi kertaa päivässä (5.20 ja 15.20), kisapäivinä (MC, MM, SC, SM) myös klo 22.20, aina pushin jälkeen ja tarvittaessa käsin (Actions → "Päivitä ja julkaise" → Run workflow).
 
 ## Paikallisesti
 
@@ -32,7 +34,7 @@ python3 -m unittest discover -s build/tests   # testit
 cd site && python3 -m http.server 8000        # http://localhost:8000
 ```
 
-Vain Pythonin standardikirjasto (3.11+). Ei riippuvuuksia eikä build-työkaluja.
+Vain Pythonin standardikirjasto (3.11+). Suomen cupin tulos-PDF:ien lukemiseen tarvitaan `pdftotext` (paketti `poppler-utils`); ilman sitä muu sivu rakentuu normaalisti.
 
 ---
 Epävirallinen harrastesivu, ei Ylen palvelu.

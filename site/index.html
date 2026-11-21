@@ -221,18 +221,45 @@ button.ev-row:hover { background: var(--hover); }
 .ev .ev-row[aria-expanded="true"] .chev { transform: rotate(90deg); }
 .ev.not-yle .d strong, .ev.not-yle .title { color: var(--muted); font-weight: 500; }
 .ev.not-yle .pill-sport { background: var(--counter); color: var(--muted); }
-.ev.past { opacity: .6; }
+.ev.past > .ev-row { opacity: .6; }
 .detail { padding: 0 16px 14px 134px; font-size: 14px; line-height: 24px; }
-.detail .dr { display: grid; grid-template-columns: 76px 22px 1fr; gap: 0 10px; }
+.detail .dr { display: grid; grid-template-columns: 76px 22px 1fr auto; gap: 0 10px; align-items: center; min-height: 30px; }
 .detail .when { color: var(--muted); font-weight: 600; }
 .detail .g { color: var(--muted); font-weight: 600; }
 .detail .disc { color: var(--muted); }
 .detail .note { color: var(--muted); font-size: 13px; margin: 2px 0 6px; }
 .detail .note.src { margin-top: 8px; }
+/* Top 30 -tulokset */
+.res-btn { height: 24px; padding: 0 8px; font-size: 12px; }
+.res-btn .chev { width: 12px; height: 12px; color: var(--faint); transition: transform .15s; }
+.res-btn[aria-expanded="true"] { border-color: var(--accent); }
+.res-btn[aria-expanded="true"] .chev { transform: rotate(90deg); }
+.res { margin: 4px 0 10px 108px; border-left: 3px solid var(--c); }
+.res ol { list-style: none; margin: 0; padding: 0; }
+.res li { display: grid; grid-template-columns: 30px 1fr auto auto; gap: 0 12px; align-items: baseline; padding: 3px 0 3px 8px; font-size: 13px; line-height: 20px; }
+.res li + li { border-top: 1px solid var(--border-muted); }
+.res li.phase { border-top-color: var(--border); }
+.res .rk { color: var(--muted); font-weight: 600; text-align: right; }
+.res .nm { min-width: 0; overflow-wrap: anywhere; }
+.res .nm .md { margin-right: 4px; }
+.res .home .who { font-weight: 600; }
+.res .sub { margin-left: 6px; color: var(--muted); }
+.res .home .sub.nat { color: var(--text); font-weight: 600; }
+.res .mem { display: block; color: var(--faint); font-size: 12px; line-height: 16px; }
+.res .tm { color: var(--muted); text-align: right; white-space: nowrap; }
+.res .df { min-width: 58px; font-weight: 600; text-align: right; white-space: nowrap; }
+.res .ph { color: var(--muted); text-align: right; white-space: nowrap; }
+.res-foot { padding: 6px 0 0 8px; color: var(--muted); font-size: 12px; }
 @media (max-width: 599px) {
   .ev-row { grid-template-columns: 78px 1fr auto; gap: 0 10px; padding: 12px; }
   .ev .r .soon { display: none; }
   .detail { padding: 0 12px 14px 12px; }
+  .detail .dr { grid-template-columns: 66px 16px 1fr auto; gap: 0 8px; }
+  .res { margin-left: 0; }
+  .res li { grid-template-columns: 24px 1fr auto; gap: 0 8px; }
+  .res .tm { display: none; }
+  .res li.first .tm { display: block; }
+  .res li.first .df { display: none; }
 }
 
 /* --- Maailmancup --- */
@@ -488,6 +515,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   const openEvents = new Set();
   let openProfile = null;                 // avoinna olevan hiihtäjäprofiilin FIS-id
   const showTen = new Set();              // pistelistat, joissa näytetään sijat 6–10
+  let openResult = null;                  // avoinna olevan top 30 -listan avain (data.results)
 
   function loadActive(topics) {
     try {
@@ -583,7 +611,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
       const status = yle && ongoing ? `<span class="pill pill-green">Käynnissä</span>` : "";
       const d = daysBetween(todayKey, e.start);
       const soon = !past && !ongoing && d <= 30 ? `<span class="soon">${relDay(todayKey, e.start)}</span>` : "";
-      const cls = ["ev", past ? "past" : "", yle ? "" : "not-yle"].filter(Boolean).join(" ");
+      const cls = ["ev", `s-${esc(e.sport)}`, past ? "past" : "", yle ? "" : "not-yle"].filter(Boolean).join(" ");
       const wds = e.start === e.end ? wd(e.start) : `${wd(e.start)}–${wd(e.end)}`;
       const inner = `<div class="d"><strong>${range(e.start, e.end)}</strong><span class="wd">${esc(wds)}</span></div>
         <div>
@@ -592,19 +620,47 @@ dialog form { padding: 0 16px 16px; text-align: right; }
         </div>
         <div class="r">${soon}${expandable ? ICON.chev : `<span style="width:16px"></span>`}</div>`;
       if (!expandable) return `<li class="${cls}"><div class="ev-row nav-row" tabindex="-1" data-k="e:${id}">${inner}</div></li>`;
+      const allRes = DATA.results || {};
       const raceRows = races.map((r, i) => {
         const first = i === 0 || races[i - 1].date !== r.date;
         const name = r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" data-k="r:${id}:${i}">${esc(r.name_fi)}</a>` : esc(r.name_fi);
-        return `<div class="dr"><span class="when">${first ? esc(dayLabel(r.date)) : ""}</span><span class="g">${esc(r.gender)}</span><span>${name}${DISC_LABEL[r.discipline] ? ` <span class="disc">· ${DISC_LABEL[r.discipline]}</span>` : ""}</span></div>`;
+        const res = r.res ? allRes[r.res] : null;
+        const resOpen = !!res && open && openResult === r.res;
+        const rid = res ? esc(r.res) : "";
+        const btn = res ? `<button type="button" class="btn-sm res-btn" data-res="${rid}" data-k="res:${rid}" aria-expanded="${resOpen}" aria-controls="t-${rid}">Top 30${ICON.chev}</button>` : "<span></span>";
+        return `<div class="dr"><span class="when">${first ? esc(dayLabel(r.date)) : ""}</span><span class="g">${esc(r.gender)}</span><span>${name}${DISC_LABEL[r.discipline] ? ` <span class="disc">· ${DISC_LABEL[r.discipline]}</span>` : ""}</span>${btn}</div>${resOpen ? resultHtml(res, rid) : ""}`;
       }).join("");
+      const sc = races.some((r) => (r.res || "").startsWith("sc-"));
+      const anyRes = races.some((r) => r.res && allRes[r.res]);
+      const srcNote = sc ? "Tulokset: Hiihtoliiton tulos-PDF:t (Suomen cup ei ole FIS:n kalenterissa)."
+        : `Kisaohjelma${anyRes ? " ja tulokset" : ""}: FIS.`;
       return `<li class="${cls}">
         <button type="button" class="ev-row nav-row" data-toggle="${id}" data-k="e:${id}" aria-expanded="${open}" aria-controls="d-${id}">${inner}</button>
         <div class="detail" id="d-${id}"${open ? "" : " hidden"}>
           ${e.note ? `<p class="note">${esc(e.note)}</p>` : ""}${raceRows}
-          <p class="note src">Kisaohjelma: FIS. M = miehet, N = naiset.${yle ? " Kellonajat näkyvät lähetyksissä, kun Yle julkaisee ne." : ""}</p>
+          <p class="note src">${srcNote} M = miehet, N = naiset.${yle && !past ? " Kellonajat näkyvät lähetyksissä, kun Yle julkaisee ne." : ""}</p>
         </div>
       </li>`;
     }).join("");
+  }
+
+  function resultHtml(res, rid) {
+    const relay = res.kind === "relay";
+    const rows = res.rows.map((x, i) => {
+      const home = x.nat === "FIN";
+      const medal = x.rank <= 3 ? `<span class="md">${MEDAL[x.rank - 1]}</span>` : "";
+      const sub = x.nat ? `<span class="sub nat">${esc(x.nat)}</span>` : x.club ? `<span class="sub">${esc(x.club)}</span>` : "";
+      const mem = relay && x.members ? `<span class="mem">${x.members.map(esc).join(" – ")}</span>` : "";
+      const newPhase = x.phase && (i === 0 || res.rows[i - 1].phase !== x.phase);
+      const right = x.phase && !x.time
+        ? `<span class="ph">${newPhase ? esc(x.phase) : ""}</span><span></span>`
+        : `<span class="tm">${esc(x.time || "")}</span><span class="df">${esc(x.diff || "")}</span>`;
+      return `<li class="${[i === 0 ? "first" : "", home ? "home" : "", newPhase && i > 0 ? "phase" : ""].filter(Boolean).join(" ")}"><span class="rk">${x.rank}.</span>
+        <span class="nm">${medal}<span class="who">${esc(x.name)}</span>${sub}${mem}</span>${right}</li>`;
+    }).join("");
+    const more = res.ranked > res.rows.length ? `Koko tulosluettelo (${res.ranked} sijoitettua)` : "Koko tulosluettelo";
+    return `<div class="res" id="t-${rid}"><ol>${rows}</ol>
+      <div class="res-foot"><a href="${esc(res.url)}" target="_blank" rel="noopener">${more}: ${esc(res.source)} ↗</a></div></div>`;
   }
 
   // --- Maailmancup ---
@@ -808,12 +864,12 @@ dialog form { padding: 0 16px 16px; text-align: right; }
     $("banner").innerHTML = warn.length ? `<div class="banner" role="status">⚠️ ${warn.join(" ")}</div>` : "";
 
     $("footer").innerHTML = `
-      <p>Päivitetty ${esc(genTxt)} · TV-opas ${st(s.telkku)} · FIS ${st(s.fis)} · pistetilanne ${st(s.standings)}${s.athletes ? ` · profiilit ${st(s.athletes)}` : ""}</p>
+      <p>Päivitetty ${esc(genTxt)} · TV-opas ${st(s.telkku)} · FIS ${st(s.fis)} · pistetilanne ${st(s.standings)}${s.athletes ? ` · profiilit ${st(s.athletes)}` : ""}${s.results ? ` · tulokset ${st(s.results)}` : ""}</p>
       <p>Vain suorat lähetykset Ylen TV-kanavilla, noin kaksi viikkoa eteenpäin. Pelkästään Areenassa näytettävät lähetykset eivät näy TV-oppaassa, joten tarkista myös <a href="https://areena.yle.fi/tv/opas" target="_blank" rel="noopener">Areenan opas</a>.</p>
       <p>Lähteet: <a href="${esc(DATA.source.url)}" target="_blank" rel="noopener">${esc(DATA.source.name)}</a> (kisat) ·
       <a href="https://www.fis-ski.com/DB/cross-country/calendar-results.html" target="_blank" rel="noopener">FIS</a> (kisaohjelma) ·
       <a href="https://www.telkku.com/" target="_blank" rel="noopener">Telkku.com</a> (lähetysajat) ·
-      FIS ja Wikipedia (pistetilanne) · FIS, Wikidata ja Wikipedia (hiihtäjät). Epävirallinen harrastesivu, ei Ylen palvelu.</p>
+      FIS ja Wikipedia (pistetilanne) · FIS, Wikidata ja Wikipedia (hiihtäjät) · FIS ja <a href="https://hiihtoliitto.fi/tapahtumat/suomen-cup/" target="_blank" rel="noopener">Hiihtoliitto</a> (tulokset). Epävirallinen harrastesivu, ei Ylen palvelu.</p>
       <button class="text-btn keys-btn" type="button" id="keys-btn" data-k="keys">⌨️ Pikanäppäimet (?)</button>`;
     $("keys-btn").addEventListener("click", openKeys);
   }
@@ -823,6 +879,7 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   function togglePast() { showPast = !showPast; render(); }
   function toggleEvent(id) { if (openEvents.has(id)) openEvents.delete(id); else openEvents.add(id); render(); }
   function toggleProfile(cid) { openProfile = openProfile === cid ? null : cid; render(); }
+  function toggleResult(key) { openResult = openResult === key ? null : key; render(); }
   function toggleTen(id) { if (showTen.has(id)) showTen.delete(id); else showTen.add(id); render(); }
 
   function moveRow(d) {
@@ -838,6 +895,8 @@ dialog form { padding: 0 16px 16px; text-align: right; }
   $("toggle-past").addEventListener("click", togglePast);
   $("events").addEventListener("click", (e) => {
     if (e.target.closest("a")) return;
+    const rb = e.target.closest("button[data-res]");
+    if (rb) { toggleResult(rb.dataset.res); return; }
     const b = e.target.closest("button[data-toggle]");
     if (b) toggleEvent(b.dataset.toggle);
   });

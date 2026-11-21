@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Iltapäivityksen portti: onko tänään maailmancupin tai MM-kisojen kisapäivä?
+"""Iltapäivityksen portti: onko tänään maailmancupin, MM-kisojen, Suomen cupin tai SM-kisojen kisapäivä?
 
 Lukee edellisen julkaistun data.jsonin ja kirjoittaa GitHub Actionsille `run=true|false`.
 Jos dataa ei saada, päivitys ajetaan varmuuden vuoksi.
@@ -16,19 +16,20 @@ sys.path.insert(0, str(HERE))
 
 from net import fetch  # noqa: E402
 
-RACE_TYPES = {"MC", "MM"}
+RACE_TYPES = {"MC", "MM", "SC", "SM"}
 
 
 def is_race_day(data: dict, today: str) -> bool:
-    """Tosi, jos jokin MC- tai MM-tapahtuma (myös muut kuin Ylen) on käynnissä tänään."""
+    """Tosi, jos jokin MC-, MM-, SC- tai SM-tapahtuma (myös muut kuin Ylen) on käynnissä tänään.
+    Suomen cupin kisat tulevat vasta tulos-PDF:istä, joten SC:ssä katsotaan tapahtuman päivät."""
     for e in data.get("events", []):
         if e.get("type") not in RACE_TYPES:
             continue
         races = e.get("races") or []
-        if races:
+        if races and e["type"] != "SC":
             if any(r.get("date") == today for r in races):
                 return True
-        elif e["start"] <= today <= e["end"]:          # esim. ampumahiihto: ei kisatason dataa
+        elif e["start"] <= today <= e["end"]:          # esim. ampumahiihto ja SC: ei kisaohjelmaa
             return True
     return False
 

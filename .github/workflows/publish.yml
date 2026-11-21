@@ -7,7 +7,7 @@ on:
     # 05.20 ja 15.20 Suomen talviaikaa (UTC+2)
     - cron: "20 3 * * *"
     - cron: "20 13 * * *"
-    # 22.20: iltapäivitys vain MC/MM-kisapäivinä (pistetilanne ja tulokset)
+    # 22.20: iltapäivitys vain MC-, MM-, SC- ja SM-kisapäivinä (pistetilanne ja tulokset)
     - cron: "20 20 * * *"
   workflow_dispatch:
 
@@ -38,6 +38,9 @@ jobs:
           else
             echo "run=true" >> "$GITHUB_OUTPUT"
           fi
+      - name: pdftotext (Suomen cupin tulos-PDF:t)
+        if: steps.gate.outputs.run == 'true'
+        run: command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
       - name: Testit
         if: steps.gate.outputs.run == 'true'
         run: python -m unittest discover -s build/tests -v

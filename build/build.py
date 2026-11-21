@@ -6,6 +6,7 @@
 3. Telkku            – lähetysten kellonajat ja kanavat (~2 vk eteenpäin)
 + maailmancupin pistetilanne (FIS, Wikipedia)
 + maastohiihtäjien profiilit (FIS, Wikidata, Wikipedia)
++ kisojen top 30 -tulokset (FIS; Suomen cup Hiihtoliiton PDF:istä)
 
 Jos FIS tai Telkku ei vastaa, käytetään edellisen julkaistun data.jsonin tietoja
 (hallittu heikkeneminen), joten sivu ei koskaan tyhjene.
@@ -26,6 +27,7 @@ sys.path.insert(0, str(HERE / "sources"))
 from classify import Classifier  # noqa: E402
 import athletes  # noqa: E402
 import fis  # noqa: E402
+import results as race_results  # noqa: E402
 import standings  # noqa: E402
 import telkku  # noqa: E402
 from net import fetch  # noqa: E402
@@ -275,6 +277,58 @@ def main() -> int:
     else:
         status["athletes"] = {"ok": True, "updated": now.isoformat(timespec="minutes")}
 
+    # --- Kisojen top 30 -tulokset ---------------------------------------------
+    # Vain kuluvan kauden tulokset: raja on Ylen kausilistan ensimmäisen tapahtuman alku (2026–27: 31.10.2026).
+    results_from = min(e["start"] for e in events)
+    prev_results = prev.get("results", {})
+    res_errors: dict[str, str] = {}
+    listed = [r for rs in races_by_event.values() for r in rs if r["date"] >= results_from] + \
+             [r for e in other_events for r in e.get("races", []) if r["date"] >= results_from]
+    try:
+        if args.offline:
+            raise RuntimeError("offline-tila")
+        results, fis_res_errors = race_results.fetch_fis_results(listed, prev_results, now)
+        res_errors.update(fis_res_errors)
+    except Exception as exc:  # noqa: BLE001
+        results = {k: v for k, v in prev_results.items() if k.startswith("fis-")}
+        res_errors["FIS"] = str(exc)[:200]
+    prev_sc = {e["id"]: [r for r in e.get("races", []) if r.get("res", "").startswith("sc-")]
+               for e in prev.get("events", []) if e.get("type") == "SC"}
+    for e in events:
+        if e.get("type") != "SC":
+            continue
+        sc_races = {r["res"]: r for r in prev_sc.get(e["id"], [])}
+        sc_res = {k: prev_results[k] for k in sc_races if k in prev_results}
+        if not args.offline and race_results.sc_due(e, list(sc_races.values()), now.date()):
+            try:
+                got_races, got_res, errs = race_results.fetch_sc_event(e, now)
+                sc_races.update({r["res"]: r for r in got_races})     # uudet korvaavat, vanhat säilyvät
+                sc_res.update(got_res)
+                if errs:
+                    res_errors[e["id"]] = "; ".join(errs)[:200]
+            except Exception as exc:  # noqa: BLE001
+                res_errors[e["id"]] = str(exc)[:200]
+        if sc_races:
+            fis_races = [r for r in races_by_event.get(e["id"], []) if not r.get("res", "").startswith("sc-")]
+            races_by_event[e["id"]] = sorted(fis_races + list(sc_races.values()),
+                                             key=lambda r: (r["date"], r["discipline"], r["gender"], r["name_fi"]))
+            results.update(sc_res)
+    used_keys = set()
+    for r in [r for rs in races_by_event.values() for r in rs] + [r for e in other_events for r in e.get("races", [])]:
+        key = race_results.race_key(r)
+        if key and key in results and r["date"] >= results_from:
+            r["res"] = key
+            used_keys.add(key)
+        else:
+            r.pop("res", None)
+    results = {k: v for k, v in results.items() if k in used_keys}
+    if res_errors:
+        print(f"VAROITUS: tulokset osin vanhaa dataa: {res_errors}", file=sys.stderr)
+        status["results"] = {"ok": False, "error": "; ".join(f"{k}: {v}" for k, v in res_errors.items())[:300],
+                             "updated": prev_status.get("results", {}).get("updated")}
+    else:
+        status["results"] = {"ok": True, "updated": now.isoformat(timespec="minutes")}
+
     # --- Kokoa ---------------------------------------------------------------
     out_events = []
     for e in sorted(events, key=lambda e: (e["start"], e["sport"])):
@@ -299,6 +353,7 @@ def main() -> int:
         "broadcasts": broadcasts,
         "standings": lists,
         "athletes": ath,
+        "results": results,
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -307,7 +362,8 @@ def main() -> int:
     print(f"    Telkku: {'ok' if status['telkku']['ok'] else 'VANHA DATA'}, FIS: {'ok' if status['fis']['ok'] else 'VANHA DATA'}, "
           f"pisteet: {'ok' if status['standings']['ok'] else 'OSIN VANHA'} "
           f"({', '.join(f'{s["id"]} {s["done"]}/{s["total"]}' for s in lists)}), "
-          f"profiilit: {len(ath)} {'ok' if status['athletes']['ok'] else 'OSIN VANHA'}")
+          f"profiilit: {len(ath)} {'ok' if status['athletes']['ok'] else 'OSIN VANHA'}, "
+          f"tulokset: {len(results)} {'ok' if status['results']['ok'] else 'OSIN VANHA'}")
     return 0
 
 

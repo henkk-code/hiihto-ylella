@@ -1,8 +1,11 @@
-# Hiihto Ylellä – projektisuunnitelma (v0.5)
+# Hiihto Ylellä – projektisuunnitelma (v0.6)
 
 *Päivitetty 2026-11-21. Tila: **vaiheet 1, 4 (pistetilanne) ja 5 (hiihtäjäprofiilit) toteutettu** → https://henkk-code.github.io/hiihto-ylella/*
 
 **Nykytila (20.11.2026):** Ylen suorat lähetykset kellonaikoineen (Telkku), kauden Yle-tapahtumat (Ylen lista) ja FIS-kisaohjelma. Maastohiihdon maailmancupin kisat, joita Yle ei näytä (Davos, Tour de Ski, Engadin, Oslo, Drammen), näkyvät kauden listalla harmaina ("Ei Ylellä"). Vaihe 2 on peruttu. Mahdollinen jatko on vaihe 3 (muut lajit/kanavat).
+
+Muutokset v0.5 → v0.6:
+- **Vaihe 6 – Kisojen top 30 -tulokset** hyväksytty suosituksin 21.11.2026 ja toteutettu, ks. §4.
 
 Muutokset v0.4 → v0.5:
 - **Vaihe 5 – Hiihtäjäprofiilit (taso B, vain maastohiihto)**, ks. §4: kärkikymmenikkö + paras suomalainen, ei kuvia, olympia- ja MM-mitalit emojeina. Tason A/B/C-arvio korvattu tällä.
@@ -153,6 +156,47 @@ Päätökset 21.11.2026:
 3. Ingressi vain suomenkielisestä Wikipediasta, ei englanninkielistä varalähdettä.
 4. Lisäys: olympia- ja MM-mitalit emojeina riville.
 
+**Vaihe 6 – Kisojen top 30 -tulokset** (✅ hyväksytty 21.11.2026, toteutettu)
+
+Tavoite: jokaisen ajetun kisan 30 parasta näkee sivulta yhdellä klikkauksella, myös Suomen cupissa (esim. Rukan SC-sprintit 21.11.).
+
+**Paikka:** Kauden kisat → tapahtuma auki → kisarivin perässä pieni toissijainen nappi "Top 30". Napista aukeaa tuloslista kisarivin alle saman tapahtuman sisään. Vain yksi lista kerrallaan on auki. Nappi näkyy vain, kun tulokset ovat olemassa. Vastauslaatikkoon ei lisätä mitään.
+
+**Tuloslistan rivi:** sija, nimi, maa (MC/MM) tai seura (SC/SM) sekä aika ja ero voittajaan ("+27,0"). Sprintissä näytetään sija ja vaihe (Finaali / Välierä / Erä). Suomalaiset lihavoidaan kansainvälisissä kisoissa. Palkintosijoille 🥇🥈🥉. Alalaidassa linkki koko tuloslistaan (FIS tai PDF ↗).
+
+**Lähteet** (testattu 21.11.2026):
+
+| Kisat | Lähde | Huom. |
+|---|---|---|
+| MC, MM, Tour de Ski, SM (jos FIS:n kalenterissa) | FIS `results.html?sectorcode=CC&raceid=…`. `raceid` on jo valmiina kisarivin linkissä (iCal). | Sama HTML-rakenne kuin pistetilanteessa ja profiileissa. Lahden 10 km 2026 jäsentyi (88 riviä: sija, nimi, maa, aika, ero). |
+| Suomen cup | Hiihtoliiton tapahtumasivun tulos-PDF:t (esim. `hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/`) | Suomen cup ei ole FIS:n kalenterissa lainkaan. PDF:t tekee EQ Timing, ja kolme eri tapahtuman PDF:ää (Ruka-sprintti 2026, Tampere 15 km, Rovaniemi 20 km) ovat samaa muotoa: sija, numero, lisenssi, nimi ja seura. Rukan tämänpäiväiset sprinttitulokset ovat jo sivulla. |
+
+Hylätyt: tapahtumien live-tulospalvelut (esim. `live.time4results.com/hiihto/2027/ruka`) ovat tapahtumakohtaisia, käsin tehtyjä sivuja eivätkä sisällä sprintin lopputulosta yhtenä listana.
+
+**Toteutus:**
+- FIS: uusi jäsennin `results.py` ja haku ajetuille kisoille. Tulos haetaan uudelleen vielä 2 vuorokautta kisan jälkeen (korjaukset), sen jälkeen se jäädytetään edellisestä datasta. Kauden aikana noin 85 FIS-kisaa, mutta yhdessä ajossa haetaan vain tuoreet, eli 0–8 sivua.
+- Suomen cup: `events.json`:n SC-tapahtumiin uusi kenttä `results_page` (Hiihtoliiton tapahtumasivu, koska osoitteet eivät noudata yhtä kaavaa). Build hakee sivulta tulos-PDF:t (nimessä `lopputulokset` tai `res`, ei `karsinta` eikä `pistetilanne`), lukee ne `pdftotext`illä ja tunnistaa kisan PDF:n otsikosta ("Miehet Sprintti (P)", päivä). Kisat lisätään tapahtuman kisalistaan, vaikka FIS:ssä niitä ei ole.
+- `pdftotext` (poppler-utils) asennetaan Actions-ajoon yhdellä rivillä. Pythonin puolella ei tule riippuvuuksia.
+- Jos PDF:n jäsennys epäonnistuu, kisariville tulee pelkkä linkki "Tulokset (PDF) ↗", joten käyttäjä pääsee silti tuloksiin.
+- Data: noin 30 riviä per kisa `data.json`:ssa, koko kaudelta arviolta 150–200 kt. Testiaineistoksi tallennetaan FIS-tulossivu ja kolme SC-PDF:ää.
+
+**Työmäärä:** noin 1 pv (FIS-osuus 2–3 h, SC-PDF:t ja Hiihtoliiton sivu 3–4 h, käyttöliittymä 2 h).
+
+**Avoimet kysymykset (suositus ensin):**
+1. **Sprintit:** ✔ Näytetään vain lopputulokset, joissa on kaikkien sija, myös karsiutuneiden. Karsintariville ei tule omaa listaa. Vaihtoehto: myös karsinnan top 30 erikseen.
+2. **Iltapäivitys:** ✔ Lisätään SC- ja SM-kisapäivät klo 22.20 ajoon. Muuten iltapäivän matkakisojen tulokset näkyvät vasta seuraavana aamuna. Lisäkustannusta ei ole, ajo tehdään vain kisapäivinä.
+3. **Mitkä kisat:** ✔ Kaikki Kauden kisat -listan kisat, myös harmaat (ei Ylellä), kuten Tour de Ski. Vaihtoehto: vain Ylen näyttämät.
+
+Päätökset 21.11.2026: kaikki kolme suositusta hyväksyttiin.
+
+Toteutuksessa tarkentui:
+- FIS merkitsee sprintin vaiheet tulossivulle väliotsikoin (Final / Semifinal / 1/4 Final), ja Hiihtoliiton PDF:issä vaihe on omassa sarakkeessaan. Vaihe näytetään vaiheen ensimmäisellä rivillä.
+- Viesteissä ja parisprinteissä näytetään joukkue ja osuuksien hiihtäjät (sukunimet). Mukana ovat myös Suomen cupin viestit (esim. Vuokatti 1.11.).
+- Yhdistetyn kisoista näytetään hiihto-osuuden lopputulos (sama FIS-tulossivu).
+- Hiihtoliiton sivuilla on rikkinäisiä PDF-linkkejä (404 tai HTML-sivu). Ne ohitetaan hiljaa. Sivuja käytetään uudelleen vuodesta toiseen, joten PDF hyväksytään vain, jos sen päivä osuu tapahtuman päiville.
+- Puuttuvia SC-tuloksia etsitään vielä 30 päivää tapahtuman jälkeen.
+- Vain kuluvan kauden tulokset (käyttäjän päätös 21.11.2026): raja on Ylen kausilistan ensimmäisen tapahtuman alku, kaudella 2026–27 siis 31.10.2026. Sitä vanhempia tuloksia ei haeta eikä näytetä, eivätkä ne jää myöskään edellisestä datasta.
+
 ## 5. Hakemistorakenne
 
 ```
@@ -165,6 +209,9 @@ hiihto/
 ├── build/
 │   ├── build.py              # hae → yhdistä → site/data.json
 │   ├── sources/fis.py, sources/telkku.py
+│   ├── sources/standings.py, sources/athletes.py   # pistetilanne, hiihtäjäprofiilit
+│   ├── sources/results.py    # kisojen top 30 (FIS, Hiihtoliiton PDF:t)
+│   ├── raceday.py            # iltapäivityksen kisapäiväportti
 │   ├── ical.py               # pieni iCal-jäsennin/kirjoittaja (stdlib)
 │   └── tests/ (+ fixtures/)  # tallennetut esimerkkivastaukset (FIS, Telkku 28.11.)
 ├── site/index.html

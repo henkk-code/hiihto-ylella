@@ -16,6 +16,7 @@ import athletes  # noqa: E402
 import build  # noqa: E402
 import fis  # noqa: E402
 import raceday  # noqa: E402
+import results  # noqa: E402
 import standings  # noqa: E402
 import telkku  # noqa: E402
 from classify import Classifier  # noqa: E402
@@ -280,13 +281,126 @@ class TestRaceDay(unittest.TestCase):
          "races": [{"date": "2026-11-27"}, {"date": "2026-11-29"}]},
         {"type": "MC", "start": "2026-11-26", "end": "2026-11-26", "races": []},   # ampumahiihto
         {"type": "SC", "start": "2026-11-21", "end": "2026-11-22", "races": [{"date": "2026-11-21"}]},
+        {"type": "OL", "start": "2026-12-10", "end": "2026-12-12", "races": []},
     ]}
 
     def test_days(self):
         self.assertTrue(raceday.is_race_day(self.DATA, "2026-11-26"))
         self.assertTrue(raceday.is_race_day(self.DATA, "2026-11-27"))
         self.assertFalse(raceday.is_race_day(self.DATA, "2026-11-28"))   # lepopäivä tapahtuman sisällä
-        self.assertFalse(raceday.is_race_day(self.DATA, "2026-11-21"))   # Suomen cup ei käynnistä
+        self.assertTrue(raceday.is_race_day(self.DATA, "2026-11-21"))    # Suomen cup
+        self.assertTrue(raceday.is_race_day(self.DATA, "2026-11-22"))    # SC: tapahtuman päivät, ei kisalista
+        self.assertFalse(raceday.is_race_day(self.DATA, "2026-11-23"))
+        self.assertFalse(raceday.is_race_day(self.DATA, "2026-12-11"))   # muu tyyppi
+
+
+class TestResults(unittest.TestCase):
+    def fix(self, name):
+        return (FIX / name).read_text(encoding="utf-8")
+
+    def test_fis_distance(self):
+        r = results.parse_fis(self.fix("fis_results_49517_distance.html"))
+        self.assertEqual(r["kind"], "Men's 10km Interval Start Classic")
+        self.assertEqual(len(r["rows"]), 30)
+        self.assertEqual(r["rows"][0], {"rank": 1, "name": "Johannes Hoesflot Klaebo", "nat": "NOR", "time": "23:22.6"})
+        self.assertEqual(r["rows"][1]["diff"], "+22.1")
+        self.assertEqual(r["rows"][7], {"rank": 8, "name": "Ville Ahonen", "nat": "FIN", "time": "24:16.0", "diff": "+53.4"})
+
+    def test_fis_sprint_phases(self):
+        rows = results.parse_fis(self.fix("fis_results_49535_sprint.html"))["rows"]
+        self.assertEqual([r["phase"] for r in rows[:1] + rows[6:7] + rows[12:13] + rows[29:30]],
+                         ["Finaali", "Välierä", "Puolivälierä", "Puolivälierä"])
+        self.assertNotIn("time", rows[0])
+        self.assertEqual(len(rows), 30)                    # karsiutuneet (31.–) eivät tule mukaan
+
+    def test_fis_relay(self):
+        rows = results.parse_fis(self.fix("fis_results_41653_relay.html"))["rows"]
+        self.assertEqual(rows[0]["name"], "Norway")
+        self.assertEqual(rows[0]["members"], ["Holund", "Golberg", "Krueger", "Klaebo"])
+        self.assertEqual(rows[1]["nat"], "FIN")
+        self.assertEqual(rows[1]["diff"], "+46.9")
+
+    def test_fis_not_held_and_broken(self):
+        page = self.fix("fis_results_49517_distance.html")
+        empty = page[:page.find('<a class="table-row')]
+        self.assertIsNone(results.parse_fis(empty))
+        with self.assertRaises(ValueError):
+            results.parse_fis("<html>muuttunut sivu</html>")
+
+    def test_pdf_sprint(self):
+        r = results.parse_eq_pdf(self.fix("sc_ruka_2026_m_sprint.txt"))
+        self.assertEqual((r["gender"], r["name"], r["date"], r["kind"]), ("M", "1,4 km sprintti (p)", "2026-11-21", "sprint"))
+        self.assertEqual(r["rows"][0], {"rank": 1, "name": "Lauri Vuorinen", "club": "Ounasvaaran Hiihtoseura", "phase": "Finaali"})
+        self.assertEqual(r["rows"][2]["name"], "Ville Ahonen")               # huomautus samalla rivillä
+        self.assertEqual(r["rows"][6]["phase"], "Välierä")
+        self.assertEqual(r["rows"][12]["phase"], "Puolivälierä")
+        self.assertEqual(len(r["rows"]), 30)
+        self.assertEqual(r["ranked"], 78)
+
+    def test_pdf_distance(self):
+        r = results.parse_eq_pdf(self.fix("sc_tampere_2026_m_15km.txt"))
+        self.assertEqual((r["gender"], r["name"], r["date"], r["kind"]), ("M", "15 km (p)", "2026-01-31", "distance"))
+        self.assertEqual(r["rows"][0], {"rank": 1, "name": "Ari Luusua", "club": "Tampereen Yritys", "time": "32:12.7"})
+        self.assertEqual(r["rows"][1]["diff"], "+27.0")
+        self.assertEqual(r["rows"][25]["club"], "Kuusamon Erä-Veikot")      # "Erä" seuran nimessä ei ole sprintin vaihe
+        self.assertNotIn("phase", r["rows"][25])
+
+    def test_pdf_relay(self):
+        r = results.parse_eq_pdf(self.fix("sc_vuokatti_2026_m_relay.txt"))
+        self.assertEqual(r["kind"], "relay")
+        self.assertEqual(r["rows"][2], {"rank": 3, "name": "Puijon Hiihtoseura", "time": "1:10:54.7", "diff": "+1.1",
+                                        "members": ["Heikkinen", "Niskanen", "Mäkinen"]})
+
+    def test_pdf_garbage(self):
+        with self.assertRaises(ValueError):
+            results.parse_eq_pdf("Suomen Cup\nLähtölista\n")
+        with self.assertRaises(ValueError):
+            results.pdf_to_text(b"<!doctype html>404")
+
+    def test_pdf_links(self):
+        page = """<a href="/wp-content/uploads/2026/11/m_spr_karsinta_res.pdf">Miesten sprintin karsinnan tulokset</a>
+          <a href="https://hiihtoliitto.fi/wp-content/uploads/2026/11/m_spr_lopputulokset_4.pdf">Miesten sprintin lopputulokset</a>
+          <a href="https://hiihtoliitto.fi/wp-content/uploads/2026/11/m_spr_lopputulokset_4.pdf">Miesten sprintti</a>
+          <a href="https://hiihtoliitto.fi/wp-content/uploads/2026/10/sprinttikaavio_30hiihtajaa.pdf">Sprinttikaavio</a>
+          <a href="https://hiihtoliitto.fi/wp-content/uploads/2026/01/m_15km_res.pdf">Miehet 15 km</a>
+          <a href="https://hiihtoliitto.fi/wp-content/uploads/2026/11/Kilpailuohje.pdf">Kilpailuohje</a>"""
+        links = results.pdf_links(page, "https://hiihtoliitto.fi/tapahtumat/suomen-cup/ruka/")
+        self.assertEqual([u.rsplit("/", 1)[-1] for u, _ in links], ["m_spr_lopputulokset_4.pdf", "m_15km_res.pdf"])
+
+    def test_due(self):
+        now = date(2026, 11, 30)
+        url = "https://www.fis-ski.com/DB/general/results.html?sectorcode=CC&raceid=52085"
+        race = {"date": "2026-11-27", "discipline": "CC", "name_fi": "10 km väliaikalähtö (p)", "url": url}
+        self.assertTrue(results.due(race, {}, now))                                   # puuttuu → haetaan
+        self.assertTrue(results.due(race, {"fis-CC-52085": {}}, date(2026, 11, 29)))  # 2 pv korjauksille
+        self.assertFalse(results.due(race, {"fis-CC-52085": {}}, now))                # jäädytetty
+        self.assertFalse(results.due(dict(race, date="2026-12-01"), {}, now))         # tuleva kisa
+        self.assertFalse(results.due(dict(race, name_fi="1,4 km sprintin karsinta (v)"), {}, now))
+
+    def test_sc_due(self):
+        ev = {"type": "SC", "start": "2026-11-21", "end": "2026-11-22", "results_page": "x"}
+        self.assertFalse(results.sc_due(ev, [], date(2026, 11, 20)))
+        self.assertTrue(results.sc_due(ev, [], date(2026, 11, 21)))
+        self.assertTrue(results.sc_due(ev, [{"res": "a"}], date(2026, 11, 24)))
+        self.assertFalse(results.sc_due(ev, [{"res": "a"}], date(2026, 11, 25)))     # jäädytetty
+        self.assertTrue(results.sc_due(ev, [], date(2026, 12, 10)))                  # puuttuvia etsitään vielä
+        self.assertFalse(results.sc_due(ev, [], date(2027, 1, 10)))
+        self.assertFalse(results.sc_due(dict(ev, results_page=None), [], date(2026, 11, 21)))
+
+    def test_fetch_keeps_old_on_error(self):
+        url = "https://www.fis-ski.com/DB/general/results.html?sectorcode=CC&raceid=52085"
+        race = {"date": "2026-11-29", "discipline": "CC", "name_fi": "10 km", "url": url}
+        prev = {"fis-CC-52085": {"rows": [{"rank": 1}]}, "fis-CC-1": {"rows": []}}
+        orig = results.fetch
+        results.fetch = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("verkko"))
+        try:
+            from datetime import datetime
+            out, err = results.fetch_fis_results([race], prev, datetime(2026, 11, 30, 12, tzinfo=ZoneInfo("Europe/Helsinki")), delay=0)
+        finally:
+            results.fetch = orig
+        self.assertEqual(out["fis-CC-52085"], prev["fis-CC-52085"])
+        self.assertIn("fis-CC-1", out)
+        self.assertIn("fis-CC-52085", err)
 
 
 if __name__ == "__main__":

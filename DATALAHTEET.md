@@ -108,7 +108,17 @@ Ehdotus: en.wikipedia "2026–27 Biathlon World Cup" (MediaWiki API `action=pars
 - Wikidata SPARQL `?item wdt:P2773 "{id}"`: P19 syntymäpaikka ja fi-sitelinkki (P18 kuva on saatavilla, ei käytössä). Yksi kysely kaikille (`VALUES`). P2773 löytyy 4 001 hiihtäjältä.
 - Wikipedia REST `/api/rest_v1/page/summary/{title}`: ingressi (CC BY-SA, lähde mainittava).
 
+**Kisojen top 30 -tulokset (vaihe 6, käytössä, testattu 2026-11-21):**
+- FIS `results.html?sectorcode={CC|NK}&raceid={id}` (osoite on valmiina iCal-syötteen kisalla): `id="events-info-results"`-taulukon `<a class="table-row">`-rivit: sija, numero, FIS-koodi, nimi, syntymävuosi, maa, aika ja ero. Sprintin vaiheet ovat väliotsikoina (`thead_slave`: Final, Semifinal, 1/4 Final, Qualification). Viesteissä joukkuerivin jälkeen tulevat osuusrivit (numero muotoa `1-1`). Ennen kisaa taulukko on tyhjä.
+- Suomen cup ei ole FIS:n kalenterissa. Tulokset ovat Hiihtoliiton tapahtumasivuilla (`hiihtoliitto.fi/tapahtumat/suomen-cup/{paikka}/`) PDF:inä, joita tekee EQ Timing / EQ Events. `pdftotext -layout` tuottaa:
+  - matka: `sija nro lisenssi seura … aika ero`, nimi edellisellä rivillä
+  - sprintti: `sija nro lisenssi … karsinta-aika vaihe [huom.]`, nimi edellisellä ja seura seuraavalla rivillä
+  - viesti: `sija nro joukkue aika ero` ja osuusrivit `1- 1 nimi …`
+  - otsikossa sukupuoli ja kisa ("Miehet Sprintti (P)") sekä päivä
+- PDF:t valitaan linkin tiedostonimen tai tekstin perusteella (`tulokset`, `_res`, `lopputulos`; ei `karsinta`, `pistetilanne`, kaavio, ohjeet). Linkkejä on rikki, ja sama sivu on käytössä joka vuosi, joten PDF:n päivä tarkistetaan.
+
 ## 6. Hylätyt / varalla
 - **Areenan TV-opasrajapinta** (`areena.api.yle.fi/v1/ui/schedules/…`): ilman Ylen web-sovelluksen tunnisteita HTTP 403. Tunnisteiden käyttö julkisella sivulla ei ole asiallista. Hylätty.
 - **Ylen Teksti-TV API** (developer.yle.fi): virallinen, vaatii ilmaisen avaimen Yle Tunnuksella. Data on tekstisivuja. Varalähde, jos Telkku lakkaa toimimasta.
+- **Tapahtumien live-tulospalvelut** (esim. `live.time4results.com/hiihto/2027/ruka`): tapahtumakohtaisia käsin tehtyjä sivuja ilman sprintin lopputulosta yhtenä listana. Hylätty, tilalla Hiihtoliiton PDF:t.
 - **DVB-T EPG omasta antennista**: virallinen ja kattava, mutta vaatii laitteiston. Ei tarvetta nyt.
