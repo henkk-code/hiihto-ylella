@@ -99,10 +99,6 @@ button.ev-row:hover { background: var(--hover); }
 .box-more { display: block; width: 100%; padding: 8px 16px; font: inherit; font-size: 13px; color: var(--muted); text-align: center; background: var(--box-2); border: 0; border-top: 1px solid var(--border-muted); cursor: pointer; }
 .box-more:hover { color: var(--text); }
 /* Hiihtäjäprofiili */
-.sr .medals { display: block; margin-top: 1px; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 18px; }
-.sr .md { white-space: nowrap; }
-.sr .md + .md { margin-left: 10px; }
-.sr .md-l { margin-right: 4px; font-weight: 600; }
 .sr.has-prof { cursor: pointer; }
 .sr.has-prof:hover { background: var(--hover); }
 .nm-btn { padding: 0; font: inherit; font-weight: 600; color: var(--text); text-align: left; background: none; border: 0; cursor: pointer; }
@@ -115,8 +111,13 @@ button.ev-row:hover { background: var(--hover); }
 .prof-text { margin-top: 6px; }
 .prof-src { color: var(--faint); font-size: 12px; white-space: nowrap; }
 .prof-src a { color: var(--faint); }
-.prof-stats { display: flex; flex-wrap: wrap; gap: 2px 16px; margin-top: 8px; color: var(--muted); font-size: 13px; }
+.prof-stats { display: flex; flex-wrap: wrap; gap: 2px 16px; margin-top: 4px; color: var(--muted); font-size: 13px; }
 .prof-stats strong { color: var(--text); font-size: 14px; font-weight: 600; }
+/* Arvokisamitalit: vain avatussa profiilissa, ei pistetilanteen rivillä */
+.prof-medals { display: flex; flex-wrap: wrap; gap: 2px 16px; margin-top: 4px; color: var(--muted); font-size: 13px; }
+.prof-medals .md { white-space: nowrap; }
+.prof-medals .md-l { margin-right: 4px; color: var(--text); font-weight: 600; }
+.vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .prof-h { margin-top: 12px; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
 .pr { list-style: none; margin: 4px 0 0; padding: 0; }
 .pr li { display: grid; grid-template-columns: 40px 1fr auto; gap: 0 10px; font-size: 13px; line-height: 22px; }
@@ -472,12 +473,12 @@ button.ev-row:hover { background: var(--hover); }
     if (!m) return "";
     const part = (label, long, x) => {
       if (!x || !(x.g + x.s + x.b)) return "";
-      const title = `${long}: ${[plural(x.g, "kulta", "kultaa"), plural(x.s, "hopea", "hopeaa"), plural(x.b, "pronssi", "pronssia")].join(", ")}`;
+      const full = `${long}: ${[plural(x.g, "kulta", "kultaa"), plural(x.s, "hopea", "hopeaa"), plural(x.b, "pronssi", "pronssia")].join(", ")}`;
       const items = [x.g, x.s, x.b].map((n, i) => n ? `${MEDAL[i]}${n}` : "").filter(Boolean).join(" ");
-      return `<span class="md" title="${esc(title)}"><span class="md-l">${label}</span>${items}</span>`;
+      return `<span class="md" title="${esc(full)}"><span aria-hidden="true"><span class="md-l">${label}</span>${items}</span><span class="vh">${esc(full)}</span></span>`;
     };
     const html = part("Olympia", "Olympiamitalit", m.ol) + part("MM", "MM-mitalit", m.mm);
-    return html ? `<span class="medals">${html}</span>` : "";
+    return html ? `<div class="prof-medals">${html}</div>` : "";
   }
   function ageOf(birth) {
     const [y, m, d] = birth.split("-").map(Number);
@@ -491,7 +492,9 @@ button.ev-row:hover { background: var(--hover); }
       ? `<p class="prof-text">${esc(p.extract)} <span class="prof-src">— <a href="${esc(p.wiki_url)}" target="_blank" rel="noopener">Wikipedia</a>, CC BY-SA</span></p>` : "";
     const c = p.career || {};
     const stats = p.career ? `<div class="prof-stats"><span><strong>${c.wins}</strong> ${c.wins === 1 ? "MC-voitto" : "MC-voittoa"}</span>
-      <span><strong>${c.podiums}</strong> ${c.podiums === 1 ? "palkintosija" : "palkintosijaa"}</span><span>uralla, henkilökohtaiset</span></div>` : "";
+      <span><strong>${c.podiums}</strong> ${c.podiums === 1 ? "palkintosija" : "palkintosijaa"}</span><span>henkilökohtaiset</span></div>` : "";
+    const medals = medalLine(p.medals);
+    const career = stats || medals ? `<div class="prof-h">Ura</div>${stats}${medals}` : "";
     const season = p.season || [];
     const label = p.season_code ? seasonLabel(p.season_code) : DATA.season;
     const rk = (r) => typeof r.rank === "number"
@@ -504,7 +507,7 @@ button.ev-row:hover { background: var(--hover); }
       : `<div class="prof-h">Kausi ${esc(label)}</div><p class="prof-empty">Ei vielä maailmancupin kisoja tällä kaudella.</p>`;
     const more = season.length > SEASON_ROWS ? `<a href="${esc(p.fis_url)}" target="_blank" rel="noopener">Kaikki ${season.length} kisaa ↗</a>` : "";
     return `<li class="prof" id="p-${esc(cid)}">
-      ${meta ? `<div class="prof-meta">${meta}</div>` : ""}${text}${stats}${results}
+      ${meta ? `<div class="prof-meta">${meta}</div>` : ""}${text}${career}${results}
       <div class="prof-links"><a href="${esc(p.fis_url)}" target="_blank" rel="noopener">FIS-profiili ↗</a>${more}${p.wiki_url ? `<a href="${esc(p.wiki_url)}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ""}</div>
     </li>`;
   }
@@ -525,7 +528,7 @@ button.ev-row:hover { background: var(--hover); }
         : r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>` : esc(r.name);
       return `<li class="sr nav-row${isLead ? " lead" : ""}${p ? " has-prof" : ""}" tabindex="-1" data-k="s:${esc(s.id)}:${r.rank}:${esc(r.name)}"${p ? ` data-row-prof="${esc(cid)}"` : ""}>
         <span class="rk">${r.rank}.</span>
-        <span class="nm">${name}<span class="nat${r.nation === "FIN" ? " home" : ""}">${esc(r.nation)}</span>${isLead ? `<span class="pill pill-lead">Johtaa</span>` : ""}${p ? medalLine(p.medals) : ""}</span>
+        <span class="nm">${name}<span class="nat${r.nation === "FIN" ? " home" : ""}">${esc(r.nation)}</span>${isLead ? `<span class="pill pill-lead">Johtaa</span>` : ""}</span>
         <span class="pt">${fmtPts(r.points)} p${gap ? `<span class="gap">${gap}</span>` : ""}</span>
       </li>${open ? profileHtml(p, cid) : ""}`;
     };

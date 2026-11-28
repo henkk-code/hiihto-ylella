@@ -1,8 +1,11 @@
-# Hiihto Ylellä – projektisuunnitelma (v0.7)
+# Hiihto Ylellä – projektisuunnitelma (v0.8)
 
-*Päivitetty 2026-11-21. Tila: **vaiheet 1, 4 (pistetilanne) ja 5 (hiihtäjäprofiilit) toteutettu** → https://henkk-code.github.io/hiihto-ylella/*
+*Päivitetty 2026-11-28. Tila: **vaiheet 1, 4 (pistetilanne) ja 5 (hiihtäjäprofiilit) toteutettu** → https://henkk-code.github.io/hiihto-ylella/*
 
 **Nykytila (20.11.2026):** Ylen suorat lähetykset kellonaikoineen (Telkku), kauden Yle-tapahtumat (Ylen lista) ja FIS-kisaohjelma. Maastohiihdon maailmancupin kisat, joita Yle ei näytä (Davos, Tour de Ski, Engadin, Oslo, Drammen), näkyvät kauden listalla harmaina ("Ei Ylellä"). Vaihe 2 on peruttu. Mahdollinen jatko on vaihe 3 (muut lajit/kanavat).
+
+Muutokset v0.7 → v0.8:
+- **Mitalit pois pistetilanteen riviltä** (hyväksytty 28.11.2026), ks. §4 vaihe 5: olympia- ja MM-mitalit näkyvät vain avatussa profiilissa Ura-otsikon alla, jotta pistetilannelista pysyy tiiviinä.
 
 Muutokset v0.6 → v0.7:
 - **Vaihe 6b – Erot voittajaan** hyväksytty 21.11.2026 ja toteutettu, ks. §4: sprintin finalisteille (sijat 1–6) finaalin aika ja ero voittajaan.
@@ -125,12 +128,12 @@ Tavoite: Maailmancup-välilehdellä hiihtäjän rivi aukeaa, ja siitä näkee yh
 
 **Kenelle:** hiihdon pistetilanteen kärkikymmenikkö ja paras suomalainen kummassakin sarjassa, eli enintään 22 hiihtäjää. Laatikossa näkyy oletuksena kärkiviisikko, ja alalaidan nappi "Näytä sijat 6–10" avaa loput (kaikissa lajeissa). Lista seuraa pistetilannetta automaattisesti: kun kärkikymmenikköön nousee uusi hiihtäjä, hänen profiilinsa haetaan seuraavassa ajossa, ja pudonneen profiili poistuu.
 
-**Rivillä** (aina näkyvissä, jos mitaleja on): olympia- ja MM-mitalit emojeina, esim. "Olympia 🥇3 🥈1 🥉1 · MM 🥇1 🥈1 🥉2". Lajia ei eritellä. Viestit ja parisprintit lasketaan mukaan.
+**Rivillä:** sija, nimi, maa ja pisteet. Mitaleja ei näytetä rivillä (muutettu 28.11.2026: rivit täyttyivät mitaleista, erityisesti mobiilissa).
 
 **Avautuvassa profiilissa** (saman laatikon sisällä, ei kuvia):
 - ikä, seura (FIS) ja syntymäpaikka (Wikidata)
 - 1–2 virkkeen ingressi suomenkielisestä Wikipediasta ja maininta "Wikipedia, CC BY-SA". Jos fi-artikkelia ei ole, ingressiä ei näytetä.
-- uran MC-voitot ja -palkintosijat (henkilökohtaiset, Tour de Skin osakilpailut mukana)
+- **Ura:** MC-voitot ja -palkintosijat (henkilökohtaiset, Tour de Skin osakilpailut mukana) sekä olympia- ja MM-mitalit emojeina, esim. "Olympia 🥇3 🥈1 🥉1   MM 🥇1 🥈1 🥉2". Lajia ei eritellä, viestit ja parisprintit lasketaan mukaan. Mitalirivi jätetään pois, jos mitaleja ei ole.
 - kauden MC-kisat sijoituksineen: kuusi uusinta ja linkki "Kaikki N kisaa ↗" FIS:iin. Palkintosijoille 🥇🥈🥉.
 - linkit: FIS-profiili ↗ ja Wikipedia ↗
 - Nimen tai rivin klikkaus tai Enter avaa ja sulkee profiilin. Vain yksi profiili on auki kerrallaan.
@@ -158,7 +161,7 @@ Päätökset 21.11.2026:
 1. Kuvia ei näytetä (ehkä myöhemmin).
 2. Profiili tehdään kärkikymmenikölle ja parhaalle suomalaiselle.
 3. Ingressi vain suomenkielisestä Wikipediasta, ei englanninkielistä varalähdettä.
-4. Lisäys: olympia- ja MM-mitalit emojeina riville.
+4. Lisäys: olympia- ja MM-mitalit emojeina riville. *Muutettu 28.11.2026: mitalit siirretty riviltä avattuun profiiliin.*
 
 **Vaihe 6 – Kisojen top 30 -tulokset** (✅ hyväksytty 21.11.2026, toteutettu)
 
